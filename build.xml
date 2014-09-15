@@ -1,0 +1,21 @@
+<project name='GrasshopperLink' default='build' basedir='.'>
+
+	<target name='init'>
+		<property name='dist' location='build' />
+	</target>
+
+	<target name='clean' depends='init' description='Clean out all previous build products.'>
+		<delete dir='${dist}'/>
+	</target>
+
+	<target name='build' depends='clean'>
+
+		<mkdir dir='${dist}/GrasshopperLink' />
+		<copy todir='${dist}/GrasshopperLink'>
+			<fileset dir='${basedir}/GrasshopperLink'>
+			</fileset>
+		</copy>
+
+	</target>
+
+</project>
