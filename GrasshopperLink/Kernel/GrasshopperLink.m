@@ -26,25 +26,27 @@ $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]]
 GHDeploy::param:= "The parameter type `1` is not currently supported."
 
 (* TODO: GHDeploy needs an Initialization option, to specify M code to run before the function is called. Not supported yet. *)
-Options[GHDeploy] = {SaveDefinitions -> True, Initialization -> None}
+Options[GHDeploy] = {SaveDefinitions -> True, Initialization -> None, "Description" -> "User-generated Wolfram Language computation",  "Icon" -> Automatic}
 
 
 (* Maybe the param spec should be "Text" -> {name, nick, desc, etc...}. Or maybe options for all values? *)
 GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}...}, outputSpec:{_String, _String, _String, _String, _}, OptionsPattern[]] :=
-    Module[{codeString, asmPath},
+    Module[{codeString, asmPath, saveDefs, initialization, icon, desc},
+        {saveDefs, initialization, icon, desc} = OptionValue[{SaveDefinitions, Initialization, "Icon", "Description"}];
+        If[icon === Automatic, icon = name];
         codeString =
             TemplateApply[
                 FileTemplate[FileNameJoin[{$thisPacletDir, "Files", "Component.cs"}]],
                 <|"Name" -> name, "Nickname" -> name,  "Category" -> "Wolfram",
-                  "Subcategory" -> "", "Description" -> "Reverses a string",
+                  "Subcategory" -> "", "Description" -> desc,
                   "GUID" -> CreateUUID[],
                   "RegisterInputParams" -> StringJoin @@ (addParam /@ inputSpec), 
                   "RegisterOutputParams" -> StringJoin @@ addParam[outputSpec],
-                  "SolveInstance" -> solveInstance[func, TrueQ[OptionValue[SaveDefinitions]], inputSpec, outputSpec]
+                  "SolveInstance" -> solveInstance[func, TrueQ[saveDefs], initialization, inputSpec, outputSpec]
                 |>
             ];
 Global`code = codeString;
-        asmPath = generateComponentAssembly[name, codeString];
+        asmPath = generateComponentAssembly[name, codeString, icon];
         If[StringQ[asmPath],
             deployComponentAssembly[asmPath];
             Null,
@@ -129,7 +131,8 @@ addParam[{unsupported_String, nickname_String, description_String, accessType_, 
 
 
 
-solveInstance[func_, saveDefs:(True | False), inputSpec:{{_String, _String, _String, _String, __}...}, outputSpec:{_String, _String, _String, _String, _}] :=
+solveInstance[func_, saveDefs:(True | False), initialization_, 
+               inputSpec:{{_String, _String, _String, _String, __}...}, outputSpec:{_String, _String, _String, _String, _}] :=
     Module[{inputTypes, code},
         inputTypes = userTypeToNativeType /@ First /@ inputSpec;
                
@@ -235,9 +238,13 @@ readResult[outputType_] :=
     
     
 
-generateComponentAssembly[componentName_String, code_String] :=
+generateComponentAssembly[componentName_String, code_String, icon_] :=
 NETBlock[
- Module[{provider, providerOptions, params, compilerResults, err, ct, scode},
+ Module[{provider, providerOptions, params, compilerResults, err, ct, scode, resFile},
+     
+     resFile = generateResourcesFile[icon];
+  
+          
 
   providerOptions = NETNew["System.Collections.Generic.Dictionary`2[string, string]"];
   providerOptions@Add["CompilerVersion", "v4.0"];
@@ -253,7 +260,8 @@ NETBlock[
   params @ ReferencedAssemblies @ Add[$RhinoCommonPath];
   params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Files", "Wolfram.NETLink.dll"}]];
   params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Files", "WolframGrasshopperSupport.dll"}]];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Files", "WolframGrasshopperComponents.gha"}]];
+  
+  params@EmbeddedResources@Add[resFile];
   
   params@GenerateInMemory = False;
   params@OutputAssembly = FileNameJoin[{$TemporaryDirectory, componentName <> ".gha"}];
@@ -261,6 +269,8 @@ NETBlock[
   compilerResults = provider@CompileAssemblyFromSource[params, {code}];
   
   provider@Dispose[];
+  DeleteFile[resFile];
+  
   err = compilerResults@Errors;
   ct = err@Count;
   If[ct > 0,
@@ -280,7 +290,27 @@ NETBlock[
   compilerResults@PathToAssembly
   ]
 ]
-  
+
+
+generateResourcesFile[icon_] :=
+    NETBlock[
+        Module[{iconGraphic, iconData, resWriter, resFile},
+            resFile = FileNameJoin[{$TemporaryDirectory, "gh.resources"}];
+            (* prepare icon file. *)
+            If[Head[icon] === Graphics,
+                (* If it's already a Graphics, resize to 24x24. *)
+                iconGraphic = ImageResize[icon, {24, 24}],
+            (* else *)
+                iconGraphic = Graphics[{Text[Style[icon, {Bold, Larger}]]}, ImageSize->{24,24}]
+            ];
+            iconData = ToCharacterCode[ExportString[iconGraphic, "PNG"]];
+            resWriter = NETNew["System.Resources.ResourceWriter", resFile];
+            resWriter@AddResource["Icon", MakeNETObject[iconData, "System.Byte[]"]];
+            resWriter@Close[];
+            resFile
+        ]
+    ]
+ 
  
 deployComponentAssembly[assemblyPath_String] :=
     Module[{asmName},

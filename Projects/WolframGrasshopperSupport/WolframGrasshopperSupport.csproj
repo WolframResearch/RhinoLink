@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExprParam.cs" />
     <Compile Include="LinkParam.cs" />
     <Compile Include="LinkType.cs" />
     <Compile Include="ExprType.cs" />
@@ -63,6 +64,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>Copy "$(TargetPath)" "c:\users\tgayley\appdata\roaming\grasshopper\libraries\$(ProjectName).dll"
+Copy "$(TargetPath)" "c:\users\tgayley\documents\workspace\grasshopperlink\grasshopperlink\files\$(ProjectName).dll"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

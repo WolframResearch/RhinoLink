@@ -69,24 +69,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExprParam.cs" />
+    <Compile Include="CodeComponent.cs" />
     <Compile Include="ObjectComponent.cs" />
     <Compile Include="ComputeComponent.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="WolframGrasshopperComponentsInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\spikeyIcon.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Spikey.bmp" />
   </ItemGroup>
@@ -100,6 +97,8 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+Copy "$(TargetPath)" "c:\users\tgayley\appdata\roaming\grasshopper\libraries\$(ProjectName).gha"
+Copy "$(TargetPath)" "c:\users\tgayley\documents\workspace\grasshopperlink\grasshopperlink\files\$(ProjectName).gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">

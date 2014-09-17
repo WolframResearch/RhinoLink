@@ -74,7 +74,7 @@ namespace Wolfram.Grasshopper
             // If the retrieved data is Nothing, we need to abort.
             if (head == null || arg1 == null) { return; }
 
-            IKernelLink ml = /*linkType != null ? linkType.Value :*/ KernelLinkProvider.Link;
+            IKernelLink ml = linkType != null ? linkType.Value : KernelLinkProvider.Link;
 
             // Total hack here: Treat arriving strings as symbols for the head (but not args).
             // Need a better way to differentiate strings and symbols. Perhaps a WolframSymbol component that takes a string and emits a symbol.
@@ -123,7 +123,7 @@ namespace Wolfram.Grasshopper
                 // Also works.
                 // I think you can point the ResourceManage ctor at a .resources file
                 System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(ComputeComponent).Assembly);
-                object obj = temp.GetObject("Spikey");
+                object obj = temp.GetObject("SpikeyIcon");
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

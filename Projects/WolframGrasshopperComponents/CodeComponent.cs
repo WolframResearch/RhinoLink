@@ -6,16 +6,17 @@ using Rhino.Geometry;
 
 using Wolfram.NETLink;
 
+
 namespace Wolfram.Grasshopper
 {
-    public class ObjectComponent : GH_Component
+    public class CodeComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ObjectComponent class.
+        /// Initializes a new instance of the CodeComponent class.
         /// </summary>
-        public ObjectComponent()
-            : base("WolframObject", "WolframObject",
-                "Description",
+        public CodeComponent()
+            : base("CodeComponent", "Code",
+                "Input arbitrary Wolfram Language code as a string.",
                 "Wolfram", "")
         {
         }
@@ -25,10 +26,9 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("head", "H", "The head of the expression to compute", GH_ParamAccess.item);
-            pManager.AddGenericParameter("obj", "O", "The head of the expression to compute", GH_ParamAccess.item);
+            pManager.AddTextParameter("code", "C", "The Wolfram Language code to execute", GH_ParamAccess.item);
             pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
-            pManager[2].Optional = true;
+            pManager[1].Optional = true;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("expr", "E", "The Expr result", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "result", "R", "The result", GH_ParamAccess.item);
             pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
@@ -46,28 +46,37 @@ namespace Wolfram.Grasshopper
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            string head = null;
-            object obj = null;
+            string code = null;
             LinkType linkType = null;
 
-            if (!DA.GetData(0, ref head)) { return; }
-            if (!DA.GetData(1, ref obj)) { return; }
+            // Use the DA object to retrieve the data inside the first input parameter.
+            // If the retieval fails (for example if there is no data) we need to abort.
+            if (!DA.GetData(0, ref code)) { return; }
             // Link arg is optional.
-            DA.GetData(2, ref linkType);
- 
+            DA.GetData(1, ref linkType);
+
             // If the retrieved data is Nothing, we need to abort.
-            if (head == null || obj == null) { return; }
+            if (code == null) { return; }
 
             IKernelLink ml = linkType != null ? linkType.Value : KernelLinkProvider.Link;
 
             ml.PutFunction("EvaluatePacket", 1);
-            ml.PutFunction(head, 1);
-            // TODO: For object args, we want to not always put as refs. Forexample, strings will be of type GH_String, so we need to 
-            // convert to native types before sending, so they arrive in a sensible format in M.
-            ml.Put(obj);
+            ml.PutFunction("ToExpression", 1);
+            ml.Put(code);
             ml.EndPacket();
-            ml.WaitForAnswer();
-            Expr result = ml.GetExpr();
+
+            Expr result = null;
+            try
+            {
+                ml.WaitForAnswer();
+                result = ml.GetExpr();
+            }
+            catch (MathLinkException)
+            {
+                ml.ClearError();
+                ml.NewPacket();
+                return;
+            }
 
             DA.SetData(0, new ExprType(result));
             DA.SetData(1, new LinkType(ml));
@@ -80,8 +89,6 @@ namespace Wolfram.Grasshopper
         {
             get
             {
-                //You can add image files to your project resources and access them like this:
-                // return Resources.IconForThisComponent;
                 System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(ComputeComponent).Assembly);
                 object obj = temp.GetObject("SpikeyIcon");
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +100,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("{b7d82532-c9f3-4f65-910f-5c09c84f67bc}"); }
+            get { return new Guid("{74a15279-032a-4dc6-aff9-bcf5890ad443}"); }
         }
     }
 }
