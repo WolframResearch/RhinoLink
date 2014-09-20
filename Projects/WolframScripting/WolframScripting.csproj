@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{666A7B86-A665-447A-AEE6-83556CD118F7}</ProjectGuid>
+    <ProjectGuid>{69AF1AB5-B098-4384-A6F0-CFC5FADBA4C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WolframGrasshopperComponents</RootNamespace>
-    <AssemblyName>WolframGrasshopperComponents</AssemblyName>
+    <RootNamespace>WolframScripting</RootNamespace>
+    <AssemblyName>WolframScripting</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -45,50 +45,25 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="RhinoCommon">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>c:\Program Files (x86)\Rhinoceros 5\System\rhinocommon.dll</HintPath>
+      <HintPath>c:\Program Files\Rhinoceros 5 (64-bit)\System\rhinocommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Grasshopper">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Grasshopper.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GH_IO">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_IO.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="WindowsBase" />
     <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\Documents\workspace\GrasshopperLink\GrasshopperLink\Files\Wolfram.NETLink.dll</HintPath>
-    </Reference>
-    <Reference Include="WolframGrasshopperSupport">
-      <HintPath>..\WolframGrasshopperSupport\bin\Debug\WolframGrasshopperSupport.dll</HintPath>
+      <HintPath>..\..\GrasshopperLink\Files\Wolfram.NETLink.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestComponent.cs" />
-    <Compile Include="WolframF.cs" />
-    <Compile Include="WolframFxy.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="WolframCode.cs" />
-    <Compile Include="WolframFx.cs" />
-    <Compile Include="WolframGrasshopperComponentsInfo.cs" />
+    <Compile Include="KernelLinkProvider.cs" />
+    <Compile Include="WolframScriptingCommand.cs" />
+    <Compile Include="WolframScriptingPlugIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\spikeyIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Spikey.bmp" />
+    <Compile Include="WolframStartScripting.cs" />
+    <Compile Include="WolframStopScripting.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -99,9 +74,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
-Copy "$(TargetPath)" "c:\users\tgayley\appdata\roaming\grasshopper\libraries\$(ProjectName).gha"
-Copy "$(TargetPath)" "c:\users\tgayley\documents\workspace\grasshopperlink\grasshopperlink\files\$(ProjectName).gha"
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).rhp"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">

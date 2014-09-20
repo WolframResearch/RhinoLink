@@ -9,13 +9,13 @@ using Wolfram.NETLink;
 
 namespace Wolfram.Grasshopper
 {
-    public class CodeComponent : GH_Component
+    public class WolframCodeComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the CodeComponent class.
         /// </summary>
-        public CodeComponent()
-            : base("CodeComponent", "Code",
+        public WolframCodeComponent()
+            : base("Wolfram Code", "Wolfram Code",
                 "Input arbitrary Wolfram Language code as a string.",
                 "Wolfram", "")
         {
@@ -26,8 +26,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("code", "C", "The Wolfram Language code to execute", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddTextParameter("code", "code", "The Wolfram Language code to execute", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[1].Optional = true;
         }
 
@@ -36,8 +36,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new ExprParam(), "result", "R", "The result", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("result", "res", "The result", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -58,27 +58,19 @@ namespace Wolfram.Grasshopper
             // If the retrieved data is Nothing, we need to abort.
             if (code == null) { return; }
 
-            IKernelLink ml = linkType != null ? linkType.Value : KernelLinkProvider.Link;
+            IKernelLink ml = linkType != null ? linkType.Value : Utils.GetLink();
 
             ml.PutFunction("EvaluatePacket", 1);
             ml.PutFunction("ToExpression", 1);
             ml.Put(code);
             ml.EndPacket();
 
-            Expr result = null;
-            try
-            {
-                ml.WaitForAnswer();
-                result = ml.GetExpr();
-            }
-            catch (MathLinkException)
-            {
-                ml.ClearError();
-                ml.NewPacket();
+            object exprOrObjectResult = Utils.readArbitraryResult(ml, this);
+            if (exprOrObjectResult == null)
                 return;
-            }
 
-            DA.SetData(0, new ExprType(result));
+            // We spit out either an Expr or an object.
+            DA.SetData(0, exprOrObjectResult);
             DA.SetData(1, new LinkType(ml));
         }
 
@@ -89,10 +81,21 @@ namespace Wolfram.Grasshopper
         {
             get
             {
-                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(ComputeComponent).Assembly);
+                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(WolframCodeComponent).Assembly);
                 object obj = temp.GetObject("SpikeyIcon");
                 return ((System.Drawing.Bitmap)(obj));
             }
+        }
+
+        /// <summary>
+        /// The Exposure property controls where in the panel a component icon 
+        /// will appear. There are seven possible locations (primary to septenary), 
+        /// each of which can be combined with the GH_Exposure.obscure flag, which 
+        /// ensures the component will only be visible on panel dropdowns.
+        /// </summary>
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.primary; }
         }
 
         /// <summary>

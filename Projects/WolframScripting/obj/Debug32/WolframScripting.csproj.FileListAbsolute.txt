@@ -1,0 +1,6 @@
+C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframScripting\bin\WolframScripting.dll
+C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframScripting\bin\WolframScripting.pdb
+C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframScripting\obj\Debug32\WolframScripting.dll
+C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframScripting\obj\Debug32\WolframScripting.pdb
+C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframScripting\bin\Wolfram.NETLink.dll
+C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframScripting\obj\Debug32\WolframScripting.csprojResolveAssemblyReference.cache

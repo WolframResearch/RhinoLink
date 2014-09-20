@@ -60,7 +60,6 @@
     <Compile Include="LinkParam.cs" />
     <Compile Include="LinkType.cs" />
     <Compile Include="ExprType.cs" />
-    <Compile Include="KernelLinkProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

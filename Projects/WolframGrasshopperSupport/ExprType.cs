@@ -136,9 +136,14 @@ public class ExprType : GH_Goo<Expr> {
             GH_Convert.ToInt32(source, out val, GH_Conversion.Both);
             this.Value = new Expr(val);
             return true;
-        } else if (source is GH_Number) {
+        }  else if (source is GH_Number) {
             double val;
             GH_Convert.ToDouble(source, out val, GH_Conversion.Both);
+            this.Value = new Expr(val);
+            return true;
+        } else if (source is GH_Boolean) {
+            bool val;
+            GH_Convert.ToBoolean(source, out val, GH_Conversion.Both);
             this.Value = new Expr(val);
             return true;
         }

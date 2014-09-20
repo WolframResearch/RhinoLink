@@ -25,7 +25,6 @@ $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]]
 
 GHDeploy::param:= "The parameter type `1` is not currently supported."
 
-(* TODO: GHDeploy needs an Initialization option, to specify M code to run before the function is called. Not supported yet. *)
 Options[GHDeploy] = {SaveDefinitions -> True, Initialization -> None, "Description" -> "User-generated Wolfram Language computation",  "Icon" -> Automatic}
 
 
@@ -34,6 +33,11 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
     Module[{codeString, asmPath, saveDefs, initialization, icon, desc},
         {saveDefs, initialization, icon, desc} = OptionValue[{SaveDefinitions, Initialization, "Icon", "Description"}];
         If[icon === Automatic, icon = name];
+        (* Fail right away if func is not of the correct form. Must be symbol or pure function. *)
+        If[Head[func] =!= Symbol && Head[func] =!= Function,
+            Message[GHDeploy::badfunc];
+            Return[$Failed]
+        ];
         codeString =
             TemplateApply[
                 FileTemplate[FileNameJoin[{$thisPacletDir, "Files", "Component.cs"}]],
@@ -104,16 +108,7 @@ addParam[{"Any", name_String, nickname_String, description_String, accessType_, 
                 |>
         ]
     ]
-    
-addParam[{"Object", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
-    Module[{},
-        TemplateApply[StringTemplate["pManager.AddGenericParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
-                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
-                  "Default" -> "" (* No support for a default value in AddGenericParameter. *)
-                |>
-        ]
-    ]
-    
+        
 addParam[{"Expr", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
     Module[{},
         TemplateApply[
@@ -142,7 +137,7 @@ solveInstance[func_, saveDefs:(True | False), initialization_,
         code = code <> StringJoin[getData /@ Range[Length[inputTypes]]];
         (* All components will have this one final data getter, for the optional link arg. *)
         code = code <> "DA.GetData(" <> ToString[Length[inputSpec]] <> ", ref linkType);\n";
-        code = code <> callWolframEngine[func, Length[inputTypes], saveDefs];
+        code = code <> callWolframEngine[func, Length[inputTypes], saveDefs, initialization];
         code = code <> readResult[First[outputSpec]];
         code
     ]
@@ -154,7 +149,6 @@ userTypeToNativeType["Number"] = "double"
 userTypeToNativeType["Boolean"] = "bool"
 userTypeToNativeType["Any"] = "object"
 userTypeToNativeType["Expr"] = "ExprType"
-userTypeToNativeType["Object"] = "object"
 
 argDeclaration["string", {index_Integer}] := "string arg" <> ToString[index] <> " = null;\n"
 argDeclaration["int", {index_Integer}] := "int arg" <> ToString[index] <> " = 0;\n"
@@ -167,40 +161,34 @@ getData[index_Integer] := "if (!DA.GetData(" <> ToString[index-1] <> ", ref arg"
                            if (arg" <> ToString[index] <> " == null) return;\n"
 
 
-callWolframEngine[func_, argCount_Integer, saveDefs:(True | False)] :=
+callWolframEngine[func_, argCount_Integer, saveDefs:(True | False), initialization_] :=
     Module[{defs, code},
         code = "IKernelLink link = linkType != null ? linkType.Value : KernelLinkProvider.Link;\n";
+        If[initialization =!= None,
+            code = code <>
+                     "link.Evaluate(\"ReleaseHold[" <> ToString[initialization, InputForm] <> "]\");
+                      link.WaitAndDiscardAnswer();\n"
+        ];
         If[saveDefs,
             (* NOTE: ugly call into private CloudObject functionality. Fix. *)
             defs = CloudObject`Private`definitionsToString[Language`ExtendedFullDefinition[func]];
             code = code <>
                      "link.Evaluate(" <> ToString[defs, InputForm] <> ");
                       link.WaitAndDiscardAnswer();\n"
-                      (*
-                     "link.Evaluate(@\"" <> StringReplace[defs, "\"" -> "\"\""] <> "\");
-                      link.WaitAndDiscardAnswer();\n"
-                      *)
         ];
-        (* TODO: Rather than composing Exprs, wouldn't it be eaiser to use ml.Put() ? 
-           IN FACT, the Expr-building won't work for object arguments. You have to Put().
-        *)
-        code = code <>
+        code <>
+           "link.PutFunction(\"EvaluatePacket\", 1);
+            link.PutNext(ExpressionType.Function);
+            link.PutArgCount(" <> ToString[argCount] <> ");\n" <>
             Switch[Head[func],
                 Symbol,
-                    "Expr e = new Expr(new Expr(ExpressionType.Symbol, \"" <> ToString[func] <> "\"), new object[]{" <>
-                               StringJoin[Riffle[Table["arg"<>ToString[i], {i, 1, argCount}], ","]] <> "});\n",
+                   "link.PutSymbol(\"" <> ToString[func] <> "\");",
                 Function,
-                    "Expr e = new Expr(
-                                new Expr(
-                                   new Expr(ExpressionType.Symbol, \"ToExpression\"), new object[]{\"" <> ToString[func, InputForm] <> "\"}),
-                                       new object[]{" <> StringJoin[Riffle[Table["arg"<>ToString[i], {i, 1, argCount}], ","]] <> "});\n",
-                _,
-                    Message[GHDeploy::badfunc];
-                    $Failed
-        ];
-        code = code <>
-                  "link.Evaluate(e);
-                   link.WaitForAnswer();\n"
+                   "link.PutFunction(\"ToExpression\", 1);
+                    link.Put(\"" <> ToString[func, InputForm] <> "\");"
+            ] <>  
+            StringJoin[Table["link.Put(arg"<>ToString[i]<>");\n", {i, 1, argCount}]] <> 
+            "link.WaitForAnswer();\n"
     ]
 
 
@@ -217,11 +205,21 @@ readResult[outputType_] :=
                 "Boolean",
                     "bool res = link.GetBoolean();\n",
                 "Any",
-                    "Expr res = link.GetExpr();\n",
-                "Object",
-                    "object res = link.GetObject();\n",
+                    "Object res = null;
+                     ILinkMark mark = link.CreateMark();
+                     try {
+                         res = link.GetObject();
+                     } catch (MathLinkException) {
+                         link.ClearError();
+                         link.SeekMark(mark);
+                         Expr ex = link.GetExpr();
+                         res = new ExprType(ex);
+                     } finally {
+                         link.DestroyMark(mark);
+                     }\n",
                 "Expr",
-                    "Expr res = link.GetExpr();\n",
+                    "Expr ex = link.GetExpr();
+                     ExprType res = new ExprType(ex);\n",
                  _,
                     Message[GHDeploy::outnotsup, outputType];
                     $Failed
@@ -338,6 +336,51 @@ deployComponentAssembly[assemblyPath_String] :=
     ]
     
     
+    
+(* Called from C# Wolfram script. Sets up the link from a launched kernel that waits for an FE to attach. *)
+setupLinksFromRhino[] :=
+    Module[{link},
+        debug["Entering setuplinksfromunity"];
+        link = LinkCreate["RhinoAttach"];
+        If[Head[link] === LinkObject,
+            MathLink`AddSharingLink[link, MathLink`SendInputNamePacket -> True]
+        ];
+        debug["attach: " <> ToString[link]];
+        
+        debug["at start, previous link was : " <> ToString[$previousLink]];
+        If[Head[$previousLink] === LinkObject,
+            (* Typically, was already closed in unityDetach[] from last session. *)
+            MathLink`RemoveSharingLink[$previousLink];
+            LinkClose[$previousLink];
+            debug["just closed " <> ToString[$previousLink]]
+        ];
+        
+        (*prepareLinkForUnityToConnect[];*)
+        
+        $previousLink = $ParentLink;
+        debug["link waiting for next time: " <> ToString[link]];
+        debug["current link, which wil lbe closed next time " <> ToString[$previousLink]];
+        
+        (* It is important to make preemptive all the links that could get U-to-M traffic. Otherwise it is easy
+           to get deadlock when calling from Wolfram into Unity at the same time a user script is calling
+           into Wolfram.
+        *)
+        MathLink`AddSharingLink[$ParentLink, MathLink`AllowPreemptive -> True];
+    ]
+    
+    
+    (* Called from C# Wolfram script *)
+startReader[] :=
+    (
+        $readerLink = LinkCreate[];
+        LinkWrite[$ParentLink, First[$readerLink]];
+        LinkConnect[$readerLink];
+        NETLink`InstallNET`Private`$nlink = $readerLink;
+        NETLink`InstallNET`Private`$uilink = $ParentLink;
+    )
+
+
+
 End[]
 
 EndPackage[]
