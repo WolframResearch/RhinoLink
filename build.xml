@@ -1,5 +1,14 @@
 <project name='GrasshopperLink' default='build' basedir='.'>
 
+    <property file="build.properties"/>
+
+	<path id="pacletTaskClasspath">
+      <fileset dir="${mathematicaHome}/SystemFiles/Autoload/PacletManager/Java" includes="*.jar"/>
+    </path>
+   
+    <!-- Enable paclet task. -->   
+    <taskdef name="paclet" classname="com.wolfram.paclet.PacletTask" classpathref="pacletTaskClasspath"/>
+
 	<target name='init'>
 		<property name='dist' location='build' />
 	</target>
@@ -8,14 +17,16 @@
 		<delete dir='${dist}'/>
 	</target>
 
-	<target name='build' depends='clean'>
+    <target name='build' depends='clean'>
 
-		<mkdir dir='${dist}/GrasshopperLink' />
-		<copy todir='${dist}/GrasshopperLink'>
-			<fileset dir='${basedir}/GrasshopperLink'>
-			</fileset>
-		</copy>
+        <mkdir dir='${dist}/GrasshopperLink' />
+        <copy todir='${dist}/GrasshopperLink'>
+            <fileset dir='${basedir}/GrasshopperLink'>
+            </fileset>
+        </copy>
 
-	</target>
+    	<paclet src="${dist}/GrasshopperLink" dest="${dist}"/>
+    	
+    </target>
 
 </project>
