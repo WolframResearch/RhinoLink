@@ -72,7 +72,6 @@
     <Compile Include="TestComponent.cs" />
     <Compile Include="WolframF.cs" />
     <Compile Include="WolframFxy.cs" />
-    <Compile Include="Utils.cs" />
     <Compile Include="WolframCode.cs" />
     <Compile Include="WolframFx.cs" />
     <Compile Include="WolframGrasshopperComponentsInfo.cs" />
@@ -101,7 +100,7 @@
   <PropertyGroup>
     <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
 Copy "$(TargetPath)" "c:\users\tgayley\appdata\roaming\grasshopper\libraries\$(ProjectName).gha"
-Copy "$(TargetPath)" "c:\users\tgayley\documents\workspace\grasshopperlink\grasshopperlink\files\$(ProjectName).gha"
+Copy "$(TargetPath)" "c:\users\tgayley\documents\workspace\grasshopperlink\grasshopperlink\libraries\grasshopper\$(ProjectName).gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">

@@ -98,8 +98,7 @@ namespace Wolfram.Rhino
                         if (e.ErrCode == 11 || !readerLink.ClearError())
                         {
                             DebugPrint("Exception on Wolfram Reader link: " + e);
-                            readerLink.Close();
-                            readerLink = null;
+                            KernelLinkProvider.CloseReaderLink();
                         }
                         else
                         {

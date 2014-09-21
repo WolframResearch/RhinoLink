@@ -134,7 +134,7 @@ solveInstance[func_, saveDefs:(True | False), initialization_,
         code = StringJoin[MapIndexed[argDeclaration, inputTypes]];
         (* All components will have this one final arg declaration, for the optional link arg. *)
         code = code <> "LinkType linkType = null;\n";
-        code = code <> StringJoin[getData /@ Range[Length[inputTypes]]];
+        code = code <> StringJoin[MapIndexed[getData, inputTypes]];
         (* All components will have this one final data getter, for the optional link arg. *)
         code = code <> "DA.GetData(" <> ToString[Length[inputSpec]] <> ", ref linkType);\n";
         code = code <> callWolframEngine[func, Length[inputTypes], saveDefs, initialization];
@@ -157,13 +157,25 @@ argDeclaration["bool", {index_Integer}] := "bool arg" <> ToString[index] <> " = 
 argDeclaration["object", {index_Integer}] := "object arg" <> ToString[index] <> " = null;\n"
 argDeclaration["ExprType", {index_Integer}] := "ExprType arg" <> ToString[index] <> " = null;\n"
 
-getData[index_Integer] := "if (!DA.GetData(" <> ToString[index-1] <> ", ref arg" <> ToString[index] <> ")) { return; }
-                           if (arg" <> ToString[index] <> " == null) return;\n"
+getData[type_, {index_Integer}] := 
+    Module[{argName = "arg" <> ToString[index], code},
+        code = TemplateApply[
+            StringTemplate[
+                "if (!DA.GetData(`indexMinusOne`, ref `argName`)) return;
+                 if (`argName` == null) return;\n"
+            ],
+            <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
+        ];
+        If[type == "object",
+            code = code <> TemplateApply[StringTemplate["`argName` = `argName`.ScriptVariable();\n"], <|"argName" -> argName|>]
+        ];
+        code
+    ]
 
 
 callWolframEngine[func_, argCount_Integer, saveDefs:(True | False), initialization_] :=
     Module[{defs, code},
-        code = "IKernelLink link = linkType != null ? linkType.Value : KernelLinkProvider.Link;\n";
+        code = "IKernelLink link = linkType != null ? linkType.Value : Utils.GetLink();\n";
         If[initialization =!= None,
             code = code <>
                      "link.Evaluate(\"ReleaseHold[" <> ToString[initialization, InputForm] <> "]\");
@@ -338,7 +350,7 @@ deployComponentAssembly[assemblyPath_String] :=
     
     
 (* Called from C# Wolfram script. Sets up the link from a launched kernel that waits for an FE to attach. *)
-setupLinksFromRhino[] :=
+setupRhinoAttachLink[] :=
     Module[{link},
         debug["Entering setuplinksfromunity"];
         link = LinkCreate["RhinoAttach"];
@@ -370,7 +382,7 @@ setupLinksFromRhino[] :=
     
     
     (* Called from C# Wolfram script *)
-startReader[] :=
+setupReaderLink[] :=
     (
         $readerLink = LinkCreate[];
         LinkWrite[$ParentLink, First[$readerLink]];

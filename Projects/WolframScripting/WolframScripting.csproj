@@ -54,12 +54,11 @@
     <Reference Include="WindowsBase" />
     <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\GrasshopperLink\Files\Wolfram.NETLink.dll</HintPath>
+      <HintPath>..\..\GrasshopperLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KernelLinkProvider.cs" />
-    <Compile Include="WolframScriptingCommand.cs" />
     <Compile Include="WolframScriptingPlugIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WolframStartScripting.cs" />
@@ -75,6 +74,10 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).rhp"
+
+Echo "$(TargetDir)..\..\..\GrasshopperLink\Libraries\Rhino\$(ProjectName).rhp"
+Copy "$(TargetPath)" "$(TargetDir)..\..\..\GrasshopperLink\Libraries\Rhino\$(ProjectName).rhp"
+
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">
