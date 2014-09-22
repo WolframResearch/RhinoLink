@@ -67,7 +67,8 @@ Global`code = codeString;
 addParam[{"Text", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
     Module[{},
         TemplateApply[StringTemplate["pManager.AddTextParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
-                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
+                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
+                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
                   "Default" -> If[StringQ[default], ", " <> ToString[default, InputForm], ""]
                 |>
         ]
@@ -76,7 +77,8 @@ addParam[{"Text", name_String, nickname_String, description_String, accessType_,
 addParam[{"Integer", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
     Module[{},
         TemplateApply[StringTemplate["pManager.AddIntegerParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
-                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
+                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, 
+                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
                   "Default" -> If[IntegerQ[default], ", " <> ToString[default, InputForm], ""]
                 |>
         ]
@@ -85,7 +87,8 @@ addParam[{"Integer", name_String, nickname_String, description_String, accessTyp
 addParam[{"Number", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
     Module[{},
         TemplateApply[StringTemplate["pManager.AddNumberParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
-                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
+                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
+                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
                   "Default" -> If[NumberQ[default], ", " <> ToString[N[default], InputForm], ""]
                 |>
         ]
@@ -94,7 +97,8 @@ addParam[{"Number", name_String, nickname_String, description_String, accessType
 addParam[{"Boolean", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
     Module[{},
         TemplateApply[StringTemplate["pManager.AddBooleanParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
-                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
+                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
+                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
                   "Default" -> If[NumberQ[default], ", " <> ToString[N[default], InputForm], ""]
                 |>
         ]
@@ -103,7 +107,8 @@ addParam[{"Boolean", name_String, nickname_String, description_String, accessTyp
 addParam[{"Any", name_String, nickname_String, description_String, accessType_, default:_:None}] :=
     Module[{},
         TemplateApply[StringTemplate["pManager.AddGenericParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
-                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
+                <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
+                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
                   "Default" -> "" (* No support for a default value in AddGenericParameter. *)
                 |>
         ]
@@ -115,7 +120,8 @@ addParam[{"Expr", name_String, nickname_String, description_String, accessType_,
             StringTemplate[
                 "pManager.AddParameter(new ExprParam(), \"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"
             ],
-            <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, "Access" -> "GH_ParamAccess.item",
+            <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
+              "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
               "Default" -> "" (* No support for a default value in AddParameter. *)
             |>
         ]
@@ -128,53 +134,53 @@ addParam[{unsupported_String, nickname_String, description_String, accessType_, 
 
 solveInstance[func_, saveDefs:(True | False), initialization_, 
                inputSpec:{{_String, _String, _String, _String, __}...}, outputSpec:{_String, _String, _String, _String, _}] :=
-    Module[{inputTypes, code},
-        inputTypes = userTypeToNativeType /@ First /@ inputSpec;
-               
-        code = StringJoin[MapIndexed[argDeclaration, inputTypes]];
-        (* All components will have this one final arg declaration, for the optional link arg. *)
+    Module[{code},
+        code = StringJoin[MapIndexed[getData, inputSpec]];
+        (* All components will have this one final arg declaration/getter, for the optional link arg. *)
         code = code <> "LinkType linkType = null;\n";
-        code = code <> StringJoin[MapIndexed[getData, inputTypes]];
-        (* All components will have this one final data getter, for the optional link arg. *)
         code = code <> "DA.GetData(" <> ToString[Length[inputSpec]] <> ", ref linkType);\n";
-        code = code <> callWolframEngine[func, Length[inputTypes], saveDefs, initialization];
+        
+        code = code <> callWolframEngine[func, inputSpec, saveDefs, initialization];
+        
         code = code <> readResult[First[outputSpec]];
         code
     ]
     
-(* DO I NEED THESE? *)
-userTypeToNativeType["Text"] = "string"
-userTypeToNativeType["Integer"] = "int"
-userTypeToNativeType["Number"] = "double"
-userTypeToNativeType["Boolean"] = "bool"
-userTypeToNativeType["Any"] = "object"
-userTypeToNativeType["Expr"] = "ExprType"
 
-argDeclaration["string", {index_Integer}] := "string arg" <> ToString[index] <> " = null;\n"
-argDeclaration["int", {index_Integer}] := "int arg" <> ToString[index] <> " = 0;\n"
-argDeclaration["double", {index_Integer}] := "double arg" <> ToString[index] <> " = 0.0;\n"
-argDeclaration["bool", {index_Integer}] := "bool arg" <> ToString[index] <> " = false;\n"
-argDeclaration["object", {index_Integer}] := "object arg" <> ToString[index] <> " = null;\n"
-argDeclaration["ExprType", {index_Integer}] := "ExprType arg" <> ToString[index] <> " = null;\n"
+argDeclaration["Text", argName_, False] := "string " <> argName <> " = null;\n"
+argDeclaration["Integer", argName_, False] := "int " <> argName <> " = 0;\n"
+argDeclaration["Number", argName_, False] := "double " <> argName <> " = 0.0;\n"
+argDeclaration["Boolean", argName_, False] := "bool " <> argName <> " = false;\n"
+argDeclaration["Any", argName_, False] := "object " <> argName <> " = null;\n"
+argDeclaration["Expr", argName_, False] := "ExprType " <> argName <> " = null;\n"
+argDeclaration[_, argName_, True] := "List<IGH_Goo> " <> argName <> " = new List<IGH_Goo>();\n"
 
-getData[type_, {index_Integer}] := 
-    Module[{argName = "arg" <> ToString[index], code},
-        code = TemplateApply[
-            StringTemplate[
-                "if (!DA.GetData(`indexMinusOne`, ref `argName`)) return;
-                 if (`argName` == null) return;\n"
+getData[{type_, name_, nick_, desc_, accessType_, default:_:None}, {index_Integer}] := 
+    Module[{argName = "arg" <> ToString[index], isList},
+        isList = accessType === List;
+        argDeclaration[type, argName, isList] <>
+        If[isList,
+            TemplateApply[
+                StringTemplate[
+                    "if (!DA.GetDataList(`indexMinusOne`, `argName`)) return;\n"
+                ],
+                <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
             ],
-            <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
-        ];
-        If[type == "object",
-            code = code <> TemplateApply[StringTemplate["`argName` = `argName`.ScriptVariable();\n"], <|"argName" -> argName|>]
-        ];
-        code
+        (* else *)
+            TemplateApply[
+                StringTemplate[
+                    "if (!DA.GetData(`indexMinusOne`, ref `argName`)) return;
+                     if (`argName` == null) return;\n"
+                ],
+                <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
+            ]
+        ]
     ]
 
 
-callWolframEngine[func_, argCount_Integer, saveDefs:(True | False), initialization_] :=
-    Module[{defs, code},
+callWolframEngine[func_, inputSpec_, saveDefs:(True | False), initialization_] :=
+    Module[{defs, code, argCount, input, isList},
+        argCount = Length[inputSpec];
         code = "IKernelLink link = linkType != null ? linkType.Value : Utils.GetLink();\n";
         If[initialization =!= None,
             code = code <>
@@ -183,10 +189,12 @@ callWolframEngine[func_, argCount_Integer, saveDefs:(True | False), initializati
         ];
         If[saveDefs,
             (* NOTE: ugly call into private CloudObject functionality. Fix. *)
-            defs = CloudObject`Private`definitionsToString[Language`ExtendedFullDefinition[func]];
-            code = code <>
-                     "link.Evaluate(" <> ToString[defs, InputForm] <> ");
-                      link.WaitAndDiscardAnswer();\n"
+            defs = ToString[CloudObject`Private`definitionsToString[Language`ExtendedFullDefinition[func]], InputForm];
+            If[defs != "",
+                code = code <>
+                        "link.Evaluate(" <> defs <> ");
+                         link.WaitAndDiscardAnswer();\n"
+            ]
         ];
         code <>
            "link.PutFunction(\"EvaluatePacket\", 1);
@@ -194,12 +202,40 @@ callWolframEngine[func_, argCount_Integer, saveDefs:(True | False), initializati
             link.PutArgCount(" <> ToString[argCount] <> ");\n" <>
             Switch[Head[func],
                 Symbol,
-                   "link.PutSymbol(\"" <> ToString[func] <> "\");",
+                   "link.PutSymbol(\"" <> ToString[func] <> "\");\n",
                 Function,
                    "link.PutFunction(\"ToExpression\", 1);
-                    link.Put(\"" <> ToString[func, InputForm] <> "\");"
+                    link.Put(\"" <> ToString[func, InputForm] <> "\");\n"
             ] <>  
-            StringJoin[Table["link.Put(arg"<>ToString[i]<>");\n", {i, 1, argCount}]] <> 
+            StringJoin[
+                Table[
+                    input = inputSpec[[i]];
+                    isList = input[[5]] === List;
+                    TemplateApply[
+                        Which[
+                            isList,
+                                StringTemplate[
+                                    "link.PutFunction(\"List\", `argi`.Count);
+                                         foreach (IGH_Goo obj in `argi`)
+                                             link.Put(obj.ScriptVariable());\n"
+                                ],
+                            input[[1]] === "Any",
+                                StringTemplate[
+                                    "if (`argi` is IGH_Goo)
+                                         link.Put(((IGH_Goo)`argi`).ScriptVariable());
+                                     else
+                                        link.Put(`argi`);\n"
+                                ],
+                            True,
+                                StringTemplate[
+                                    "link.Put(`argi`);\n"
+                                ]
+                        ],
+                        <|"argi" -> ("arg" <> ToString[i])|>
+                    ],
+                    {i, 1, argCount}
+                ]
+            ] <> 
             "link.WaitForAnswer();\n"
     ]
 
@@ -268,8 +304,8 @@ NETBlock[
   params @ ReferencedAssemblies @ Add[FileNameJoin[{$GrasshopperPath, "GH_IO.dll"}]];
   params @ ReferencedAssemblies @ Add[FileNameJoin[{$GrasshopperPath, "Grasshopper.dll"}]];
   params @ ReferencedAssemblies @ Add[$RhinoCommonPath];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Files", "Wolfram.NETLink.dll"}]];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Files", "WolframGrasshopperSupport.dll"}]];
+  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Libraries", "Rhino", "Wolfram.NETLink.dll"}]];
+  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperSupport.dll"}]];
   
   params@EmbeddedResources@Add[resFile];
   
