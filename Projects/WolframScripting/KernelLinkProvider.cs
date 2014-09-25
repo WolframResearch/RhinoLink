@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Wolfram.NETLink;
 
+using RhinoNamespace = Rhino;
+
 namespace Wolfram.Rhino {
     
 public class KernelLinkProvider {
@@ -13,6 +15,8 @@ public class KernelLinkProvider {
     private static volatile string[] linkArgs = null;
     //private static volatile string[] linkArgs = new string[] { "-linkmode", "launch", "-linkname", "java -classpath \"c:/users/tgayley/documents/mathjava/jlink/src/java\" -Dcom.wolfram.jlink.libdir=\"c:/program files/wolfram research/mathematica/10.0/systemfiles/links/jlink\" com.wolfram.jlink.util.LinkSnooper -kernelmode launch -kernelname \"c:/program files/wolfram research/mathematica/10.0/mathkernel.exe\"" };
     private static object linkLock = new object();
+    private static appLoadSucceeded = true;
+    
 
     public static IKernelLink Link
     {
@@ -34,8 +38,14 @@ public class KernelLinkProvider {
                     mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/grasshopperlink\"]");
                     mainLink.WaitAndDiscardAnswer();
                     mainLink.Evaluate("Needs[\"GrasshopperLink`\"]");
-                    mainLink.WaitAndDiscardAnswer();
-
+                    mainLink.WaitForAnswer();
+                    Expr res = mainLink.GetExpr();
+                    if (res.ToString() != "Null") {
+                        appLoadSucceeded = false;
+                        RhinoNamespace.RhinoApp.WriteLine(
+                            "Error: Failed to load the GrasshopperLink application into the Wolfram Engine. Scripting from the Wolfram Engine will not function.");
+                    }
+                    
                     mainLink.Evaluate("2+2");
                     mainLink.WaitForAnswer();
                     int i = mainLink.GetInteger();
@@ -52,7 +62,7 @@ public class KernelLinkProvider {
         {
             lock (linkLock)
             {
-                if (readerLink == null)
+                if (readerLink == null && appLoadSucceeded)
                 {
                     // Call the link getter to ensure the kernel has launched.
                     IKernelLink link = Link;

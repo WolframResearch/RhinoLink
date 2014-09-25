@@ -2,6 +2,9 @@ BeginPackage["GrasshopperLink`", {"NETLink`"}]
 
 
 GHDeploy::usage = ""
+
+GHResult::usage = ""
+
 $GrasshopperPath::usage = ""
 $RhinoCommonPath::usage = ""
 
@@ -27,9 +30,16 @@ GHDeploy::param:= "The parameter type `1` is not currently supported."
 
 Options[GHDeploy] = {SaveDefinitions -> True, Initialization -> None, "Description" -> "User-generated Wolfram Language computation",  "Icon" -> Automatic}
 
+(* These two defs allow users who are calling funcs with just one input or one output to leave off the outer wrapping braces. *)
+GHDeploy[name_, func_, inputSpec_, outputSpec:{_String, _String, _String, _String, _}, opts:OptionsPattern[]] :=
+    GHDeploy[name, func, inputSpec, {outputSpec}, opts]
+
+GHDeploy[name_, func_, inputSpec:{_String, _String, _String, _String, _}, outputSpec_, opts:OptionsPattern[]] :=
+    GHDeploy[name, func, {inputSpec}, outputSpec, opts]
 
 (* Maybe the param spec should be "Text" -> {name, nick, desc, etc...}. Or maybe options for all values? *)
-GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}...}, outputSpec:{_String, _String, _String, _String, _}, OptionsPattern[]] :=
+GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}...},
+                       outputSpec:{{_String, _String, _String, _String, _}..}, OptionsPattern[]] :=
     Module[{codeString, asmPath, saveDefs, initialization, icon, desc},
         {saveDefs, initialization, icon, desc} = OptionValue[{SaveDefinitions, Initialization, "Icon", "Description"}];
         If[icon === Automatic, icon = name];
@@ -38,15 +48,26 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
             Message[GHDeploy::badfunc];
             Return[$Failed]
         ];
+        (* TODO: Verify that all user-specified types are supported. *)
         codeString =
             TemplateApply[
                 FileTemplate[FileNameJoin[{$thisPacletDir, "Files", "Component.cs"}]],
                 <|"Name" -> name, "Nickname" -> name,  "Category" -> "Wolfram",
                   "Subcategory" -> "", "Description" -> desc,
                   "GUID" -> CreateUUID[],
-                  "RegisterInputParams" -> StringJoin @@ (addParam /@ inputSpec), 
-                  "RegisterOutputParams" -> StringJoin @@ addParam[outputSpec],
-                  "SolveInstance" -> solveInstance[func, TrueQ[saveDefs], initialization, inputSpec, outputSpec]
+                  "RegisterInputParams" -> StringJoin[addParam /@ inputSpec], 
+                  "RegisterOutputParams" -> StringJoin[addParam /@ outputSpec],
+                  "GetData" -> StringJoin[MapIndexed[getData, inputSpec]],
+                  "InputArgCount" -> ToString[Length[inputSpec]],
+                  "UseInit" -> If[initialization =!= None, "true", "false"],
+                  "Initialization" -> If[initialization =!= None, ToString[initialization, InputForm], "\"\""],
+                  "UseDefs" -> If[TrueQ[saveDefs], "true", "false"],
+                  (* NOTE: ugly call into private CloudObject functionality. Fix. *)
+                  "Definitions" -> If[TrueQ[saveDefs], ToString[CloudObject`Private`definitionsToString[Language`ExtendedFullDefinition[func]], InputForm], ""],
+                  "HeadIsSymbol" -> If[Head[func] === Symbol, "true", "false"],
+                  "Func" -> ToString[func, InputForm],
+                  "SendInputParams" -> StringJoin[MapIndexed[sendInputParam, inputSpec]],
+                  "ReadAndStoreResults" -> StringJoin[MapIndexed[readAndStoreResult, outputSpec]]
                 |>
             ];
 Global`code = codeString;
@@ -68,7 +89,7 @@ addParam[{"Text", name_String, nickname_String, description_String, accessType_,
     Module[{},
         TemplateApply[StringTemplate["pManager.AddTextParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
                 <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
-                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
+                  "Access" -> accessTypeName[accessType],
                   "Default" -> If[StringQ[default], ", " <> ToString[default, InputForm], ""]
                 |>
         ]
@@ -78,7 +99,7 @@ addParam[{"Integer", name_String, nickname_String, description_String, accessTyp
     Module[{},
         TemplateApply[StringTemplate["pManager.AddIntegerParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
                 <|"Name" -> name, "Nickname" -> nickname, "Description" -> description, 
-                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
+                  "Access" -> accessTypeName[accessType],
                   "Default" -> If[IntegerQ[default], ", " <> ToString[default, InputForm], ""]
                 |>
         ]
@@ -88,7 +109,7 @@ addParam[{"Number", name_String, nickname_String, description_String, accessType
     Module[{},
         TemplateApply[StringTemplate["pManager.AddNumberParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
                 <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
-                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
+                  "Access" -> accessTypeName[accessType],
                   "Default" -> If[NumberQ[default], ", " <> ToString[N[default], InputForm], ""]
                 |>
         ]
@@ -98,7 +119,7 @@ addParam[{"Boolean", name_String, nickname_String, description_String, accessTyp
     Module[{},
         TemplateApply[StringTemplate["pManager.AddBooleanParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
                 <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
-                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
+                  "Access" -> accessTypeName[accessType],
                   "Default" -> If[NumberQ[default], ", " <> ToString[N[default], InputForm], ""]
                 |>
         ]
@@ -108,7 +129,7 @@ addParam[{"Any", name_String, nickname_String, description_String, accessType_, 
     Module[{},
         TemplateApply[StringTemplate["pManager.AddGenericParameter(\"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"],
                 <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
-                  "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
+                  "Access" -> accessTypeName[accessType],
                   "Default" -> "" (* No support for a default value in AddGenericParameter. *)
                 |>
         ]
@@ -121,7 +142,7 @@ addParam[{"Expr", name_String, nickname_String, description_String, accessType_,
                 "pManager.AddParameter(new ExprParam(), \"`Name`\", \"`Nickname`\", \"`Description`\", `Access` `Default`);\n"
             ],
             <|"Name" -> name, "Nickname" -> nickname, "Description" -> description,
-              "Access" -> If[accessType === True, "GH_ParamAccess.list", "GH_ParamAccess.item"],
+              "Access" -> accessTypeName[accessType],
               "Default" -> "" (* No support for a default value in AddParameter. *)
             |>
         ]
@@ -131,158 +152,65 @@ addParam[{unsupported_String, nickname_String, description_String, accessType_, 
     (Message[GHDeploy::param, unsupported]; $Failed)
 
 
+accessTypeName[sym_Symbol] := accessTypeName[SymbolName[sym]]
 
-solveInstance[func_, saveDefs:(True | False), initialization_, 
-               inputSpec:{{_String, _String, _String, _String, __}...}, outputSpec:{_String, _String, _String, _String, _}] :=
-    Module[{code},
-        code = StringJoin[MapIndexed[getData, inputSpec]];
-        (* All components will have this one final arg declaration/getter, for the optional link arg. *)
-        code = code <> "LinkType linkType = null;\n";
-        code = code <> "DA.GetData(" <> ToString[Length[inputSpec]] <> ", ref linkType);\n";
-        
-        code = code <> callWolframEngine[func, inputSpec, saveDefs, initialization];
-        
-        code = code <> readResult[First[outputSpec]];
-        code
+accessTypeName[type_String] :=
+    Switch[type,
+        "Tree", "GH_ParamAccess.tree",
+        "List", "GH_ParamAccess.list",
+        _, "GH_ParamAccess.item"
     ]
     
 
-argDeclaration["Text", argName_, False] := "string " <> argName <> " = null;\n"
-argDeclaration["Integer", argName_, False] := "int " <> argName <> " = 0;\n"
-argDeclaration["Number", argName_, False] := "double " <> argName <> " = 0.0;\n"
-argDeclaration["Boolean", argName_, False] := "bool " <> argName <> " = false;\n"
-argDeclaration["Any", argName_, False] := "object " <> argName <> " = null;\n"
-argDeclaration["Expr", argName_, False] := "ExprType " <> argName <> " = null;\n"
-argDeclaration[_, argName_, True] := "List<IGH_Goo> " <> argName <> " = new List<IGH_Goo>();\n"
+argDeclaration["Text", argName_, "GH_ParamAccess.item"] := "string " <> argName <> " = null;\n"
+argDeclaration["Integer", argName_, "GH_ParamAccess.item"] := "int " <> argName <> " = 0;\n"
+argDeclaration["Number", argName_, "GH_ParamAccess.item"] := "double " <> argName <> " = 0.0;\n"
+argDeclaration["Boolean", argName_, "GH_ParamAccess.item"] := "bool " <> argName <> " = false;\n"
+argDeclaration["Any", argName_, "GH_ParamAccess.item"] := "object " <> argName <> " = null;\n"
+argDeclaration["Expr", argName_, "GH_ParamAccess.item"] := "ExprType " <> argName <> " = null;\n"
+argDeclaration[_, argName_, "GH_ParamAccess.list"] := "List<IGH_Goo> " <> argName <> " = new List<IGH_Goo>();\n"
+argDeclaration[_, argName_, "GH_ParamAccess.tree"] := "GH_Structure<IGH_Goo> " <> argName <> " = new GH_Structure<IGH_Goo>();\n"
 
 getData[{type_, name_, nick_, desc_, accessType_, default:_:None}, {index_Integer}] := 
-    Module[{argName = "arg" <> ToString[index], isList},
-        isList = accessType === List;
-        argDeclaration[type, argName, isList] <>
-        If[isList,
-            TemplateApply[
-                StringTemplate[
-                    "if (!DA.GetDataList(`indexMinusOne`, `argName`)) return;\n"
+    Module[{argName = "arg" <> ToString[index]},
+        argDeclaration[type, argName, accessTypeName[accessType]] <>
+        Switch[accessTypeName[accessType],
+            "GH_ParamAccess.list",
+                TemplateApply[
+                    StringTemplate[
+                        "if (!DA.GetDataList(`indexMinusOne`, `argName`)) return;\n"
+                    ],
+                    <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
                 ],
-                <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
-            ],
-        (* else *)
-            TemplateApply[
-                StringTemplate[
-                    "if (!DA.GetData(`indexMinusOne`, ref `argName`)) return;
-                     if (`argName` == null) return;\n"
+            "GH_ParamAccess.tree",
+                TemplateApply[
+                    StringTemplate[
+                        "if (!DA.GetDataTree(`indexMinusOne`, out `argName`)) return;\n"
+                    ],
+                    <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
                 ],
-                <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
-            ]
+            _, (* "GH_ParamAccess.item" *)
+                TemplateApply[
+                    StringTemplate[
+                        "if (!DA.GetData(`indexMinusOne`, ref `argName`)) return;
+                         if (`argName` == null) return;\n"
+                    ],
+                    <|"argName" -> argName, "indexMinusOne" -> ToString[index-1]|>
+                ]
         ]
     ]
 
 
-callWolframEngine[func_, inputSpec_, saveDefs:(True | False), initialization_] :=
-    Module[{defs, code, argCount, input, isList},
-        argCount = Length[inputSpec];
-        code = "IKernelLink link = linkType != null ? linkType.Value : Utils.GetLink();\n";
-        If[initialization =!= None,
-            code = code <>
-                     "link.Evaluate(\"ReleaseHold[" <> ToString[initialization, InputForm] <> "]\");
-                      link.WaitAndDiscardAnswer();\n"
-        ];
-        If[saveDefs,
-            (* NOTE: ugly call into private CloudObject functionality. Fix. *)
-            defs = ToString[CloudObject`Private`definitionsToString[Language`ExtendedFullDefinition[func]], InputForm];
-            If[defs != "",
-                code = code <>
-                        "link.Evaluate(" <> defs <> ");
-                         link.WaitAndDiscardAnswer();\n"
-            ]
-        ];
-        code <>
-           "link.PutFunction(\"EvaluatePacket\", 1);
-            link.PutNext(ExpressionType.Function);
-            link.PutArgCount(" <> ToString[argCount] <> ");\n" <>
-            Switch[Head[func],
-                Symbol,
-                   "link.PutSymbol(\"" <> ToString[func] <> "\");\n",
-                Function,
-                   "link.PutFunction(\"ToExpression\", 1);
-                    link.Put(\"" <> ToString[func, InputForm] <> "\");\n"
-            ] <>  
-            StringJoin[
-                Table[
-                    input = inputSpec[[i]];
-                    isList = input[[5]] === List;
-                    TemplateApply[
-                        Which[
-                            isList,
-                                StringTemplate[
-                                    "link.PutFunction(\"List\", `argi`.Count);
-                                         foreach (IGH_Goo obj in `argi`)
-                                             link.Put(obj.ScriptVariable());\n"
-                                ],
-                            input[[1]] === "Any",
-                                StringTemplate[
-                                    "if (`argi` is IGH_Goo)
-                                         link.Put(((IGH_Goo)`argi`).ScriptVariable());
-                                     else
-                                        link.Put(`argi`);\n"
-                                ],
-                            True,
-                                StringTemplate[
-                                    "link.Put(`argi`);\n"
-                                ]
-                        ],
-                        <|"argi" -> ("arg" <> ToString[i])|>
-                    ],
-                    {i, 1, argCount}
-                ]
-            ] <> 
-            "link.WaitForAnswer();\n"
-    ]
-
-
-readResult[outputType_] :=
+sendInputParam[inputSpec:{_String, _String, _String, _String, accessType_, ___}, {index_Integer}] :=
     Module[{},
-        "try {\n" <>
-            Switch[outputType,
-                "Text",
-                    "string res = link.GetString();\n",
-                "Integer",
-                    "int res = link.GetInteger();\n",
-                "Number",
-                    "double res = link.GetDouble();\n",
-                "Boolean",
-                    "bool res = link.GetBoolean();\n",
-                "Any",
-                    "Object res = null;
-                     ILinkMark mark = link.CreateMark();
-                     try {
-                         res = link.GetObject();
-                     } catch (MathLinkException) {
-                         link.ClearError();
-                         link.SeekMark(mark);
-                         Expr ex = link.GetExpr();
-                         res = new ExprType(ex);
-                     } finally {
-                         link.DestroyMark(mark);
-                     }\n",
-                "Expr",
-                    "Expr ex = link.GetExpr();
-                     ExprType res = new ExprType(ex);\n",
-                 _,
-                    Message[GHDeploy::outnotsup, outputType];
-                    $Failed
-            ] <>
-            "DA.SetData(0, res);
-             DA.SetData(1, new LinkType(link)); 
-         } catch (MathLinkException exc) {
-             AddRuntimeMessage(GH_RuntimeMessageLevel.Error, " <> ToString["Unexpected type of result from Wolfram Engine", InputForm] <> ");
-             link.ClearError();
-             link.NewPacket();
-             return;
-         }"
+        "SendInputParam(arg" <> ToString[index] <> ", link, " <> accessTypeName[accessType] <> ");\n"
     ]
     
-    
+
+readAndStoreResult[{type_String, _, _, _, accessType_}, {index_Integer}] :=
+    "if (!ReadAndStoreResult(\"" <> type <> "\", " <> ToString[index-1] <> ", link, DA, " <> accessTypeName[accessType] <> ")) return;\n"
+
+
 
 generateComponentAssembly[componentName_String, code_String, icon_] :=
 NETBlock[

@@ -106,11 +106,38 @@ public class ExprType : GH_Goo<Expr> {
                 return true;
             }
         }
+        // Try to convert to an array.
+        Array data = null;
+        try
+        {
+            if (Value.Head.Equals(SYM_LIST))
+            {
+                int[] dims = Value.Dimensions;
+                if (dims.Length == 1)
+                {
+                    try
+                    {
+                        data = Value.AsArray(ExpressionType.Integer, 1);
+                    }
+                    catch (Exception)
+                    {
+                        data = Value.AsArray(ExpressionType.Real, 1);
+                    }
+                }
+                else if (dims.Length == 2)
+                {
+                }
+            }
+        }
+        catch (Exception)
+        {
+        }
         // TODO: More types, like ComplexNumber.
 
         return false;
     }
 
+    private static readonly Expr SYM_LIST = new Expr(ExpressionType.Symbol, "List");
 
     /////////////////////////////////////////  CastFrom  //////////////////////////////////////////
 

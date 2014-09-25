@@ -17,7 +17,8 @@ namespace Wolfram.Grasshopper
         private static IKernelLink link = null;
         private static object pluginLock = new object();
 
-
+        // This is the property that GH components use to acquire the link to the kernel, which is
+        // held in the WolframScripting Rhino plugin.
         public static IKernelLink GetLink() {
             lock (pluginLock)
             {
