@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
+using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Types;
-using Rhino.Geometry;
+using Grasshopper.Kernel.Data;
 
-using Rhino;
 using Wolfram.NETLink;
+
 
 namespace Wolfram.Grasshopper
 {
@@ -16,7 +18,7 @@ namespace Wolfram.Grasshopper
         /// Initializes a new instance of the TestComponent class.
         /// </summary>
         public TestComponent()
-            : base("WolframTest", "Nickname",
+            : base("TestComponent", "Nickname",
                 "Description",
                 "Wolfram", "Subcategory")
         {
@@ -27,10 +29,12 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("head", "head", "The head of the function being computed", GH_ParamAccess.item);
-            pManager.AddGenericParameter("arg", "arg", "The list argument of the function being computed", GH_ParamAccess.list);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
-            pManager[2].Optional = true;
+    pManager.AddGenericParameter("pts", "pts", "", GH_ParamAccess.list );
+pManager.AddIntegerParameter("num", "num", "", GH_ParamAccess.item );
+pManager.AddNumberParameter("r", "r", "", GH_ParamAccess.item );
+
+            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager[pManager.ParamCount - 1].Optional = true;
         }
 
         /// <summary>
@@ -38,9 +42,10 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("result", "res", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
-        }
+            pManager.AddGenericParameter("pts", "pts", "", GH_ParamAccess.tree );
+            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+       }
 
         /// <summary>
         /// This is the method that actually does the work.
@@ -48,53 +53,103 @@ namespace Wolfram.Grasshopper
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            //object plugin = RhinoApp.GetPlugInObject("WolframScripting");
+           List<IGH_Goo> arg1 = new List<IGH_Goo>();
+if (!DA.GetDataList(0, arg1)) return;
+int arg2 = 0;
+if (!DA.GetData(1, ref arg2)) return;
+                         if (arg2 == null) return;
+double arg3 = 0.0;
+if (!DA.GetData(2, ref arg3)) return;
+                         if (arg3 == null) return;
 
-            IGH_Goo head = null;
-            List<IGH_Goo> arg = new List<IGH_Goo>();
+            
+            // Final, optional link input param is always present.
             LinkType linkType = null;
-
-            if (!DA.GetData(0, ref head)) { return; }
-            // obj comes in as a wrapper class like GH_Integer or GH_Circle.
-            if (!DA.GetDataList(1, arg)) { return; }
-            // Link arg is optional.
-            DA.GetData(2, ref linkType);
-
-            // If the retrieved data is Nothing, we need to abort.
-            if (head == null || arg == null) { return; }
-
-            // ScriptVariable() is the method that extracts the wrapped Rhino object from the GH_Goo wrapper. e.g., GH_Text --> string,
-            // or GH_Circle to Rhino.Geometry.Circle.
-            object nativeHead = head.ScriptVariable();
-
-            IKernelLink ml = linkType != null ? linkType.Value : Utils.GetLink();
-
-            ml.PutFunction("EvaluatePacket", 1);
-            ml.PutNext(ExpressionType.Function);
-            ml.PutArgCount(1);
-            // Total hack here: Treat arriving strings as symbols for the head (but not args).
-            // Need a better way to differentiate strings and symbols. Perhaps a WolframSymbol component that takes a string and emits a symbol.
-            if (nativeHead is string || nativeHead is Expr && ((Expr)nativeHead).StringQ())
-            {
-                ml.PutFunction("ToExpression", 1);
-                ml.Put(nativeHead);
-            }
-            else
-            {
-                ml.Put(nativeHead);
-            }
-            ml.PutFunction("List", arg.Count);
-            foreach (IGH_Goo goo in arg)
-                ml.Put(goo.ScriptVariable());
-            ml.EndPacket();
-
-            object exprOrObjectResult = Utils.readArbitraryResult(ml, this);
-            if (exprOrObjectResult == null)
+            DA.GetData(3, ref linkType);
+            
+            IKernelLink link = linkType != null ? linkType.Value : Utils.GetLink();
+            
+            // Send initialization code and saved defs.
+            try {
+                if (false) {
+                    link.Evaluate("ReleaseHold[\"" + "" + "\"]");
+                    link.WaitAndDiscardAnswer();
+                }
+                if (true) {
+                    link.Evaluate("InterpolatedPhyllotaxicSurfacePointsWrapper[pts_, n_:1000, r_:1] := InterpolatedPhyllotaxicSurfacePoints[Map[{#1[X], #1[Y], #1[Z]} & , pts], n, r]\n \n InterpolatedPhyllotaxicSurfacePoints[pts_, n_:1000, r_:1] := With[{f = Interpolation[Sort[Reverse /@ pts], Method -> \"Spline\"]}, PhyllotaxicSurfacePoints[{f[t], t}, {t, Min[Last /@ pts], Max[Last /@ pts]}, n, r]]\n \n Attributes[InterpolatedPhyllotaxicSurfacePoints] = {HoldAll}\n \n PhyllotaxicSurfacePoints[{x_, z_}, {t_, t0_, t1_}, n_:1000, r_:1] := Block[{\\[Gamma] = 2*Pi*GoldenRatio, aFunc, tFunc, totalArea}, aFunc = AreaFunction[{x, z}, {t, t0, t1}]; totalArea = aFunc[t1]; tFunc = Interpolation[Table[{aFunc[t], t}, {t, t0, t1, N[(t1 - t0)/400]}]]; {(With[{t = tFunc[totalArea*(#1/n)], \\[Theta] = #1*\\[Gamma]}, {x*Cos[\\[Theta]], x*Sin[\\[Theta]], z}] & ) /@ Range[n], r*Sqrt[totalArea/(n*Pi)]}]\n \n Attributes[PhyllotaxicSurfacePoints] = {HoldAll}\n \n AreaFunction[{x_, z_}, {t_, t0_, t1_}] := Block[{y}, y /. First[NDSolve[{Derivative[1][y][t] == 2.*Pi*x*Sqrt[D[x, t]^2 + D[z, t]^2], y[0] == 0}, y, {t, t0, t1}]]]\n \n Attributes[AreaFunction] = {HoldAll}");
+                    link.WaitAndDiscardAnswer();
+                }    
+            } catch (MathLinkException exc) {
+                link.ClearError();
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "WSTPException communicating with Wolfram Engine: " + exc);
                 return;
+            }
+            
+            // Now begin sending the actual computation.
+            try {
+                link.PutFunction("EvaluatePacket", 1);
+                link.PutNext(ExpressionType.Function);
+                link.PutArgCount(3);
+                
+                if (true) {
+                    link.PutSymbol("InterpolatedPhyllotaxicSurfacePointsWrapper");
+                } else {
+                    // pure function
+                    link.PutFunction("ToExpression", 1);
+                    link.Put("InterpolatedPhyllotaxicSurfacePointsWrapper");
+                }
+                
+                Utils.SendInputParam(arg1, link, GH_ParamAccess.list, false);
+Utils.SendInputParam(arg2, link, GH_ParamAccess.item, false);
+Utils.SendInputParam(arg3, link, GH_ParamAccess.item, false);
 
-            // We spit out either an Expr or an object.
-            DA.SetData(0, exprOrObjectResult);
-            DA.SetData(1, new LinkType(ml));
+                
+                link.EndPacket();
+                link.WaitForAnswer();
+            } catch (MathLinkException exc) {
+                link.ClearError();
+                link.NewPacket();
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "WSTPException communicating with Wolfram Engine: " + exc);
+                return;
+            }
+            
+            // This is one part of a (likely) temporary feature that puts the Expr result on the second output. 
+            Expr debuggingExpr = link.PeekExpr();
+            
+            // Read the result(s) and store them in the DA object.
+            ILinkMark mark = link.CreateMark();
+            int ghResultCount = 0;
+            bool isGHResult = false;
+            try {
+                ghResultCount = link.CheckFunction("GHResult");
+                isGHResult = true;
+            } catch (MathLinkException) {
+                link.SeekMark(mark);
+            } finally {
+                link.DestroyMark(mark);
+            }
+            try {
+                if (isGHResult) {
+                    for (int i = 0; i < ghResultCount; i++) {
+                        if (!Utils.ReadAndStoreResult("Any", 0, link, DA, GH_ParamAccess.tree, this)) return;
+
+                    }
+                } else {
+                    if (!Utils.ReadAndStoreResult("Any", 0, link, DA, GH_ParamAccess.tree, this)) return;
+
+                }
+                
+                // This is the second part of the temporary feature that puts the entire result as an Expr on a second output port.
+                DA.SetData(++ghResultCount, new ExprType(debuggingExpr));
+                
+                // Last output item is always the link.
+                DA.SetData(ghResultCount + 1, new LinkType(link));
+            } catch (MathLinkException exc) {
+                link.ClearError();
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "WSTPException communicating with Wolfram Engine while reading results: " + exc);
+            } finally {
+                link.NewPacket();
+            }
         }
 
         /// <summary>
@@ -115,7 +170,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("{6e6df851-a416-406e-ae5d-1900779ee413}"); }
+            get { return new Guid("{57ed71a0-1e8f-4e47-823c-67be628c090a}"); }
         }
     }
 }

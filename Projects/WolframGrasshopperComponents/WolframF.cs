@@ -37,6 +37,7 @@ namespace Wolfram.Grasshopper
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("result", "res", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
             pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
@@ -56,32 +57,31 @@ namespace Wolfram.Grasshopper
             // If the retrieved data is Nothing, we need to abort.
             if (head == null) { return; }
 
-            // ScriptVariable() is the method that extracts the wrapped Rhino object from the GH_Goo wrapper. e.g., GH_Text --> string,
-            // or GH_Circle to Rhino.Geometry.Circle.
-            object nativeHead = head.ScriptVariable();
-
             IKernelLink ml = linkType != null ? linkType.Value : Utils.GetLink();
 
             ml.PutFunction("EvaluatePacket", 1);
             ml.PutNext(ExpressionType.Function);
             ml.PutArgCount(0);
-            // Total hack here: Treat arriving strings as symbols for the head (but not args).
-            // Need a better way to differentiate strings and symbols. Perhaps a WolframSymbol component that takes a string and emits a symbol.
-            if (nativeHead is string || nativeHead is Expr && ((Expr)nativeHead).StringQ()) {
-                ml.PutFunction("ToExpression", 1);
-                ml.Put(nativeHead);
-            } else {
-                ml.Put(nativeHead);
-            }
+            Utils.SendInputParam(head, ml, GH_ParamAccess.item, true);
             ml.EndPacket();
 
-            object exprOrObjectResult = Utils.readArbitraryResult(ml, this);
-            if (exprOrObjectResult == null)
+            try {
+                ml.WaitForAnswer();
+            } catch (MathLinkException) {
+                ml.ClearError();
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Error on the link.");
+                ml.NewPacket();
+                return;
+            }
+
+            // This is the (likely) temporary feature that puts the Expr result on the second output. 
+            Expr debuggingExpr = ml.PeekExpr();
+            DA.SetData(1, new ExprType(debuggingExpr));
+
+            if (!Utils.ReadAndStoreResult("Any", 0, ml, DA, GH_ParamAccess.item, this))
                 return;
 
-            // We spit out either an Expr or an object.
-            DA.SetData(0, exprOrObjectResult);
-            DA.SetData(1, new LinkType(ml));
+            DA.SetData(2, new LinkType(ml));
         }
 
         /// <summary>

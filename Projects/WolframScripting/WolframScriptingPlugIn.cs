@@ -99,6 +99,7 @@ namespace Wolfram.Rhino
                         {
                             DebugPrint("Exception on Wolfram Reader link: " + e);
                             KernelLinkProvider.CloseReaderLink();
+                            keepRunning = false;
                         }
                         else
                         {
@@ -114,8 +115,8 @@ namespace Wolfram.Rhino
                 }
                 else
                 {
-                    System.Threading.Thread.Sleep(10);
-                }
+                    System.Threading.Thread.Sleep(1);
+                }                    
             }
 
         }

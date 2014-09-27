@@ -48,7 +48,12 @@ public class ExprType : GH_Goo<Expr> {
     //////////////////////////////  CastTo  ////////////////////////////////////
 
     public override bool CastTo<Q>(ref Q target)  {
-
+    
+        if (typeof(Q).IsAssignableFrom(typeof(string))) {
+            object s = Value.ToString();
+            target = (Q)s;
+            return true;
+        }
         if (Value.IntegerQ()) {
             if (typeof(Q).IsAssignableFrom(typeof(Int32))) {
                 object i = (int) Value;
@@ -107,7 +112,8 @@ public class ExprType : GH_Goo<Expr> {
             }
         }
         // Try to convert to an array.
-        Array data = null;
+        // TODO. This is not yet implemented. Any why am Idoing Array? Shouldn't this be List or GH_Structure?
+        object dataArray = null;
         try
         {
             if (Value.Head.Equals(SYM_LIST))
@@ -117,15 +123,21 @@ public class ExprType : GH_Goo<Expr> {
                 {
                     try
                     {
-                        data = Value.AsArray(ExpressionType.Integer, 1);
+                        dataArray = Value.AsArray(ExpressionType.Integer, 1);
                     }
                     catch (Exception)
                     {
-                        data = Value.AsArray(ExpressionType.Real, 1);
+                        dataArray = Value.AsArray(ExpressionType.Real, 1);
+                    }
+                    if (dataArray != null)
+                    {
+                        target = (Q)dataArray;
+                        return true;
                     }
                 }
                 else if (dims.Length == 2)
                 {
+                    // TODO
                 }
             }
         }

@@ -35,4 +35,3 @@ C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframGrasshopper
 C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframGrasshopperSupport\bin\Debug\RhinoCommon.xml
 C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframGrasshopperSupport\obj\Debug\WolframGrasshopperSupport.dll
 C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframGrasshopperSupport\obj\Debug\WolframGrasshopperSupport.pdb
-C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframGrasshopperSupport\obj\Debug\WolframGrasshopperSupport.csprojResolveAssemblyReference.cache

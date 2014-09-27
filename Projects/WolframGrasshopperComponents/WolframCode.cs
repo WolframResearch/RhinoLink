@@ -37,6 +37,7 @@ namespace Wolfram.Grasshopper
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("result", "res", "The result", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
             pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
@@ -64,14 +65,25 @@ namespace Wolfram.Grasshopper
             ml.PutFunction("ToExpression", 1);
             ml.Put(code);
             ml.EndPacket();
+            
+            try {
+                ml.WaitForAnswer();
+            } catch (MathLinkException) {
+                ml.ClearError();
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Error on the link.");
+                ml.NewPacket();
+                return;
+            }
 
-            object exprOrObjectResult = Utils.readArbitraryResult(ml, this);
-            if (exprOrObjectResult == null)
+            // This is the (likely) temporary feature that puts the Expr result on the second output. 
+            Expr debuggingExpr = ml.PeekExpr();
+            DA.SetData(1, new ExprType(debuggingExpr));
+
+            if (!Utils.ReadAndStoreResult("Any", 0, ml, DA, GH_ParamAccess.item, this))
                 return;
 
-            // We spit out either an Expr or an object.
-            DA.SetData(0, exprOrObjectResult);
-            DA.SetData(1, new LinkType(ml));
+            // 2 is the index here because 1 was used (temporarily) for the debugging feature above.
+            DA.SetData(2, new LinkType(ml));
         }
 
         /// <summary>

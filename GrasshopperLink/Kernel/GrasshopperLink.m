@@ -203,12 +203,12 @@ getData[{type_, name_, nick_, desc_, accessType_, default:_:None}, {index_Intege
 
 sendInputParam[inputSpec:{_String, _String, _String, _String, accessType_, ___}, {index_Integer}] :=
     Module[{},
-        "SendInputParam(arg" <> ToString[index] <> ", link, " <> accessTypeName[accessType] <> ");\n"
+        "Utils.SendInputParam(arg" <> ToString[index] <> ", link, " <> accessTypeName[accessType] <> ", false);\n"
     ]
     
 
 readAndStoreResult[{type_String, _, _, _, accessType_}, {index_Integer}] :=
-    "if (!ReadAndStoreResult(\"" <> type <> "\", " <> ToString[index-1] <> ", link, DA, " <> accessTypeName[accessType] <> ")) return;\n"
+    "if (!Utils.ReadAndStoreResult(\"" <> type <> "\", " <> ToString[index-1] <> ", link, DA, " <> accessTypeName[accessType] <> ", this)) return;\n"
 
 
 
