@@ -4,7 +4,7 @@ using System.Windows.Threading;
 using RhinoNamespace = Rhino;
 
 using Wolfram.NETLink;
-
+using Rhino.Geometry;
 
 namespace Wolfram.Rhino
 {
@@ -124,8 +124,31 @@ namespace Wolfram.Rhino
 
         public static void DebugPrint(string s)
         {
-            RhinoNamespace.RhinoApp.WriteLine(s);
+            // RhinoNamespace.RhinoApp.WriteLine(s);
         }
 
+       public static RhinoNamespace.Geometry.Mesh ToRhinoMesh(double[,] vertices, int[,] faces)
+       {
+            Mesh mesh = new RhinoNamespace.Geometry.Mesh();
+
+            RhinoNamespace.RhinoApp.WriteLine("---");
+            RhinoNamespace.RhinoApp.WriteLine(vertices.GetLength(0).ToString());
+            RhinoNamespace.RhinoApp.WriteLine(vertices.GetLength(1).ToString());
+            RhinoNamespace.RhinoApp.WriteLine(faces.GetLength(0).ToString());
+            RhinoNamespace.RhinoApp.WriteLine(faces.GetLength(1).ToString());
+
+            for (int i = 0; i < vertices.GetLength(0); i++) {
+                 mesh.Vertices.Add(vertices[i,0], vertices[i,1], vertices[i,2]);
+            }
+
+            for (int i = 0; i < faces.GetLength(0); i++) {
+                 mesh.Faces.AddFace(faces[i,0], faces[i,1], faces[i,2]);
+            }
+            
+           mesh.Normals.ComputeNormals();
+           mesh.Compact();
+
+           return mesh;
+        }
     }
 }
