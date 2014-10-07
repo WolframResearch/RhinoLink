@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Windows.Threading;
+using System.Collections.Generic;
 
 using RhinoNamespace = Rhino;
 
@@ -131,12 +132,6 @@ namespace Wolfram.Rhino
        {
             Mesh mesh = new RhinoNamespace.Geometry.Mesh();
 
-            RhinoNamespace.RhinoApp.WriteLine("---");
-            RhinoNamespace.RhinoApp.WriteLine(vertices.GetLength(0).ToString());
-            RhinoNamespace.RhinoApp.WriteLine(vertices.GetLength(1).ToString());
-            RhinoNamespace.RhinoApp.WriteLine(faces.GetLength(0).ToString());
-            RhinoNamespace.RhinoApp.WriteLine(faces.GetLength(1).ToString());
-
             for (int i = 0; i < vertices.GetLength(0); i++) {
                  mesh.Vertices.Add(vertices[i,0], vertices[i,1], vertices[i,2]);
             }
@@ -150,5 +145,51 @@ namespace Wolfram.Rhino
 
            return mesh;
         }
+
+       public static double[,] RhinoMeshVertices(RhinoNamespace.Geometry.Mesh mesh)
+       {
+           int n = mesh.Vertices.Count;
+           double[,] vertexCoordinates = new double[n, 3];
+           var e = mesh.Vertices.GetEnumerator();
+
+           for (int i = 0; i < n; i++)
+           {
+               e.MoveNext();
+               vertexCoordinates[i, 0] = e.Current.X;
+               vertexCoordinates[i, 1] = e.Current.Y;
+               vertexCoordinates[i, 2] = e.Current.Z;
+           }
+
+           return vertexCoordinates;
+       }
+
+      public static int[][] RhinoMeshFaces(RhinoNamespace.Geometry.Mesh mesh)
+       {
+           int n = mesh.Faces.Count;
+           int[][] vertexIndices = new int[n][];
+           var e = mesh.Faces.GetEnumerator();
+
+           for (int i=0; i < n; i++) {
+                e.MoveNext();
+                if (e.Current.IsTriangle)
+                {
+                    vertexIndices[i] = new int[3];
+                    vertexIndices[i][0] = e.Current.A + 1;
+                    vertexIndices[i][1] = e.Current.B + 1;
+                    vertexIndices[i][2] = e.Current.C + 1;
+                }
+                else
+                {
+                    vertexIndices[i] = new int[4];
+                    vertexIndices[i][0] = e.Current.A + 1;
+                    vertexIndices[i][1] = e.Current.B + 1;
+                    vertexIndices[i][2] = e.Current.C + 1;
+                    vertexIndices[i][3] = e.Current.D + 1;
+                }
+            }
+
+           return vertexIndices;
+       }
+
     }
 }
