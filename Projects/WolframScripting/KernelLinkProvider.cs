@@ -34,6 +34,7 @@ public class KernelLinkProvider {
                         mainLink = MathLinkFactory.CreateKernelLink(LinkArguments);
                     mainLink.WaitAndDiscardAnswer();
                     mainLink.EnableObjectReferences();
+                    StdLink.Link = mainLink;
                     WolframScriptingPlugIn.DebugPrint("back from M launch");
                     mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/grasshopperlink\"]");
                     mainLink.WaitAndDiscardAnswer();
