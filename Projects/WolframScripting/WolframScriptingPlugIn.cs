@@ -125,7 +125,7 @@ namespace Wolfram.Rhino
 
         public static void DebugPrint(string s)
         {
-            RhinoNamespace.RhinoApp.WriteLine(s);
+//            RhinoNamespace.RhinoApp.WriteLine(s);
             // poor man's Pause
 //            for (double x = 0; x < 100000000.0; x++)
 //            {
