@@ -125,7 +125,12 @@ namespace Wolfram.Rhino
 
         public static void DebugPrint(string s)
         {
-            // RhinoNamespace.RhinoApp.WriteLine(s);
+            RhinoNamespace.RhinoApp.WriteLine(s);
+            // poor man's Pause
+//            for (double x = 0; x < 100000000.0; x++)
+//            {
+//                x -= .1;
+//            }
         }
 
        public static RhinoNamespace.Geometry.Mesh ToRhinoMesh(double[,] vertices, int[,] faces)
@@ -190,6 +195,21 @@ namespace Wolfram.Rhino
 
            return vertexIndices;
        }
+
+      public static RhinoNamespace.Geometry.Point3d[] ToRhinoPoint3dArray(double[,] data)
+      {
+          RhinoNamespace.Geometry.Point3d[] result = new RhinoNamespace.Geometry.Point3d[data.GetLength(0)];
+
+          WolframScriptingPlugIn.DebugPrint("data.GetLength(0) = " + data.GetLength(0));
+          WolframScriptingPlugIn.DebugPrint("data[0, 0] = " + data[0, 0]);
+
+          for (int i = 0; i < data.GetLength(0); i++)
+          {
+              result[i] = new RhinoNamespace.Geometry.Point3d(data[i, 0], data[i, 1], data[i, 2]);
+          }
+
+          return result;
+      }
 
     }
 }
