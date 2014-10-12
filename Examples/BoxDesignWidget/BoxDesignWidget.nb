@@ -1,0 +1,551 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23897,        542]
+NotebookOptionsPosition[     23125,        509]
+NotebookOutlinePosition[     23527,        526]
+CellTagsIndexPosition[     23484,        523]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Simple Box Design Widget", "Title",
+ CellChangeTimes->{{3.6207604105424023`*^9, 3.6207604167107553`*^9}, {
+  3.6208609267970285`*^9, 3.6208609271714287`*^9}, {3.620861273866438*^9, 
+  3.620861275473241*^9}, {3.620883421956933*^9, 3.6208834243281374`*^9}, {
+  3.6220706110283947`*^9, 3.6220706167483945`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Agenda", "Section",
+ CellChangeTimes->{{3.6220705492173944`*^9, 3.622070549864394*^9}}],
+
+Cell["- add a picker to connect the manipulate to a selected box", "Text",
+ CellChangeTimes->{{3.6209010110481687`*^9, 3.6209010291130004`*^9}, 
+   3.6209225521863475`*^9, {3.6220705600083942`*^9, 3.6220705638633947`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Setup", "Section",
+ CellChangeTimes->{{3.6220705088503942`*^9, 3.622070516482394*^9}}],
+
+Cell["In Rhino, execute WolframStartScripting.", "Text",
+ CellChangeTimes->{{3.6220705912773943`*^9, 3.6220706257713947`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Box Design Widget", "Section",
+ CellChangeTimes->{{3.6220705355133944`*^9, 3.6220705394013944`*^9}}],
+
+Cell["A simple box design widget.", "Text",
+ CellChangeTimes->{{3.6208834294137464`*^9, 3.620883456403396*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"doc", ",", " ", "guid", ",", " ", "displayModes"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "LoadNETType", "[", "\"\<Rhino.Display.DisplayModeDescription\>\"", "]"}],
+     ";", "\[IndentingNewLine]", 
+    RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoApp\>\"", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"displayModes", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"#", "@", "EnglishName"}], ")"}], "&"}], " ", "/@", " ", 
+      RowBox[{
+      "Rhino`Display`DisplayModeDescription`GetDisplayModes", "[", "]"}]}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"NETBlock", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"doc", "@", 
+         RowBox[{"Objects", "@", 
+          RowBox[{"Replace", "[", 
+           RowBox[{"guid", ",", "\[IndentingNewLine]", 
+            RowBox[{"Brep`CreateFromBox", "[", 
+             RowBox[{"NETNew", "[", 
+              RowBox[{
+              "\"\<Rhino.Geometry.BoundingBox\>\"", ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"NETNew", "[", 
+                RowBox[{
+                "\"\<Rhino.Geometry.Point3d\>\"", ",", " ", "x", ",", "y", 
+                 ",", "z"}], "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"NETNew", "[", 
+                RowBox[{"\"\<Rhino.Geometry.Point3d\>\"", ",", " ", 
+                 RowBox[{"x", "+", "l"}], ",", 
+                 RowBox[{"y", "+", "w"}], ",", 
+                 RowBox[{"z", "+", "h"}]}], "]"}]}], "]"}], "]"}]}], 
+           "]"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"doc", "@", 
+         RowBox[{"Views", "@", 
+          RowBox[{"Redraw", "[", "]"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Row", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"\"\<pos:\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", " ", 
+            "\"\< dim:\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{"l", ",", "w", ",", "h"}], "}"}]}], "}"}], ",", 
+          "\"\< \>\""}], "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"l", ",", "1", ",", "10", ",", "1", ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"w", ",", "1", ",", "10", ",", "1", ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"h", ",", "1", ",", "10", ",", "1", ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "}"}], "]"}]}], 
+         "}"}], ",", "\"\< \>\""}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Row", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "10", ",", "1", ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"y", ",", "0", ",", "10", ",", "1", ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Control", "[", 
+           RowBox[{"{", 
+            RowBox[{"z", ",", "0", ",", "10", ",", "1", ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "}"}], "]"}]}], 
+         "}"}], ",", "\"\< \>\""}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ActionMenu", "[", 
+       RowBox[{"\"\<set display mode\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"#", "\[RuleDelayed]", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "for", " ", "some", " ", "reason", " ", "it", " ", "takes", " ", 
+              "two", " ", "invocations", " ", "to", " ", "set", " ", "all", 
+              " ", 
+              RowBox[{"viewports", "'"}], " ", "display", " ", "modes"}], " ",
+              "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"RhinoApp`RunScript", "[", 
+               RowBox[{
+                RowBox[{
+                "\"\<_SetDisplayMode Viewport=All \\\"\>\"", "<>", "#", "<>", 
+                 "\"\<\\\" _Enter\>\""}], ",", "False"}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"RhinoApp`RunScript", "[", 
+               RowBox[{
+                RowBox[{
+                "\"\<_SetDisplayMode Viewport=All \\\"\>\"", "<>", "#", "<>", 
+                 "\"\<\\\" _Enter\>\""}], ",", "False"}], "]"}]}], ")"}]}], 
+           "\[IndentingNewLine]", ")"}], "&"}], " ", "/@", " ", 
+         "displayModes"}]}], "]"}], ",", "\[IndentingNewLine]", "Delimiter", 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Button", "[", 
+       RowBox[{"\"\<new box\>\"", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"guid", "=", 
+          RowBox[{"doc", "@", 
+           RowBox[{"Objects", "@", 
+            RowBox[{"Add", "[", 
+             RowBox[{"Brep`CreateFromBox", "[", 
+              RowBox[{"NETNew", "[", 
+               RowBox[{
+               "\"\<Rhino.Geometry.BoundingBox\>\"", ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"NETNew", "[", 
+                 RowBox[{
+                 "\"\<Rhino.Geometry.Point3d\>\"", ",", " ", "x", ",", "y", 
+                  ",", "z"}], "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{"NETNew", "[", 
+                 RowBox[{"\"\<Rhino.Geometry.Point3d\>\"", ",", "  ", 
+                  RowBox[{"x", "+", "l"}], ",", 
+                  RowBox[{"y", "+", "w"}], ",", 
+                  RowBox[{"z", "+", "h"}]}], "]"}]}], "]"}], "]"}], 
+             "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"doc", "@", 
+          RowBox[{"Views", "@", 
+           RowBox[{"Redraw", "[", "]"}]}]}]}]}], "\[IndentingNewLine]", "]"}],
+       ",", "\[IndentingNewLine]", 
+      RowBox[{"Initialization", "\[RuleDelayed]", 
+       RowBox[{"Block", "[", 
+        RowBox[{
+         RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"LoadNETType", "[", "\"\<Rhino.Geometry.Brep\>\"", "]"}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{
+          "LoadNETType", "[", "\"\<Rhino.Display.DisplayModeDescription\>\"", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoApp\>\"", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"doc", "=", "RhinoDoc`ActiveDoc"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"guid", "=", 
+           RowBox[{"doc", "@", 
+            RowBox[{"Objects", "@", 
+             RowBox[{"Add", "[", 
+              RowBox[{"Brep`CreateFromBox", "[", 
+               RowBox[{"NETNew", "[", 
+                RowBox[{
+                "\"\<Rhino.Geometry.BoundingBox\>\"", ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"NETNew", "[", 
+                  RowBox[{
+                  "\"\<Rhino.Geometry.Point3d\>\"", ",", " ", "0", ",", "0", 
+                   ",", "0"}], "]"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{"NETNew", "[", 
+                  RowBox[{
+                  "\"\<Rhino.Geometry.Point3d\>\"", ",", " ", "1", ",", "1", 
+                   ",", "1"}], "]"}]}], "]"}], "]"}], "]"}]}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"doc", "@", 
+           RowBox[{"Views", "@", 
+            RowBox[{"Redraw", "[", "]"}]}]}]}]}], "\[IndentingNewLine]", 
+        "]"}]}]}], "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.620861236005172*^9, 3.620861265894824*^9}, {
+   3.620862175112627*^9, 3.6208623442637243`*^9}, {3.620862376602581*^9, 
+   3.620862426600669*^9}, {3.6208625274704456`*^9, 3.620862540730469*^9}, {
+   3.6208627629840593`*^9, 3.6208627845900974`*^9}, {3.620882392183524*^9, 
+   3.6208823967387323`*^9}, {3.6208825294949656`*^9, 
+   3.6208825433165903`*^9}, {3.6208826059663*^9, 3.6208826113951097`*^9}, {
+   3.6208828681715603`*^9, 3.6208828989504147`*^9}, {3.6208829517565074`*^9, 
+   3.6208829882761717`*^9}, {3.620883019195426*^9, 3.6208830361526556`*^9}, {
+   3.6208831199872026`*^9, 3.620883140236038*^9}, {3.6208831937285323`*^9, 
+   3.6208831958189363`*^9}, {3.6208832399514136`*^9, 3.620883302257923*^9}, {
+   3.6208834816754403`*^9, 3.6208836564269476`*^9}, {3.620884767989106*^9, 
+   3.6208847830275326`*^9}, 3.6209002366337276`*^9, {3.620900310874258*^9, 
+   3.6209003443675165`*^9}, {3.62090042962354*^9, 3.6209006414211197`*^9}, {
+   3.620900704055229*^9, 3.6209007103108406`*^9}, {3.6209008012122*^9, 
+   3.6209008192458315`*^9}, {3.6209008628323083`*^9, 3.620900890397557*^9}, {
+   3.6209009471660566`*^9, 3.620900947556057*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`doc$$ = 
+  NETLink`Objects`NETObject$646330317799425, $CellContext`guid$$ = 
+  NETLink`Objects`NETObject$71934854375145473, $CellContext`displayModes$$ = {
+  "Wireframe", "Shaded", "Rendered", "Ghosted", "X-Ray", "Technical", 
+   "Artistic", "Pen"}}, 
+  TagBox[
+   StyleBox[
+    DynamicModuleBox[{$CellContext`h$$ = 3, $CellContext`l$$ = 
+     2, $CellContext`w$$ = 2, $CellContext`x$$ = 0, $CellContext`y$$ = 
+     0, $CellContext`z$$ = 3, Typeset`show$$ = True, 
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+     "\"untitled\"", Typeset`specs$$ = {{
+       Hold[$CellContext`l$$], 1, 10, 1}, {
+       Hold[$CellContext`w$$], 1, 10, 1}, {
+       Hold[$CellContext`h$$], 1, 10, 1}, {
+       Hold[
+        Row[{
+          Manipulate`Place[1], 
+          Manipulate`Place[2], 
+          Manipulate`Place[3]}, " "]], Manipulate`Dump`ThisIsNotAControl}, {
+       Hold[$CellContext`x$$], 0, 10, 1}, {
+       Hold[$CellContext`y$$], 0, 10, 1}, {
+       Hold[$CellContext`z$$], 0, 10, 1}, {
+       Hold[
+        Row[{
+          Manipulate`Place[4], 
+          Manipulate`Place[5], 
+          Manipulate`Place[6]}, " "]], Manipulate`Dump`ThisIsNotAControl}, {
+       Hold[
+        ActionMenu["set display mode", {"Wireframe" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Wireframe", "\" _Enter"], 
+             False]; RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Wireframe", "\" _Enter"], 
+             False]), "Shaded" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Shaded", "\" _Enter"], 
+             False]; RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Shaded", "\" _Enter"], 
+             False]), "Rendered" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Rendered", "\" _Enter"], 
+             False]; RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Rendered", "\" _Enter"], 
+             False]), "Ghosted" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Ghosted", "\" _Enter"], 
+             False]; RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Ghosted", "\" _Enter"], 
+             False]), "X-Ray" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "X-Ray", "\" _Enter"], False]; 
+           RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "X-Ray", "\" _Enter"], 
+             False]), "Technical" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Technical", "\" _Enter"], 
+             False]; RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Technical", "\" _Enter"], 
+             False]), "Artistic" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Artistic", "\" _Enter"], 
+             False]; RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Artistic", "\" _Enter"], 
+             False]), "Pen" :> (RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Pen", "\" _Enter"], False]; 
+           RhinoApp`RunScript[
+             StringJoin[
+             "_SetDisplayMode Viewport=All \"", "Pen", "\" _Enter"], 
+             False])}]], Manipulate`Dump`ThisIsNotAControl}, {
+       Hold[
+        Button["new box", $CellContext`guid$$ = $CellContext`doc$$[
+            $CellContext`Objects[
+             $CellContext`Add[
+              Brep`CreateFromBox[
+               NETLink`NETNew["Rhino.Geometry.BoundingBox", 
+                NETLink`NETNew[
+                "Rhino.Geometry.Point3d", $CellContext`x$$, $CellContext`y$$, \
+$CellContext`z$$], 
+                NETLink`NETNew[
+                "Rhino.Geometry.Point3d", $CellContext`x$$ + \
+$CellContext`l$$, $CellContext`y$$ + $CellContext`w$$, $CellContext`z$$ + \
+$CellContext`h$$]]]]]]; $CellContext`doc$$[
+           $CellContext`Views[
+            $CellContext`Redraw[]]]]], Manipulate`Dump`ThisIsNotAControl}}, 
+     Typeset`size$$ = {290., {3., 12.}}, Typeset`update$$ = 0, 
+     Typeset`initDone$$, Typeset`skipInitDone$$ = 
+     False, $CellContext`l$4349$$ = 0, $CellContext`w$4354$$ = 
+     0, $CellContext`h$4355$$ = 0, $CellContext`x$4356$$ = 
+     0, $CellContext`y$4357$$ = 0, $CellContext`z$4358$$ = 0}, 
+     DynamicBox[Manipulate`ManipulateBoxes[
+      2, StandardForm, 
+       "Variables" :> {$CellContext`h$$ = 1, $CellContext`l$$ = 
+         1, $CellContext`w$$ = 1, $CellContext`x$$ = 0, $CellContext`y$$ = 
+         0, $CellContext`z$$ = 0}, "ControllerVariables" :> {
+         Hold[$CellContext`l$$, $CellContext`l$4349$$, 0], 
+         Hold[$CellContext`w$$, $CellContext`w$4354$$, 0], 
+         Hold[$CellContext`h$$, $CellContext`h$4355$$, 0], 
+         Hold[$CellContext`x$$, $CellContext`x$4356$$, 0], 
+         Hold[$CellContext`y$$, $CellContext`y$4357$$, 0], 
+         Hold[$CellContext`z$$, $CellContext`z$4358$$, 0]}, 
+       "OtherVariables" :> {
+        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+         Typeset`specs$$, Typeset`size$$, Typeset`update$$, 
+         Typeset`initDone$$, Typeset`skipInitDone$$}, "Body" :> 
+       NETLink`NETBlock[$CellContext`doc$$[
+           $CellContext`Objects[
+            Replace[$CellContext`guid$$, 
+             Brep`CreateFromBox[
+              NETLink`NETNew["Rhino.Geometry.BoundingBox", 
+               NETLink`NETNew[
+               "Rhino.Geometry.Point3d", $CellContext`x$$, $CellContext`y$$, \
+$CellContext`z$$], 
+               NETLink`NETNew[
+               "Rhino.Geometry.Point3d", $CellContext`x$$ + $CellContext`l$$, \
+$CellContext`y$$ + $CellContext`w$$, $CellContext`z$$ + \
+$CellContext`h$$]]]]]]; $CellContext`doc$$[
+           $CellContext`Views[
+            $CellContext`Redraw[]]]; 
+         Row[{"pos:", {$CellContext`x$$, $CellContext`y$$, $CellContext`z$$}, 
+            " dim:", {$CellContext`l$$, $CellContext`w$$, $CellContext`h$$}}, 
+           " "]], "Specifications" :> {{$CellContext`l$$, 1, 10, 1, ImageSize -> 
+          Small, ControlPlacement -> 1}, {$CellContext`w$$, 1, 10, 1, 
+          ImageSize -> Small, ControlPlacement -> 2}, {$CellContext`h$$, 1, 
+          10, 1, ImageSize -> Small, ControlPlacement -> 3}, 
+         Row[{
+           Manipulate`Place[1], 
+           Manipulate`Place[2], 
+           Manipulate`Place[3]}, " "], {$CellContext`x$$, 0, 10, 1, ImageSize -> 
+          Small, ControlPlacement -> 4}, {$CellContext`y$$, 0, 10, 1, 
+          ImageSize -> Small, ControlPlacement -> 5}, {$CellContext`z$$, 0, 
+          10, 1, ImageSize -> Small, ControlPlacement -> 6}, 
+         Row[{
+           Manipulate`Place[4], 
+           Manipulate`Place[5], 
+           Manipulate`Place[6]}, " "], 
+         ActionMenu["set display mode", {"Wireframe" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Wireframe", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Wireframe", "\" _Enter"], 
+              False]), "Shaded" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Shaded", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Shaded", "\" _Enter"], 
+              False]), "Rendered" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Rendered", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Rendered", "\" _Enter"], 
+              False]), "Ghosted" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Ghosted", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Ghosted", "\" _Enter"], 
+              False]), "X-Ray" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "X-Ray", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "X-Ray", "\" _Enter"], 
+              False]), "Technical" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Technical", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Technical", "\" _Enter"], 
+              False]), "Artistic" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Artistic", "\" _Enter"], 
+              False]; RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Artistic", "\" _Enter"], 
+              False]), "Pen" :> (RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Pen", "\" _Enter"], False]; 
+            RhinoApp`RunScript[
+              StringJoin[
+              "_SetDisplayMode Viewport=All \"", "Pen", "\" _Enter"], 
+              False])}], Delimiter, 
+         Button["new box", $CellContext`guid$$ = $CellContext`doc$$[
+             $CellContext`Objects[
+              $CellContext`Add[
+               Brep`CreateFromBox[
+                NETLink`NETNew["Rhino.Geometry.BoundingBox", 
+                 NETLink`NETNew[
+                 "Rhino.Geometry.Point3d", $CellContext`x$$, \
+$CellContext`y$$, $CellContext`z$$], 
+                 NETLink`NETNew[
+                 "Rhino.Geometry.Point3d", $CellContext`x$$ + \
+$CellContext`l$$, $CellContext`y$$ + $CellContext`w$$, $CellContext`z$$ + \
+$CellContext`h$$]]]]]]; $CellContext`doc$$[
+            $CellContext`Views[
+             $CellContext`Redraw[]]]]}, "Options" :> {}, 
+       "DefaultOptions" :> {}],
+      ImageSizeCache->{586., {136., 145.}},
+      SingleEvaluation->True],
+     Deinitialization:>None,
+     DynamicModuleValues:>{},
+     Initialization:>(
+      Block[{}, NETLink`LoadNETType["Rhino.RhinoDoc"]; 
+        NETLink`LoadNETType["Rhino.Geometry.Brep"]; 
+        NETLink`LoadNETType["Rhino.Display.DisplayModeDescription"]; 
+        NETLink`LoadNETType["Rhino.RhinoApp"]; $CellContext`doc$$ = 
+         RhinoDoc`ActiveDoc; $CellContext`guid$$ = $CellContext`doc$$[
+           $CellContext`Objects[
+            $CellContext`Add[
+             Brep`CreateFromBox[
+              NETLink`NETNew["Rhino.Geometry.BoundingBox", 
+               NETLink`NETNew["Rhino.Geometry.Point3d", 0, 0, 0], 
+               NETLink`NETNew[
+               "Rhino.Geometry.Point3d", 1, 1, 1]]]]]]; $CellContext`doc$$[
+          $CellContext`Views[
+           $CellContext`Redraw[]]]]; Typeset`initDone$$ = True),
+     SynchronousInitialization->True,
+     UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+     UnsavedVariables:>{Typeset`initDone$$},
+     UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+    Deployed->True,
+    StripOnInput->False],
+   Manipulate`InterpretManipulate[1]],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{{3.6208836388301163`*^9, 3.6208836576749496`*^9}, 
+   3.6209002195204973`*^9, 3.6209004329619455`*^9, 3.620900649065133*^9, 
+   3.6209007189064555`*^9, 3.6209008204314337`*^9, 3.620900950379662*^9, 
+   3.620911592674403*^9, 3.622070261305395*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+Evaluator->"RhinoAttach",
+WindowSize->{868, 1012},
+WindowMargins->{{Automatic, -3}, {Automatic, 4}},
+Magnification:>1.4 Inherited,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 314, 4, 125, "Title"],
+Cell[CellGroupData[{
+Cell[919, 30, 93, 1, 87, "Section"],
+Cell[1015, 33, 222, 2, 42, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1274, 40, 92, 1, 66, "Section"],
+Cell[1369, 43, 126, 1, 42, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1532, 49, 106, 1, 87, "Section"],
+Cell[1641, 52, 111, 1, 42, "Text"],
+Cell[CellGroupData[{
+Cell[1777, 57, 9415, 204, 1501, "Input"],
+Cell[11195, 263, 11890, 241, 304, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
