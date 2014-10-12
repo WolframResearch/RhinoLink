@@ -14,6 +14,7 @@ public class KernelLinkProvider {
     private static IKernelLink readerLink = null;
     private static volatile string[] linkArgs = null;
     //private static volatile string[] linkArgs = new string[] { "-linkmode", "launch", "-linkname", "java -classpath \"c:/users/tgayley/documents/mathjava/jlink/src/java\" -Dcom.wolfram.jlink.libdir=\"c:/program files/wolfram research/mathematica/10.0/systemfiles/links/jlink\" com.wolfram.jlink.util.LinkSnooper -kernelmode launch -kernelname \"c:/program files/wolfram research/mathematica/10.0/mathkernel.exe\"" };
+    // for Carlson: \"c:/users/tgayley/documents/mathjava/jlink/src/java\" -> ".../jlink.jar" in the M- layout
     private static object linkLock = new object();
     private static bool appLoadSucceeded = true;
     
@@ -36,8 +37,8 @@ public class KernelLinkProvider {
                     mainLink.EnableObjectReferences();
                     StdLink.Link = mainLink;
                     WolframScriptingPlugIn.DebugPrint("back from M launch");
-                    mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/grasshopperlink\"]");
-                    mainLink.WaitAndDiscardAnswer();
+                    //mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/grasshopperlink\"]");
+                    //mainLink.WaitAndDiscardAnswer();
                     mainLink.Evaluate("Needs[\"GrasshopperLink`\"]");
                     mainLink.WaitForAnswer();
                     Expr res = mainLink.GetExpr();
