@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Windows.Threading;
 using System.Collections.Generic;
+using System.Drawing;
 
 using RhinoNamespace = Rhino;
 
@@ -200,12 +201,21 @@ namespace Wolfram.Rhino
       {
           RhinoNamespace.Geometry.Point3d[] result = new RhinoNamespace.Geometry.Point3d[data.GetLength(0)];
 
-          WolframScriptingPlugIn.DebugPrint("data.GetLength(0) = " + data.GetLength(0));
-          WolframScriptingPlugIn.DebugPrint("data[0, 0] = " + data[0, 0]);
-
           for (int i = 0; i < data.GetLength(0); i++)
           {
               result[i] = new RhinoNamespace.Geometry.Point3d(data[i, 0], data[i, 1], data[i, 2]);
+          }
+
+          return result;
+      }
+
+      public static System.Drawing.Color[] ToRhinoColorList(double[,] data)
+      {
+          System.Drawing.Color[] result = new System.Drawing.Color[data.GetLength(0)];
+
+          for (int i = 0; i < data.GetLength(0); i++)
+          {
+              result[i] = System.Drawing.Color.FromArgb((int)(255 * data[i, 0]), (int)(255 * data[i, 1]), (int)(255 * data[i, 2]));
           }
 
           return result;
