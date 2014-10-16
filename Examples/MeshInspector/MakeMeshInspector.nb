@@ -1,0 +1,370 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13388,        361]
+NotebookOptionsPosition[     12318,        319]
+NotebookOutlinePosition[     12689,        335]
+CellTagsIndexPosition[     12646,        332]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Rhino Mesh Inspector", "Title",
+ CellChangeTimes->{{3.6223273910542145`*^9, 3.622327396623129*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Make a palette that gives properties and analysis of the selected Rhino mesh.\
+\>", "Chapter",
+ CellChangeTimes->{{3.6223274167928944`*^9, 3.6223274321269083`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Agenda", "Section",
+ CellChangeTimes->{{3.6223301198320065`*^9, 3.6223301215791397`*^9}}],
+
+Cell["- Deselect event handler doesn\[CloseCurlyQuote]t seem to be firing", \
+"Text",
+ CellChangeTimes->{{3.6223301305175953`*^9, 3.6223301390660667`*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Setup", "Section",
+ CellChangeTimes->{{3.62232743657268*^9, 3.6223274369938583`*^9}}],
+
+Cell["Start Rhino and execute WolframStartScripting.", "Text",
+ CellChangeTimes->{{3.62232858115055*^9, 3.6223285914462557`*^9}}],
+
+Cell["Open AssortedMeshes.3dm.", "Text",
+ CellChangeTimes->{{3.6223288152048516`*^9, 3.622328822614519*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Section",
+ InitializationGroup->True,
+ CellChangeTimes->{{3.6214419623624916`*^9, 3.6214419724163775`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", 
+  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\GrasshopperLink\\\\Packages\\\\\
+RhinoUtilities.m\>\""}]], "Input",
+ CellChangeTimes->{
+  3.6214491148558517`*^9, {3.621449180061448*^9, 3.621449190653508*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RhinoMeshObjectInformation", "[", "obj_", "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"mesh", "=", 
+       RowBox[{"obj", "@", "MeshGeometry"}]}], ",", "isOriented", ",", 
+      "hasBoundary", ",", " ", "vertices", ",", " ", "faces", ",", 
+      "faceAreas", ",", "faceAspectRatios", ",", "faceCounts"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"vertices", " ", "=", " ", 
+      RowBox[{
+      "Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshVertices", "[", "mesh", 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"faces", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"vertices", "[", 
+         RowBox[{"[", "#", "]"}], "]"}], "&"}], " ", "/@", " ", 
+       RowBox[{
+       "Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshFaces", "[", "mesh", 
+        "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"peek", "=", 
+      RowBox[{"faceAreas", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"RegionMeasure", "[", 
+          RowBox[{"Polygon", "[", "#", "]"}], "]"}], "&"}], " ", "/@", " ", 
+        "faces"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"faceAspectRatios", " ", "=", " ", "Null"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"faceCounts", " ", "=", " ", 
+      RowBox[{"Sort", "[", 
+       RowBox[{"Tally", "[", 
+        RowBox[{"Length", "/@", "faces"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Column", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Row", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"obj", "@", 
+            RowBox[{"ObjectType", "@", 
+             RowBox[{"ToString", "[", "]"}]}]}], ",", "\"\<: \>\"", ",", 
+           RowBox[{"obj", "@", 
+            RowBox[{"ToString", "[", "]"}]}]}], "}"}], "]"}], ",", 
+        "\[IndentingNewLine]", "\"\<\>\"", ",", "\[IndentingNewLine]", 
+        RowBox[{"Grid", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"#", ",", "Bold"}], "]"}], "&"}], " ", "/@", " ", 
+             RowBox[{"{", 
+              RowBox[{"\"\<Item\>\"", ",", "\"\<Count\>\""}], "}"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<meshes\>\"", ",", 
+              RowBox[{"mesh", "@", "DisjointMeshCount"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<vertices\>\"", ",", " ", 
+              RowBox[{"Length", "[", "vertices", "]"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<faces\>\"", ",", 
+              RowBox[{"Length", "[", "faces", "]"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<polygons\>\"", ",", " ", "faceCounts"}], "}"}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<bytes\>\"", ",", 
+              RowBox[{"mesh", "@", 
+               RowBox[{"MemoryEstimate", "[", "]"}]}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<\>\"", ",", "\"\<\>\""}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"#", ",", "Bold"}], "]"}], "&"}], " ", "/@", " ", 
+             RowBox[{"{", 
+              RowBox[{"\"\<Property\>\"", ",", "\"\<Value\>\""}], "}"}]}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<closed\>\"", ",", 
+              RowBox[{"mesh", "@", "IsClosed"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<deformable\>\"", ",", 
+              RowBox[{"mesh", "@", "IsDeformable"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<valid\>\"", ",", 
+              RowBox[{"mesh", "@", "IsValid"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<has brep form\>\"", ",", 
+              RowBox[{"mesh", "@", "HasBrepForm"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<manifold\>\"", ",", 
+              RowBox[{"mesh", "@", 
+               RowBox[{"IsManifold", "[", 
+                RowBox[{"True", ",", "isOriented", ",", "hasBoundary"}], 
+                "]"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<oriented\>\"", ",", "isOriented"}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<has boundary\>\"", ",", "hasBoundary"}], "}"}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<orientation\>\"", ",", 
+              RowBox[{"Switch", "[", 
+               RowBox[{
+                RowBox[{"mesh", "@", 
+                 RowBox[{"SolidOrientation", "[", "]"}]}], ",", 
+                RowBox[{"-", "1"}], ",", "\"\<inward normals\>\"", ",", "1", 
+                ",", "\"\<outward normals\>\"", ",", "0", ",", 
+                "\"\<not solid\>\""}], "]"}]}], "}"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{"Alignment", "\[Rule]", "Left"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\"\<\>\"", ",", "\[IndentingNewLine]", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<Face Area Distribution\>\"", ",", "Bold"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Histogram", "[", 
+         RowBox[{"faceAreas", ",", 
+          RowBox[{"BarOrigin", "\[Rule]", "Left"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.621547950346896*^9, 3.6215479516659718`*^9}, {
+   3.6216460975126066`*^9, 3.62164614513233*^9}, {3.6223251265755253`*^9, 
+   3.6223253112440915`*^9}, {3.6223253536588955`*^9, 
+   3.6223253880869923`*^9}, {3.6223254290667443`*^9, 
+   3.6223254318434377`*^9}, {3.6223254899198637`*^9, 
+   3.6223255380749035`*^9}, {3.622325631483512*^9, 3.622325767119432*^9}, {
+   3.622325957728426*^9, 3.6223259742792835`*^9}, {3.62232605235378*^9, 
+   3.622326081758547*^9}, 3.622326142580516*^9, {3.622326223119478*^9, 
+   3.622326339132289*^9}, {3.6223264014518404`*^9, 3.62232655050298*^9}, {
+   3.6223266150216846`*^9, 3.622326620762227*^9}, 3.622329083857535*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$selectedObject", "=", "Null"}], ";"}]], "Input",
+ CellChangeTimes->{3.6223299098392367`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"objectSelectHandler", "[", 
+   RowBox[{"obj_", ",", " ", "eventArgs_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"PreemptProtect", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"$selectedObject", "=", 
+     RowBox[{"First", "[", 
+      RowBox[{"eventArgs", "@", "RhinoObjects"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"KeepNETObject", "[", "$selectedObject", "]"}], ";"}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQAWIQrX/2imLf71eOR/KtVED0j0kljf1AeuWexBYQ/ak+
+rQNE6+zunwaifUryl4DogtsLwfRy2cSNIDrhQPc2EC2efSZyIpAumciRAqI3
+/XIuANFNSo1g2sygyW0SkFaMT/AG0XEFTn0g+tPC12D6z3+LPSB6zfTO/SD6
+x9bFl0G0QMCJmyBa6k/eQxAtoxn2DETrFW9/D6LZmD98ANHd3xy/gmjTQ+u/
+g+gTN+b+AdE9BWvA9DSfiwaTgfS+rRVmIPrJTi5bEC1yqRpMWx2NPL4X5M/v
+60+AaE5tX859IHtcTCRAtJ3UswLuv0D9k7+CaQDJyMFV
+  "]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"objectDeselectHandler", "[", 
+   RowBox[{"obj_", ",", " ", "eventArgs_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"PreemptProtect", "[", 
+   RowBox[{
+    RowBox[{"$selectedObject", "=", "Null"}], ";"}], "]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQrX/2imLf71eOR/KtVED0j0kljf1AeuWexBYQ/ak+
+rQNE6+zunwaifUryl4DogtsLwfRy2cSNIDrhQPc2EC2efSZyIpAumciRAqI3
+/XIuANFNSo1g2sygyW0SkFaMT/AG0XEFTn0g+tPC12D6z3+LPSB6zfTO/SD6
+x9bFl0G0QMCJmyBa6k/eQxAtoxn2DETrFW9/D6LZmD98ANHd3xy/gmjTQ+u/
+g+gTN+b+AdE9BWvA9DSfiwaTgfS+rRVmIPrJTi5bEC1yqRpMWx2NPL4X5M/v
+60+AaE5tX859IHtcTCRAtJ3UswLuv0D9k7+C6fx/r0pBtEpNUyWIBgAvt8oj
+
+  "]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MakeMeshInspector", "[", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AddEventHandler", "[", 
+      RowBox[{"RhinoDoc`SelectObjects", ",", "objectSelectHandler"}], "]"}], 
+     ";", 
+     RowBox[{"AddEventHandler", "[", 
+      RowBox[{"RhinoDoc`DeselectObjects", ",", "objectDeelectHandler"}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"CreatePalette", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Pane", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Dynamic", "[", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"$selectedObject", "=!=", "Null"}], ",", 
+             RowBox[{
+             "RhinoMeshObjectInformation", "[", "$selectedObject", "]"}], 
+             ",", "\"\<\>\""}], "]"}], ",", 
+           RowBox[{"SynchronousUpdating", "\[Rule]", "False"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ImageMargins", "\[Rule]", "20"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Evaluator", "\[Rule]", "\"\<RhinoAttach\>\""}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"WindowTitle", "\[Rule]", "\"\<Mesh Inspector\>\""}]}], 
+      "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.622329595016078*^9, 3.6223296391787577`*^9}, {
+  3.622329801065593*^9, 3.6223298100975294`*^9}, {3.622329921663582*^9, 
+  3.622329943268751*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Inspector", "Section",
+ CellChangeTimes->{{3.622157396311956*^9, 3.6221574025995846`*^9}, {
+  3.62232964992702*^9, 3.622329651409001*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MakeMeshInspector", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{3.622330094940563*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+Evaluator->"RhinoAttach",
+WindowSize->{932, 915},
+WindowMargins->{{Automatic, 1}, {-8, Automatic}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 105, 1, 90, "Title"],
+Cell[CellGroupData[{
+Cell[710, 27, 174, 3, 107, "Chapter"],
+Cell[CellGroupData[{
+Cell[909, 34, 95, 1, 63, "Section"],
+Cell[1007, 37, 155, 2, 30, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1199, 44, 91, 1, 49, "Section"],
+Cell[1293, 47, 129, 1, 30, "Text"],
+Cell[1425, 50, 108, 1, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1570, 56, 131, 2, 63, "Section",
+ InitializationGroup->True],
+Cell[1704, 60, 230, 5, 31, "Input"],
+Cell[1937, 67, 6664, 150, 712, "Input"],
+Cell[8604, 219, 128, 3, 31, "Input"],
+Cell[8735, 224, 880, 20, 112, "Input"],
+Cell[9618, 246, 677, 16, 52, "Input"],
+Cell[10298, 264, 1671, 38, 292, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[12006, 307, 144, 2, 49, "Section"],
+Cell[12153, 311, 125, 3, 31, "Input"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
