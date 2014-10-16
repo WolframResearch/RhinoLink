@@ -1,0 +1,511 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17620,        502]
+NotebookOptionsPosition[     15880,        443]
+NotebookOutlinePosition[     16254,        459]
+CellTagsIndexPosition[     16211,        456]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Grasshopper Graphics3D Component", "Title",
+ CellChangeTimes->{{3.6220218177252216`*^9, 3.622021823871385*^9}, {
+  3.6223970477593*^9, 3.6223970606597557`*^9}, {3.622417383581133*^9, 
+  3.622417386685414*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+How to make a Grasshopper Component that translates Graphics3D output to \
+Rhino meshes\
+\>", "Chapter",
+ CellChangeTimes->{{3.622021828660401*^9, 3.6220218914319954`*^9}, {
+  3.6223970803458195`*^9, 3.622397098175791*^9}, {3.622417378823316*^9, 
+  3.6224174129548035`*^9}}],
+
+Cell["Agenda", "Section",
+ CellChangeTimes->{{3.6220555451147656`*^9, 3.62205554591033*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Setup", "Section",
+ CellChangeTimes->{{3.6224122707815495`*^9, 3.62241227117153*^9}}],
+
+Cell["Start Rhino.", "Text",
+ CellChangeTimes->{{3.622412279314312*^9, 3.6224122831517153`*^9}}],
+
+Cell["Execute WolframStartScripting.", "Text",
+ CellChangeTimes->{{3.622412286942321*^9, 3.6224123136013536`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", 
+  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\GrasshopperLink\\\\Packages\\\\\
+RhinoUtilities.m\>\""}]], "Input",
+ CellChangeTimes->{{3.622413152864524*^9, 3.622413163050932*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Grasshopper Component", "Section",
+ CellChangeTimes->{{3.6209345545324335`*^9, 3.620934555078434*^9}, {
+  3.622023059886774*^9, 3.622023063958542*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Parameterless", "Subsection",
+ CellChangeTimes->{{3.622416571847231*^9, 3.6224165742651534`*^9}}],
+
+Cell["\<\
+Evaluate this code to install a new component in Grasshopper.\
+\>", "Text",
+ CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "GrasshopperLink`"}]], "Input",
+ CellChangeTimes->{{3.6204200087388496`*^9, 3.620420012657074*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PlotStringToRhinoMesh", "[", "expr_String", "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"ToExpression", "[", 
+   RowBox[{
+   "\"\<ToRhinoMesh@Quiet@DiscretizeGraphics@Normal@\>\"", "<>", "expr"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6223980619296675`*^9, 3.6223981004275055`*^9}, {
+  3.622399615260711*^9, 3.62239962271689*^9}, {3.6224130956615906`*^9, 
+  3.6224131215721273`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GHDeploy", "[", 
+  RowBox[{
+  "\"\<Graphics3D\>\"", ",", " ", "PlotStringToRhinoMesh", ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Any\>\"", ",", " ", "\"\<expr\>\"", ",", " ", "\"\<expr\>\"", ",", 
+      " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], "}"}], ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Any\>\"", ",", " ", "\"\<mesh\>\"", ",", " ", "\"\<mesh\>\"", ",", 
+      " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Icon", "\[Rule]", 
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{
+      RowBox[{"Sphere", "[", "]"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"20", ",", "20"}], "}"}]}], ",", 
+      RowBox[{"Boxed", "\[Rule]", "False"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6204194026431828`*^9, 3.6204194216422696`*^9}, {
+   3.620419462641615*^9, 3.6204194655447807`*^9}, {3.6204195459613805`*^9, 
+   3.620419616327405*^9}, {3.620419668537391*^9, 3.6204197117548633`*^9}, {
+   3.620420070787399*^9, 3.620420071368432*^9}, {3.6206040535601835`*^9, 
+   3.6206040636267595`*^9}, 3.6206710523647056`*^9, {3.6206913593088975`*^9, 
+   3.6206913598989315`*^9}, {3.620691390044656*^9, 3.6206913968370442`*^9}, {
+   3.620700155311*^9, 3.6207001711819077`*^9}, {3.620700953581659*^9, 
+   3.6207009542997*^9}, {3.620747117241069*^9, 3.620747122274357*^9}, {
+   3.6207493662577057`*^9, 3.62074936983391*^9}, {3.6207515135025206`*^9, 
+   3.6207515288493986`*^9}, 3.620830686061932*^9, {3.6220230940515203`*^9, 
+   3.6220231747972984`*^9}, {3.6220516084357996`*^9, 
+   3.6220516259386635`*^9}, {3.6220694672603955`*^9, 
+   3.6220694704443955`*^9}, {3.62239730759077*^9, 3.622397383793242*^9}, 
+   3.622397444343245*^9, {3.6223975626407948`*^9, 3.622397577943511*^9}, 
+   3.622397770098519*^9, {3.622397946055236*^9, 3.6223979513589983`*^9}, {
+   3.622398049138651*^9, 3.622398056345297*^9}, 3.622398108367367*^9, {
+   3.622412197793296*^9, 3.622412215685464*^9}}],
+
+Cell["\<\
+Execute GrasshopperUnloadPlugin, then Grasshopper to restart and pick up the \
+new component.\
+\>", "Text",
+ CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}}],
+
+Cell["The new component is in the Wolfram tools tab.", "Text",
+ CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
+  3.6224129343927927`*^9, 3.622412935515964*^9}}],
+
+Cell["\<\
+Connect a panel to the expr input of the component and enter an expression \
+that evaluates to Graphics3D into the panel, for example:\
+\>", "Text",
+ CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
+  3.6224138325534983`*^9, 3.622413858214512*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SphericalPlot3D", "[", 
+  RowBox[{"v", ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", 
+     RowBox[{
+      RowBox[{"-", "Pi"}], "/", "2"}], ",", 
+     RowBox[{"Pi", "/", "2"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0", ",", 
+     RowBox[{"1.5", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6224155061785536`*^9, 3.6224155061785536`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SphericalPlot3D", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "0", ",", "Pi"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0", ",", 
+     RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"RegionFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"5", " ", 
+         RowBox[{"(", 
+          RowBox[{"#4", "+", "#5"}], ")"}]}], "]"}], ">", "0"}], "&"}], 
+     ")"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622416502928996*^9, 3.622416502928996*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ParametricPlot3D", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"2", "+", 
+        RowBox[{"Cos", "[", "v", "]"}]}], ")"}], " ", 
+      RowBox[{"Cos", "[", "u", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"2", "+", 
+        RowBox[{"Cos", "[", "v", "]"}]}], ")"}], " ", 
+      RowBox[{"Sin", "[", "u", "]"}]}], ",", 
+     RowBox[{"Sin", "[", "v", "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "0", ",", 
+     RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0", ",", 
+     RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"RegionFunction", "\[Rule]", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z", ",", "u", ",", "v"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"8", " ", "u"}], "]"}], " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"8", " ", "v"}], "]"}]}], ">", 
+       RowBox[{"-", "0.25"}]}]}], "]"}]}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6224177038052316`*^9, 3.6224177038052316`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot3D", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Sin", "[", 
+      RowBox[{
+       RowBox[{"j", "^", "2"}], "+", "i"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "Pi", ",", 
+       RowBox[{"Pi", "/", "5"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "0", ",", "Pi", ",", 
+       RowBox[{"Pi", "/", "5"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+   RowBox[{"InterpolationOrder", "\[Rule]", "3"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622419170220847*^9, 3.622419170220847*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SphericalPlot3D", "[", 
+  RowBox[{
+   RowBox[{"Floor", "[", "v", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "0", ",", "Pi"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0", ",", 
+     RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6224161194449472`*^9, 3.6224161194449472`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SphericalPlot3D", "[", 
+  RowBox[{
+   RowBox[{"Sin", "[", "u", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "0", ",", "Pi"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0", ",", "Pi"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622415239007576*^9, 3.622415242330376*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["One Real Parameter", "Subsection",
+ CellChangeTimes->{{3.622416571847231*^9, 3.6224165886322927`*^9}}],
+
+Cell["\<\
+Evaluate this code to install a new component in Grasshopper.\
+\>", "Text",
+ CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "GrasshopperLink`"}]], "Input",
+ CellChangeTimes->{{3.6204200087388496`*^9, 3.620420012657074*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PlotStringToRhinoMesh", "[", 
+   RowBox[{"expr_String", ",", " ", "x_Real"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ToExpression", "[", 
+    RowBox[{
+    "\"\<ToRhinoMesh@Quiet@DiscretizeGraphics@Normal@\>\"", "<>", "expr", 
+     "<>", "\"\<&\>\""}], "]"}], "[", "x", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6223980619296675`*^9, 3.6223981004275055`*^9}, {
+  3.622399615260711*^9, 3.62239962271689*^9}, {3.6224130956615906`*^9, 
+  3.6224131215721273`*^9}, {3.6224167088752575`*^9, 3.6224167132743726`*^9}, {
+  3.6224167769828525`*^9, 3.6224167927378426`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GHDeploy", "[", 
+  RowBox[{
+  "\"\<Graphics3D1\>\"", ",", " ", "PlotStringToRhinoMesh", ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Any\>\"", ",", " ", "\"\<expr\>\"", ",", " ", "\"\<expr\>\"", ",", 
+       " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Number\>\"", ",", " ", "\"\<r\>\"", ",", " ", "\"\<r\>\"", ",", 
+       " ", "\"\<\>\"", ",", " ", "Item"}], "}"}]}], "\[IndentingNewLine]", 
+    "}"}], ",", " ", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Any\>\"", ",", " ", "\"\<mesh\>\"", ",", " ", "\"\<mesh\>\"", ",", 
+      " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Icon", "\[Rule]", 
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{
+      RowBox[{"Cuboid", "[", "]"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"20", ",", "20"}], "}"}]}], ",", 
+      RowBox[{"Boxed", "\[Rule]", "False"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6204194026431828`*^9, 3.6204194216422696`*^9}, {
+   3.620419462641615*^9, 3.6204194655447807`*^9}, {3.6204195459613805`*^9, 
+   3.620419616327405*^9}, {3.620419668537391*^9, 3.6204197117548633`*^9}, {
+   3.620420070787399*^9, 3.620420071368432*^9}, {3.6206040535601835`*^9, 
+   3.6206040636267595`*^9}, 3.6206710523647056`*^9, {3.6206913593088975`*^9, 
+   3.6206913598989315`*^9}, {3.620691390044656*^9, 3.6206913968370442`*^9}, {
+   3.620700155311*^9, 3.6207001711819077`*^9}, {3.620700953581659*^9, 
+   3.6207009542997*^9}, {3.620747117241069*^9, 3.620747122274357*^9}, {
+   3.6207493662577057`*^9, 3.62074936983391*^9}, {3.6207515135025206`*^9, 
+   3.6207515288493986`*^9}, 3.620830686061932*^9, {3.6220230940515203`*^9, 
+   3.6220231747972984`*^9}, {3.6220516084357996`*^9, 
+   3.6220516259386635`*^9}, {3.6220694672603955`*^9, 
+   3.6220694704443955`*^9}, {3.62239730759077*^9, 3.622397383793242*^9}, 
+   3.622397444343245*^9, {3.6223975626407948`*^9, 3.622397577943511*^9}, 
+   3.622397770098519*^9, {3.622397946055236*^9, 3.6223979513589983`*^9}, {
+   3.622398049138651*^9, 3.622398056345297*^9}, 3.622398108367367*^9, {
+   3.622412197793296*^9, 3.622412215685464*^9}, {3.622416594544503*^9, 
+   3.622416613295102*^9}, {3.6224166530429993`*^9, 3.6224166631361995`*^9}}],
+
+Cell["\<\
+Execute GrasshopperUnloadPlugin, then Grasshopper to restart and pick up the \
+new component.\
+\>", "Text",
+ CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}}],
+
+Cell["The new component is in the Wolfram tools tab.", "Text",
+ CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
+  3.6224129343927927`*^9, 3.622412935515964*^9}}],
+
+Cell["\<\
+Connect a panel to the expr input of the component and enter an expression \
+that evaluates to Graphics3D into the panel. Use # to indicate the real \
+parameter, for example:\
+\>", "Text",
+ CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
+  3.6224138325534983`*^9, 3.622413858214512*^9}, {3.622419301848839*^9, 
+  3.622419330193312*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Plot3D", "[", 
+  RowBox[{
+   RowBox[{"#", " ", 
+    RowBox[{"x", "/", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"x", "^", "2"}], "+", 
+       RowBox[{"y", "^", "2"}]}], "]"}]}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622418787518659*^9, 3.622418787518659*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SphericalPlot3D", "[", 
+  RowBox[{
+   RowBox[{"v", "^", "#"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", 
+     RowBox[{
+      RowBox[{"-", "Pi"}], "/", "2"}], ",", 
+     RowBox[{"Pi", "/", "2"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0", ",", 
+     RowBox[{"1.5", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6224155061785536`*^9, 3.6224155061785536`*^9}, 
+   3.62241715625136*^9}],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "=", "#"}], "}"}], ",", 
+   RowBox[{"SphericalPlot3D", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "0", ",", "Pi"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"v", ",", "0", ",", 
+       RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+     RowBox[{"RegionFunction", "\[Rule]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          RowBox[{"x", " ", 
+           RowBox[{"(", 
+            RowBox[{"#4", "+", "#5"}], ")"}]}], "]"}], ">", "0"}], "&"}], 
+       ")"}]}], ",", 
+     RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622416502928996*^9, 3.622416502928996*^9}, 
+   3.622417296927146*^9}],
+
+Cell[BoxData[
+ RowBox[{"ParametricPlot3D", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"u", " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"#", " ", "t"}], "]"}]}], ",", 
+     RowBox[{"u", " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"#", " ", "t"}], "]"}]}], ",", "t"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622418118578212*^9, 3.622418118578212*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+Evaluator->"RhinoAttach",
+WindowSize->{950, 615},
+WindowMargins->{{124, Automatic}, {153, Automatic}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 215, 3, 90, "Title"],
+Cell[CellGroupData[{
+Cell[820, 29, 284, 6, 107, "Chapter"],
+Cell[1107, 37, 92, 1, 63, "Section"],
+Cell[CellGroupData[{
+Cell[1224, 42, 91, 1, 49, "Section"],
+Cell[1318, 45, 96, 1, 30, "Text"],
+Cell[1417, 48, 114, 1, 30, "Text"],
+Cell[1534, 51, 203, 4, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1774, 60, 157, 2, 63, "Section"],
+Cell[CellGroupData[{
+Cell[1956, 66, 103, 1, 43, "Subsection"],
+Cell[2062, 69, 155, 3, 30, "Text"],
+Cell[2220, 74, 128, 2, 31, "Input"],
+Cell[2351, 78, 431, 10, 52, "Input"],
+Cell[2785, 90, 2116, 42, 112, "Input"],
+Cell[4904, 134, 187, 4, 30, "Text"],
+Cell[5094, 140, 181, 2, 30, "Text"],
+Cell[5278, 144, 279, 5, 49, "Text"],
+Cell[5560, 151, 440, 12, 31, "Input"],
+Cell[6003, 165, 618, 18, 31, "Input"],
+Cell[6624, 185, 1198, 35, 52, "Input"],
+Cell[7825, 222, 607, 16, 52, "Input"],
+Cell[8435, 240, 396, 10, 31, "Input"],
+Cell[8834, 252, 318, 8, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9189, 265, 108, 1, 43, "Subsection"],
+Cell[9300, 268, 155, 3, 30, "Text"],
+Cell[9458, 273, 128, 2, 31, "Input"],
+Cell[9589, 277, 620, 13, 52, "Input"],
+Cell[10212, 292, 2473, 48, 172, "Input"],
+Cell[12688, 342, 187, 4, 30, "Text"],
+Cell[12878, 348, 181, 2, 30, "Text"],
+Cell[13062, 352, 368, 7, 49, "Text"],
+Cell[13433, 361, 529, 16, 31, "Input"],
+Cell[13965, 379, 489, 14, 31, "Input"],
+Cell[14457, 395, 780, 23, 52, "Input"],
+Cell[15240, 420, 588, 17, 31, "Input"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
