@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     36233,        848]
-NotebookOptionsPosition[     34640,        789]
-NotebookOutlinePosition[     34989,        804]
-CellTagsIndexPosition[     34946,        801]
+NotebookDataLength[     39671,        924]
+NotebookOptionsPosition[     38003,        862]
+NotebookOutlinePosition[     38351,        877]
+CellTagsIndexPosition[     38308,        874]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -270,6 +270,8 @@ Cell[TextData[{
  CellChangeTimes->{{3.620390116947092*^9, 3.620390117849901*^9}, {
   3.6220229798073874`*^9, 3.622022983535668*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
   RowBox[{
@@ -435,7 +437,78 @@ Cell[BoxData[
    3.6207473793960633`*^9, 3.620747383148278*^9}, {3.622022699633463*^9, 
    3.6220227006942153`*^9}, 3.6220229568917217`*^9, 3.6220236109948683`*^9, 
    3.622051046872662*^9},
- CellID->1229650724]
+ CellID->1229650724],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 
+    2330., $CellContext`pts$$ = {{0.5, 0}, {0.732, 0.715}, {0.5, 1}, {0.218, 
+     1.485}, {0.5, 2}}, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pts$$], {{0.5, 0}, {1, 0.5}, {0.5, 1}, {0.25, 1.5}, {
+        0.5, 2}}}, {0, 0}, {2, 2}}, {{
+       Hold[$CellContext`n$$], 3000, "sphere count"}, 2, 5000}}, 
+    Typeset`size$$ = {756., {196., 204.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`pts$671$$ = 0, $CellContext`n$676$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`n$$ = 
+        3000, $CellContext`pts$$ = {{0.5, 0}, {1, 0.5}, {0.5, 1}, {0.25, 
+          1.5}, {0.5, 2}}}, "ControllerVariables" :> {
+        Hold[$CellContext`pts$$, $CellContext`pts$671$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$676$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Row[{
+         Dynamic[
+          Graphics3D[
+           Apply[Sphere, 
+            $CellContext`InterpolatedPhyllotaxicSurfacePoints[$CellContext`\
+pts$$, $CellContext`n$$]], Boxed -> False, ViewPoint -> {1, 0, 0} 10, 
+           ImageSize -> {400, 400}]], 
+         Labeled[
+          LocatorPane[
+           Dynamic[$CellContext`pts$$], 
+           Dynamic[$CellContext`f = Interpolation[
+               Sort[
+                Map[Reverse, $CellContext`pts$$]], Method -> "Spline"]; 
+            Graphics[{
+               Line[
+                Table[{
+                  $CellContext`f[$CellContext`t], $CellContext`t}, \
+{$CellContext`t, 
+                  Min[
+                   Map[Last, $CellContext`pts$$]], 
+                  Max[
+                   Map[Last, $CellContext`pts$$]], 0.01}]]}, 
+              PlotRange -> {{0, 2}, {0, 2}}, Frame -> True, FrameTicks -> 
+              None, GridLines -> Automatic, GridLinesStyle -> LightGray, 
+              AspectRatio -> 1, ImageSize -> 350 {1, 1}]], 
+           LocatorAutoCreate -> {2, Infinity}], 
+          Style["profile curve", "Label"], Top]}, Alignment -> Center], 
+      "Specifications" :> {
+       "None" -> {{$CellContext`pts$$, {{0.5, 0}, {1, 0.5}, {0.5, 1}, {0.25, 
+            1.5}, {0.5, 2}}}, {0, 0}, {2, 2}, ControlType -> 
+          None}, {{$CellContext`n$$, 3000, "sphere count"}, 2, 5000, 
+         Appearance -> "Labeled"}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{807., {243., 250.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.6226373846497383`*^9}]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -572,8 +645,8 @@ P+GV3To=
   Lighting->"Neutral",
   ViewPoint->{10, 0, 0}]], "Output",
  CellChangeTimes->{{3.6220694349623957`*^9, 3.6220694629243956`*^9}, {
-  3.6220696449043956`*^9, 3.6220696814643955`*^9}, {3.622069898556401*^9, 
-  3.6220699239339385`*^9}}]
+   3.6220696449043956`*^9, 3.6220696814643955`*^9}, {3.622069898556401*^9, 
+   3.6220699239339385`*^9}, 3.622637417859054*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -676,7 +749,7 @@ Cell[BoxData[
    3.6207515288493986`*^9}, 3.620830686061932*^9, {3.6220230940515203`*^9, 
    3.6220231747972984`*^9}, {3.6220516084357996`*^9, 
    3.6220516259386635`*^9}, {3.6220694672603955`*^9, 3.6220694704443955`*^9}}]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -788,7 +861,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1164, 968},
-WindowMargins->{{254, Automatic}, {-49, Automatic}},
+WindowMargins->{{Automatic, -1}, {-20, Automatic}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -823,29 +896,32 @@ Cell[7932, 214, 2077, 45, 172, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[10046, 264, 208, 6, 49, "Section"],
-Cell[10257, 272, 8706, 165, 432, "Input",
- CellID->1229650724]
-}, Open  ]],
 Cell[CellGroupData[{
-Cell[19000, 442, 157, 2, 63, "Section"],
-Cell[CellGroupData[{
-Cell[19182, 448, 153, 2, 43, "Subsection"],
-Cell[CellGroupData[{
-Cell[19360, 454, 2066, 55, 132, "Input"],
-Cell[21429, 511, 3568, 64, 35, "Output"]
+Cell[10279, 274, 8706, 165, 432, "Input",
+ CellID->1229650724],
+Cell[18988, 441, 3302, 68, 510, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25046, 581, 202, 3, 43, "Subsection"],
-Cell[25251, 586, 128, 2, 31, "Input"],
-Cell[25382, 590, 1966, 42, 112, "Input"],
-Cell[27351, 634, 2225, 43, 252, "Input"]
+Cell[22339, 515, 157, 2, 63, "Section"],
+Cell[CellGroupData[{
+Cell[22521, 521, 153, 2, 43, "Subsection"],
+Cell[CellGroupData[{
+Cell[22699, 527, 2066, 55, 132, "Input"],
+Cell[24768, 584, 3592, 64, 35, "Output"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29613, 682, 138, 1, 43, "Subsection"],
-Cell[29754, 685, 128, 2, 31, "Input"],
-Cell[29885, 689, 2222, 45, 132, "Input"],
-Cell[32110, 736, 2478, 47, 252, "Input"]
+Cell[28409, 654, 202, 3, 43, "Subsection"],
+Cell[28614, 659, 128, 2, 31, "Input"],
+Cell[28745, 663, 1966, 42, 112, "Input"],
+Cell[30714, 707, 2225, 43, 252, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32976, 755, 138, 1, 35, "Subsection"],
+Cell[33117, 758, 128, 2, 31, "Input"],
+Cell[33248, 762, 2222, 45, 132, "Input"],
+Cell[35473, 809, 2478, 47, 252, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

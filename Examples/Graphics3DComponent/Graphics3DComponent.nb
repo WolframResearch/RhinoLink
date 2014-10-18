@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17620,        502]
-NotebookOptionsPosition[     15880,        443]
-NotebookOutlinePosition[     16254,        459]
-CellTagsIndexPosition[     16211,        456]
+NotebookDataLength[     20254,        571]
+NotebookOptionsPosition[     18136,        502]
+NotebookOutlinePosition[     18509,        518]
+CellTagsIndexPosition[     18466,        515]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -149,6 +149,10 @@ that evaluates to Graphics3D into the panel, for example:\
  CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
   3.6224138325534983`*^9, 3.622413858214512*^9}}],
 
+Cell[TextData[StyleBox["Spiral pavilion:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.622650448297984*^9, 3.6226504529465904`*^9}}],
+
 Cell[BoxData[
  RowBox[{"SphericalPlot3D", "[", 
   RowBox[{"v", ",", 
@@ -162,6 +166,10 @@ Cell[BoxData[
      RowBox[{"1.5", " ", "Pi"}]}], "}"}], ",", 
    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.6224155061785536`*^9, 3.6224155061785536`*^9}}],
+
+Cell[TextData[StyleBox["Twisty marble:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6226504932083836`*^9, 3.622650503971901*^9}}],
 
 Cell[BoxData[
  RowBox[{"SphericalPlot3D", "[", 
@@ -182,6 +190,10 @@ Cell[BoxData[
      ")"}]}], ",", 
    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.622416502928996*^9, 3.622416502928996*^9}}],
+
+Cell[TextData[StyleBox["Holey torus:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.622650554934814*^9, 3.6226505586942453`*^9}}],
 
 Cell[BoxData[
  RowBox[{"ParametricPlot3D", "[", 
@@ -220,6 +232,10 @@ Cell[BoxData[
    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.6224177038052316`*^9, 3.6224177038052316`*^9}}],
 
+Cell[TextData[StyleBox["Wavy surface:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6226506751130905`*^9, 3.6226506779990163`*^9}}],
+
 Cell[BoxData[
  RowBox[{"ListPlot3D", "[", 
   RowBox[{
@@ -238,6 +254,10 @@ Cell[BoxData[
    RowBox[{"InterpolationOrder", "\[Rule]", "3"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.622419170220847*^9, 3.622419170220847*^9}}],
 
+Cell[TextData[StyleBox["Shell slivers:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.62265071540652*^9, 3.622650718214412*^9}}],
+
 Cell[BoxData[
  RowBox[{"SphericalPlot3D", "[", 
   RowBox[{
@@ -250,6 +270,10 @@ Cell[BoxData[
    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.6224161194449472`*^9, 3.6224161194449472`*^9}}],
 
+Cell[TextData[StyleBox["Tight torus:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6226507686158237`*^9, 3.622650770019752*^9}}],
+
 Cell[BoxData[
  RowBox[{"SphericalPlot3D", "[", 
   RowBox[{
@@ -257,8 +281,10 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"u", ",", "0", ",", "Pi"}], "}"}], ",", 
    RowBox[{"{", 
-    RowBox[{"v", ",", "0", ",", "Pi"}], "}"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.622415239007576*^9, 3.622415242330376*^9}}]
+    RowBox[{"v", ",", "0", ",", "Pi"}], "}"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622415239007576*^9, 3.622415242330376*^9}, {
+  3.622650761736577*^9, 3.6226507619393663`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -359,39 +385,89 @@ parameter, for example:\
   3.6224138325534983`*^9, 3.622413858214512*^9}, {3.622419301848839*^9, 
   3.622419330193312*^9}}],
 
-Cell[BoxData[
- RowBox[{"Plot3D", "[", 
-  RowBox[{
-   RowBox[{"#", " ", 
-    RowBox[{"x", "/", 
-     RowBox[{"Exp", "[", 
-      RowBox[{
-       RowBox[{"x", "^", "2"}], "+", 
-       RowBox[{"y", "^", "2"}]}], "]"}]}]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", 
-     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"y", ",", 
-     RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
-   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.622418787518659*^9, 3.622418787518659*^9}}],
+Cell[TextData[StyleBox["Helix:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6226524504632816`*^9, 3.6226524519140167`*^9}}],
 
 Cell[BoxData[
- RowBox[{"SphericalPlot3D", "[", 
-  RowBox[{
-   RowBox[{"v", "^", "#"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"u", ",", 
+ RowBox[{
+  RowBox[{"ParametricPlot3D", "[", 
+   RowBox[{
+    RowBox[{"{", 
      RowBox[{
-      RowBox[{"-", "Pi"}], "/", "2"}], ",", 
-     RowBox[{"Pi", "/", "2"}]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"v", ",", "0", ",", 
-     RowBox[{"1.5", " ", "Pi"}]}], "}"}], ",", 
-   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
+      RowBox[{"u", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"#", " ", "t"}], "]"}]}], ",", 
+      RowBox[{"u", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"#", " ", "t"}], "]"}]}], ",", 
+      RowBox[{"6", " ", "t"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"u", ",", "0", ",", "1"}], "}"}], ",", 
+    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"0", "<", "0", "<", "22."}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.622652439824559*^9, 3.622652439824559*^9}, {
+  3.6226525132818155`*^9, 3.622652517088069*^9}}],
+
+Cell[TextData[StyleBox["Surface waves:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6226515716404033`*^9, 3.6226515796116967`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Plot3D", "[", 
+   RowBox[{
+    RowBox[{"#", " ", 
+     RowBox[{"x", "/", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"x", "^", "2"}], "+", 
+        RowBox[{"y", "^", "2"}]}], "]"}]}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"y", ",", 
+      RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"-", "2"}], "<", "1.", "<", "2"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.622418787518659*^9, 3.622418787518659*^9}, {
+  3.6226515881445684`*^9, 3.6226515939007177`*^9}}],
+
+Cell[TextData[StyleBox["Spiral pavilion:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.622650448297984*^9, 3.6226504529465904`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SphericalPlot3D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v", "/", "5"}], ")"}], "^", "#"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"u", ",", 
+      RowBox[{
+       RowBox[{"-", "Pi"}], "/", "2"}], ",", 
+      RowBox[{"Pi", "/", "2"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"v", ",", "0", ",", "5"}], "}"}], ",", 
+    RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"0", "<", "1", "<", "1."}], " ", "*)"}]}]], "Input",
  CellChangeTimes->{{3.6224155061785536`*^9, 3.6224155061785536`*^9}, 
-   3.62241715625136*^9}],
+   3.62241715625136*^9, {3.6226515956634383`*^9, 3.622651596536999*^9}, {
+   3.622651649309431*^9, 3.622651652039344*^9}, {3.6226518771236887`*^9, 
+   3.622651886935522*^9}}],
+
+Cell[TextData[StyleBox["Twisty marble:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.6226504932083836`*^9, 3.622650503971901*^9}}],
 
 Cell[BoxData[
  RowBox[{"With", "[", 
@@ -414,28 +490,11 @@ Cell[BoxData[
            RowBox[{"(", 
             RowBox[{"#4", "+", "#5"}], ")"}]}], "]"}], ">", "0"}], "&"}], 
        ")"}]}], ",", 
-     RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]}], "]"}]], "Input",
+     RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"1", "<", "5", "<", "12"}], " ", "*)"}]}]}]], "Input",
  CellChangeTimes->{{3.622416502928996*^9, 3.622416502928996*^9}, 
-   3.622417296927146*^9}],
-
-Cell[BoxData[
- RowBox[{"ParametricPlot3D", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"u", " ", 
-      RowBox[{"Sin", "[", 
-       RowBox[{"#", " ", "t"}], "]"}]}], ",", 
-     RowBox[{"u", " ", 
-      RowBox[{"Cos", "[", 
-       RowBox[{"#", " ", "t"}], "]"}]}], ",", "t"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"t", ",", "0", ",", "8"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"u", ",", 
-     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
-   RowBox[{"Mesh", "\[Rule]", "None"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.622418118578212*^9, 3.622418118578212*^9}}]
+   3.622417296927146*^9, {3.622652104345565*^9, 3.622652122346926*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -443,7 +502,7 @@ Cell[BoxData[
 },
 Evaluator->"RhinoAttach",
 WindowSize->{950, 615},
-WindowMargins->{{124, Automatic}, {153, Automatic}},
+WindowMargins->{{Automatic, 298}, {Automatic, 80}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -480,26 +539,36 @@ Cell[2785, 90, 2116, 42, 112, "Input"],
 Cell[4904, 134, 187, 4, 30, "Text"],
 Cell[5094, 140, 181, 2, 30, "Text"],
 Cell[5278, 144, 279, 5, 49, "Text"],
-Cell[5560, 151, 440, 12, 31, "Input"],
-Cell[6003, 165, 618, 18, 31, "Input"],
-Cell[6624, 185, 1198, 35, 52, "Input"],
-Cell[7825, 222, 607, 16, 52, "Input"],
-Cell[8435, 240, 396, 10, 31, "Input"],
-Cell[8834, 252, 318, 8, 31, "Input"]
+Cell[5560, 151, 141, 2, 30, "Text"],
+Cell[5704, 155, 440, 12, 31, "Input"],
+Cell[6147, 169, 139, 2, 30, "Text"],
+Cell[6289, 173, 618, 18, 31, "Input"],
+Cell[6910, 193, 137, 2, 30, "Text"],
+Cell[7050, 197, 1198, 35, 52, "Input"],
+Cell[8251, 234, 140, 2, 30, "Text"],
+Cell[8394, 238, 607, 16, 52, "Input"],
+Cell[9004, 256, 136, 2, 30, "Text"],
+Cell[9143, 260, 396, 10, 31, "Input"],
+Cell[9542, 272, 137, 2, 30, "Text"],
+Cell[9682, 276, 415, 10, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9189, 265, 108, 1, 43, "Subsection"],
-Cell[9300, 268, 155, 3, 30, "Text"],
-Cell[9458, 273, 128, 2, 31, "Input"],
-Cell[9589, 277, 620, 13, 52, "Input"],
-Cell[10212, 292, 2473, 48, 172, "Input"],
-Cell[12688, 342, 187, 4, 30, "Text"],
-Cell[12878, 348, 181, 2, 30, "Text"],
-Cell[13062, 352, 368, 7, 49, "Text"],
-Cell[13433, 361, 529, 16, 31, "Input"],
-Cell[13965, 379, 489, 14, 31, "Input"],
-Cell[14457, 395, 780, 23, 52, "Input"],
-Cell[15240, 420, 588, 17, 31, "Input"]
+Cell[10134, 291, 108, 1, 43, "Subsection"],
+Cell[10245, 294, 155, 3, 30, "Text"],
+Cell[10403, 299, 128, 2, 31, "Input"],
+Cell[10534, 303, 620, 13, 52, "Input"],
+Cell[11157, 318, 2473, 48, 172, "Input"],
+Cell[13633, 368, 187, 4, 30, "Text"],
+Cell[13823, 374, 181, 2, 30, "Text"],
+Cell[14007, 378, 368, 7, 49, "Text"],
+Cell[14378, 387, 133, 2, 30, "Text"],
+Cell[14514, 391, 753, 21, 52, "Input"],
+Cell[15270, 414, 141, 2, 30, "Text"],
+Cell[15414, 418, 709, 21, 31, "Input"],
+Cell[16126, 441, 141, 2, 30, "Text"],
+Cell[16270, 445, 766, 20, 31, "Input"],
+Cell[17039, 467, 139, 2, 30, "Text"],
+Cell[17181, 471, 903, 25, 52, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
