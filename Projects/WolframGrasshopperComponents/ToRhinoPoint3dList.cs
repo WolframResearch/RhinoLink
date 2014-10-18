@@ -9,14 +9,14 @@ using Wolfram.NETLink;
 
 namespace Wolfram.Grasshopper
 {
-    public class ToRhinoPoint3dList : GH_Component
+    public class WolframCodeComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the CodeComponent class.
         /// </summary>
-        public ToRhinoPoint3dList()
-            : base("Wolfram Code", "Wolfram Code",
-                "Input arbitrary Wolfram Language code as a string.",
+        public WolframCodeComponent()
+            : base("To Rhino Point3d List", "To Rhino Point3d List",
+                "Convert a list of points to a list of Point3d",
                 "Wolfram", "")
         {
         }
@@ -26,7 +26,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("code", "code", "The Wolfram Language code to execute", GH_ParamAccess.item);
+            pManager.AddTextParameter("pts", "pts", "WL list of 3D points", GH_ParamAccess.item);
             pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[1].Optional = true;
         }
@@ -36,8 +36,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("result", "res", "The result", GH_ParamAccess.item);
-            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
+            pManager.AddPointParameter("P3D", "P3D", "Point3D list", GH_ParamAccess.list);
             pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
@@ -62,6 +61,7 @@ namespace Wolfram.Grasshopper
             IKernelLink ml = linkType != null ? linkType.Value : Utils.GetLink();
 
             ml.PutFunction("EvaluatePacket", 1);
+            ml.PutFunction("Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoPoint3dArray", 1);
             ml.PutFunction("ToExpression", 1);
             ml.Put(code);
             ml.EndPacket();
@@ -75,15 +75,10 @@ namespace Wolfram.Grasshopper
                 return;
             }
 
-            // This is the (likely) temporary feature that puts the Expr result on the second output. 
-            Expr debuggingExpr = ml.PeekExpr();
-            DA.SetData(1, new ExprType(debuggingExpr));
-
-            if (!Utils.ReadAndStoreResult("Any", 0, ml, DA, GH_ParamAccess.item, this))
+            if (!Utils.ReadAndStoreResult("Any", 0, ml, DA, GH_ParamAccess.list, this))
                 return;
 
-            // 2 is the index here because 1 was used (temporarily) for the debugging feature above.
-            DA.SetData(2, new LinkType(ml));
+            DA.SetData(1, new LinkType(ml));
         }
 
         /// <summary>
@@ -115,7 +110,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("{aa15eaab-5801-421a-a937-bfdfa4768b64}"); }
+            get { return new Guid("{74a15279-032a-4dc6-aff9-bcf5890ad443}"); }
         }
     }
 }

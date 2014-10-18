@@ -41,25 +41,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GH_IO">
+      <HintPath>..\WolframGrasshopperSupport\bin\Debug\GH_IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Grasshopper">
+      <HintPath>..\WolframGrasshopperSupport\bin\Debug\Grasshopper.dll</HintPath>
+    </Reference>
+    <Reference Include="RhinoCommon">
+      <HintPath>..\WolframGrasshopperSupport\bin\Debug\RhinoCommon.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="RhinoCommon">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>c:\Program Files (x86)\Rhinoceros 5\System\rhinocommon.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Grasshopper">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Grasshopper.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GH_IO">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_IO.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\tgayley\Documents\workspace\GrasshopperLink\GrasshopperLink\Files\Wolfram.NETLink.dll</HintPath>
@@ -69,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestComponent.cs" />
+    <Compile Include="ToRhinoPoint3dList.cs" />
     <Compile Include="WolframF.cs" />
     <Compile Include="WolframFxy.cs" />
     <Compile Include="WolframCode.cs" />
