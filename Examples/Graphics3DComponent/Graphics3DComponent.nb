@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20254,        571]
-NotebookOptionsPosition[     18136,        502]
-NotebookOutlinePosition[     18509,        518]
-CellTagsIndexPosition[     18466,        515]
+NotebookDataLength[     20281,        572]
+NotebookOptionsPosition[     18163,        503]
+NotebookOutlinePosition[     18536,        519]
+CellTagsIndexPosition[     18493,        516]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -134,9 +134,10 @@ Cell[BoxData[
 
 Cell["\<\
 Execute GrasshopperUnloadPlugin, then Grasshopper to restart and pick up the \
-new component.\
+new component. \
 \>", "Text",
- CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}}],
+ CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}, 
+   3.622713009142501*^9}],
 
 Cell["The new component is in the Wolfram tools tab.", "Text",
  CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
@@ -536,39 +537,39 @@ Cell[2062, 69, 155, 3, 30, "Text"],
 Cell[2220, 74, 128, 2, 31, "Input"],
 Cell[2351, 78, 431, 10, 52, "Input"],
 Cell[2785, 90, 2116, 42, 112, "Input"],
-Cell[4904, 134, 187, 4, 30, "Text"],
-Cell[5094, 140, 181, 2, 30, "Text"],
-Cell[5278, 144, 279, 5, 49, "Text"],
-Cell[5560, 151, 141, 2, 30, "Text"],
-Cell[5704, 155, 440, 12, 31, "Input"],
-Cell[6147, 169, 139, 2, 30, "Text"],
-Cell[6289, 173, 618, 18, 31, "Input"],
-Cell[6910, 193, 137, 2, 30, "Text"],
-Cell[7050, 197, 1198, 35, 52, "Input"],
-Cell[8251, 234, 140, 2, 30, "Text"],
-Cell[8394, 238, 607, 16, 52, "Input"],
-Cell[9004, 256, 136, 2, 30, "Text"],
-Cell[9143, 260, 396, 10, 31, "Input"],
-Cell[9542, 272, 137, 2, 30, "Text"],
-Cell[9682, 276, 415, 10, 31, "Input"]
+Cell[4904, 134, 214, 5, 30, "Text"],
+Cell[5121, 141, 181, 2, 30, "Text"],
+Cell[5305, 145, 279, 5, 49, "Text"],
+Cell[5587, 152, 141, 2, 30, "Text"],
+Cell[5731, 156, 440, 12, 31, "Input"],
+Cell[6174, 170, 139, 2, 30, "Text"],
+Cell[6316, 174, 618, 18, 31, "Input"],
+Cell[6937, 194, 137, 2, 30, "Text"],
+Cell[7077, 198, 1198, 35, 52, "Input"],
+Cell[8278, 235, 140, 2, 30, "Text"],
+Cell[8421, 239, 607, 16, 52, "Input"],
+Cell[9031, 257, 136, 2, 30, "Text"],
+Cell[9170, 261, 396, 10, 31, "Input"],
+Cell[9569, 273, 137, 2, 30, "Text"],
+Cell[9709, 277, 415, 10, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10134, 291, 108, 1, 43, "Subsection"],
-Cell[10245, 294, 155, 3, 30, "Text"],
-Cell[10403, 299, 128, 2, 31, "Input"],
-Cell[10534, 303, 620, 13, 52, "Input"],
-Cell[11157, 318, 2473, 48, 172, "Input"],
-Cell[13633, 368, 187, 4, 30, "Text"],
-Cell[13823, 374, 181, 2, 30, "Text"],
-Cell[14007, 378, 368, 7, 49, "Text"],
-Cell[14378, 387, 133, 2, 30, "Text"],
-Cell[14514, 391, 753, 21, 52, "Input"],
-Cell[15270, 414, 141, 2, 30, "Text"],
-Cell[15414, 418, 709, 21, 31, "Input"],
-Cell[16126, 441, 141, 2, 30, "Text"],
-Cell[16270, 445, 766, 20, 31, "Input"],
-Cell[17039, 467, 139, 2, 30, "Text"],
-Cell[17181, 471, 903, 25, 52, "Input"]
+Cell[10161, 292, 108, 1, 43, "Subsection"],
+Cell[10272, 295, 155, 3, 30, "Text"],
+Cell[10430, 300, 128, 2, 31, "Input"],
+Cell[10561, 304, 620, 13, 52, "Input"],
+Cell[11184, 319, 2473, 48, 172, "Input"],
+Cell[13660, 369, 187, 4, 30, "Text"],
+Cell[13850, 375, 181, 2, 30, "Text"],
+Cell[14034, 379, 368, 7, 49, "Text"],
+Cell[14405, 388, 133, 2, 30, "Text"],
+Cell[14541, 392, 753, 21, 52, "Input"],
+Cell[15297, 415, 141, 2, 30, "Text"],
+Cell[15441, 419, 709, 21, 31, "Input"],
+Cell[16153, 442, 141, 2, 30, "Text"],
+Cell[16297, 446, 766, 20, 31, "Input"],
+Cell[17066, 468, 139, 2, 30, "Text"],
+Cell[17208, 472, 903, 25, 52, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
