@@ -20,7 +20,10 @@ namespace Wolfram.Rhino
     ///</summary>
     public class WolframScriptingPlugIn : RhinoNamespace.PlugIns.PlugIn
     {
+    
+        private const bool DEBUG = false;
 
+        private volatile bool isReaderThreadRunning = false;
         private volatile bool keepRunning = false;
         Dispatcher dispatcher;
 
@@ -49,10 +52,13 @@ namespace Wolfram.Rhino
 
         public void StartReaderThread()
         {
-            keepRunning = true;
-            Thread readerThread = new System.Threading.Thread(new System.Threading.ThreadStart(RunReader));
-            dispatcher = Dispatcher.CurrentDispatcher;
-            readerThread.Start();
+            if (!isReaderThreadRunning) {
+                keepRunning = true;
+                Thread readerThread = new System.Threading.Thread(new System.Threading.ThreadStart(RunReader));
+                dispatcher = Dispatcher.CurrentDispatcher;
+                readerThread.Start();
+                isReaderThreadRunning = true;
+            }
         }
 
         public void StopReaderThread()
@@ -100,7 +106,7 @@ namespace Wolfram.Rhino
                         if (e.ErrCode == 11 || !readerLink.ClearError())
                         {
                             DebugPrint("Exception on Wolfram Reader link: " + e);
-                            KernelLinkProvider.CloseReaderLink();
+                            KernelLinkProvider.CloseLinks();
                             keepRunning = false;
                         }
                         else
@@ -120,13 +126,15 @@ namespace Wolfram.Rhino
                     System.Threading.Thread.Sleep(1);
                 }                    
             }
-
+            isReaderThreadRunning = false;
         }
 
 
         public static void DebugPrint(string s)
         {
-//            RhinoNamespace.RhinoApp.WriteLine(s);
+            if (DEBUG)
+                RhinoNamespace.RhinoApp.WriteLine(s);
+                
             // poor man's Pause
 //            for (double x = 0; x < 100000000.0; x++)
 //            {
