@@ -14,6 +14,7 @@ public class KernelLinkProvider {
     private static IKernelLink readerLink = null;
     private static volatile string[] linkArgs = null;
     //private static volatile string[] linkArgs = new string[] { "-linkmode", "launch", "-linkname", "java -classpath \"c:/users/tgayley/documents/mathjava/jlink/src/java\" -Dcom.wolfram.jlink.libdir=\"c:/program files/wolfram research/mathematica/10.0/systemfiles/links/jlink\" com.wolfram.jlink.util.LinkSnooper -kernelmode launch -kernelname \"c:/program files/wolfram research/mathematica/10.0/mathkernel.exe\"" };
+    //private static volatile string[] linkArgs = new string[] { "-linkmode", "launch", "-linkname", "java -classpath \"c:/Program Files/Wolfram Research/Mathematica/10.0/SystemFiles/Links/JLink/\" -Dcom.wolfram.jlink.libdir=\"c:/program files/wolfram research/mathematica/10.0/systemfiles/links/jlink\" com.wolfram.jlink.util.LinkSnooper -kernelmode launch -kernelname \"c:/program files/wolfram research/mathematica/10.0/mathkernel.exe\"" };
     // for Carlson: \"c:/users/tgayley/documents/mathjava/jlink/src/java\" -> ".../jlink.jar" in the M- layout
     private static object linkLock = new object();
     private static bool appLoadSucceeded = true;
@@ -30,24 +31,44 @@ public class KernelLinkProvider {
                 {
                     WolframScriptingPlugIn.DebugPrint("creating link");
                     if (LinkArguments == null)
+                    {
+                       WolframScriptingPlugIn.DebugPrint("CreateKernelLink()");
                         mainLink = MathLinkFactory.CreateKernelLink();
+                    }
                     else
+                    {
+                        WolframScriptingPlugIn.DebugPrint("CreateKernelLink(LinkArguments)");
                         mainLink = MathLinkFactory.CreateKernelLink(LinkArguments);
+                    }
+                    WolframScriptingPlugIn.DebugPrint("waiting for response");
                     mainLink.WaitAndDiscardAnswer();
                     mainLink.EnableObjectReferences();
                     StdLink.Link = mainLink;
                     WolframScriptingPlugIn.DebugPrint("back from M launch");
+
                     //mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/grasshopperlink\"]");
                     //mainLink.WaitAndDiscardAnswer();
+
                     mainLink.Evaluate("Needs[\"GrasshopperLink`\"]");
                     mainLink.WaitForAnswer();
                     Expr res = mainLink.GetExpr();
-                    if (res.ToString() != "Null") {
+                    if (res.ToString() != "Null")
+                    {
                         appLoadSucceeded = false;
+                        RhinoNamespace.RhinoApp.WriteLine(res.ToString());
                         RhinoNamespace.RhinoApp.WriteLine(
                             "Error: Failed to load the GrasshopperLink application into the Wolfram Engine. Scripting from the Wolfram Engine will not function.");
                     }
-                    
+
+ //                   mainLink.Evaluate("Needs[\"RhinoUtilities`\"]");
+ //                   mainLink.WaitForAnswer();
+ //                   res = mainLink.GetExpr();
+ //                   if (res.ToString() != "Null")
+ //                   {
+ //                       RhinoNamespace.RhinoApp.WriteLine(
+ //                           "Error: Failed to load RhinoUtilities into the Wolfram Engine.");
+ //                   }
+
                     mainLink.Evaluate("2+2");
                     mainLink.WaitForAnswer();
                     int i = mainLink.GetInteger();
