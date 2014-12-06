@@ -133,14 +133,17 @@ namespace Wolfram.Rhino
         public static void DebugPrint(string s)
         {
             if (DEBUG)
+            {
                 RhinoNamespace.RhinoApp.WriteLine(s);
-                
-            // poor man's Pause
-//            for (double x = 0; x < 100000000.0; x++)
-//            {
-//                x -= .1;
-//            }
+
+                // poor man's Pause
+//              for (double x = 0; x < 100000000.0; x++) { x -= .1; }
+            }
         }
+
+//
+// Rhino Utilities
+//
 
        public static RhinoNamespace.Geometry.Mesh ToRhinoMesh(double[,] vertices, int[,] faces)
        {
