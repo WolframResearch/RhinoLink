@@ -62,6 +62,9 @@ RhinoMeshSplit::usage = "";
 RhinoShow::usage = "";
 
 
+RhinoUnshow::usage = "";
+
+
 (* 
  *  
  *)
@@ -83,10 +86,100 @@ FromRhino[_, type_] :=
 	$Failed[type]
 
 
+ToRhino[expr_] :=
+	ToRhino[expr, expr /. 
+		(* default conversions *)
+		{
+			{_?NumericQ, _?NumericQ, _?NumericQ} -> "Rhino.Geometry.Point3d",
+			{{_?NumericQ, _?NumericQ, _?NumericQ}..} -> {"Rhino.Geometry.Point3d"},
+			_MeshRegion -> "Rhino.Geometry.Mesh",
+			_TransformationFunction -> "Rhino.Geometry.Transform"
+		}
+	]
+
+
+(* Rhino.Geometry.Transform *)
+
+
+ToRhino[tf_TransformationFunction, "Rhino.Geometry.Transform"] :=
+	Block[{m, t},
+		m = TransformationMatrix[tf];
+		t = NETNew["Rhino.Geometry.Transform", 1];
+	
+		t@M00 = m[[1,1]];
+		t@M01 = m[[2,1]];
+		t@M02 = m[[3,1]];
+
+		t@M10 = m[[1,2]];
+		t@M11 = m[[2,2]];
+		t@M12 = m[[3,2]];
+
+		t@M20 = m[[1,3]];
+		t@M21 = m[[2,3]];
+		t@M22 = m[[3,3]];
+
+		t@M03 = m[[1,4]];
+		t@M13 = m[[2,4]];
+		t@M23 = m[[3,4]];
+		t@M30 = m[[4,1]];
+		t@M31 = m[[4,2]];
+		t@M32 = m[[4,3]];
+		t@M33 = m[[4,4]];
+
+		t
+	]
+
+
+ToRhino[tf_TransformationFunction, "Rhino.Geometry.Transform"] :=
+	Block[{m, t},
+		m = TransformationMatrix[tf];
+		t = NETNew["Rhino.Geometry.Transform", 1];
+	
+		t@M00 = m[[1,1]];
+		t@M01 = m[[1,2]];
+		t@M02 = m[[1,3]];
+		t@M03 = m[[1,4]];
+		t@M10 = m[[2,1]];
+		t@M11 = m[[2,2]];
+		t@M12 = m[[2,3]];
+		t@M13 = m[[2,4]];
+		t@M20 = m[[3,1]];
+		t@M21 = m[[3,2]];
+		t@M22 = m[[3,3]];
+		t@M23 = m[[3,4]];
+		t@M30 = m[[4,1]];
+		t@M31 = m[[4,2]];
+		t@M32 = m[[4,3]];
+		t@M33 = m[[4,4]];
+
+		t
+	]
+
+
+FromRhino[t_, "Rhino.Geometry.Transform"] :=
+	{
+		{t[M00], t[M01], t[M02], t[M03]},
+		{t[M10], t[M11], t[M12], t[M13]},
+		{t[M20], t[M21], t[M22], t[M23]},
+		{t[M30], t[M31], t[M32], t[M33]}
+	}
+
+
+(* Rhino.Geometry.Vector3d *)
+
+
+ToRhino[{x_, y_, z_}, "Rhino.Geometry.Vector3d"] :=
+	NETNew["Rhino.Geometry.Vector3d", N[x], N[y], N[z]]
+
+
+FromRhino[obj_, "Rhino.Geometry.Vector3d"] :=
+	{obj@X, obj@Y, obj@Z}
+
+
 (* Rhino.Geometry.Point3d *)
 
 
-ToRhino[{x_?NumericQ, y_?NumericQ, z_?NumericQ}] :=
+ToRhino[{x_, y_, z_}, "Rhino.Geometry.Point3d"] :=
 	NETNew["Rhino.Geometry.Point3d", N[x], N[y], N[z]]
 
 
@@ -97,8 +190,8 @@ FromRhino[obj_, "Rhino.Geometry.Point3d"] :=
 (* Rhino.Geometry.Point3d[] *)
 
 
-ToRhino[obj:{{_?NumericQ, _?NumericQ, _?NumericQ}...}] :=
-	ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[obj]
+ToRhino[expr_, {"Rhino.Geometry.Point3d"}] :=
+	ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
 
 
 FromRhino[obj_, "Rhino.Geometry.Point3d[]"] := (* slow version *)
@@ -110,7 +203,7 @@ FromRhino[obj_, "Rhino.Geometry.Point3d[]"] := (* slow version *)
 (* Rhino.Geometry.Mesh *)
 
 
-ToRhino[mesh_MeshRegion] :=
+ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
 	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
 		MeshCoordinates[mesh],
 		(First [#]-1)&/@ MeshCells[mesh,2]
@@ -246,16 +339,47 @@ RhinoMeshSplit[meshes1_,meshes2_]:=
  *)
 
 
-SetAttributes[RhinoShow, Listable];
-RhinoShow[obj_]:=
-	Block[{doc=RhinoDoc`ActiveDoc},
-		Switch[obj@ToString[],
-			"Rhino.Geometry.Mesh",
-				doc@Objects@AddMesh[obj],
-			_,
-				MessageDialog[Row[{"Unknown Rhino object type ",obj@ToString[]}]]
-		];
-		doc@Views@Redraw[]
+RhinoAdd[obj_Symbol] :=
+	{RhinoDoc`ActiveDoc@Objects@Add[obj]}
+
+
+(* ::Text:: *)
+(*These should just be listable, but there seemed to be an efficiency penalty; revisit.*)
+
+
+RhinoAdd[objs_List] :=
+	Flatten[RhinoDoc`ActiveDoc@Objects@Add[#]& /@ objs]
+
+
+NETRelease[obj_Symbol] :=
+	ReleaseNETObject[obj]
+
+
+NETRelease[objs_List] :=
+	ReleaseNETObject /@ objs
+
+
+RhinoShow[obj_] :=
+	Block[{guids},
+		guids = RhinoAdd[obj];
+		NETRelease[obj];
+		RhinoDoc`ActiveDoc@Views@Redraw[];
+		guids
+	]
+
+
+RhinoDelete[guid_Symbol] :=
+	RhinoDoc`ActiveDoc@Objects@Delete[guid, True]
+
+
+RhinoDelete[guids_List] :=
+	RhinoDoc`ActiveDoc@Objects@Delete[#, True]& /@ guids
+
+
+RhinoUnshow[guid_] :=
+	Block[{},
+		RhinoDelete[guid];
+		RhinoDoc`ActiveDoc@Views@Redraw[];
 	]
 
 
