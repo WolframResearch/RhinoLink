@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13627,        366]
-NotebookOptionsPosition[     12557,        324]
-NotebookOutlinePosition[     12928,        340]
-CellTagsIndexPosition[     12885,        337]
+NotebookDataLength[     13658,        367]
+NotebookOptionsPosition[     12588,        325]
+NotebookOutlinePosition[     12959,        341]
+CellTagsIndexPosition[     12916,        338]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -279,7 +279,7 @@ Cell[BoxData[
       RowBox[{"RhinoDoc`SelectObjects", ",", "objectSelectHandler"}], "]"}], 
      ";", 
      RowBox[{"AddEventHandler", "[", 
-      RowBox[{"RhinoDoc`DeselectObjects", ",", "objectDeelectHandler"}], 
+      RowBox[{"RhinoDoc`DeselectObjects", ",", "objectDeselectHandler"}], 
       "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"CreatePalette", "[", "\[IndentingNewLine]", 
       RowBox[{
@@ -304,9 +304,10 @@ Cell[BoxData[
        RowBox[{"Magnification", "\[Rule]", "1.5"}]}], "\[IndentingNewLine]", 
       "]"}]}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
  CellChangeTimes->{{3.622329595016078*^9, 3.6223296391787577`*^9}, {
-  3.622329801065593*^9, 3.6223298100975294`*^9}, {3.622329921663582*^9, 
-  3.622329943268751*^9}, {3.6226355947652097`*^9, 3.622635598134654*^9}}]
-}, Closed]],
+   3.622329801065593*^9, 3.6223298100975294`*^9}, {3.622329921663582*^9, 
+   3.622329943268751*^9}, {3.6226355947652097`*^9, 3.622635598134654*^9}, 
+   3.6236899320312414`*^9}]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -360,11 +361,11 @@ Cell[1937, 67, 6770, 154, 712, "Input"],
 Cell[8710, 223, 128, 3, 31, "Input"],
 Cell[8841, 228, 880, 20, 112, "Input"],
 Cell[9724, 250, 677, 16, 52, "Input"],
-Cell[10404, 268, 1804, 39, 312, "Input"]
-}, Closed]],
+Cell[10404, 268, 1835, 40, 312, "Input"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[12245, 312, 144, 2, 49, "Section"],
-Cell[12392, 316, 125, 3, 31, "Input"]
+Cell[12276, 313, 144, 2, 63, "Section"],
+Cell[12423, 317, 125, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

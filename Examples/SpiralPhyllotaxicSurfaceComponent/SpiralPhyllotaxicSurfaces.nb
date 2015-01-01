@@ -509,7 +509,7 @@ pts$$, $CellContext`n$$]], Boxed -> False, ViewPoint -> {1, 0, 0} 10,
   Manipulate`InterpretManipulate[1]]], "Output",
  CellChangeTimes->{3.6226373846497383`*^9}]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -901,9 +901,9 @@ Cell[10279, 274, 8706, 165, 432, "Input",
  CellID->1229650724],
 Cell[18988, 441, 3302, 68, 510, "Output"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[22339, 515, 157, 2, 63, "Section"],
+Cell[22339, 515, 157, 2, 49, "Section"],
 Cell[CellGroupData[{
 Cell[22521, 521, 153, 2, 43, "Subsection"],
 Cell[CellGroupData[{
