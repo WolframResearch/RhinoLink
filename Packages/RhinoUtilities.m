@@ -1,17 +1,22 @@
 (* ::Package:: *)
 
+(* ::Text:: *)
+(*Agenda*)
+(**)
+(*- convert enum type to list, list types to enums, for example:*)
+(*	FromRhino[\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d[]]\[RightGuillemet], {"Rhino.Geometry.Point3d"}]*)
+(*	FromRhino[{*)
+(*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet],*)
+(*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet],*)
+(*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet]},"Rhino.Geometry.Point3d[]"]*)
+(*- nurbs curve coversions*)
+
+
 BeginPackage["RhinoUtilities`", {"NETLink`"}]
 
 
 LoadNETType["Rhino.RhinoDoc"];
 LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
-
-
-(* Agenda
-	- FromRhino[...,"Point3d[]"]
-	- mesh conversions
-- nurbs curve coversions
-*)
 
 
 (* 
@@ -65,6 +70,9 @@ RhinoShow::usage = "";
 RhinoUnshow::usage = "";
 
 
+RhinoReshow::usage = "";
+
+
 (* 
  *  
  *)
@@ -78,8 +86,16 @@ Begin["`Private`"]
  *)
 
 
-FromRhino[obj_] :=
+FromRhino[obj_Symbol] :=
 	FromRhino[obj, obj@GetType[]@ToString[]]
+
+
+FromRhino[objs_List] :=
+	FromRhino /@ objs
+
+
+FromRhino[objs_List, {type_}] :=
+	FromRhino[#, type]& /@ objs
 
 
 FromRhino[_, type_] :=
@@ -93,9 +109,14 @@ ToRhino[expr_] :=
 			{_?NumericQ, _?NumericQ, _?NumericQ} -> "Rhino.Geometry.Point3d",
 			{{_?NumericQ, _?NumericQ, _?NumericQ}..} -> {"Rhino.Geometry.Point3d"},
 			_MeshRegion -> "Rhino.Geometry.Mesh",
+			GraphicsComplex[{{_?NumericQ,_?NumericQ,_?NumericQ}...}, {_Polygon...}] -> "Rhino.Geometry.Mesh",
 			_TransformationFunction -> "Rhino.Geometry.Transform"
 		}
 	]
+
+
+ToRhino[expr:{___}, {type_}] :=
+	ToRhino[#, type]& /@ expr
 
 
 (* Rhino.Geometry.Transform *)
@@ -187,10 +208,11 @@ FromRhino[obj_, "Rhino.Geometry.Point3d"] :=
 	{obj@X, obj@Y, obj@Z}
 
 
-(* Rhino.Geometry.Point3d[] *)
-
-
 ToRhino[expr_, {"Rhino.Geometry.Point3d"}] :=
+	WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+
+
+ToRhino[expr_, "Rhino.Geometry.Point3d[]"] :=
 	ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
 
 
@@ -206,7 +228,14 @@ FromRhino[obj_, "Rhino.Geometry.Point3d[]"] := (* slow version *)
 ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
 	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
 		MeshCoordinates[mesh],
-		(First [#]-1)&/@ MeshCells[mesh,2]
+		(First[#] - 1)& /@ MeshCells[mesh, 2]
+	]
+
+
+ToRhino[GraphicsComplex[pts:{{_?NumericQ,_?NumericQ,_?NumericQ}...}, polygons:{_Polygon...}], "Rhino.Geometry.Mesh"] :=
+	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
+		pts,
+		(First[#] - 1)& /@ polygons
 	]
 
 
@@ -380,6 +409,16 @@ RhinoUnshow[guid_] :=
 	Block[{},
 		RhinoDelete[guid];
 		RhinoDoc`ActiveDoc@Views@Redraw[];
+	]
+
+
+RhinoReshow[guid_, obj_] :=
+	Block[{guids},
+		RhinoDelete[guid];
+		guids = RhinoAdd[obj];
+		NETRelease[obj];
+		RhinoDoc`ActiveDoc@Views@Redraw[];
+		guids
 	]
 
 
