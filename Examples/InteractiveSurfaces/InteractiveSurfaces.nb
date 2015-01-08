@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15555,        418]
-NotebookOptionsPosition[     14657,        381]
-NotebookOutlinePosition[     15027,        397]
-CellTagsIndexPosition[     14984,        394]
+NotebookDataLength[     12352,        348]
+NotebookOptionsPosition[     11530,        314]
+NotebookOutlinePosition[     11900,        330]
+CellTagsIndexPosition[     11857,        327]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -122,38 +122,41 @@ Cell[BoxData[{
      RowBox[{"NurbsSurface`CreateThroughPoints", "[", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"ToRhino", "[", 
-        RowBox[{"Flatten", "[", 
-         RowBox[{
-          RowBox[{"Table", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{"RotationTransform", "[", 
-               RowBox[{"v", ",", 
-                RowBox[{"{", 
-                 RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-                RowBox[{"{", 
-                 RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "]"}], "[", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"u", " ", 
-                 RowBox[{"Rescale", "[", 
-                  RowBox[{"v", ",", 
-                   RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Flatten", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Evaluate", "[", 
+              RowBox[{
+               RowBox[{"RotationTransform", "[", 
+                RowBox[{"v", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "]"}], "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"u", " ", 
+                  RowBox[{"Rescale", "[", 
+                   RowBox[{"v", ",", 
+                    RowBox[{"{", 
                     RowBox[{"0", ",", 
                     RowBox[{"6", " ", "\[Pi]"}]}], "}"}], ",", 
-                   RowBox[{"{", 
+                    RowBox[{"{", 
                     RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", "0", ",", 
-                RowBox[{
-                 RowBox[{"v", "/", "10"}], "+", 
-                 RowBox[{"(", 
-                  RowBox[{"u", "^", ".5"}], ")"}]}]}], "}"}], "]"}], "]"}], 
-            ",", 
-            RowBox[{"{", 
-             RowBox[{"u", ",", "uMin", ",", "uMax", ",", "du"}], "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"v", ",", "vMin", ",", "vMax", ",", "dv"}], "}"}]}], 
-           "]"}], ",", "1"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"v", "/", "10"}], "+", 
+                  RowBox[{"(", 
+                   RowBox[{"u", "^", ".5"}], ")"}]}]}], "}"}], "]"}], "]"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"u", ",", "uMin", ",", "uMax", ",", "du"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v", ",", "vMin", ",", "vMax", ",", "dv"}], "}"}]}], 
+            "]"}], ",", "1"}], "]"}], ",", 
+         "\"\<Rhino.Geometry.Point3d[]\>\""}], "]"}], ",", 
+       "\[IndentingNewLine]", 
        RowBox[{"Floor", "[", 
         RowBox[{
          RowBox[{
@@ -177,7 +180,8 @@ Cell[BoxData[{
    3.625870972609277*^9}, {3.625871315776583*^9, 3.6258713530303383`*^9}, {
    3.625871622696224*^9, 3.625871717476334*^9}, {3.6258718697840805`*^9, 
    3.6258718876143093`*^9}, {3.629158187865441*^9, 3.629158192997742*^9}, {
-   3.6291585494754953`*^9, 3.6291585922113953`*^9}}],
+   3.6291585494754953`*^9, 3.6291585922113953`*^9}, {3.6296340015586004`*^9, 
+   3.6296340103258*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -185,11 +189,10 @@ Cell[BoxData[
    RowBox[{"\[LeftGuillemet]", 
     RowBox[{"NETObject", "[", 
      RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
-   NETLink`Objects`NETObject$35558132927168513], "}"}]], "Output",
- CellChangeTimes->{3.6291581944953136`*^9, 3.6291582901353493`*^9, 
-  3.6291585928665953`*^9, 3.6291946201293592`*^9, 3.6291966284763923`*^9}]
+   NETLink`Objects`NETObject$58112920898240513], "}"}]], "Output",
+ CellChangeTimes->{3.6296338231005626`*^9, 3.6296340130558004`*^9}]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -209,8 +212,6 @@ Cell[BoxData[{
   ";"}]}], "Input",
  CellChangeTimes->{{3.6257681661991916`*^9, 3.6257681686073294`*^9}, {
   3.6258712933118954`*^9, 3.6258713007689342`*^9}}],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
@@ -235,19 +236,20 @@ Cell[BoxData[
           "NurbsSurface`CreateThroughPoints", "[", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{"ToRhino", "[", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{
-               RowBox[{"Table", "[", 
-                RowBox[{
-                 RowBox[{"Evaluate", "[", 
-                  RowBox[{
-                   RowBox[{"RotationTransform", "[", 
+             RowBox[{
+              RowBox[{"Flatten", "[", 
+               RowBox[{
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"Evaluate", "[", 
+                   RowBox[{
+                    RowBox[{"RotationTransform", "[", 
                     RowBox[{"v", ",", 
                     RowBox[{"{", 
                     RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
                     RowBox[{"{", 
                     RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "]"}], "[", 
-                   RowBox[{"{", 
+                    RowBox[{"{", 
                     RowBox[{
                     RowBox[{"u", " ", 
                     RowBox[{"Rescale", "[", 
@@ -262,13 +264,15 @@ Cell[BoxData[
                     RowBox[{"v", "/", "str"}], "+", 
                     RowBox[{"(", 
                     RowBox[{"u", "^", ".5"}], ")"}]}]}], "}"}], "]"}], "]"}], 
-                 ",", 
-                 RowBox[{"{", 
-                  RowBox[{"u", ",", "uMin", ",", "uMax", ",", "du"}], "}"}], 
-                 ",", 
-                 RowBox[{"{", 
-                  RowBox[{"v", ",", "vMin", ",", "vMax", ",", "dv"}], "}"}]}],
-                 "]"}], ",", "1"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+                  ",", 
+                  RowBox[{"{", 
+                   RowBox[{"u", ",", "uMin", ",", "uMax", ",", "du"}], "}"}], 
+                  ",", 
+                  RowBox[{"{", 
+                   RowBox[{"v", ",", "vMin", ",", "vMax", ",", "dv"}], 
+                   "}"}]}], "]"}], ",", "1"}], "]"}], ",", 
+              "\[IndentingNewLine]", "\"\<Rhino.Geometry.Point3d[]\>\""}], 
+             "]"}], ",", "\[IndentingNewLine]", 
             RowBox[{"Floor", "[", 
              RowBox[{
               RowBox[{
@@ -305,78 +309,7 @@ Cell[BoxData[
    RowBox[{"ControlPlacement", "\[Rule]", "Top"}]}], "\[IndentingNewLine]", 
   "]"}]], "Input",
  CellChangeTimes->{{3.629196740267269*^9, 3.629196740485664*^9}, 
-   3.62920092174085*^9}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{$CellContext`guids$$ = {
-    NETLink`Objects`NETObject$68004408251645953}, $CellContext`str$$ = 
-    13.26, $CellContext`tap$$ = 0., Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[$CellContext`tap$$], 1, "taper"}, 0, 2}, {{
-       Hold[$CellContext`str$$], 5, "stretch"}, 1, 20}, {
-      Hold[$CellContext`guids$$], {}}}, Typeset`size$$ = {217., {2., 8.}}, 
-    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
-    True, $CellContext`tap$50911$$ = 0, $CellContext`str$50912$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, 
-      "Variables" :> {$CellContext`guids$$ = {}, $CellContext`str$$ = 
-        5, $CellContext`tap$$ = 1}, "ControllerVariables" :> {
-        Hold[$CellContext`tap$$, $CellContext`tap$50911$$, 0], 
-        Hold[$CellContext`str$$, $CellContext`str$50912$$, 0]}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> 
-      Dynamic[$CellContext`guids$$ = 
-        RhinoUtilities`RhinoReshow[$CellContext`guids$$, 
-          
-          With[{$CellContext`uMin$ = 0, $CellContext`uMax$ = 
-            1, $CellContext`vMin$ = 0, $CellContext`vMax$ = 
-            6 Pi, $CellContext`du$ = 0.1, $CellContext`dv$ = 0.1}, 
-           NurbsSurface`CreateThroughPoints[
-            RhinoUtilities`ToRhino[
-             Flatten[
-              Table[
-               Evaluate[
-                
-                RotationTransform[$CellContext`v, {0, 0, 1}, {0, 0, 
-                 0}][{$CellContext`u 
-                  Rescale[$CellContext`v, {0, 6 Pi}, {1, $CellContext`tap$$}],
-                   0, $CellContext`v/$CellContext`str$$ + \
-$CellContext`u^0.5}]], {$CellContext`u, $CellContext`uMin$, \
-$CellContext`uMax$, $CellContext`du$}, {$CellContext`v, $CellContext`vMin$, \
-$CellContext`vMax$, $CellContext`dv$}], 1]], 
-            
-            Floor[($CellContext`uMax$ - $CellContext`uMin$)/$CellContext`du$ + 
-             1], 
-            
-            Floor[($CellContext`vMax$ - $CellContext`vMin$)/$CellContext`dv$ + 
-             1], 3, 3, False, False]]], 
-        TrackedSymbols -> {$CellContext`tap$$, $CellContext`str$$}], 
-      "Specifications" :> {{{$CellContext`tap$$, 1, "taper"}, 0, 
-         2}, {{$CellContext`str$$, 5, "stretch"}, 1, 
-         20}, {$CellContext`guids$$, {}, ControlType -> None}}, 
-      "Options" :> {ControlPlacement -> Top}, "DefaultOptions" :> {}],
-     ImageSizeCache->{286., {65., 72.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{
-  3.6291966796087255`*^9, {3.6291967414216394`*^9, 3.629196747570382*^9}, 
-   3.629200926795185*^9}]
-}, Open  ]]
+   3.62920092174085*^9, {3.629634091011838*^9, 3.629634096768976*^9}}]
 }, Open  ]]
 },
 Evaluator->"RhinoAttach",
@@ -408,17 +341,14 @@ Cell[CellGroupData[{
 Cell[2756, 88, 92, 1, 63, "Section"],
 Cell[2851, 91, 449, 12, 72, "Input"],
 Cell[CellGroupData[{
-Cell[3325, 107, 3114, 72, 232, "Input"],
-Cell[6442, 181, 390, 8, 31, "Output"]
+Cell[3325, 107, 3271, 76, 252, "Input"],
+Cell[6599, 185, 315, 7, 31, "Output"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[6881, 195, 106, 1, 63, "Section"],
-Cell[6990, 198, 449, 12, 72, "Input"],
-Cell[CellGroupData[{
-Cell[7464, 214, 3810, 93, 392, "Input"],
-Cell[11277, 309, 3352, 68, 154, "Output"]
-}, Open  ]]
+Cell[6963, 198, 106, 1, 49, "Section"],
+Cell[7072, 201, 449, 12, 72, "Input"],
+Cell[7524, 215, 3990, 96, 412, "Input"]
 }, Open  ]]
 }
 ]
