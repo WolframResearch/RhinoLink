@@ -1,0 +1,514 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19052,        505]
+NotebookOptionsPosition[     17276,        445]
+NotebookOutlinePosition[     17648,        461]
+CellTagsIndexPosition[     17605,        458]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Grasshopper U-V Surface Component", "Title",
+ CellChangeTimes->{{3.6220218177252216`*^9, 3.622021823871385*^9}, {
+  3.6223970477593*^9, 3.6223970606597557`*^9}, {3.622417383581133*^9, 
+  3.622417386685414*^9}, {3.6292222130153627`*^9, 3.6292222156675835`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+How to make a Grasshopper Component that makes NURBS surfaces from u-v point \
+grids\
+\>", "Chapter",
+ CellChangeTimes->{{3.622021828660401*^9, 3.6220218914319954`*^9}, {
+  3.6223970803458195`*^9, 3.622397098175791*^9}, {3.622417378823316*^9, 
+  3.6224174129548035`*^9}, {3.6292222240298805`*^9, 3.629222238289469*^9}}],
+
+Cell["Agenda", "Section",
+ CellChangeTimes->{{3.6220555451147656`*^9, 3.62205554591033*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Setup", "Section",
+ CellChangeTimes->{{3.6224122707815495`*^9, 3.62241227117153*^9}}],
+
+Cell["Start Rhino.", "Text",
+ CellChangeTimes->{{3.622412279314312*^9, 3.6224122831517153`*^9}}],
+
+Cell["Execute WolframStartScripting.", "Text",
+ CellChangeTimes->{{3.622412286942321*^9, 3.6224123136013536`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", 
+  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\GrasshopperLink\\\\Packages\\\\\
+RhinoUtilities.m\>\""}]], "Input",
+ CellChangeTimes->{{3.622413152864524*^9, 3.622413163050932*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Grasshopper Component", "Section",
+ CellChangeTimes->{{3.6209345545324335`*^9, 3.620934555078434*^9}, {
+  3.622023059886774*^9, 3.622023063958542*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Parameterless", "Subsection",
+ CellChangeTimes->{{3.622416571847231*^9, 3.6224165742651534`*^9}}],
+
+Cell["\<\
+Evaluate this code to install a new component in Grasshopper.\
+\>", "Text",
+ CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "GrasshopperLink`"}]], "Input",
+ CellChangeTimes->{{3.6204200087388496`*^9, 3.620420012657074*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"UVSurface", "[", "ptsExpr_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"nu", ",", "nv", ",", "pts", ",", "obj"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pts", " ", "=", " ", 
+      RowBox[{"ToExpression", "[", "ptsExpr", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"nu", ",", "nv"}], "}"}], " ", "=", " ", 
+      RowBox[{"Take", "[", 
+       RowBox[{
+        RowBox[{"Dimensions", "[", "pts", "]"}], ",", "2"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"LoadNETType", "[", "\"\<Rhino.Geometry.NurbsSurface\>\"", "]"}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{
+     "LoadNETType", "[", "\"\<Wolfram.Rhino.WolframScriptingPlugIn\>\"", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"obj", "=", 
+      RowBox[{"NurbsSurface`CreateThroughPoints", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"MakeNETObject", "[", 
+         RowBox[{
+          RowBox[{"WolframScriptingPlugIn`ToRhinoPoint3dArray", "[", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"pts", ",", "1"}], "]"}], "]"}], ",", 
+          "\"\<Rhino.Geometry.Point3d[]\>\""}], "]"}], ",", 
+        "\[IndentingNewLine]", "nu", ",", "nv", ",", " ", "3", ",", " ", "3", 
+        ",", " ", "False", ",", "False"}], "\[IndentingNewLine]", "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"GHResult", "[", "obj", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6223980619296675`*^9, 3.6223981004275055`*^9}, {
+  3.622399615260711*^9, 3.62239962271689*^9}, {3.6224130956615906`*^9, 
+  3.6224131215721273`*^9}, {3.629212461742575*^9, 3.6292124623509674`*^9}, {
+  3.629222353825389*^9, 3.629222422917539*^9}, {3.6292224655674305`*^9, 
+  3.6292225405394077`*^9}, {3.6292236095167513`*^9, 3.629223625678144*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GHDeploy", "[", 
+  RowBox[{
+  "\"\<UVSurface\>\"", ",", " ", "UVSurface", ",", " ", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Any\>\"", ",", " ", "\"\<expr\>\"", ",", " ", "\"\<expr\>\"", ",", 
+      " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], "}"}], ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Any\>\"", ",", " ", "\"\<surface\>\"", ",", " ", "\"\<surface\>\"", 
+      ",", " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Icon", "\[Rule]", 
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Purple", ",", 
+        RowBox[{"Sphere", "[", "]"}]}], "}"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"20", ",", "20"}], "}"}]}], ",", 
+      RowBox[{"Boxed", "\[Rule]", "False"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6204194026431828`*^9, 3.6204194216422696`*^9}, {
+   3.620419462641615*^9, 3.6204194655447807`*^9}, {3.6204195459613805`*^9, 
+   3.620419616327405*^9}, {3.620419668537391*^9, 3.6204197117548633`*^9}, {
+   3.620420070787399*^9, 3.620420071368432*^9}, {3.6206040535601835`*^9, 
+   3.6206040636267595`*^9}, 3.6206710523647056`*^9, {3.6206913593088975`*^9, 
+   3.6206913598989315`*^9}, {3.620691390044656*^9, 3.6206913968370442`*^9}, {
+   3.620700155311*^9, 3.6207001711819077`*^9}, {3.620700953581659*^9, 
+   3.6207009542997*^9}, {3.620747117241069*^9, 3.620747122274357*^9}, {
+   3.6207493662577057`*^9, 3.62074936983391*^9}, {3.6207515135025206`*^9, 
+   3.6207515288493986`*^9}, 3.620830686061932*^9, {3.6220230940515203`*^9, 
+   3.6220231747972984`*^9}, {3.6220516084357996`*^9, 
+   3.6220516259386635`*^9}, {3.6220694672603955`*^9, 
+   3.6220694704443955`*^9}, {3.62239730759077*^9, 3.622397383793242*^9}, 
+   3.622397444343245*^9, {3.6223975626407948`*^9, 3.622397577943511*^9}, 
+   3.622397770098519*^9, {3.622397946055236*^9, 3.6223979513589983`*^9}, {
+   3.622398049138651*^9, 3.622398056345297*^9}, 3.622398108367367*^9, {
+   3.622412197793296*^9, 3.622412215685464*^9}, {3.629222549867963*^9, 
+   3.629222584093266*^9}}],
+
+Cell["\<\
+Execute GrasshopperUnloadPlugin, then Grasshopper to restart and pick up the \
+new component. \
+\>", "Text",
+ CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}, 
+   3.622713009142501*^9}],
+
+Cell["The new component is in the Wolfram tools tab.", "Text",
+ CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
+  3.6224129343927927`*^9, 3.622412935515964*^9}}],
+
+Cell["\<\
+Connect a panel to the expr input of the component and enter an expression \
+that evaluates to Graphics3D into the panel, for example:\
+\>", "Text",
+ CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
+  3.6224138325534983`*^9, 3.622413858214512*^9}}],
+
+Cell[TextData[StyleBox["Hyperbolic surface:",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.622650448297984*^9, 3.6226504529465904`*^9}, {
+  3.629222730901648*^9, 3.629222737609605*^9}, {3.629240907408531*^9, 
+  3.629240910169731*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y", ",", 
+     RowBox[{"x", " ", "y"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "1"}], ",", "1", ",", ".1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "1"}], ",", "1", ",", ".1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6224155061785536`*^9, 3.6224155061785536`*^9}, 
+   3.6292227276724253`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["One Real Parameter", "Subsection",
+ CellChangeTimes->{{3.622416571847231*^9, 3.6224165886322927`*^9}}],
+
+Cell["\<\
+Evaluate this code to install a new component in Grasshopper.\
+\>", "Text",
+ CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "GrasshopperLink`"}]], "Input",
+ CellChangeTimes->{{3.6204200087388496`*^9, 3.620420012657074*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"UVSurface1", "[", 
+   RowBox[{"ptsExpr_String", ",", " ", "x_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"nu", ",", "nv", ",", "pts", ",", "obj"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"LoadNETType", "[", "\"\<Rhino.Geometry.NurbsSurface\>\"", "]"}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{
+     "LoadNETType", "[", "\"\<Wolfram.Rhino.WolframScriptingPlugIn\>\"", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"pts", "=", 
+      RowBox[{
+       RowBox[{"ToExpression", "[", 
+        RowBox[{"\"\<(\>\"", "<>", "ptsExpr", "<>", "\"\<)&\>\""}], "]"}], 
+       "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"nu", ",", "nv"}], "}"}], " ", "=", " ", 
+      RowBox[{"Take", "[", 
+       RowBox[{
+        RowBox[{"Dimensions", "[", "pts", "]"}], ",", "2"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"obj", "=", 
+      RowBox[{"NurbsSurface`CreateThroughPoints", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"MakeNETObject", "[", 
+         RowBox[{
+          RowBox[{"WolframScriptingPlugIn`ToRhinoPoint3dArray", "[", 
+           RowBox[{"N", "[", 
+            RowBox[{"Re", "[", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{"pts", ",", "1"}], "]"}], "]"}], "]"}], "]"}], ",", 
+          "\"\<Rhino.Geometry.Point3d[]\>\""}], "]"}], ",", 
+        "\[IndentingNewLine]", "nu", ",", "nv", ",", " ", "3", ",", " ", "3", 
+        ",", " ", "False", ",", "False"}], "\[IndentingNewLine]", "]"}]}]}]}],
+    "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQAWIQfW3/Xl7dv68cFdb1CoHo/eEvzoPowx+uXQDRB7S/
+ppgA6Xt+RhkgWvfw9lQdrteOCtanwfS0TCsrQyBdHXPXCUSnaBh5gOgrThMD
+QXTfSZYiEF34kL8eRCu95l8Noh22fVwLoqUMl9wG0T7Gl++A6IXXM/+C6GO7
+1oLpcwKT9Y2A9KM3L8G0UkGTJYg+l9MFpmvYPF1BdLWerzuIdjgXHAqi3W7k
+hYHoF4p27yyAdFprE5hOvWv/F0RPc9r8D0Q/66kQsgTSOx7ki4HohKba3yA6
+NvY6mC75vFzSCkjLhb0D0xLlhsogetneXWAaAHNPkOw=
+  "]],
+
+Cell[BoxData[
+ RowBox[{"GHDeploy", "[", 
+  RowBox[{
+  "\"\<UVSurface1\>\"", ",", " ", "UVSurface1", ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Any\>\"", ",", " ", "\"\<expr\>\"", ",", " ", "\"\<expr\>\"", ",", 
+       " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Number\>\"", ",", " ", "\"\<x\>\"", ",", " ", "\"\<x\>\"", ",", 
+       " ", "\"\<\>\"", ",", " ", "Item"}], "}"}]}], "\[IndentingNewLine]", 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Any\>\"", ",", " ", "\"\<surface\>\"", ",", " ", "\"\<surface\>\"", 
+      ",", " ", "\"\<\>\"", ",", " ", "Item"}], "}"}], "\[IndentingNewLine]", 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Icon", "\[Rule]", 
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{"Sphere", "[", "]"}]}], "}"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"20", ",", "20"}], "}"}]}], ",", 
+      RowBox[{"Boxed", "\[Rule]", "False"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6204194026431828`*^9, 3.6204194216422696`*^9}, {
+   3.620419462641615*^9, 3.6204194655447807`*^9}, {3.6204195459613805`*^9, 
+   3.620419616327405*^9}, {3.620419668537391*^9, 3.6204197117548633`*^9}, {
+   3.620420070787399*^9, 3.620420071368432*^9}, {3.6206040535601835`*^9, 
+   3.6206040636267595`*^9}, 3.6206710523647056`*^9, {3.6206913593088975`*^9, 
+   3.6206913598989315`*^9}, {3.620691390044656*^9, 3.6206913968370442`*^9}, {
+   3.620700155311*^9, 3.6207001711819077`*^9}, {3.620700953581659*^9, 
+   3.6207009542997*^9}, {3.620747117241069*^9, 3.620747122274357*^9}, {
+   3.6207493662577057`*^9, 3.62074936983391*^9}, {3.6207515135025206`*^9, 
+   3.6207515288493986`*^9}, 3.620830686061932*^9, {3.6220230940515203`*^9, 
+   3.6220231747972984`*^9}, {3.6220516084357996`*^9, 
+   3.6220516259386635`*^9}, {3.6220694672603955`*^9, 
+   3.6220694704443955`*^9}, {3.62239730759077*^9, 3.622397383793242*^9}, 
+   3.622397444343245*^9, {3.6223975626407948`*^9, 3.622397577943511*^9}, 
+   3.622397770098519*^9, {3.622397946055236*^9, 3.6223979513589983`*^9}, {
+   3.622398049138651*^9, 3.622398056345297*^9}, 3.622398108367367*^9, {
+   3.622412197793296*^9, 3.622412215685464*^9}, {3.629222549867963*^9, 
+   3.629222584093266*^9}, {3.6292229070390043`*^9, 3.6292229479414043`*^9}, {
+   3.629223076977399*^9, 3.6292230964926233`*^9}, {3.6292246081983943`*^9, 
+   3.629224613408661*^9}, {3.6292377450539904`*^9, 3.629237754024048*^9}, {
+   3.629240594635209*^9, 3.629240595103194*^9}}],
+
+Cell["\<\
+Execute GrasshopperUnloadPlugin, then Grasshopper to restart and pick up the \
+new component.\
+\>", "Text",
+ CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}}],
+
+Cell["The new component is in the Wolfram tools tab.", "Text",
+ CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
+  3.6224129343927927`*^9, 3.622412935515964*^9}}],
+
+Cell["\<\
+Connect a panel to the expr input of the component and enter an expression \
+that evaluates to an array of points into the panel. Use # to indicate the \
+real parameter, for example:\
+\>", "Text",
+ CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
+  3.6224138325534983`*^9, 3.622413858214512*^9}, {3.622419301848839*^9, 
+  3.622419330193312*^9}, {3.6292403913571014`*^9, 3.629240394211828*^9}}],
+
+Cell[TextData[StyleBox["Saddle Surface",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.629240822186654*^9, 3.6292408260553303`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"u", ",", "v", ",", 
+     RowBox[{"#", " ", "u", " ", "v"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", 
+     RowBox[{"-", "1"}], ",", "1", ",", ".1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", 
+     RowBox[{"-", "1"}], ",", "1", ",", ".1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.629240801345722*^9, 3.629240801345722*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"-", "1"}], " ", "<", " ", "0.", " ", "<", " ", "1"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.6292408075543237`*^9, 3.629240815307275*^9}}],
+
+Cell[TextData[StyleBox["Torus",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.629240822186654*^9, 3.6292408260553303`*^9}, {
+  3.6292420994111757`*^9, 3.629242100003976*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Evaluate", "[", 
+    RowBox[{
+     RowBox[{"RotationTransform", "[", 
+      RowBox[{"v", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "]"}], "@", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"#", "+", 
+        RowBox[{"Cos", "[", "u", "]"}]}], ",", "0", ",", 
+       RowBox[{"Sin", "[", "u", "]"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "0.", ",", 
+     RowBox[{"2", " ", "Pi"}], ",", 
+     RowBox[{"Pi", "/", "16"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", "0.", ",", 
+     RowBox[{"2", " ", "Pi"}], ",", 
+     RowBox[{"Pi", "/", "16"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6292420607543373`*^9, 3.6292420607543373`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"0", " ", "<", " ", "1.", " ", "<", " ", "4"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.6292420749191756`*^9, 3.6292420791779757`*^9}}],
+
+Cell[TextData[StyleBox["Wavy Surface",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.629240822186654*^9, 3.6292408260553303`*^9}, {
+  3.6292420994111757`*^9, 3.629242100003976*^9}, {3.6292436001543617`*^9, 
+  3.629243603165104*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"u", ",", "v", ",", 
+     RowBox[{"#", " ", 
+      RowBox[{"Sin", "[", "u", "]"}], 
+      RowBox[{"Sin", "[", "v", "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", 
+     RowBox[{"-", "3"}], ",", "3", ",", ".2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"v", ",", 
+     RowBox[{"-", "3"}], ",", "3", ",", ".2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.629243585646641*^9, 3.6292435856622405`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"-", "1"}], "<", "0.", "<", "1"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.6292435882205915`*^9, 3.629243593072098*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+Evaluator->"RhinoAttach",
+WindowSize->{950, 615},
+WindowMargins->{{Automatic, 26}, {Automatic, 13}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 266, 3, 90, "Title"],
+Cell[CellGroupData[{
+Cell[871, 29, 329, 6, 107, "Chapter"],
+Cell[1203, 37, 92, 1, 63, "Section"],
+Cell[CellGroupData[{
+Cell[1320, 42, 91, 1, 49, "Section"],
+Cell[1414, 45, 96, 1, 30, "Text"],
+Cell[1513, 48, 114, 1, 30, "Text"],
+Cell[1630, 51, 203, 4, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1870, 60, 157, 2, 63, "Section"],
+Cell[CellGroupData[{
+Cell[2052, 66, 103, 1, 43, "Subsection"],
+Cell[2158, 69, 155, 3, 30, "Text"],
+Cell[2316, 74, 128, 2, 31, "Input"],
+Cell[2447, 78, 2032, 44, 292, "Input"],
+Cell[4482, 124, 2217, 44, 112, "Input"],
+Cell[6702, 170, 214, 5, 30, "Text"],
+Cell[6919, 177, 181, 2, 30, "Text"],
+Cell[7103, 181, 279, 5, 49, "Text"],
+Cell[7385, 188, 242, 4, 30, "Text"],
+Cell[7630, 194, 456, 13, 31, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8123, 212, 108, 1, 35, "Subsection"],
+Cell[8234, 215, 155, 3, 30, "Text"],
+Cell[8392, 220, 128, 2, 31, "Input"],
+Cell[8523, 224, 2180, 51, 272, "Input"],
+Cell[10706, 277, 2771, 53, 212, "Input"],
+Cell[13480, 332, 187, 4, 30, "Text"],
+Cell[13670, 338, 181, 2, 30, "Text"],
+Cell[13854, 342, 424, 7, 49, "Text"],
+Cell[14281, 351, 139, 2, 30, "Text"],
+Cell[14423, 355, 434, 12, 31, "Input"],
+Cell[14860, 369, 205, 5, 31, "Input"],
+Cell[15068, 376, 181, 3, 30, "Text"],
+Cell[15252, 381, 852, 24, 52, "Input"],
+Cell[16107, 407, 188, 4, 31, "Input"],
+Cell[16298, 413, 239, 4, 30, "Text"],
+Cell[16540, 419, 499, 14, 31, "Input"],
+Cell[17042, 435, 182, 4, 31, "Input"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
