@@ -109,6 +109,7 @@ ToRhino[expr_] :=
 			{_?NumericQ, _?NumericQ, _?NumericQ} -> "Rhino.Geometry.Point3d",
 			{{_?NumericQ, _?NumericQ, _?NumericQ}..} -> {"Rhino.Geometry.Point3d"},
 			_MeshRegion -> "Rhino.Geometry.Mesh",
+			_BoundaryMeshRegion -> "Rhino.Geometry.Mesh",
 			GraphicsComplex[{{_?NumericQ,_?NumericQ,_?NumericQ}...}, {_Polygon...}] -> "Rhino.Geometry.Mesh",
 			_TransformationFunction -> "Rhino.Geometry.Transform"
 		}
