@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21045,        504]
-NotebookOptionsPosition[     19929,        462]
-NotebookOutlinePosition[     20301,        478]
-CellTagsIndexPosition[     20258,        475]
+NotebookDataLength[     21295,        513]
+NotebookOptionsPosition[     20176,        471]
+NotebookOutlinePosition[     20550,        487]
+CellTagsIndexPosition[     20507,        484]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,7 +47,7 @@ Cell["add cyllinder posts automatically", "Text",
 
 Cell["add linear elements and walls", "Text",
  CellChangeTimes->{{3.627515371549543*^9, 3.6275154172264233`*^9}}]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -453,16 +453,25 @@ new component. \
  CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}, 
    3.622713009142501*^9}],
 
-Cell["The new component is in the Wolfram tools tab.", "Text",
+Cell[TextData[{
+ "The new component is in the Wolfram tools tab with this icon: ",
+ Cell[BoxData[
+  Graphics3DBox[
+   {RGBColor[0, 1, 0], SphereBox[{0, 0, 0}]},
+   Boxed->False,
+   ImageSize->{20, 20}]],
+  CellChangeTimes->{3.668185079036676*^9}]
+}], "Text",
  CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
-  3.6224129343927927`*^9, 3.622412935515964*^9}}]
+  3.6224129343927927`*^9, 3.622412935515964*^9}, {3.6681850849176497`*^9, 
+  3.668185090408659*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 Evaluator->"RhinoAttach",
 WindowSize->{950, 615},
-WindowMargins->{{95, Automatic}, {Automatic, 14}},
+WindowMargins->{{Automatic, -13}, {-43, Automatic}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -486,9 +495,9 @@ Cell[1205, 38, 92, 1, 63, "Section"],
 Cell[1300, 41, 114, 1, 30, "Text"],
 Cell[1417, 44, 117, 1, 30, "Text"],
 Cell[1537, 47, 113, 1, 30, "Text"]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[1687, 53, 91, 1, 63, "Section"],
+Cell[1687, 53, 91, 1, 49, "Section"],
 Cell[1781, 56, 96, 1, 30, "Text"],
 Cell[1880, 59, 114, 1, 30, "Text"],
 Cell[1997, 62, 203, 4, 31, "Input"]
@@ -502,7 +511,7 @@ Cell[11699, 286, 504, 16, 31, "Input"],
 Cell[12206, 304, 2890, 53, 172, "Input"],
 Cell[15099, 359, 4389, 87, 312, "Input"],
 Cell[19491, 448, 214, 5, 30, "Text"],
-Cell[19708, 455, 181, 2, 30, "Text"]
+Cell[19708, 455, 428, 11, 35, "Text"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
