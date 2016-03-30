@@ -9,7 +9,7 @@
 (*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet],*)
 (*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet],*)
 (*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet]},"Rhino.Geometry.Point3d[]"]*)
-(*- nurbs curve coversions*)
+(*- nurbs curve conversions*)
 
 
 BeginPackage["RhinoUtilities`", {"NETLink`"}]
@@ -47,16 +47,16 @@ RhinoDocInformation::usage = "RhinoDocInformation[doc] returns a summary of info
  *)
 
 
-RhinoMeshUnion::usage = "";
+RhinoMeshUnion::usage = "RhinoMeshUnion[mesh1, mesh2] gives the mesh that is the union of mesh1 and mesh2.";
 
 
-RhinoMeshIntersection::usage = "";
+RhinoMeshIntersection::usage = "RhinoMeshIntersection[mesh1, mesh2] gives the mesh that is the intersection of mesh1 and mesh2.";
 
 
-RhinoMeshDifference::usage = "";
+RhinoMeshDifference::usage = "RhinoMeshDifference[mesh1, mesh2] gives the mesh that is the difference of mesh1 and mesh2.";
 
 
-RhinoMeshSplit::usage = "";
+RhinoMeshSplit::usage = "(doesn't appear to be working yet)";
 
 
 (* 
@@ -64,13 +64,13 @@ RhinoMeshSplit::usage = "";
  *)
 
 
-RhinoShow::usage = "";
+RhinoShow::usage = "RhinoShow[rhinoObject] adds 'rhinoObject' to the active document and releases it.";
 
 
-RhinoUnshow::usage = "";
+RhinoUnshow::usage = "RhinoUnshow[guid] removed the object referenced by 'guid' from the active document and releases it.";
 
 
-RhinoReshow::usage = "";
+RhinoReshow::usage = "RhinoReshow[guid, rhinoObject] replaces the object referenced by 'guid' in the the active document with 'rhinoObject'.";
 
 
 (* 
@@ -121,35 +121,6 @@ ToRhino[expr:{___}, {type_}] :=
 
 
 (* Rhino.Geometry.Transform *)
-
-
-ToRhino[tf_TransformationFunction, "Rhino.Geometry.Transform"] :=
-	Block[{m, t},
-		m = TransformationMatrix[tf];
-		t = NETNew["Rhino.Geometry.Transform", 1];
-	
-		t@M00 = m[[1,1]];
-		t@M01 = m[[2,1]];
-		t@M02 = m[[3,1]];
-
-		t@M10 = m[[1,2]];
-		t@M11 = m[[2,2]];
-		t@M12 = m[[3,2]];
-
-		t@M20 = m[[1,3]];
-		t@M21 = m[[2,3]];
-		t@M22 = m[[3,3]];
-
-		t@M03 = m[[1,4]];
-		t@M13 = m[[2,4]];
-		t@M23 = m[[3,4]];
-		t@M30 = m[[4,1]];
-		t@M31 = m[[4,2]];
-		t@M32 = m[[4,3]];
-		t@M33 = m[[4,4]];
-
-		t
-	]
 
 
 ToRhino[tf_TransformationFunction, "Rhino.Geometry.Transform"] :=
@@ -215,6 +186,10 @@ ToRhino[expr_, {"Rhino.Geometry.Point3d"}] :=
 
 ToRhino[expr_, "Rhino.Geometry.Point3d[]"] :=
 	ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+
+
+(* ::Text:: *)
+(*This cannot be wrapped with NETBlock to reclaim the Enumerator, or it will destroy the objects returned by the enumerator.*)
 
 
 FromRhino[obj_, "Rhino.Geometry.Point3d[]"] := (* slow version *)
@@ -301,6 +276,10 @@ FromRhino[obj_, "Rhino.Geometry.PolyCurve"] :=
  *)
 
 
+(* ::Text:: *)
+(*This cannot be wrapped with NETBlock to reclaim the Enumerator, or it will destroy the objects returned by the enumerator.*)
+
+
 RhinoDocObjects[doc_:RhinoDoc`ActiveDoc]:=
 	With[{it = doc@Objects@GetEnumerator[]},
 		Reap[While[it@MoveNext[], Sow[it@Current]]][[2,1]]
@@ -355,6 +334,10 @@ RhinoMeshIntersection[meshes1_,meshes2_]:=
 		MakeNETObject[meshes1,"Rhino.Geometry.Mesh[]"],
 		MakeNETObject[meshes2,"Rhino.Geometry.Mesh[]"]
 	]
+
+
+(* ::Text:: *)
+(*CNC: This doesn't appear to work.*)
 
 
 RhinoMeshSplit[meshes1_,meshes2_]:=
