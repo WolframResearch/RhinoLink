@@ -153,8 +153,19 @@ namespace Wolfram.Rhino
                  mesh.Vertices.Add(vertices[i,0], vertices[i,1], vertices[i,2]);
             }
 
-            for (int i = 0; i < faces.GetLength(0); i++) {
-                 mesh.Faces.AddFace(faces[i,0], faces[i,1], faces[i,2]);
+            if (faces.GetLength(1) == 3)
+            {
+                for (int i = 0; i < faces.GetLength(0); i++)
+                {
+                    mesh.Faces.AddFace(faces[i, 0], faces[i, 1], faces[i, 2]);
+                }
+            }
+            else // (faces.GetLength(1) == 4)
+            {
+                for (int i = 0; i < faces.GetLength(0); i++)
+                {
+                    mesh.Faces.AddFace(faces[i, 0], faces[i, 1], faces[i, 2], faces[i, 3]);
+                }
             }
             
            mesh.Normals.ComputeNormals();
