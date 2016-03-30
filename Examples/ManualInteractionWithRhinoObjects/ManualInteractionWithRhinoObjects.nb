@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    160721,       3305]
-NotebookOptionsPosition[    157134,       3181]
-NotebookOutlinePosition[    157505,       3197]
-CellTagsIndexPosition[    157462,       3194]
+NotebookDataLength[    161608,       3313]
+NotebookOptionsPosition[    157788,       3182]
+NotebookOutlinePosition[    158159,       3198]
+CellTagsIndexPosition[    158116,       3195]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -100,8 +100,8 @@ Cell[BoxData[
   RowBox[{"\[LeftGuillemet]", 
    RowBox[{"NETObject", "[", 
     RowBox[{"Rhino", ".", "RhinoDoc"}], "]"}], "\[RightGuillemet]"}],
-  NETLink`Objects`NETObject$336076929499137]], "Output",
- CellChangeTimes->{3.668357310650363*^9}]
+  NETLink`Objects`NETObject$618114211381249]], "Output",
+ CellChangeTimes->{3.668357310650363*^9, 3.6683656239605336`*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -121,15 +121,13 @@ Cell[BoxData[
 
 Cell[BoxData[GridBox[{
    {Cell[BoxData[
-     RowBox[{
-      RowBox[{"\[FilledCircle]", " "}], 
+     RowBox[{"\[FilledCircle]", " ", 
       StyleBox["Type",
        FontSize->18,
        FontWeight->"Bold",
        FontSlant->"Italic"]}]]]},
    {
-    RowBox[{
-     RowBox[{"class", " "}], 
+    RowBox[{"class", " ", 
      StyleBox["\<\"Rhino.RhinoDoc\"\>",
       FontWeight->"Bold"]}]},
    {GridBox[{
@@ -154,8 +152,7 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
 (64-bit)\\\\System\\\\RhinoCommon.dll\"\>"},
    {""},
    {Cell[BoxData[
-     RowBox[{
-      RowBox[{"\[FilledCircle]", " "}], 
+     RowBox[{"\[FilledCircle]", " ", 
       StyleBox["Properties",
        FontSize->18,
        FontWeight->"Bold",
@@ -163,52 +160,45 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"static", " ", "\<\"Rhino.RhinoDoc\"\>", " ", 
      StyleBox["ActiveDoc",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.BitmapTable\"\>", " ", 
      StyleBox["Bitmaps",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"DateTime\"\>", " ", 
      StyleBox["DateCreated",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"DateTime\"\>", " ", 
      StyleBox["DateLastEdited",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.DimStyleTable\"\>", " ", 
      StyleBox["DimStyles",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"int\"\>", " ", 
      StyleBox["DistanceDisplayPrecision",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"int\"\>", " ", 
      StyleBox["DocumentId",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.EarthAnchorPoint\"\>", " ", 
      StyleBox["EarthAnchorPoint",
@@ -216,87 +206,75 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.FontTable\"\>", " ", 
      StyleBox["Fonts",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.Render.GroundPlane\"\>", " ", 
      StyleBox["GroundPlane",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.GroupTable\"\>", " ", 
      StyleBox["Groups",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.HatchPatternTable\"\>", " ", 
      StyleBox["HatchPatterns",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.InstanceDefinitionTable\"\>", " ", 
      StyleBox["InstanceDefinitions",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["IsLocked",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["IsReadOnly",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["IsSendingMail",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.LayerTable\"\>", " ", 
      StyleBox["Layers",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.LightTable\"\>", " ", 
      StyleBox["Lights",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.LinetypeTable\"\>", " ", 
      StyleBox["Linetypes",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.MaterialTable\"\>", " ", 
      StyleBox["Materials",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.Geometry.MeshingParameterStyle\"\>", " ", 
      StyleBox["MeshingParameterStyle",
@@ -332,25 +310,22 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"\<\"string\"\>", " ", 
      StyleBox["Name",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.NamedConstructionPlaneTable\"\>", 
      " ", 
      StyleBox["NamedConstructionPlanes",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.NamedViewTable\"\>", " ", 
      StyleBox["NamedViews",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"string\"\>", " ", 
      StyleBox["Notes",
@@ -358,10 +333,9 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.ObjectTable\"\>", " ", 
      StyleBox["Objects",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"double\"\>", " ", 
      StyleBox["PageAbsoluteTolerance",
@@ -389,24 +363,21 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"\<\"string\"\>", " ", 
      StyleBox["Path",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.Render.RenderEnvironmentTable\"\>", " ", 
      StyleBox["RenderEnvironments",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.Render.RenderMaterialTable\"\>", " ", 
      StyleBox["RenderMaterials",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.Render.RenderSettings\"\>", " ", 
      StyleBox["RenderSettings",
@@ -414,24 +385,21 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"\<\"Rhino.Render.RenderTextureTable\"\>", " ", 
      StyleBox["RenderTextures",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.StringTable\"\>", " ", 
      StyleBox["Strings",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"string\"\>", " ", 
      StyleBox["TemplateFileUsed",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["UndoRecordingEnabled",
@@ -439,21 +407,18 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["UndoRecordingIsActive",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {
     RowBox[{"\<\"Rhino.DocObjects.Tables.ViewTable\"\>", " ", 
      StyleBox["Views",
-      FontWeight->"Bold"], 
-     RowBox[{"  ", 
-      RowBox[{"[", 
-       RowBox[{"read", " ", "only"}], "]"}]}]}]},
+      FontWeight->"Bold"], "  ", 
+     RowBox[{"[", 
+      RowBox[{"read", " ", "only"}], "]"}]}]},
    {""},
    {Cell[BoxData[
-     RowBox[{
-      RowBox[{"\[FilledCircle]", " "}], 
+     RowBox[{"\[FilledCircle]", " ", 
       StyleBox["Methods",
        FontSize->18,
        FontWeight->"Bold",
@@ -593,8 +558,7 @@ options)\"\>"}]},
 options)\"\>"}]},
    {""},
    {Cell[BoxData[
-     RowBox[{
-      RowBox[{"\[FilledCircle]", " "}], 
+     RowBox[{"\[FilledCircle]", " ", 
       StyleBox["Events",
        FontSize->18,
        FontWeight->"Bold",
@@ -653,9 +617,8 @@ Rhino.DocObjects.RhinoObjectEventArgs e)\"\>", "\<\"]\"\>"}]},
    {
     RowBox[{
     "static", " ", "event", 
-     " ", \
-"\<\"System.EventHandler`1[Rhino.DocObjects.RhinoDeselectAllObjectsEventArgs]\
-\"\>", " ", 
+     " ", "\<\"System.EventHandler`1[Rhino.DocObjects.\
+RhinoDeselectAllObjectsEventArgs]\"\>", " ", 
      StyleBox["DeselectAllObjects",
       FontWeight->
        "Bold"], "\<\"  [arguments to delegate: \"\>", "\<\"(object sender, \
@@ -3029,7 +2992,8 @@ Znz8JNv//8uy3Sw=
   Method->{
    "SeparateBoundaries" -> "Simple", "EliminateUnusedCoordinates" -> 
     True}]], "Output",
- CellChangeTimes->{3.6683625796554823`*^9, 3.6683628302770495`*^9}]
+ CellChangeTimes->{3.6683625796554823`*^9, 3.6683628302770495`*^9, 
+  3.668365595195158*^9}]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3056,8 +3020,9 @@ Cell[BoxData[
    RowBox[{"NETObject", "[", 
     RowBox[{"Rhino", ".", "Geometry", ".", "Mesh"}], "]"}], 
    "\[RightGuillemet]"}],
-  NETLink`Objects`NETObject$892260329717761]], "Output",
- CellChangeTimes->{3.6683625885159984`*^9, 3.6683628341145267`*^9}]
+  NETLink`Objects`NETObject$728898010611713]], "Output",
+ CellChangeTimes->{3.6683625885159984`*^9, 3.6683628341145267`*^9, 
+  3.668365605053979*^9, 3.668365866329965*^9}]
 }, Open  ]],
 
 Cell["Add the object to the Rhino document\[CloseCurlyQuote]s object table:", \
@@ -3077,8 +3042,9 @@ Cell[BoxData[
   RowBox[{"\[LeftGuillemet]", 
    RowBox[{"NETObject", "[", 
     RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
-  NETLink`Objects`NETObject$10416898000814081]], "Output",
- CellChangeTimes->{3.6683627497212315`*^9, 3.668362836470051*^9}]
+  NETLink`Objects`NETObject$865202052530177]], "Output",
+ CellChangeTimes->{3.6683627497212315`*^9, 3.668362836470051*^9, 
+  3.668365634802186*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -3089,7 +3055,42 @@ Tell the document to redraw so the newly-added object is visible:\
 Cell[BoxData[
  RowBox[{"doc", "@", 
   RowBox[{"Views", "@", 
-   RowBox[{"Redraw", "[", "]"}]}]}]], "Input"]
+   RowBox[{"Redraw", "[", "]"}]}]}]], "Input"],
+
+Cell["\<\
+In fact, there is also a utility RhinoShow to add and draw an object, so the \
+preceding code can be expressed more succinctly. The function returns a \
+unique id for the object:\
+\>", "Text",
+ CellChangeTimes->{{3.668365660416565*^9, 3.6683657679904814`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"guid", "=", 
+  RowBox[{"RhinoShow", "[", 
+   RowBox[{"ToRhino", "[", "wlMesh", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6683657066534834`*^9, 3.668365745043764*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  InterpretationBox[
+   RowBox[{"\[LeftGuillemet]", 
+    RowBox[{"NETObject", "[", 
+     RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
+   NETLink`Objects`NETObject$25778514724651009], "}"}]], "Output",
+ CellChangeTimes->{3.668365716637163*^9, 3.668365771515946*^9}]
+}, Open  ]],
+
+Cell["\<\
+You can remove the object from the document and delete it with RhinoUnshow:\
+\>", "Text",
+ CellChangeTimes->{{3.668365775384597*^9, 3.668365814445792*^9}, {
+  3.668365858436618*^9, 3.6683658608233414`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"RhinoUnshow", "[", "guid", "]"}]], "Input",
+ CellChangeTimes->{{3.6683658472361517`*^9, 3.6683658523216143`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3181,7 +3182,7 @@ Cell[BoxData[
 },
 Evaluator->"RhinoAttach",
 WindowSize->{1049, 650},
-WindowMargins->{{Automatic, 6}, {Automatic, 3}},
+WindowMargins->{{Automatic, 1}, {Automatic, 3}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -3217,93 +3218,100 @@ Cell[2735, 79, 103, 2, 31, "Input"],
 Cell[2841, 83, 365, 6, 49, "Text"],
 Cell[CellGroupData[{
 Cell[3231, 93, 136, 2, 31, "Input"],
-Cell[3370, 97, 263, 6, 31, "Output"]
+Cell[3370, 97, 287, 6, 31, "Output"]
 }, Open  ]],
-Cell[3648, 106, 384, 7, 49, "Text"],
+Cell[3672, 106, 384, 7, 49, "Text"],
 Cell[CellGroupData[{
-Cell[4057, 117, 136, 2, 31, "Input"],
-Cell[4196, 121, 24058, 725, 2029, "Output"]
+Cell[4081, 117, 136, 2, 31, "Input"],
+Cell[4220, 121, 23414, 688, 2029, "Output"]
 }, Open  ]],
-Cell[28269, 849, 369, 7, 30, "Text"],
+Cell[27649, 812, 369, 7, 30, "Text"],
 Cell[CellGroupData[{
-Cell[28663, 860, 125, 2, 31, "Input"],
-Cell[28791, 864, 333, 7, 31, "Output"]
+Cell[28043, 823, 125, 2, 31, "Input"],
+Cell[28171, 827, 333, 7, 31, "Output"]
 }, Open  ]],
-Cell[29139, 874, 356, 6, 30, "Text"],
+Cell[28519, 837, 356, 6, 30, "Text"],
 Cell[CellGroupData[{
-Cell[29520, 884, 640, 13, 72, "Input"],
-Cell[30163, 899, 435, 9, 31, "Output"]
+Cell[28900, 847, 640, 13, 72, "Input"],
+Cell[29543, 862, 435, 9, 31, "Output"]
 }, Open  ]],
-Cell[30613, 911, 129, 1, 30, "Text"]
+Cell[29993, 874, 129, 1, 30, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30779, 917, 101, 1, 43, "Subsection"],
-Cell[30883, 920, 452, 10, 49, "Text"],
-Cell[31338, 932, 137, 3, 31, "Input"],
+Cell[30159, 880, 101, 1, 43, "Subsection"],
+Cell[30263, 883, 452, 10, 49, "Text"],
+Cell[30718, 895, 137, 3, 31, "Input"],
 Cell[CellGroupData[{
-Cell[31500, 939, 175, 3, 31, "Input"],
-Cell[31678, 944, 284, 7, 55, "Print"]
+Cell[30880, 902, 175, 3, 31, "Input"],
+Cell[31058, 907, 284, 7, 55, "Print"]
 }, Open  ]],
-Cell[31977, 954, 132, 1, 30, "Text"],
+Cell[31357, 917, 132, 1, 30, "Text"],
 Cell[CellGroupData[{
-Cell[32134, 959, 213, 4, 31, "Input"],
-Cell[32350, 965, 1634, 41, 72, "Output"]
+Cell[31514, 922, 213, 4, 31, "Input"],
+Cell[31730, 928, 1634, 41, 72, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34033, 1012, 125, 1, 43, "Subsection"],
+Cell[33413, 975, 125, 1, 43, "Subsection"],
 Cell[CellGroupData[{
-Cell[34183, 1017, 195, 5, 31, "Input"],
-Cell[34381, 1024, 290, 7, 31, "Output"]
+Cell[33563, 980, 195, 5, 31, "Input"],
+Cell[33761, 987, 290, 7, 31, "Output"]
 }, Open  ]],
-Cell[34686, 1034, 118, 1, 30, "Text"],
+Cell[34066, 997, 118, 1, 30, "Text"],
 Cell[CellGroupData[{
-Cell[34829, 1039, 173, 3, 31, "Input"],
-Cell[35005, 1044, 96, 1, 31, "Output"]
+Cell[34209, 1002, 173, 3, 31, "Input"],
+Cell[34385, 1007, 96, 1, 31, "Output"]
 }, Open  ]],
-Cell[35116, 1048, 265, 5, 49, "Text"],
+Cell[34496, 1011, 265, 5, 49, "Text"],
 Cell[CellGroupData[{
-Cell[35406, 1057, 170, 3, 31, "Input"],
-Cell[35579, 1062, 29128, 495, 373, "Output"]
+Cell[34786, 1020, 170, 3, 31, "Input"],
+Cell[34959, 1025, 29128, 495, 373, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[64756, 1563, 113, 1, 43, "Subsection"],
-Cell[64872, 1566, 213, 4, 30, "Text"],
-Cell[65088, 1572, 411, 11, 30, "Text"],
+Cell[64136, 1526, 113, 1, 43, "Subsection"],
+Cell[64252, 1529, 213, 4, 30, "Text"],
+Cell[64468, 1535, 411, 11, 30, "Text"],
 Cell[CellGroupData[{
-Cell[65524, 1587, 554, 15, 31, "Input"],
-Cell[66081, 1604, 85964, 1427, 406, "Output"]
+Cell[64904, 1550, 554, 15, 31, "Input"],
+Cell[65461, 1567, 85989, 1428, 406, "Output"]
 }, Open  ]],
-Cell[152060, 3034, 333, 8, 30, "Text"],
+Cell[151465, 2998, 333, 8, 30, "Text"],
 Cell[CellGroupData[{
-Cell[152418, 3046, 221, 4, 31, "Input"],
-Cell[152642, 3052, 306, 7, 31, "Output"]
+Cell[151823, 3010, 221, 4, 31, "Input"],
+Cell[152047, 3016, 353, 8, 31, "Output"]
 }, Open  ]],
-Cell[152963, 3062, 153, 2, 30, "Text"],
+Cell[152415, 3027, 153, 2, 30, "Text"],
 Cell[CellGroupData[{
-Cell[153141, 3068, 189, 4, 31, "Input"],
-Cell[153333, 3074, 286, 6, 31, "Output"]
+Cell[152593, 3033, 189, 4, 31, "Input"],
+Cell[152785, 3039, 309, 7, 31, "Output"]
 }, Open  ]],
-Cell[153634, 3083, 157, 3, 30, "Text"],
-Cell[153794, 3088, 107, 3, 31, "Input"]
+Cell[153109, 3049, 157, 3, 30, "Text"],
+Cell[153269, 3054, 107, 3, 31, "Input"],
+Cell[153379, 3059, 270, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[153674, 3068, 196, 4, 31, "Input"],
+Cell[153873, 3074, 311, 7, 31, "Output"]
+}, Open  ]],
+Cell[154199, 3084, 216, 4, 30, "Text"],
+Cell[154418, 3090, 137, 2, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[153938, 3096, 107, 1, 43, "Subsection"],
-Cell[154048, 3099, 214, 4, 30, "Text"],
-Cell[154265, 3105, 275, 5, 30, "Text"],
+Cell[154592, 3097, 107, 1, 43, "Subsection"],
+Cell[154702, 3100, 214, 4, 30, "Text"],
+Cell[154919, 3106, 275, 5, 30, "Text"],
 Cell[CellGroupData[{
-Cell[154565, 3114, 359, 7, 31, "Input"],
-Cell[154927, 3123, 127, 2, 31, "Output"]
+Cell[155219, 3115, 359, 7, 31, "Input"],
+Cell[155581, 3124, 127, 2, 31, "Output"]
 }, Open  ]],
-Cell[155069, 3128, 155, 3, 30, "Text"],
+Cell[155723, 3129, 155, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[155249, 3135, 308, 6, 31, "Input"],
-Cell[155560, 3143, 146, 2, 31, "Output"]
+Cell[155903, 3136, 308, 6, 31, "Input"],
+Cell[156214, 3144, 146, 2, 31, "Output"]
 }, Open  ]],
-Cell[155721, 3148, 816, 13, 68, "Text"],
-Cell[156540, 3163, 328, 6, 30, "Text"],
-Cell[156871, 3171, 223, 5, 31, "Input"]
+Cell[156375, 3149, 816, 13, 68, "Text"],
+Cell[157194, 3164, 328, 6, 30, "Text"],
+Cell[157525, 3172, 223, 5, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
