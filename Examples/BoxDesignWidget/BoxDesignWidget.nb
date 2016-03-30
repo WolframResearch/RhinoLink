@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     28222,        637]
-NotebookOptionsPosition[     27163,        595]
-NotebookOutlinePosition[     27566,        612]
-CellTagsIndexPosition[     27523,        609]
+NotebookDataLength[     28319,        639]
+NotebookOptionsPosition[     27261,        597]
+NotebookOutlinePosition[     27664,        614]
+CellTagsIndexPosition[     27621,        611]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,17 +33,19 @@ Cell["Drag sliders to control the size and position of a box.", "Text",
  CellChangeTimes->{{3.668171163155343*^9, 3.668171183996008*^9}}],
 
 Cell["\<\
-The \[OpenCurlyDoubleQuote]new box\[CloseCurlyDoubleQuote] button will create \
-a new box coincident with the current box. Use the sliders to \
+Click the \[OpenCurlyDoubleQuote]new box\[CloseCurlyDoubleQuote] button to \
+create a new box coincident with the current box. Use the sliders to \
 reposition/resize it.\
 \>", "Text",
- CellChangeTimes->{{3.668171196740636*^9, 3.6681712480935316`*^9}}],
+ CellChangeTimes->{{3.668171196740636*^9, 3.6681712480935316`*^9}, {
+  3.668341919524973*^9, 3.668341979280487*^9}}],
 
 Cell["\<\
 Change the box rendering by selecting from the \[OpenCurlyDoubleQuote]display \
-mode\[CloseCurlyDoubleQuote] menu.s\
+mode\[CloseCurlyDoubleQuote] menus.\
 \>", "Text",
- CellChangeTimes->{{3.668171250761012*^9, 3.668171274627941*^9}}],
+ CellChangeTimes->{{3.668171250761012*^9, 3.668171274627941*^9}, {
+  3.668342007916317*^9, 3.668342010256302*^9}}],
 
 Cell[CellGroupData[{
 
@@ -338,8 +340,8 @@ Cell[BoxData[
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`doc$$ = 
-  NETLink`Objects`NETObject$825643809898497, $CellContext`guid$$ = 
-  NETLink`Objects`NETObject$32198798889451521, $CellContext`displayModes$$ = {
+  NETLink`Objects`NETObject$807534751383553, $CellContext`guid$$ = 
+  NETLink`Objects`NETObject$25078155966414849, $CellContext`displayModes$$ = {
   "Wireframe", "Shaded", "Rendered", "Ghosted", "X-Ray", "Technical", 
    "Artistic", "Pen", "Raytraced with Neon"}}, 
   TagBox[
@@ -561,7 +563,7 @@ $CellContext`h$$]]]]]]; $CellContext`doc$$[
             $CellContext`Views[
              $CellContext`Redraw[]]]], ""}, "Options" :> {}, 
        "DefaultOptions" :> {}],
-      ImageSizeCache->{468., {163., 172.}},
+      ImageSizeCache->{42., {6., 11.}},
       SingleEvaluation->True],
      Deinitialization:>None,
      DynamicModuleValues:>{},
@@ -615,27 +617,27 @@ Cell[CellGroupData[{
 Cell[580, 22, 314, 4, 125, "Title"],
 Cell[897, 28, 127, 1, 42, "Text"],
 Cell[1027, 31, 137, 1, 42, "Text"],
-Cell[1167, 34, 257, 5, 70, "Text"],
-Cell[1427, 41, 205, 4, 42, "Text"],
+Cell[1167, 34, 310, 6, 70, "Text"],
+Cell[1480, 42, 254, 5, 42, "Text"],
 Cell[CellGroupData[{
-Cell[1657, 49, 93, 1, 87, "Section"],
-Cell[1753, 52, 222, 2, 42, "Text"]
+Cell[1759, 51, 93, 1, 87, "Section"],
+Cell[1855, 54, 222, 2, 58, "Text"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2012, 59, 92, 1, 66, "Section"],
-Cell[2107, 62, 126, 1, 42, "Text"]
+Cell[2114, 61, 92, 1, 66, "Section"],
+Cell[2209, 64, 126, 1, 42, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2270, 68, 182, 3, 87, "Section",
+Cell[2372, 70, 182, 3, 87, "Section",
  InitializationGroup->True],
-Cell[2455, 73, 111, 1, 42, "Text"],
-Cell[2569, 76, 11655, 248, 1609, "Input"]
+Cell[2557, 75, 111, 1, 58, "Text"],
+Cell[2671, 78, 11655, 248, 2252, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[14261, 329, 101, 1, 66, "Section"],
+Cell[14363, 331, 101, 1, 66, "Section"],
 Cell[CellGroupData[{
-Cell[14387, 334, 127, 2, 42, "Input"],
-Cell[14517, 338, 12606, 252, 358, "Output"]
+Cell[14489, 336, 127, 2, 42, "Input"],
+Cell[14619, 340, 12602, 252, 43, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

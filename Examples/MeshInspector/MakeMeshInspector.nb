@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13658,        367]
-NotebookOptionsPosition[     12588,        325]
-NotebookOutlinePosition[     12959,        341]
-CellTagsIndexPosition[     12916,        338]
+NotebookDataLength[     13583,        362]
+NotebookOptionsPosition[     12551,        322]
+NotebookOutlinePosition[     12922,        338]
+CellTagsIndexPosition[     12879,        335]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,11 +23,9 @@ Cell[CellGroupData[{
 Cell["Rhino Mesh Inspector", "Title",
  CellChangeTimes->{{3.6223273910542145`*^9, 3.622327396623129*^9}}],
 
-Cell[CellGroupData[{
-
 Cell["\<\
 Make a palette that gives properties and analysis of the selected Rhino mesh.\
-\>", "Chapter",
+\>", "Text",
  CellChangeTimes->{{3.6223274167928944`*^9, 3.6223274321269083`*^9}}],
 
 Cell[CellGroupData[{
@@ -321,7 +319,6 @@ Cell[BoxData[
  CellChangeTimes->{3.622330094940563*^9}]
 }, Open  ]]
 }, Open  ]]
-}, Open  ]]
 },
 Evaluator->"RhinoAttach",
 WindowSize->{932, 915},
@@ -342,31 +339,29 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 105, 1, 90, "Title"],
+Cell[688, 25, 171, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[710, 27, 174, 3, 107, "Chapter"],
-Cell[CellGroupData[{
-Cell[909, 34, 95, 1, 63, "Section"],
-Cell[1007, 37, 155, 2, 30, "Text"]
+Cell[884, 32, 95, 1, 63, "Section"],
+Cell[982, 35, 155, 2, 30, "Text"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1199, 44, 91, 1, 49, "Section"],
-Cell[1293, 47, 129, 1, 30, "Text"],
-Cell[1425, 50, 108, 1, 30, "Text"]
+Cell[1174, 42, 91, 1, 49, "Section"],
+Cell[1268, 45, 129, 1, 30, "Text"],
+Cell[1400, 48, 108, 1, 30, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1570, 56, 131, 2, 63, "Section",
+Cell[1545, 54, 131, 2, 63, "Section",
  InitializationGroup->True],
-Cell[1704, 60, 230, 5, 31, "Input"],
-Cell[1937, 67, 6770, 154, 712, "Input"],
-Cell[8710, 223, 128, 3, 31, "Input"],
-Cell[8841, 228, 880, 20, 112, "Input"],
-Cell[9724, 250, 677, 16, 52, "Input"],
-Cell[10404, 268, 1835, 40, 312, "Input"]
+Cell[1679, 58, 230, 5, 31, "Input"],
+Cell[1912, 65, 6770, 154, 712, "Input"],
+Cell[8685, 221, 128, 3, 31, "Input"],
+Cell[8816, 226, 880, 20, 112, "Input"],
+Cell[9699, 248, 677, 16, 52, "Input"],
+Cell[10379, 266, 1835, 40, 312, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12276, 313, 144, 2, 63, "Section"],
-Cell[12423, 317, 125, 3, 31, "Input"]
-}, Open  ]]
+Cell[12251, 311, 144, 2, 63, "Section"],
+Cell[12398, 315, 125, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
