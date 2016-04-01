@@ -3,13 +3,8 @@
 (* ::Text:: *)
 (*Agenda*)
 (**)
-(*- convert enum type to list, list types to enums, for example:*)
-(*	FromRhino[\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d[]]\[RightGuillemet], {"Rhino.Geometry.Point3d"}]*)
-(*	FromRhino[{*)
-(*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet],*)
-(*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet],*)
-(*		\[LeftGuillemet] NETObject[Rhino.Geometry.Point3d]\[RightGuillemet]},"Rhino.Geometry.Point3d[]"]*)
-(*- nurbs curve conversions*)
+(*- complete nurbs curve conversions*)
+(*- nurbs surfaces*)
 
 
 BeginPackage["RhinoUtilities`", {"NETLink`"}]
