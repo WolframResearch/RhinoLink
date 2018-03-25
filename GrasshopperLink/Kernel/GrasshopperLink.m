@@ -5,20 +5,22 @@ GHDeploy::usage = ""
 
 GHResult::usage = ""
 
-$GrasshopperPath::usage = ""
-$RhinoCommonPath::usage = ""
 
+$RhinoHome::usage = "$RhinoHome is the path to the installation directory of Rhino. The default is \"c:\\Program Files\\Rhino 6\". You will need to set it to another value if you have a different location."
+$GrasshopperPath::usage = "$GrasshopperPath is the path to the directory containing Grasshopper DLLs (GH_IO.dll, Grasshopper.dll). It will have a default value suitable for Rhino 6, but can be changed if necessary."
 
 Begin["`Private`"]
 
-If[!StringQ[$GrasshopperPath],
-    $GrasshopperPath = FileNameJoin[{ParentDirectory[$UserBaseDirectory],"McNeel\\Rhinoceros\\5.0\\Plug-ins\\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\\0.9.76.0"}]
+If[!StringQ[$RhinoHome],
+    $RhinoHome = "C:\\Program Files\\Rhino 6"
 ]
-If[!StringQ[$RhinoCommonPath],
-    $RhinoCommonPath = "c:\\Program Files (x86)\\Rhinoceros 5\\System\\rhinocommon.dll"
+(* The path to the directory containing Grasshopper DLLs (GH_IO.dll, Grasshopper.dll) *)
+If[!StringQ[$GrasshopperHome],
+    $GrasshopperHome = FileNameJoin[{$RhinoHome, "Plug-ins", "Grasshopper"}]
 ]
 
-$deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory],"Grasshopper", "Libraries"}]
+(* This is the directory into which GHDeploy-ed components will be placed. Grasshopper automatically loads .gha files from here. *)
+$deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory], "Grasshopper", "Libraries"}]
 
 
 $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]]
@@ -63,7 +65,7 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
                   "Initialization" -> If[initialization =!= None, ToString[initialization, InputForm], "\"\""],
                   "UseDefs" -> If[TrueQ[saveDefs], "true", "false"],
                   (* NOTE: ugly call into private CloudObject functionality. Fix. *)
-                  "Definitions" -> If[TrueQ[saveDefs], ToString[CloudObject`Private`definitionsToString[Language`ExtendedFullDefinition[func]], InputForm], ""],
+                  "Definitions" -> If[TrueQ[saveDefs], ToString[exprToStringWithSaveDefinitions[func], InputForm], ""],
                   "HeadIsSymbol" -> If[Head[func] === Symbol, "true", "false"],
                   "Func" -> ToString[func, InputForm],
                   "SendInputParams" -> StringJoin[MapIndexed[sendInputParam, inputSpec]],
@@ -211,58 +213,83 @@ readAndStoreResult[{type_String, _, _, _, accessType_}, {index_Integer}] :=
     "if (!Utils.ReadAndStoreResult(\"" <> type <> "\", " <> ToString[index-1] <> ", link, DA, " <> accessTypeName[accessType] <> ", this)) return;\n"
 
 
+(*
+    neutralContextBlock[expr] evalutes expr without any contexts on the context path,
+    to ensure symbols are serialized including their context (except System` symbols).
+*)
+Attributes[neutralContextBlock] = {HoldFirst};
+neutralContextBlock[expr_] := Block[{$ContextPath = {"System`"}, $Context = "System`"}, expr]
+
+(* Borrowed with some simplifications from internal code in the CloudObject package. *)
+exprToStringWithSaveDefinitions[expr_] :=
+    Module[{defs, defsString, exprLine},
+        defs = Language`ExtendedFullDefinition[expr];
+        defsString = If[defs =!= Language`DefinitionList[],
+            neutralContextBlock[With[{d = defs},
+                (* Language`ExtendedFullDefinition[] can be used as the LHS of an assignment to restore
+                 * all definitions. *)
+                ToString[Unevaluated[Language`ExtendedFullDefinition[] = d], InputForm,
+                    CharacterEncoding -> "PrintableASCII"]
+            ]] <> ";\n\n",
+        (* else *)
+            ""
+        ];
+        exprLine = neutralContextBlock[ToString[Unevaluated[expr], InputForm, CharacterEncoding -> "PrintableASCII"]];
+        StringTrim[defsString <> exprLine] <> "\n"
+    ]
+
+
+$filledRightTriangle = ToString[\[FilledRightTriangle]];
 
 generateComponentAssembly[componentName_String, code_String, icon_] :=
 NETBlock[
- Module[{provider, providerOptions, params, compilerResults, err, ct, scode, resFile},
+    Module[{provider, providerOptions, params, compilerResults, err, ct, scode, resFile},
      
-     resFile = generateResourcesFile[icon];
-  
-          
+        resFile = generateResourcesFile[icon];
 
-  providerOptions = NETNew["System.Collections.Generic.Dictionary`2[string, string]"];
-  providerOptions@Add["CompilerVersion", "v4.0"];
-  provider = NETNew["Microsoft.CSharp.CSharpCodeProvider", providerOptions];
-  
-  params = NETNew["System.CodeDom.Compiler.CompilerParameters"];
-  params @ ReferencedAssemblies @ Add["System.dll"];
-  params @ ReferencedAssemblies @ Add["System.Core.dll"];
-  params @ ReferencedAssemblies @ Add["System.Drawing.dll"];
-  params @ ReferencedAssemblies @ Add["System.Windows.Forms.dll"];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$GrasshopperPath, "GH_IO.dll"}]];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$GrasshopperPath, "Grasshopper.dll"}]];
-  params @ ReferencedAssemblies @ Add[$RhinoCommonPath];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Libraries", "Rhino", "Wolfram.NETLink.dll"}]];
-  params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperSupport.dll"}]];
-  
-  params@EmbeddedResources@Add[resFile];
-  
-  params@GenerateInMemory = False;
-  params@OutputAssembly = FileNameJoin[{$TemporaryDirectory, componentName <> ".gha"}];
-
-  compilerResults = provider@CompileAssemblyFromSource[params, {code}];
-  
-  provider@Dispose[];
-  DeleteFile[resFile];
-  
-  err = compilerResults@Errors;
-  ct = err@Count;
-  If[ct > 0,
-    scode = StringSplit[code, "\n"]; 
-    Print["number of errors = ", ct];
-    Print[ 
-      err[#]@ErrorText,
-        " in line ",
-        err[#]@Line,
-        StringJoin @ 
-       Insert[Characters[scode[[err[#]@Line]]], 
-        ToString[\[FilledRightTriangle]], err[#]@Column]
-            ] & /@ Range[0, ct - 1];
-    Return[$Failed]
-   ];
-
-  compilerResults@PathToAssembly
-  ]
+        providerOptions = NETNew["System.Collections.Generic.Dictionary`2[string, string]"];
+        providerOptions@Add["CompilerVersion", "v4.0"];
+        provider = NETNew["Microsoft.CSharp.CSharpCodeProvider", providerOptions];
+		  
+        params = NETNew["System.CodeDom.Compiler.CompilerParameters"];
+        params @ ReferencedAssemblies @ Add["System.dll"];
+        params @ ReferencedAssemblies @ Add["System.Core.dll"];
+        params @ ReferencedAssemblies @ Add["System.Drawing.dll"];
+        params @ ReferencedAssemblies @ Add["System.Windows.Forms.dll"];
+        params @ ReferencedAssemblies @ Add[FileNameJoin[{$GrasshopperHome, "GH_IO.dll"}]];
+        params @ ReferencedAssemblies @ Add[FileNameJoin[{$GrasshopperHome, "Grasshopper.dll"}]];
+        params @ ReferencedAssemblies @ Add[FileNameJoin[{$RhinoHome, "System", "rhinocommon.dll"}]];
+        params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Libraries", "Rhino", "Wolfram.NETLink.dll"}]];
+        params @ ReferencedAssemblies @ Add[FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperSupport.dll"}]];
+		  
+        params@EmbeddedResources@Add[resFile];
+        params@GenerateInMemory = False;
+        params@OutputAssembly = FileNameJoin[{$TemporaryDirectory, componentName <> ".gha"}];
+		
+		compilerResults = provider@CompileAssemblyFromSource[params, {code}];
+        provider@Dispose[];
+        DeleteFile[resFile];
+		  
+        err = compilerResults@Errors;
+        ct = err@Count;
+        If[ct > 0,
+            scode = StringSplit[code, "\n"];
+            Print["number of errors = ", ct];
+            Print[ 
+                "Error: ",
+                err[#]@ErrorText,
+                "\nLine: ",
+                err[#]@Line,
+                "\n",
+                StringJoin @ 
+                    Insert[Characters[scode[[err[#]@Line]]], 
+                    $filledRightTriangle, err[#]@Column]
+            ]& /@ Range[0, ct - 1];
+            Return[$Failed]
+        ];
+        
+        compilerResults@PathToAssembly
+    ]
 ]
 
 
