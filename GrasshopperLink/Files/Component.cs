@@ -9,6 +9,7 @@ using Grasshopper.Kernel.Data;
 
 using Wolfram.NETLink;
 
+
 namespace Wolfram.Grasshopper
 {
     public class `Name` : GH_Component
@@ -90,8 +91,8 @@ namespace Wolfram.Grasshopper
             
             // Read the result(s) and store them in the DA object.
             ILinkMark mark = link.CreateMark();
-            // TODO: ghREsultCount is not used, but if we are going to allow multiple outputs, then we have to protect against
-            // users specifying more than one, but only one arrives. This will hang reading the seocnd one. 
+            // TODO: ghResultCount is not used, but if we are going to allow multiple outputs, then we have to protect against
+            // users specifying more than one, but only one arrives. This will hang reading the second one. 
             int ghResultCount = 0;
             bool isGHResult = false;
             try {
@@ -132,8 +133,6 @@ namespace Wolfram.Grasshopper
                 System.Resources.ResourceManager rm = new System.Resources.ResourceManager("gh", typeof(`Name`).Assembly);
                 byte[] array = (byte[]) rm.GetObject("Icon");
                 return new System.Drawing.Bitmap(new System.IO.MemoryStream(array));
-                //return (System.Drawing.Bitmap) obj;
-                //return obj ==null ? null : new System.Drawing.Bitmap(@"C:\Users\tgayley\Documents\workspace\GrasshopperLink\Projects\WolframGrasshopperComponents\Resources\spikeyIcon.png");
             }
         }
 
