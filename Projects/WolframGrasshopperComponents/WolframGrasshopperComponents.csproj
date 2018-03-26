@@ -10,9 +10,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WolframGrasshopperComponents</RootNamespace>
     <AssemblyName>WolframGrasshopperComponents</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,30 +40,36 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GH_IO">
-      <HintPath>..\WolframGrasshopperSupport\bin\Debug\GH_IO.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
     </Reference>
     <Reference Include="Grasshopper">
-      <HintPath>..\WolframGrasshopperSupport\bin\Debug\Grasshopper.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
     </Reference>
     <Reference Include="RhinoCommon">
-      <HintPath>..\WolframGrasshopperSupport\bin\Debug\RhinoCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\System\RhinoCommon.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\Documents\workspace\GrasshopperLink\GrasshopperLink\Files\Wolfram.NETLink.dll</HintPath>
+    <Reference Include="Wolfram.NETLink">
+      <HintPath>..\..\GrasshopperLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
     </Reference>
     <Reference Include="WolframGrasshopperSupport">
       <HintPath>..\WolframGrasshopperSupport\bin\Debug\WolframGrasshopperSupport.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ToRhinoPoint3dList.cs" />
     <Compile Include="WolframF.cs" />
     <Compile Include="WolframFxy.cs" />
@@ -75,6 +82,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +110,7 @@ Erase "$(TargetPath)"</PostBuildEvent>
     </StartArguments>
     <StartAction>Program</StartAction>
     <StartProgram>c:\Program Files (x86)\Rhinoceros 5\System\Rhino4.exe</StartProgram>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
@@ -111,5 +120,6 @@ Erase "$(TargetPath)"</PostBuildEvent>
     <StartArguments>
     </StartArguments>
     <StartAction>Program</StartAction>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 </Project>

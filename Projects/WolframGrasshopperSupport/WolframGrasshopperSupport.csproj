@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WolframGrasshopperSupport</RootNamespace>
     <AssemblyName>WolframGrasshopperSupport</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,19 +31,26 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GH_IO">
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_IO.dll</HintPath>
+    <Reference Include="GH_IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a29997d2e6b4f97, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
     </Reference>
-    <Reference Include="GH_Util">
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_Util.dll</HintPath>
+    <Reference Include="GH_Util, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_Util.dll</HintPath>
     </Reference>
-    <Reference Include="Grasshopper">
-      <HintPath>C:\Users\tgayley\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Grasshopper.dll</HintPath>
+    <Reference Include="Grasshopper, Version=1.0.0.20, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="RhinoCommon">
-      <HintPath>C:\Program Files (x86)\Rhinoceros 5\System\RhinoCommon.dll</HintPath>
+    <Reference Include="RhinoCommon, Version=5.1.30000.13, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhino 6\System\RhinoCommon.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,9 +59,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\tgayley\Documents\workspace\GrasshopperLink\GrasshopperLink\Files\Wolfram.NETLink.dll</HintPath>
+    <Reference Include="Wolfram.NETLink">
+      <HintPath>..\..\GrasshopperLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
