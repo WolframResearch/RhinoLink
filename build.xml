@@ -1,4 +1,4 @@
-<project name='GrasshopperLink' default='build' basedir='.'> 
+<project name='RhinoLink' default='build' basedir='.'> 
 
     <property file="build.properties"/>
 
@@ -19,13 +19,13 @@
 
     <target name='build' depends='clean'>
 
-        <mkdir dir='${dist}/GrasshopperLink' />
-        <copy todir='${dist}/GrasshopperLink'>
-            <fileset dir='${basedir}/GrasshopperLink'>
+        <mkdir dir='${dist}/RhinoLink' />
+        <copy todir='${dist}/RhinoLink'>
+            <fileset dir='${basedir}/RhinoLink'>
             </fileset>
         </copy>
 
-    	<paclet src="${dist}/GrasshopperLink" dest="${dist}"/>
+    	<paclet src="${dist}/RhinoLink" dest="${dist}"/>
     	
     </target>
 
