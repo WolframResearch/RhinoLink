@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wolfram.Grasshopper.Support 0.1")]
-[assembly: AssemblyDescription("Support classes for Wolfram GrasshopperLink")]
+[assembly: AssemblyTitle("Wolfram.Rhino.Support 0.1")]
+[assembly: AssemblyDescription("Support classes for Wolfram RhinoLink")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Wolfram Research, Inc.")]
-[assembly: AssemblyProduct("Wolfram GrasshopperLink")]
+[assembly: AssemblyProduct("Wolfram RhinoLink")]
 [assembly: AssemblyCopyright("Copyright (c) 2014, Wolfram Research, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21295,        513]
-NotebookOptionsPosition[     20176,        471]
-NotebookOutlinePosition[     20550,        487]
-CellTagsIndexPosition[     20507,        484]
+NotebookDataLength[     23651,        551]
+NotebookOptionsPosition[     21476,        508]
+NotebookOutlinePosition[     21856,        525]
+CellTagsIndexPosition[     21813,        522]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,7 +23,9 @@ Cell[CellGroupData[{
 Cell["Rheotomic Surface Component", "Title",
  CellChangeTimes->{{3.6220218177252216`*^9, 3.622021823871385*^9}, {
   3.6223970477593*^9, 3.6223970606597557`*^9}, {3.622417383581133*^9, 
-  3.622417386685414*^9}, {3.6275003096027803`*^9, 3.627500312644785*^9}}],
+  3.622417386685414*^9}, {3.6275003096027803`*^9, 
+  3.627500312644785*^9}},ExpressionUUID->"d0e3776b-d912-4d4c-ad67-\
+6857a00d5615"],
 
 Cell[CellGroupData[{
 
@@ -32,55 +34,81 @@ How to make a Grasshopper Component that builds NURBS rheotomic surfaces\
 \>", "Chapter",
  CellChangeTimes->{{3.622021828660401*^9, 3.6220218914319954`*^9}, {
   3.6223970803458195`*^9, 3.622397098175791*^9}, {3.622417378823316*^9, 
-  3.6224174129548035`*^9}, {3.627500325052208*^9, 3.6275003343654246`*^9}}],
+  3.6224174129548035`*^9}, {3.627500325052208*^9, 
+  3.6275003343654246`*^9}},ExpressionUUID->"8baead43-6e1f-47bb-8ee8-\
+fad78c7d37f4"],
 
 Cell[CellGroupData[{
 
 Cell["Agenda", "Section",
- CellChangeTimes->{{3.6220555451147656`*^9, 3.62205554591033*^9}}],
+ CellChangeTimes->{{3.6220555451147656`*^9, 
+  3.62205554591033*^9}},ExpressionUUID->"06ba3a11-1eb5-4362-8b67-\
+6c2a488020b7"],
 
 Cell["calculate extent automatically", "Text",
- CellChangeTimes->{{3.6275153793339567`*^9, 3.627515385402367*^9}}],
+ CellChangeTimes->{{3.6275153793339567`*^9, 
+  3.627515385402367*^9}},ExpressionUUID->"b0d56b58-9b52-4028-9d59-\
+f5801a5f0cb4"],
 
 Cell["add cyllinder posts automatically", "Text",
- CellChangeTimes->{{3.627515363811929*^9, 3.6275153697399397`*^9}}],
+ CellChangeTimes->{{3.627515363811929*^9, 
+  3.6275153697399397`*^9}},ExpressionUUID->"a067e7e1-f2fc-4386-a154-\
+33dc73f09274"],
 
 Cell["add linear elements and walls", "Text",
- CellChangeTimes->{{3.627515371549543*^9, 3.6275154172264233`*^9}}]
+ CellChangeTimes->{{3.627515371549543*^9, 
+  3.6275154172264233`*^9}},ExpressionUUID->"6d61bdbc-8395-4f78-a481-\
+65183a1cc64a"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Setup", "Section",
- CellChangeTimes->{{3.6224122707815495`*^9, 3.62241227117153*^9}}],
+ CellChangeTimes->{{3.6224122707815495`*^9, 
+  3.62241227117153*^9}},ExpressionUUID->"44eda2c5-d901-4359-ac36-\
+3612318e99d2"],
 
 Cell["Start Rhino.", "Text",
- CellChangeTimes->{{3.622412279314312*^9, 3.6224122831517153`*^9}}],
+ CellChangeTimes->{{3.622412279314312*^9, 
+  3.6224122831517153`*^9}},ExpressionUUID->"61787d27-0e4f-4441-84e0-\
+3675507bbd9d"],
 
 Cell["Execute WolframStartScripting.", "Text",
- CellChangeTimes->{{3.622412286942321*^9, 3.6224123136013536`*^9}}],
+ CellChangeTimes->{{3.622412286942321*^9, 
+  3.6224123136013536`*^9}},ExpressionUUID->"920fe6af-94a2-4326-ba6e-\
+446c7f9d6ba6"],
 
 Cell[BoxData[
  RowBox[{"<<", 
-  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\GrasshopperLink\\\\Packages\\\\\
+  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\RhinoLink\\\\Packages\\\\\
 RhinoUtilities.m\>\""}]], "Input",
- CellChangeTimes->{{3.622413152864524*^9, 3.622413163050932*^9}}]
+ CellChangeTimes->{{3.622413152864524*^9, 3.622413163050932*^9}, {
+  3.7314373872615337`*^9, 
+  3.731437387674273*^9}},ExpressionUUID->"42d2ccef-5223-4cd1-b737-\
+1f838c8477db"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Grasshopper Component", "Section",
  CellChangeTimes->{{3.6209345545324335`*^9, 3.620934555078434*^9}, {
-  3.622023059886774*^9, 3.622023063958542*^9}}],
+  3.622023059886774*^9, 
+  3.622023063958542*^9}},ExpressionUUID->"f863c00e-9b36-41b5-b6f9-\
+cf522812e277"],
 
 Cell["\<\
 Evaluate this code to install a new component in Grasshopper.\
 \>", "Text",
- CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}}],
+ CellChangeTimes->{{3.6224122419387493`*^9, 
+  3.6224122640114965`*^9}},ExpressionUUID->"00b83509-52c7-4251-b255-\
+cd34c745d43f"],
 
 Cell[BoxData[
- RowBox[{"<<", "GrasshopperLink`"}]], "Input",
- CellChangeTimes->{{3.6204200087388496`*^9, 3.620420012657074*^9}}],
+ RowBox[{"<<", "RhinoLink`"}]], "Input",
+ CellChangeTimes->{{3.6204200087388496`*^9, 3.620420012657074*^9}, {
+  3.7314373930824757`*^9, 
+  3.731437393434304*^9}},ExpressionUUID->"f29423a9-d5a3-43ce-b88d-\
+bbdba2bfd306"],
 
 Cell[BoxData[
  RowBox[{
@@ -195,7 +223,8 @@ Cell[BoxData[
                 RowBox[{
                  RowBox[{"MakeNETObject", "[", 
                   RowBox[{
-                   RowBox[{"WolframScriptingPlugIn`ToRhinoPoint3dArray", "[", 
+                   RowBox[{
+                   "WolframScriptingPlugIn`ToRhinoPoint3dArray", "[", 
                     RowBox[{"Flatten", "[", 
                     RowBox[{
                     RowBox[{"Table", "[", 
@@ -236,6 +265,7 @@ Cell[BoxData[
           RowBox[{
            RowBox[{"duplicate", " ", "and", " ", "translate", " ", "n"}], "-", 
            RowBox[{"1", " ", "times"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+         
          RowBox[{"Join", "[", "\[IndentingNewLine]", 
           RowBox[{"nurbs", ",", "\[IndentingNewLine]", 
            RowBox[{"Flatten", "[", 
@@ -282,7 +312,8 @@ Cell[BoxData[
    3.6274940456204195`*^9, 3.6274941861186666`*^9}, {3.6274942993430653`*^9, 
    3.6274943377085333`*^9}, {3.627494384128615*^9, 3.6274944003863435`*^9}, {
    3.6274945429444947`*^9, 3.627494544020897*^9}, 3.6274952486533375`*^9, 
-   3.627500457543642*^9}],
+   3.627500457543642*^9},ExpressionUUID->"fc22206b-8c56-4f76-9629-\
+243efd11c0e0"],
 
 Cell[BoxData[
  RowBox[{" ", 
@@ -300,7 +331,8 @@ Cell[BoxData[
          RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}], ",", 
     RowBox[{"n_:", "1"}], ",", " ", 
     RowBox[{"\[Delta]_:", ".1"}], ",", 
-    RowBox[{"\[Epsilon]_:", "0.0001"}]}], " ", "*)"}]}]], "Input"],
+    RowBox[{"\[Epsilon]_:", "0.0001"}]}], " ", "*)"}]}]], "Input",ExpressionUU\
+ID->"6e94d16e-283b-416e-b62e-e6668e76f1c7"],
 
 Cell[BoxData[
  RowBox[{
@@ -355,7 +387,8 @@ Cell[BoxData[
    3.6275132855402784`*^9, 3.6275132942450943`*^9}, {3.627513822555622*^9, 
    3.6275138348952436`*^9}, {3.627513886687334*^9, 3.6275139123493795`*^9}, {
    3.6275140352931957`*^9, 3.627514044809212*^9}, {3.6275141184413414`*^9, 
-   3.6275141236985507`*^9}}],
+   3.6275141236985507`*^9}},ExpressionUUID->"19549e03-1665-459a-8c7b-\
+263b81896a1b"],
 
 Cell[BoxData[
  RowBox[{"GHDeploy", "[", 
@@ -444,14 +477,16 @@ Cell[BoxData[
    3.6275113152056174`*^9}, 3.6275114879603205`*^9, {3.6275117016962967`*^9, 
    3.627511831535324*^9}, {3.627511867228187*^9, 3.627511872812997*^9}, {
    3.6275128339594855`*^9, 3.6275129399372716`*^9}, {3.6275137257262516`*^9, 
-   3.627513763977519*^9}}],
+   3.627513763977519*^9}},ExpressionUUID->"d76f7738-e553-4062-88be-\
+d0cadc360d45"],
 
 Cell["\<\
 Execute GrasshopperUnloadPlugin, then Grasshopper to restart and pick up the \
 new component. \
 \>", "Text",
  CellChangeTimes->{{3.6224123331005917`*^9, 3.6224123807062683`*^9}, 
-   3.622713009142501*^9}],
+   3.622713009142501*^9},ExpressionUUID->"4e728ea4-c7fd-4dbc-b4d3-\
+97edf7ca2a43"],
 
 Cell[TextData[{
  "The new component is in the Wolfram tools tab with this icon: ",
@@ -460,19 +495,22 @@ Cell[TextData[{
    {RGBColor[0, 1, 0], SphereBox[{0, 0, 0}]},
    Boxed->False,
    ImageSize->{20, 20}]],
-  CellChangeTimes->{3.668185079036676*^9}]
+  CellChangeTimes->{3.668185079036676*^9},ExpressionUUID->
+  "7b1e57a7-8cdf-46ce-aaf4-3ddb7f099c1c"]
 }], "Text",
  CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
   3.6224129343927927`*^9, 3.622412935515964*^9}, {3.6681850849176497`*^9, 
-  3.668185090408659*^9}}]
+  3.668185090408659*^9}},ExpressionUUID->"8045a2ba-4231-486e-a540-\
+b3c0c0fc5589"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 Evaluator->"RhinoAttach",
 WindowSize->{950, 615},
-WindowMargins->{{Automatic, -13}, {-43, Automatic}},
-FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+WindowMargins->{{Automatic, 30}, {Automatic, 66}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -487,31 +525,31 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 258, 3, 90, "Title"],
+Cell[580, 22, 318, 5, 98, "Title",ExpressionUUID->"d0e3776b-d912-4d4c-ad67-6857a00d5615"],
 Cell[CellGroupData[{
-Cell[863, 29, 317, 5, 107, "Chapter"],
+Cell[923, 31, 377, 7, 117, "Chapter",ExpressionUUID->"8baead43-6e1f-47bb-8ee8-fad78c7d37f4"],
 Cell[CellGroupData[{
-Cell[1205, 38, 92, 1, 63, "Section"],
-Cell[1300, 41, 114, 1, 30, "Text"],
-Cell[1417, 44, 117, 1, 30, "Text"],
-Cell[1537, 47, 113, 1, 30, "Text"]
+Cell[1325, 42, 152, 3, 67, "Section",ExpressionUUID->"06ba3a11-1eb5-4362-8b67-6c2a488020b7"],
+Cell[1480, 47, 174, 3, 30, "Text",ExpressionUUID->"b0d56b58-9b52-4028-9d59-f5801a5f0cb4"],
+Cell[1657, 52, 177, 3, 30, "Text",ExpressionUUID->"a067e7e1-f2fc-4386-a154-33dc73f09274"],
+Cell[1837, 57, 173, 3, 30, "Text",ExpressionUUID->"6d61bdbc-8395-4f78-a481-65183a1cc64a"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1687, 53, 91, 1, 49, "Section"],
-Cell[1781, 56, 96, 1, 30, "Text"],
-Cell[1880, 59, 114, 1, 30, "Text"],
-Cell[1997, 62, 203, 4, 31, "Input"]
+Cell[2047, 65, 151, 3, 53, "Section",ExpressionUUID->"44eda2c5-d901-4359-ac36-3612318e99d2"],
+Cell[2201, 70, 156, 3, 35, "Text",ExpressionUUID->"61787d27-0e4f-4441-84e0-3675507bbd9d"],
+Cell[2360, 75, 174, 3, 35, "Text",ExpressionUUID->"920fe6af-94a2-4326-ba6e-446c7f9d6ba6"],
+Cell[2537, 80, 308, 7, 30, "Input",ExpressionUUID->"42d2ccef-5223-4cd1-b737-1f838c8477db"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2237, 71, 157, 2, 63, "Section"],
-Cell[2397, 75, 155, 3, 30, "Text"],
-Cell[2555, 80, 128, 2, 31, "Input"],
-Cell[2686, 84, 9010, 200, 652, "Input"],
-Cell[11699, 286, 504, 16, 31, "Input"],
-Cell[12206, 304, 2890, 53, 172, "Input"],
-Cell[15099, 359, 4389, 87, 312, "Input"],
-Cell[19491, 448, 214, 5, 30, "Text"],
-Cell[19708, 455, 428, 11, 35, "Text"]
+Cell[2882, 92, 217, 4, 67, "Section",ExpressionUUID->"f863c00e-9b36-41b5-b6f9-cf522812e277"],
+Cell[3102, 98, 215, 5, 35, "Text",ExpressionUUID->"00b83509-52c7-4251-b255-cd34c745d43f"],
+Cell[3320, 105, 233, 5, 30, "Input",ExpressionUUID->"f29423a9-d5a3-43ce-b88d-bbdba2bfd306"],
+Cell[3556, 112, 9097, 203, 682, "Input",ExpressionUUID->"fc22206b-8c56-4f76-9629-243efd11c0e0"],
+Cell[12656, 317, 561, 17, 30, "Input",ExpressionUUID->"6e94d16e-283b-416e-b62e-e6668e76f1c7"],
+Cell[13220, 336, 2947, 54, 178, "Input",ExpressionUUID->"19549e03-1665-459a-8c7b-263b81896a1b"],
+Cell[16170, 392, 4446, 88, 325, "Input",ExpressionUUID->"d76f7738-e553-4062-88be-d0cadc360d45"],
+Cell[20619, 482, 271, 6, 35, "Text",ExpressionUUID->"4e728ea4-c7fd-4dbc-b4d3-97edf7ca2a43"],
+Cell[20893, 490, 543, 13, 38, "Text",ExpressionUUID->"8045a2ba-4231-486e-a540-b3c0c0fc5589"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -519,4 +557,3 @@ Cell[19708, 455, 428, 11, 35, "Text"]
 ]
 *)
 
-(* End of internal cache information *)

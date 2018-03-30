@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    167459,       3421]
-NotebookOptionsPosition[    163437,       3285]
-NotebookOutlinePosition[    163808,       3301]
-CellTagsIndexPosition[    163765,       3298]
+NotebookDataLength[    176403,       3568]
+NotebookOptionsPosition[    168233,       3431]
+NotebookOutlinePosition[    168612,       3448]
+CellTagsIndexPosition[    168569,       3445]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,35 +23,49 @@ Cell[CellGroupData[{
 Cell["\[OpenCurlyDoubleQuote]Manual\[CloseCurlyDoubleQuote] Interaction with \
 Rhino Objects", "Title",
  CellChangeTimes->{{3.668356590560467*^9, 3.6683566019535503`*^9}, {
-  3.668364120250911*^9, 3.66836412340201*^9}}],
+  3.668364120250911*^9, 
+  3.66836412340201*^9}},ExpressionUUID->"6e6ba443-4ebe-4e79-9d63-\
+1d834872572c"],
 
 Cell["How to use NETLink to talk to objects in Rhino.", "Text",
  CellChangeTimes->{{3.668356604964215*^9, 3.6683566218433657`*^9}, {
-  3.668357760670825*^9, 3.66835776157559*^9}}],
+  3.668357760670825*^9, 
+  3.66835776157559*^9}},ExpressionUUID->"0bfb8b2d-4dfd-4914-80c6-\
+a2f2cef0c596"],
 
 Cell[CellGroupData[{
 
 Cell["Setup", "Section",
- CellChangeTimes->{{3.6683566297058663`*^9, 3.6683566301582727`*^9}}],
+ CellChangeTimes->{{3.6683566297058663`*^9, 
+  3.6683566301582727`*^9}},ExpressionUUID->"d8131a66-6b41-4630-8fae-\
+8aef994f85c0"],
 
 Cell["In Rhino, execute WolframStartScripting.", "Text",
- CellChangeTimes->{3.6683568415958333`*^9}],
+ CellChangeTimes->{
+  3.6683568415958333`*^9},ExpressionUUID->"cd9edec1-7b69-4b9f-860c-\
+ac377446b98f"],
 
 Cell["Open the file AssortedMeshes.3dm in Rhino.", "Text",
  CellChangeTimes->{{3.6683566493909273`*^9, 3.6683566592502537`*^9}, {
-  3.6683567102615876`*^9, 3.6683567166575875`*^9}}]
+  3.6683567102615876`*^9, 
+  3.6683567166575875`*^9}},ExpressionUUID->"3b7a5fe1-ba33-43c5-97fa-\
+6424712bb412"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Inspection", "Section",
- CellChangeTimes->{{3.6683567442069063`*^9, 3.6683567460008717`*^9}}],
+ CellChangeTimes->{{3.6683567442069063`*^9, 
+  3.6683567460008717`*^9}},ExpressionUUID->"e703719c-1c4f-4fcb-9298-\
+dcc47dd215ae"],
 
 Cell[CellGroupData[{
 
 Cell["Notebook\[CloseCurlyQuote]s Kernel: RhinoAttach", "Subsection",
  CellChangeTimes->{{3.6683604805074453`*^9, 3.668360482816245*^9}, {
-  3.668361256889822*^9, 3.66836126010336*^9}}],
+  3.668361256889822*^9, 
+  3.66836126010336*^9}},ExpressionUUID->"a8168806-f4d6-45f8-b524-\
+dbe6737b88f7"],
 
 Cell["\<\
 Note that this notebook\[CloseCurlyQuote]s kernel is RhinoAttach. If the \
@@ -60,13 +74,17 @@ communicate with Rhino. Select Evaluation/Notebook\[CloseCurlyQuote]s \
 Kernel/RhinoAttach to set it.\
 \>", "Text",
  CellChangeTimes->{{3.6683569338041954`*^9, 3.668356968731476*^9}, {
-  3.6683604350672293`*^9, 3.6683604637082453`*^9}}]
+  3.6683604350672293`*^9, 
+  3.6683604637082453`*^9}},ExpressionUUID->"335306c3-77a6-43c4-8834-\
+a59a1ed6f5c6"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[".NET Objects", "Subsection",
- CellChangeTimes->{{3.6683604987126455`*^9, 3.668360501505045*^9}}],
+ CellChangeTimes->{{3.6683604987126455`*^9, 
+  3.668360501505045*^9}},ExpressionUUID->"792c841a-be0f-4bef-89ce-\
+c7550bc7128f"],
 
 Cell["\<\
 To talk to objects that exist in Rhino, you have to load the corresponding \
@@ -75,11 +93,14 @@ blue (undefined) until you load the definition of RhinoDoc:\
 \>", "Text",
  CellChangeTimes->{{3.668357007123048*^9, 3.6683570103054476`*^9}, {
   3.6683571681196775`*^9, 3.6683571839998665`*^9}, {3.668357224558116*^9, 
-  3.6683572595783195`*^9}, {3.6683641549285994`*^9, 3.6683641556461763`*^9}}],
+  3.6683572595783195`*^9}, {3.6683641549285994`*^9, 
+  3.6683641556461763`*^9}},ExpressionUUID->"5903b529-b953-42d7-9802-\
+8fdb4a14fe1d"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}], ";"}]], "Input"],
+  RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}], ";"}]], "Input",\
+ExpressionUUID->"13eb9711-861b-47e9-b5c0-836248a3efa7"],
 
 Cell["\<\
 The root object for most queries is the active Rhino document. This sets \
@@ -87,13 +108,17 @@ The root object for most queries is the active Rhino document. This sets \
 (.NET objects are indicated by \[LeftGuillemet] \[RightGuillemet] ):\
 \>", "Text",
  CellChangeTimes->{{3.6683573175296545`*^9, 3.6683574060958676`*^9}, {
-  3.668364172946048*^9, 3.6683641732736416`*^9}}],
+  3.668364172946048*^9, 
+  3.6683641732736416`*^9}},ExpressionUUID->"750f8c06-5ce0-41d5-b4df-\
+f80f93045da7"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"doc", "=", "RhinoDoc`ActiveDoc"}]], "Input",
- CellChangeTimes->{{3.668357265662008*^9, 3.6683572686102567`*^9}}],
+ CellChangeTimes->{{3.668357265662008*^9, 
+  3.6683572686102567`*^9}},ExpressionUUID->"60ea30fa-5bad-4314-9c2d-\
+12e590a9f9de"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -102,7 +127,8 @@ Cell[BoxData[
     RowBox[{"Rhino", ".", "RhinoDoc"}], "]"}], "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$108120919506945]], "Output",
  CellChangeTimes->{3.668357310650363*^9, 3.6683656239605336`*^9, 
-  3.6684235986881104`*^9}]
+  3.6684235986881104`*^9},ExpressionUUID->"f23d5dbd-9b50-4cfb-aac8-\
+ea6c1ab3764c"]
 }, Open  ]],
 
 Cell["\<\
@@ -112,13 +138,16 @@ around a strange set of objects:\
 \>", "Text",
  CellChangeTimes->{{3.668357350248709*^9, 3.6683573553967094`*^9}, {
   3.6683574121639566`*^9, 3.6683574319125433`*^9}, {3.6683593940922318`*^9, 
-  3.668359439798829*^9}}],
+  3.668359439798829*^9}},ExpressionUUID->"d44f593a-02c3-4120-8cf3-\
+d7bcc9a16e28"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"NETTypeInfo", "[", "doc", "]"}]], "Input",
- CellChangeTimes->{{3.6683593618948636`*^9, 3.6683593660443306`*^9}}],
+ CellChangeTimes->{{3.6683593618948636`*^9, 
+  3.6683593660443306`*^9}},ExpressionUUID->"26b873d1-a7c2-4576-b6e3-\
+a11a023882e0"],
 
 Cell[BoxData[GridBox[{
    {Cell[BoxData[
@@ -126,7 +155,8 @@ Cell[BoxData[GridBox[{
       StyleBox["Type",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "c771fb18-cf9d-4868-a6fe-e92b22abf25d"]},
    {
     RowBox[{"class", " ", 
      StyleBox["\<\"Rhino.RhinoDoc\"\>",
@@ -157,7 +187,8 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
       StyleBox["Properties",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "0a9dde29-b477-40dd-ad5a-967e20857824"]},
    {
     RowBox[{"static", " ", "\<\"Rhino.RhinoDoc\"\>", " ", 
      StyleBox["ActiveDoc",
@@ -423,7 +454,8 @@ Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530\"\>"},
       StyleBox["Methods",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "d1633f2e-4c91-4c82-8386-1579e1089486"]},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["AddCustomUndoEvent",
@@ -546,7 +578,8 @@ options)\"\>"}]},
    {
     RowBox[{"\<\"void\"\>", " ", 
      StyleBox["SetCustomMeshingParameters",
-      FontWeight->"Bold"], "\<\"(Rhino.Geometry.MeshingParameters mp)\"\>"}]},
+      FontWeight->
+       "Bold"], "\<\"(Rhino.Geometry.MeshingParameters mp)\"\>"}]},
    {
     RowBox[{"virtual", " ", "\<\"string\"\>", " ", 
      StyleBox["ToString",
@@ -563,7 +596,8 @@ options)\"\>"}]},
       StyleBox["Events",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "1453f3db-b588-4b59-b6d0-97d9880b3237"]},
    {
     RowBox[{
     "static", " ", "event", 
@@ -719,7 +753,8 @@ RhinoModifyObjectAttributesEventArgs]\"\>", " ",
      StyleBox["ModifyObjectAttributes",
       FontWeight->
        "Bold"], "\<\"  [arguments to delegate: \"\>", "\<\"(object sender, \
-Rhino.DocObjects.RhinoModifyObjectAttributesEventArgs e)\"\>", "\<\"]\"\>"}]},
+Rhino.DocObjects.RhinoModifyObjectAttributesEventArgs e)\"\>", \
+"\<\"]\"\>"}]},
    {
     RowBox[{
     "static", " ", "event", 
@@ -808,7 +843,7 @@ Rhino.DocObjects.RhinoObjectEventArgs e)\"\>", "\<\"]\"\>"}]}
    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
     "RowsIndexed" -> {}}]], "Output",
  CellChangeTimes->{3.6683593668243055`*^9},
- AutoSpacing->False]
+ AutoSpacing->False,ExpressionUUID->"743dd139-4018-49a2-9343-c60c5b483f09"]
 }, Open  ]],
 
 Cell["\<\
@@ -818,13 +853,16 @@ in the document:\
 \>", "Text",
  CellChangeTimes->{{3.668359526080447*^9, 3.6683595500727863`*^9}, {
   3.6683595986655397`*^9, 3.668359629489728*^9}, {3.6683641986075544`*^9, 
-  3.6683642306337385`*^9}}],
+  3.6683642306337385`*^9}},ExpressionUUID->"4fbde670-cea0-4cce-b7d5-\
+25536e080ef8"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"doc", "@", "Objects"}]], "Input",
- CellChangeTimes->{{3.668359462480647*^9, 3.6683595175942106`*^9}}],
+ CellChangeTimes->{{3.668359462480647*^9, 
+  3.6683595175942106`*^9}},ExpressionUUID->"fbd5219b-ebf7-40fe-9d1c-\
+dc6c2f7559a0"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -834,7 +872,9 @@ Cell[BoxData[
     "]"}], "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$973088325894145]], "Output",
  CellChangeTimes->{{3.6683594931962795`*^9, 3.6683595181869993`*^9}, 
-   3.6684236131488466`*^9, 3.6684236436770678`*^9}]
+   3.6684236131488466`*^9, 
+   3.6684236436770678`*^9},ExpressionUUID->"da8ed3d1-9ef3-48bd-bd7f-\
+e7c39930431b"]
 }, Open  ]],
 
 Cell["\<\
@@ -843,7 +883,9 @@ little messy. This gets the first object:\
 \>", "Text",
  CellChangeTimes->{{3.6683600929818316`*^9, 3.6683601204211764`*^9}, {
   3.668360244063757*^9, 3.668360248665816*^9}, {3.668360578488037*^9, 
-  3.6683606155366116`*^9}, {3.668361295108876*^9, 3.668361295342861*^9}}],
+  3.6683606155366116`*^9}, {3.668361295108876*^9, 
+  3.668361295342861*^9}},ExpressionUUID->"41c35d7a-834c-4ea1-b26f-\
+1ecceac64f3b"],
 
 Cell[CellGroupData[{
 
@@ -852,7 +894,8 @@ Cell[BoxData[{
   RowBox[{"enumerator", "=", 
    RowBox[{"doc", "@", 
     RowBox[{"Objects", "@", 
-     RowBox[{"GetEnumerator", "[", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+     RowBox[{"GetEnumerator", "[", "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"enumerator", "@", 
    RowBox[{"MoveNext", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
@@ -860,7 +903,9 @@ Cell[BoxData[{
  CellChangeTimes->{{3.6683598327962008`*^9, 3.6683598399407716`*^9}, {
    3.668360152758733*^9, 3.668360160277643*^9}, 3.6683602179490223`*^9, {
    3.6683602856534944`*^9, 3.668360298086535*^9}, {3.6683605381481943`*^9, 
-   3.668360543857538*^9}, {3.668361299024225*^9, 3.668361302097228*^9}}],
+   3.668360543857538*^9}, {3.668361299024225*^9, 
+   3.668361302097228*^9}},ExpressionUUID->"750603f8-f9bf-484c-8c0f-\
+9f327fb153cc"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -869,17 +914,23 @@ Cell[BoxData[
     RowBox[{"Rhino", ".", "DocObjects", ".", "MeshObject"}], "]"}], 
    "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$675394848030721]], "Output",
- CellChangeTimes->{3.6684236828162136`*^9}]
+ CellChangeTimes->{
+  3.6684236828162136`*^9},ExpressionUUID->"b6e03bbb-f734-40ed-92e5-\
+01489503eebd"]
 }, Open  ]],
 
 Cell["But there\[CloseCurlyQuote]s an easier way...", "Text",
- CellChangeTimes->{{3.668364261567747*^9, 3.6683642671680036`*^9}}]
+ CellChangeTimes->{{3.668364261567747*^9, 
+  3.6683642671680036`*^9}},ExpressionUUID->"182a2cdd-3431-40f0-998c-\
+6c17090869ea"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["RhinoUtilities", "Subsection",
- CellChangeTimes->{{3.668360735770755*^9, 3.66836073797027*^9}}],
+ CellChangeTimes->{{3.668360735770755*^9, 
+  3.66836073797027*^9}},ExpressionUUID->"ebe98518-6d9c-42e3-84ba-\
+fab58f3bfaa8"],
 
 Cell[TextData[{
  "Because working with enumerators is messy, the function RhinoDocObjects, \
@@ -891,19 +942,25 @@ utilities that eases working with Rhino from ",
 }], "Text",
  CellChangeTimes->{{3.668360311689561*^9, 3.668360344558339*^9}, {
   3.668360747673097*^9, 3.6683607915230103`*^9}, {3.668364274874206*^9, 
-  3.668364341904708*^9}}],
+  3.668364341904708*^9}},ExpressionUUID->"37ba27fb-6be5-4c00-9e8b-\
+758500dd02c3"],
 
 Cell[BoxData[
  RowBox[{"<<", 
-  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\GrasshopperLink\\\\Packages\\\\\
-RhinoUtilities.m\>\""}]], "Input"],
+  "\"\<C:\\\\Users\\\\carlson\\\\cvs\\\\RhinoLink\\\\Packages\\\\\
+RhinoUtilities.m\>\""}]], "Input",
+ CellChangeTimes->{{3.731437333151161*^9, 
+  3.7314373355801687`*^9}},ExpressionUUID->"79c17884-569d-4ee2-92f7-\
+326664d9c397"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"?", "RhinoUtilities`*"}]], "Input",
  CellChangeTimes->{{3.668360263954012*^9, 3.668360277245202*^9}, {
-  3.66836084301663*^9, 3.6683608750890265`*^9}}],
+  3.66836084301663*^9, 
+  3.6683608750890265`*^9}},ExpressionUUID->"c3340dd1-0f14-4165-ac97-\
+8b5bc61b220b"],
 
 Cell["\<\
 FromRhino             RhinoMeshDifference   RhinoMeshSplit        RhinoReshow \
@@ -912,11 +969,15 @@ RhinoDocInformation   RhinoMeshIntersection RhinoMeshUnion        RhinoShow   \
           ToRhino
 RhinoDocObjects\
 \>", "Print",
- CellChangeTimes->{3.6683608752918205`*^9}]
+ CellChangeTimes->{
+  3.6683608752918205`*^9},ExpressionUUID->"090aae66-d291-4d1f-abce-\
+2ae1ca8ee16a"]
 }, Open  ]],
 
 Cell["There are several mesh objects in this document:", "Text",
- CellChangeTimes->{{3.668361090268145*^9, 3.6683610993938527`*^9}}],
+ CellChangeTimes->{{3.668361090268145*^9, 
+  3.6683610993938527`*^9}},ExpressionUUID->"00569b34-c0d1-4fc9-ac6e-\
+2a36666903e4"],
 
 Cell[CellGroupData[{
 
@@ -924,7 +985,9 @@ Cell[BoxData[
  RowBox[{"objs", "=", 
   RowBox[{"RhinoDocObjects", "[", "doc", "]"}]}]], "Input",
  CellChangeTimes->{{3.668360880424056*^9, 3.668360888145808*^9}, {
-  3.6683611264902873`*^9, 3.668361127129871*^9}}],
+  3.6683611264902873`*^9, 
+  3.668361127129871*^9}},ExpressionUUID->"8d642c77-3251-48e5-a736-\
+8958cca730ed"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -961,14 +1024,18 @@ Cell[BoxData[
     NETLink`Objects`NETObject$16085071953921]}], "}"}]], "Output",
  CellChangeTimes->{
   3.668360888785388*^9, {3.668360924882631*^9, 3.66836092740975*^9}, 
-   3.668361063187413*^9, 3.6683611292046175`*^9, 3.6684237198496523`*^9}]
+   3.668361063187413*^9, 3.6683611292046175`*^9, 
+   3.6684237198496523`*^9},ExpressionUUID->"3d5930f0-5a45-4169-a582-\
+38b1ecc90a6b"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Getting Information About a Rhino Mesh", "Subsection",
- CellChangeTimes->{{3.66836185334874*^9, 3.668361864299519*^9}}],
+ CellChangeTimes->{{3.66836185334874*^9, 
+  3.668361864299519*^9}},ExpressionUUID->"76d10529-17f5-472f-9715-\
+177c64f464a1"],
 
 Cell[CellGroupData[{
 
@@ -977,7 +1044,9 @@ Cell[BoxData[
   RowBox[{"objs", "[", 
    RowBox[{"[", "2", "]"}], "]"}]}]], "Input",
  CellChangeTimes->{{3.66836186843336*^9, 3.668361874485927*^9}, {
-  3.6684237380855846`*^9, 3.668423763138542*^9}}],
+  3.6684237380855846`*^9, 
+  3.668423763138542*^9}},ExpressionUUID->"55752818-0a0b-4e6e-960c-\
+02933b05ad9f"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -987,22 +1056,30 @@ Cell[BoxData[
    "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$849466433208321]], "Output",
  CellChangeTimes->{
-  3.6683618757494783`*^9, {3.668423724435935*^9, 3.6684237634817333`*^9}}]
+  3.6683618757494783`*^9, {3.668423724435935*^9, 
+   3.6684237634817333`*^9}},ExpressionUUID->"b4a9a830-9cac-4d3d-a01e-\
+2a6d967c6554"]
 }, Open  ]],
 
 Cell["The mesh object contains one mesh:", "Text",
- CellChangeTimes->{{3.6683619760441904`*^9, 3.668361984717512*^9}}],
+ CellChangeTimes->{{3.6683619760441904`*^9, 
+  3.668361984717512*^9}},ExpressionUUID->"59486632-f438-4978-8e4b-\
+a42159625dc5"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"meshObj", "@", 
   RowBox[{"MeshGeometry", "@", "DisjointMeshCount"}]}]], "Input",
- CellChangeTimes->{{3.6683619180238523`*^9, 3.668361961374655*^9}}],
+ CellChangeTimes->{{3.6683619180238523`*^9, 
+  3.668361961374655*^9}},ExpressionUUID->"5dea9d7c-1f62-4a65-bf57-\
+f9fdc6969803"],
 
 Cell[BoxData["1"], "Output",
  CellChangeTimes->{{3.6683619411889615`*^9, 3.668361962045433*^9}, 
-   3.668423726370285*^9, 3.668423770688749*^9}]
+   3.668423726370285*^9, 
+   3.668423770688749*^9},ExpressionUUID->"7effc41d-6207-4c7b-aa9a-\
+189dbd19b54d"]
 }, Open  ]],
 
 Cell["\<\
@@ -1010,14 +1087,18 @@ The utility function FromRhino attempts to convert whatever object you give \
 as its argument to a Wolfram Language object. In this case, it returns a \
 MeshRegion object:\
 \>", "Text",
- CellChangeTimes->{{3.6683622414122934`*^9, 3.6683623115940657`*^9}}],
+ CellChangeTimes->{{3.6683622414122934`*^9, 
+  3.6683623115940657`*^9}},ExpressionUUID->"df402dee-108b-4d5f-a675-\
+913dd270cc0b"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FromRhino", "[", 
   RowBox[{"meshObj", "@", "MeshGeometry"}], "]"}]], "Input",
- CellChangeTimes->{{3.6683622076237764`*^9, 3.668362223956453*^9}}],
+ CellChangeTimes->{{3.6683622076237764`*^9, 
+  3.668362223956453*^9}},ExpressionUUID->"55fe47b8-116f-4853-87df-\
+dcf35c43aee9"],
 
 Cell[BoxData[
  Graphics3DBox[
@@ -1293,6 +1374,7 @@ dl3i+n/nOgZ0
         "CoplanarityTolerance" -> Automatic, "CheckIntersections" -> 
         Automatic, "BoundaryNesting" -> Automatic, "SeparateBoundaries" -> 
         False, "PropagateMarkers" -> True, "Hash" -> 1026086391931579403}]]}, 
+    
     TagBox[GraphicsComplex3DBox[CompressedData["
 1:eJx9W3ucT2UaP2M0Ipe5D+N2srot0eJT6TYHhd1Iu5O2YjntVlpmP7amJD7V
 IYWVUW0q104qtVJot1JhTqFQcvtUbm3HNWUUYpBhduZ93ufxvt/za/uj+czT
@@ -1577,20 +1659,26 @@ dl3i+n/nOgZ0
      ImageScaled[{0, 2, 2}]}},
   Method->{"ShrinkWrap" -> True}]], "Output",
  CellChangeTimes->{{3.668362212241228*^9, 3.6683622250796165`*^9}, {
-  3.6684237291314144`*^9, 3.668423765338086*^9}}]
+  3.6684237291314144`*^9, 
+  3.668423765338086*^9}},ExpressionUUID->"cb1f88f9-dc95-4142-bd4d-\
+7792f731099c"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Sending a Mesh to Rhino", "Subsection",
- CellChangeTimes->{{3.6683623343694816`*^9, 3.668362340110134*^9}}],
+ CellChangeTimes->{{3.6683623343694816`*^9, 
+  3.668362340110134*^9}},ExpressionUUID->"e1857265-83a0-4c82-99ec-\
+fca44ab2d01f"],
 
 Cell["\<\
 The ToRhino utility does the inverse of FromRhino: it attempts to create a \
 Rhino object from a Wolfram Language object.\
 \>", "Text",
- CellChangeTimes->{{3.668362350312273*^9, 3.6683623835704536`*^9}}],
+ CellChangeTimes->{{3.668362350312273*^9, 
+  3.6683623835704536`*^9}},ExpressionUUID->"e7fa0069-b52a-427b-bb6c-\
+492579b18232"],
 
 Cell[TextData[{
  "Here\[CloseCurlyQuote]s a Wolfram Language mesh object. \
@@ -1605,7 +1693,8 @@ solid:"
 }], "Text",
  CellChangeTimes->{{3.6683624219449778`*^9, 3.668362432692978*^9}, {
   3.6683629002876053`*^9, 3.6683629403937297`*^9}, {3.668423793526563*^9, 
-  3.6684237979256506`*^9}}],
+  3.6684237979256506`*^9}},ExpressionUUID->"ebd6cd0d-8db9-4993-82a8-\
+116ad1ac24bb"],
 
 Cell[CellGroupData[{
 
@@ -1626,10 +1715,12 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{"0", ",", "1"}], "}"}], ",", 
         RowBox[{"{", 
-         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}]}], "]"}], "]"}]}]], "Input",
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}]}], "]"}], "]"}]}]], "Input",\
+
  CellChangeTimes->{{3.668362574211257*^9, 3.6683625775651493`*^9}, {
   3.6683628204493647`*^9, 3.668362827718732*^9}, {3.668423860791319*^9, 
-  3.6684238747995806`*^9}}],
+  3.6684238747995806`*^9}},ExpressionUUID->"c5454279-42a4-4974-afe4-\
+28b60a078513"],
 
 Cell[BoxData[
  Graphics3DBox[
@@ -2339,6 +2430,7 @@ Znz8JNv//8uy3Sw=
         "CoplanarityTolerance" -> Automatic, "CheckIntersections" -> 
         Automatic, "BoundaryNesting" -> {{0, 0}}, "SeparateBoundaries" -> 
         False, "PropagateMarkers" -> True, "Hash" -> 6467552031077806118}]]}, 
+    
     TagBox[GraphicsComplex3DBox[CompressedData["
 1:eJyEvHkg1O8XP1pSQpvSRsqeJEKJLEeWogVJZK8I2VMUlewle5H2khIpFEok
 e7bIvu/7zozZzAzu3N9nZp5u7vfe9z/T+8wzz3Oe85zzOq9z3m8JXHTRv8Sy
@@ -3060,7 +3152,9 @@ Znz8JNv//8uy3Sw=
     True}]], "Output",
  CellChangeTimes->{
   3.6683625796554823`*^9, 3.6683628302770495`*^9, 3.668365595195158*^9, {
-   3.6684238671714735`*^9, 3.6684238762191257`*^9}}]
+   3.6684238671714735`*^9, 
+   3.6684238762191257`*^9}},ExpressionUUID->"31ffb585-789d-41ed-9c98-\
+5b8aa75343c5"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3071,7 +3165,8 @@ Cell[TextData[{
 }], "Text",
  CellChangeTimes->{{3.6683623870023217`*^9, 3.668362408950678*^9}, {
   3.6683626191690702`*^9, 3.668362623412162*^9}, {3.668362945822321*^9, 
-  3.668362963371646*^9}}],
+  3.668362963371646*^9}},ExpressionUUID->"9f1cef78-e9ee-4a7e-a807-\
+5f0f549af517"],
 
 Cell[CellGroupData[{
 
@@ -3079,7 +3174,9 @@ Cell[BoxData[
  RowBox[{"rhinoMesh", " ", "=", 
   RowBox[{"ToRhino", "[", "wlMesh", "]"}]}]], "Input",
  CellChangeTimes->{{3.6683624146912565`*^9, 3.6683624172651577`*^9}, {
-  3.6683625835397577`*^9, 3.66836258722124*^9}}],
+  3.6683625835397577`*^9, 
+  3.66836258722124*^9}},ExpressionUUID->"ebe76044-258e-4e5a-adea-\
+397da71169b5"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3089,12 +3186,16 @@ Cell[BoxData[
    "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$440221481041921]], "Output",
  CellChangeTimes->{3.6683625885159984`*^9, 3.6683628341145267`*^9, 
-  3.668365605053979*^9, 3.668365866329965*^9, 3.668423881023741*^9}]
+  3.668365605053979*^9, 3.668365866329965*^9, 
+  3.668423881023741*^9},ExpressionUUID->"5ab4f649-56bf-431f-ba1e-\
+33440a310934"]
 }, Open  ]],
 
 Cell["Add the object to the Rhino document\[CloseCurlyQuote]s object table:", \
 "Text",
- CellChangeTimes->{{3.668362973511274*^9, 3.668362986755249*^9}}],
+ CellChangeTimes->{{3.668362973511274*^9, 
+  3.668362986755249*^9}},ExpressionUUID->"7b687eb8-c2f2-416c-8685-\
+35d25e34318d"],
 
 Cell[CellGroupData[{
 
@@ -3102,7 +3203,9 @@ Cell[BoxData[
  RowBox[{"doc", "@", 
   RowBox[{"Objects", "@", 
    RowBox[{"Add", "[", "rhinoMesh", "]"}]}]}]], "Input",
- CellChangeTimes->{{3.6683627448229885`*^9, 3.6683627462737417`*^9}}],
+ CellChangeTimes->{{3.6683627448229885`*^9, 
+  3.6683627462737417`*^9}},ExpressionUUID->"7687d06b-2acf-4f99-8cb8-\
+562a97f71d04"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3111,25 +3214,31 @@ Cell[BoxData[
     RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$865202052530177]], "Output",
  CellChangeTimes->{3.6683627497212315`*^9, 3.668362836470051*^9, 
-  3.668365634802186*^9}]
+  3.668365634802186*^9},ExpressionUUID->"f955c4eb-daba-484e-a3b3-\
+48f2c4d55e1a"]
 }, Open  ]],
 
 Cell["\<\
 Tell the document to redraw so the newly-added object is visible:\
 \>", "Text",
- CellChangeTimes->{{3.668362994243009*^9, 3.6683630120108395`*^9}}],
+ CellChangeTimes->{{3.668362994243009*^9, 
+  3.6683630120108395`*^9}},ExpressionUUID->"43e665ec-7ee6-4ca6-a685-\
+8b1e130c7925"],
 
 Cell[BoxData[
  RowBox[{"doc", "@", 
   RowBox[{"Views", "@", 
-   RowBox[{"Redraw", "[", "]"}]}]}]], "Input"],
+   RowBox[{"Redraw", "[", "]"}]}]}]], "Input",ExpressionUUID->"83d66271-2c6b-\
+4e25-84b8-5b9d02a55767"],
 
 Cell["\<\
 In fact, there is also a utility RhinoShow to add and draw an object, so the \
 preceding code can be expressed more succinctly. The function returns a \
 unique id for the object:\
 \>", "Text",
- CellChangeTimes->{{3.668365660416565*^9, 3.6683657679904814`*^9}}],
+ CellChangeTimes->{{3.668365660416565*^9, 
+  3.6683657679904814`*^9}},ExpressionUUID->"bda24453-0751-474f-ae5e-\
+70a4afbd37b4"],
 
 Cell[CellGroupData[{
 
@@ -3138,7 +3247,8 @@ Cell[BoxData[
   RowBox[{"RhinoShow", "[", 
    RowBox[{"ToRhino", "[", "wlMesh", "]"}], "]"}]}]], "Input",
  CellChangeTimes->{{3.6683657066534834`*^9, 3.668365745043764*^9}, 
-   3.66842393538765*^9}],
+   3.66842393538765*^9},ExpressionUUID->"62a2bd89-81a4-4b6f-bc58-\
+fac912b26881"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3148,56 +3258,76 @@ Cell[BoxData[
      RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
    NETLink`Objects`NETObject$31632985451134977], "}"}]], "Output",
  CellChangeTimes->{3.668365716637163*^9, 3.668365771515946*^9, 
-  3.6684238863587356`*^9, 3.668423918119114*^9}]
+  3.6684238863587356`*^9, 
+  3.668423918119114*^9},ExpressionUUID->"1e55a5f6-830d-4cc5-8e0c-\
+a2b38cd852f0"]
 }, Open  ]],
 
 Cell["\<\
 You can remove the object from the document and delete it with RhinoUnshow:\
 \>", "Text",
  CellChangeTimes->{{3.668365775384597*^9, 3.668365814445792*^9}, {
-  3.668365858436618*^9, 3.6683658608233414`*^9}}],
+  3.668365858436618*^9, 
+  3.6683658608233414`*^9}},ExpressionUUID->"c8518116-e04d-40c1-81f6-\
+cd02d0384245"],
 
 Cell[BoxData[
  RowBox[{"RhinoUnshow", "[", "guid", "]"}]], "Input",
- CellChangeTimes->{{3.6683658472361517`*^9, 3.6683658523216143`*^9}}],
+ CellChangeTimes->{{3.6683658472361517`*^9, 
+  3.6683658523216143`*^9}},ExpressionUUID->"261886df-fecf-42a9-819d-\
+ec009036c4f2"],
 
 Cell["Put the object back for the next step:", "Text",
- CellChangeTimes->{{3.6684240222455893`*^9, 3.6684240291250134`*^9}}],
+ CellChangeTimes->{{3.6684240222455893`*^9, 
+  3.6684240291250134`*^9}},ExpressionUUID->"22a2d67a-869c-46af-960f-\
+e03925e1d071"],
 
 Cell[BoxData[
  RowBox[{"guid", "=", 
   RowBox[{"RhinoShow", "[", 
    RowBox[{"ToRhino", "[", "wlMesh", "]"}], "]"}]}]], "Input",
  CellChangeTimes->{{3.6683657066534834`*^9, 3.668365745043764*^9}, 
-   3.66842393538765*^9}]
+   3.66842393538765*^9},ExpressionUUID->"8cf45822-121b-49dc-9fae-\
+325e61736ce0"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["RhinoApp`RunScript", "Subsection",
- CellChangeTimes->{{3.6683632578117766`*^9, 3.66836326581432*^9}}],
+ CellChangeTimes->{{3.6683632578117766`*^9, 
+  3.66836326581432*^9}},ExpressionUUID->"6ed6853d-05da-4fdb-8c54-\
+86fb84d81de6"],
 
 Cell["\<\
 A very useful (and slow) command for executing arbitrary Rhino commands is \
 RunScript. It\[CloseCurlyQuote]s useful here.\
 \>", "Text",
- CellChangeTimes->{{3.668363273395677*^9, 3.6683633310826263`*^9}}],
+ CellChangeTimes->{{3.668363273395677*^9, 
+  3.6683633310826263`*^9}},ExpressionUUID->"8d51ea06-1438-45ad-b993-\
+37cb1467267e"],
 
 Cell["First load the definition:", "Text",
- CellChangeTimes->{{3.668426389335105*^9, 3.668426394248947*^9}}],
+ CellChangeTimes->{{3.668426389335105*^9, 
+  3.668426394248947*^9}},ExpressionUUID->"d187e9f2-d7c4-4604-a6e8-\
+73259c514c5b"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoApp\>\"", "]"}], ";"}]], "Input",
+  RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoApp\>\"", "]"}], ";"}]], "Input",\
+
  CellChangeTimes->{{3.6684263686038113`*^9, 3.6684263686038113`*^9}, {
-  3.6684265087696037`*^9, 3.6684265098772106`*^9}}],
+  3.6684265087696037`*^9, 
+  3.6684265098772106`*^9}},ExpressionUUID->"7b9fb794-3ada-4c31-ab43-\
+53f27d292981"],
 
 Cell["\<\
 The mesh doesn\[CloseCurlyQuote]t have surface normals, so its corners appear \
 rounded if the view is rendered as a shaded model:\
 \>", "Text",
  CellChangeTimes->{{3.6683630277663345`*^9, 3.6683630947034044`*^9}, {
-  3.668363335247666*^9, 3.6683633428757725`*^9}}],
+  3.668363335247666*^9, 
+  3.6683633428757725`*^9}},ExpressionUUID->"604744b8-0fa6-495c-acd6-\
+679caa3f7387"],
 
 Cell[CellGroupData[{
 
@@ -3209,25 +3339,33 @@ Cell[BoxData[
  CellChangeTimes->{{3.668363181655018*^9, 3.668363191841491*^9}, {
    3.6683632229468937`*^9, 3.6683632267843714`*^9}, {3.6683637822347975`*^9, 
    3.668363801266065*^9}, 3.6683644329285464`*^9, {3.668424103151911*^9, 
-   3.668424129218217*^9}, 3.6684265928222513`*^9}],
+   3.668424129218217*^9}, 
+   3.6684265928222513`*^9},ExpressionUUID->"6ffbfe81-c983-44cc-9da2-\
+2e77cad66b43"],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{{3.6683637839351315`*^9, 3.668363802514017*^9}, 
    3.6683644346444693`*^9, {3.6684240598474207`*^9, 3.6684240757122145`*^9}, {
    3.668424108845661*^9, 3.668424130169768*^9}, 3.668424195390806*^9, 
-   3.668426374063496*^9, {3.6684265965661793`*^9, 3.6684266255192223`*^9}}]
+   3.668426374063496*^9, {3.6684265965661793`*^9, 
+   3.6684266255192223`*^9}},ExpressionUUID->"8e523532-6f20-4968-9a23-\
+789d91b8bf75"]
 }, Open  ]],
 
 Cell["\<\
 (There appears to be a bug here; you may have to evaluate the expression \
 multiple times to set the display mode of all objects in all viewports.)\
 \>", "Text",
- CellChangeTimes->{{3.668426688340437*^9, 3.6684267351086373`*^9}}],
+ CellChangeTimes->{{3.668426688340437*^9, 
+  3.6684267351086373`*^9}},ExpressionUUID->"1b87b704-df49-4cd0-b9fe-\
+cebe94393994"],
 
 Cell["\<\
 Render it as a wireframe to eliminate the misleading shading:\
 \>", "Text",
- CellChangeTimes->{{3.6683633476179905`*^9, 3.6683633610802727`*^9}}],
+ CellChangeTimes->{{3.6683633476179905`*^9, 
+  3.6683633610802727`*^9}},ExpressionUUID->"ca7d88ea-fa03-453a-9f84-\
+ec89306a9654"],
 
 Cell[CellGroupData[{
 
@@ -3239,14 +3377,17 @@ Cell[BoxData[
  CellChangeTimes->{{3.668363181655018*^9, 3.668363191841491*^9}, {
    3.6683632229468937`*^9, 3.6683632376884212`*^9}, 3.668364441274172*^9, {
    3.6684241058662143`*^9, 3.6684241338823776`*^9}, {3.6684266020728736`*^9, 
-   3.6684266036952424`*^9}}],
+   3.6684266036952424`*^9}},ExpressionUUID->"4af18463-9b3e-4749-91ae-\
+45c59e57cb5c"],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
   3.668363205350658*^9, 3.6683632392015734`*^9, 3.6683644421945305`*^9, 
    3.668364617631173*^9, {3.668424062530552*^9, 3.668424080142501*^9}, {
    3.668424114430175*^9, 3.668424134631139*^9}, 3.6684265522938824`*^9, 
-   3.668426605052416*^9, {3.6684266383420963`*^9, 3.668426648887426*^9}}]
+   3.668426605052416*^9, {3.6684266383420963`*^9, 
+   3.668426648887426*^9}},ExpressionUUID->"c51c4693-3311-4f27-8c36-\
+02059b405600"]
 }, Open  ]],
 
 Cell["\<\
@@ -3262,7 +3403,9 @@ running in.\
  CellChangeTimes->{{3.6683635258901453`*^9, 3.668363580924605*^9}, {
   3.668363815992489*^9, 3.6683638419840884`*^9}, {3.668363921604419*^9, 
   3.66836393509863*^9}, {3.6683639909306717`*^9, 3.6683640289312973`*^9}, {
-  3.6683644640023518`*^9, 3.6683644667478285`*^9}}],
+  3.6683644640023518`*^9, 
+  3.6683644667478285`*^9}},ExpressionUUID->"9226981b-de0f-4104-8d75-\
+5d84e470790c"],
 
 Cell["\<\
 You can do lots of useful things programmatically using RunScript. For \
@@ -3270,7 +3413,8 @@ example, set the standard 4-view arrangement of the document:\
 \>", "Text",
  CellChangeTimes->{{3.6683635929050207`*^9, 3.6683636101580677`*^9}, {
   3.668363675893783*^9, 3.668363717512886*^9}, {3.6683644891174574`*^9, 
-  3.668364495528852*^9}}],
+  3.668364495528852*^9}},ExpressionUUID->"cf9f89f7-3150-409c-8993-\
+61995a200a55"],
 
 Cell[BoxData[
  RowBox[{
@@ -3278,7 +3422,9 @@ Cell[BoxData[
    RowBox[{"\"\<_4View\>\"", ",", "True"}], "]"}], ";"}]], "Input",
  CellChangeTimes->{
   3.6683636621507998`*^9, {3.6683638049163246`*^9, 3.6683638055559*^9}, {
-   3.6684265691575065`*^9, 3.668426569641097*^9}}]
+   3.6684265691575065`*^9, 
+   3.668426569641097*^9}},ExpressionUUID->"d9a3afb5-3df9-45f4-93fc-\
+15219ec1585b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -3286,7 +3432,8 @@ Cell[BoxData[
 Evaluator->"RhinoAttach",
 WindowSize->{1049, 650},
 WindowMargins->{{Automatic, 1}, {Automatic, 3}},
-FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -3301,125 +3448,125 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 219, 3, 90, "Title"],
-Cell[802, 27, 179, 2, 30, "Text"],
+Cell[580, 22, 279, 5, 98, "Title",ExpressionUUID->"6e6ba443-4ebe-4e79-9d63-1d834872572c"],
+Cell[862, 29, 239, 4, 35, "Text",ExpressionUUID->"0bfb8b2d-4dfd-4914-80c6-a2f2cef0c596"],
 Cell[CellGroupData[{
-Cell[1006, 33, 94, 1, 63, "Section"],
-Cell[1103, 36, 100, 1, 30, "Text"],
-Cell[1206, 39, 181, 2, 30, "Text"]
+Cell[1126, 37, 154, 3, 67, "Section",ExpressionUUID->"d8131a66-6b41-4630-8fae-8aef994f85c0"],
+Cell[1283, 42, 160, 3, 35, "Text",ExpressionUUID->"cd9edec1-7b69-4b9f-860c-ac377446b98f"],
+Cell[1446, 47, 241, 4, 35, "Text",ExpressionUUID->"3b7a5fe1-ba33-43c5-97fa-6424712bb412"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1424, 46, 99, 1, 63, "Section"],
+Cell[1724, 56, 159, 3, 67, "Section",ExpressionUUID->"e703719c-1c4f-4fcb-9298-dcc47dd215ae"],
 Cell[CellGroupData[{
-Cell[1548, 51, 185, 2, 43, "Subsection"],
-Cell[1736, 55, 393, 7, 49, "Text"]
+Cell[1908, 63, 245, 4, 54, "Subsection",ExpressionUUID->"a8168806-f4d6-45f8-b524-dbe6737b88f7"],
+Cell[2156, 69, 453, 9, 58, "Text",ExpressionUUID->"335306c3-77a6-43c4-8834-a59a1ed6f5c6"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2166, 67, 102, 1, 43, "Subsection"],
-Cell[2271, 70, 461, 7, 49, "Text"],
-Cell[2735, 79, 103, 2, 31, "Input"],
-Cell[2841, 83, 365, 6, 49, "Text"],
+Cell[2646, 83, 162, 3, 54, "Subsection",ExpressionUUID->"792c841a-be0f-4bef-89ce-c7550bc7128f"],
+Cell[2811, 88, 521, 9, 58, "Text",ExpressionUUID->"5903b529-b953-42d7-9802-8fdb4a14fe1d"],
+Cell[3335, 99, 160, 3, 30, "Input",ExpressionUUID->"13eb9711-861b-47e9-b5c0-836248a3efa7"],
+Cell[3498, 104, 425, 8, 58, "Text",ExpressionUUID->"750f8c06-5ce0-41d5-b4df-f80f93045da7"],
 Cell[CellGroupData[{
-Cell[3231, 93, 136, 2, 31, "Input"],
-Cell[3370, 97, 314, 7, 31, "Output"]
+Cell[3948, 116, 196, 4, 30, "Input",ExpressionUUID->"60ea30fa-5bad-4314-9c2d-12e590a9f9de"],
+Cell[4147, 122, 371, 8, 34, "Output",ExpressionUUID->"f23d5dbd-9b50-4cfb-aac8-ea6c1ab3764c"]
 }, Open  ]],
-Cell[3699, 107, 384, 7, 49, "Text"],
+Cell[4533, 133, 441, 8, 58, "Text",ExpressionUUID->"d44f593a-02c3-4120-8cf3-d7bcc9a16e28"],
 Cell[CellGroupData[{
-Cell[4108, 118, 136, 2, 31, "Input"],
-Cell[4247, 122, 23414, 688, 2029, "Output"]
+Cell[4999, 145, 196, 4, 30, "Input",ExpressionUUID->"26b873d1-a7c2-4576-b6e3-a11a023882e0"],
+Cell[5198, 151, 23723, 694, 2383, "Output",ExpressionUUID->"743dd139-4018-49a2-9343-c60c5b483f09"]
 }, Open  ]],
-Cell[27676, 813, 369, 7, 30, "Text"],
+Cell[28936, 848, 426, 8, 35, "Text",ExpressionUUID->"4fbde670-cea0-4cce-b7d5-25536e080ef8"],
 Cell[CellGroupData[{
-Cell[28070, 824, 125, 2, 31, "Input"],
-Cell[28198, 828, 385, 8, 31, "Output"]
+Cell[29387, 860, 185, 4, 30, "Input",ExpressionUUID->"fbd5219b-ebf7-40fe-9d1c-dc6c2f7559a0"],
+Cell[29575, 866, 446, 10, 34, "Output",ExpressionUUID->"da8ed3d1-9ef3-48bd-bd7f-e7c39930431b"]
 }, Open  ]],
-Cell[28598, 839, 356, 6, 30, "Text"],
+Cell[30036, 879, 416, 8, 35, "Text",ExpressionUUID->"41c35d7a-834c-4ea1-b26f-1ecceac64f3b"],
 Cell[CellGroupData[{
-Cell[28979, 849, 640, 13, 72, "Input"],
-Cell[29622, 864, 290, 7, 31, "Output"]
+Cell[30477, 891, 704, 16, 73, "Input",ExpressionUUID->"750603f8-f9bf-484c-8c0f-9f327fb153cc"],
+Cell[31184, 909, 350, 9, 34, "Output",ExpressionUUID->"b6e03bbb-f734-40ed-92e5-01489503eebd"]
 }, Open  ]],
-Cell[29927, 874, 129, 1, 30, "Text"]
+Cell[31549, 921, 189, 3, 35, "Text",ExpressionUUID->"182a2cdd-3431-40f0-998c-6c17090869ea"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30093, 880, 101, 1, 43, "Subsection"],
-Cell[30197, 883, 452, 10, 49, "Text"],
-Cell[30652, 895, 137, 3, 31, "Input"],
+Cell[31775, 929, 161, 3, 54, "Subsection",ExpressionUUID->"ebe98518-6d9c-42e3-84ba-fab58f3bfaa8"],
+Cell[31939, 934, 509, 11, 58, "Text",ExpressionUUID->"37ba27fb-6be5-4c00-9e8b-758500dd02c3"],
+Cell[32451, 947, 259, 6, 30, "Input",ExpressionUUID->"79c17884-569d-4ee2-92f7-326664d9c397"],
 Cell[CellGroupData[{
-Cell[30814, 902, 175, 3, 31, "Input"],
-Cell[30992, 907, 284, 7, 55, "Print"]
+Cell[32735, 957, 235, 5, 30, "Input",ExpressionUUID->"c3340dd1-0f14-4165-ac97-8b5bc61b220b"],
+Cell[32973, 964, 344, 9, 58, "Print",ExpressionUUID->"090aae66-d291-4d1f-abce-2ae1ca8ee16a"]
 }, Open  ]],
-Cell[31291, 917, 132, 1, 30, "Text"],
+Cell[33332, 976, 192, 3, 35, "Text",ExpressionUUID->"00569b34-c0d1-4fc9-ac6e-2a36666903e4"],
 Cell[CellGroupData[{
-Cell[31448, 922, 213, 4, 31, "Input"],
-Cell[31664, 928, 1416, 35, 72, "Output"]
+Cell[33549, 983, 273, 6, 30, "Input",ExpressionUUID->"8d642c77-3251-48e5-a736-8958cca730ed"],
+Cell[33825, 991, 1477, 37, 77, "Output",ExpressionUUID->"3d5930f0-5a45-4169-a582-38b1ecc90a6b"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33129, 969, 125, 1, 43, "Subsection"],
+Cell[35351, 1034, 185, 3, 54, "Subsection",ExpressionUUID->"76d10529-17f5-472f-9715-177c64f464a1"],
 Cell[CellGroupData[{
-Cell[33279, 974, 226, 5, 31, "Input"],
-Cell[33508, 981, 341, 8, 31, "Output"]
+Cell[35561, 1041, 286, 7, 30, "Input",ExpressionUUID->"55752818-0a0b-4e6e-960c-02933b05ad9f"],
+Cell[35850, 1050, 402, 10, 34, "Output",ExpressionUUID->"b4a9a830-9cac-4d3d-a01e-2a6d967c6554"]
 }, Open  ]],
-Cell[33864, 992, 118, 1, 30, "Text"],
+Cell[36267, 1063, 178, 3, 35, "Text",ExpressionUUID->"59486632-f438-4978-8e4b-a42159625dc5"],
 Cell[CellGroupData[{
-Cell[34007, 997, 173, 3, 31, "Input"],
-Cell[34183, 1002, 144, 2, 31, "Output"]
+Cell[36470, 1070, 233, 5, 30, "Input",ExpressionUUID->"5dea9d7c-1f62-4a65-bf57-f9fdc6969803"],
+Cell[36706, 1077, 205, 4, 34, "Output",ExpressionUUID->"7effc41d-6207-4c7b-aa9a-189dbd19b54d"]
 }, Open  ]],
-Cell[34342, 1007, 265, 5, 49, "Text"],
+Cell[36926, 1084, 325, 7, 58, "Text",ExpressionUUID->"df402dee-108b-4d5f-a675-913dd270cc0b"],
 Cell[CellGroupData[{
-Cell[34632, 1016, 170, 3, 31, "Input"],
-Cell[34805, 1021, 33009, 558, 266, "Output"]
+Cell[37276, 1095, 230, 5, 30, "Input",ExpressionUUID->"55fe47b8-116f-4853-87df-dcf35c43aee9"],
+Cell[37509, 1102, 33074, 561, 268, "Output",ExpressionUUID->"cb1f88f9-dc95-4142-bd4d-7792f731099c"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[67863, 1585, 113, 1, 43, "Subsection"],
-Cell[67979, 1588, 213, 4, 30, "Text"],
-Cell[68195, 1594, 482, 13, 49, "Text"],
+Cell[70632, 1669, 173, 3, 43, "Subsection",ExpressionUUID->"e1857265-83a0-4c82-99ec-fca44ab2d01f"],
+Cell[70808, 1674, 273, 6, 30, "Text",ExpressionUUID->"e7fa0069-b52a-427b-bb6c-492579b18232"],
+Cell[71084, 1682, 539, 14, 49, "Text",ExpressionUUID->"ebd6cd0d-8db9-4993-82a8-116ad1ac24bb"],
 Cell[CellGroupData[{
-Cell[68702, 1611, 733, 20, 31, "Input"],
-Cell[69438, 1633, 86019, 1429, 406, "Output"]
+Cell[71648, 1700, 792, 22, 31, "Input",ExpressionUUID->"c5454279-42a4-4974-afe4-28b60a078513"],
+Cell[72443, 1724, 86085, 1432, 406, "Output",ExpressionUUID->"31ffb585-789d-41ed-9c98-5b8aa75343c5"]
 }, Open  ]],
-Cell[155472, 3065, 333, 8, 30, "Text"],
+Cell[158543, 3159, 390, 9, 30, "Text",ExpressionUUID->"9f1cef78-e9ee-4a7e-a807-5f0f549af517"],
 Cell[CellGroupData[{
-Cell[155830, 3077, 221, 4, 31, "Input"],
-Cell[156054, 3083, 375, 8, 31, "Output"]
+Cell[158958, 3172, 281, 6, 31, "Input",ExpressionUUID->"ebe76044-258e-4e5a-adea-397da71169b5"],
+Cell[159242, 3180, 435, 10, 31, "Output",ExpressionUUID->"5ab4f649-56bf-431f-ba1e-33440a310934"]
 }, Open  ]],
-Cell[156444, 3094, 153, 2, 30, "Text"],
+Cell[159692, 3193, 213, 4, 30, "Text",ExpressionUUID->"7b687eb8-c2f2-416c-8685-35d25e34318d"],
 Cell[CellGroupData[{
-Cell[156622, 3100, 189, 4, 31, "Input"],
-Cell[156814, 3106, 309, 7, 31, "Output"]
+Cell[159930, 3201, 249, 6, 31, "Input",ExpressionUUID->"7687d06b-2acf-4f99-8cb8-562a97f71d04"],
+Cell[160182, 3209, 366, 8, 31, "Output",ExpressionUUID->"f955c4eb-daba-484e-a3b3-48f2c4d55e1a"]
 }, Open  ]],
-Cell[157138, 3116, 157, 3, 30, "Text"],
-Cell[157298, 3121, 107, 3, 31, "Input"],
-Cell[157408, 3126, 270, 5, 49, "Text"],
+Cell[160563, 3220, 217, 5, 30, "Text",ExpressionUUID->"43e665ec-7ee6-4ca6-a685-8b1e130c7925"],
+Cell[160783, 3227, 164, 4, 31, "Input",ExpressionUUID->"83d66271-2c6b-4e25-84b8-5b9d02a55767"],
+Cell[160950, 3233, 330, 7, 49, "Text",ExpressionUUID->"bda24453-0751-474f-ae5e-70a4afbd37b4"],
 Cell[CellGroupData[{
-Cell[157703, 3135, 221, 5, 31, "Input"],
-Cell[157927, 3142, 360, 8, 31, "Output"]
+Cell[161305, 3244, 278, 6, 31, "Input",ExpressionUUID->"62a2bd89-81a4-4b6f-bc58-fac912b26881"],
+Cell[161586, 3252, 420, 10, 31, "Output",ExpressionUUID->"1e55a5f6-830d-4cc5-8e0c-a2b38cd852f0"]
 }, Open  ]],
-Cell[158302, 3153, 216, 4, 30, "Text"],
-Cell[158521, 3159, 137, 2, 31, "Input"],
-Cell[158661, 3163, 124, 1, 30, "Text"],
-Cell[158788, 3166, 221, 5, 31, "Input"]
+Cell[162021, 3265, 276, 6, 30, "Text",ExpressionUUID->"c8518116-e04d-40c1-81f6-cd02d0384245"],
+Cell[162300, 3273, 197, 4, 31, "Input",ExpressionUUID->"261886df-fecf-42a9-819d-ec009036c4f2"],
+Cell[162500, 3279, 184, 3, 30, "Text",ExpressionUUID->"22a2d67a-869c-46af-960f-e03925e1d071"],
+Cell[162687, 3284, 278, 6, 31, "Input",ExpressionUUID->"8cf45822-121b-49dc-9fae-325e61736ce0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[159046, 3176, 107, 1, 43, "Subsection"],
-Cell[159156, 3179, 214, 4, 30, "Text"],
-Cell[159373, 3185, 108, 1, 30, "Text"],
-Cell[159484, 3188, 226, 4, 31, "Input"],
-Cell[159713, 3194, 275, 5, 30, "Text"],
+Cell[163002, 3295, 167, 3, 43, "Subsection",ExpressionUUID->"6ed6853d-05da-4fdb-8c54-86fb84d81de6"],
+Cell[163172, 3300, 274, 6, 30, "Text",ExpressionUUID->"8d51ea06-1438-45ad-b993-37cb1467267e"],
+Cell[163449, 3308, 168, 3, 30, "Text",ExpressionUUID->"d187e9f2-d7c4-4604-a6e8-73259c514c5b"],
+Cell[163620, 3313, 288, 7, 31, "Input",ExpressionUUID->"7b9fb794-3ada-4c31-ab43-53f27d292981"],
+Cell[163911, 3322, 335, 7, 30, "Text",ExpressionUUID->"604744b8-0fa6-495c-acd6-679caa3f7387"],
 Cell[CellGroupData[{
-Cell[160013, 3203, 425, 8, 31, "Input"],
-Cell[160441, 3213, 325, 4, 31, "Output"]
+Cell[164271, 3333, 486, 10, 31, "Input",ExpressionUUID->"6ffbfe81-c983-44cc-9da2-2e77cad66b43"],
+Cell[164760, 3345, 386, 6, 31, "Output",ExpressionUUID->"8e523532-6f20-4968-9a23-789d91b8bf75"]
 }, Open  ]],
-Cell[160781, 3220, 239, 4, 30, "Text"],
-Cell[161023, 3226, 155, 3, 30, "Text"],
+Cell[165161, 3354, 299, 6, 30, "Text",ExpressionUUID->"1b87b704-df49-4cd0-b9fe-cebe94393994"],
+Cell[165463, 3362, 215, 5, 30, "Text",ExpressionUUID->"ca7d88ea-fa03-453a-9f84-ec89306a9654"],
 Cell[CellGroupData[{
-Cell[161203, 3233, 408, 8, 31, "Input"],
-Cell[161614, 3243, 344, 5, 31, "Output"]
+Cell[165703, 3371, 465, 9, 31, "Input",ExpressionUUID->"4af18463-9b3e-4749-91ae-45c59e57cb5c"],
+Cell[166171, 3382, 405, 7, 31, "Output",ExpressionUUID->"c51c4693-3311-4f27-8c36-02059b405600"]
 }, Open  ]],
-Cell[161973, 3251, 816, 13, 68, "Text"],
-Cell[162792, 3266, 328, 6, 30, "Text"],
-Cell[163123, 3274, 274, 6, 31, "Input"]
+Cell[166591, 3392, 876, 15, 68, "Text",ExpressionUUID->"9226981b-de0f-4104-8d75-5d84e470790c"],
+Cell[167470, 3409, 385, 7, 30, "Text",ExpressionUUID->"cf9f89f7-3150-409c-8993-61995a200a55"],
+Cell[167858, 3418, 335, 8, 31, "Input",ExpressionUUID->"d9a3afb5-3df9-45f4-93fc-15219ec1585b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -3427,4 +3574,3 @@ Cell[163123, 3274, 274, 6, 31, "Input"]
 ]
 *)
 
-(* End of internal cache information *)

@@ -46,10 +46,10 @@ public class KernelLinkProvider {
                     StdLink.Link = mainLink;
                     WolframScriptingPlugIn.DebugPrint("back from M launch");
 
-                    //mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/grasshopperlink\"]");
+                    //mainLink.Evaluate("PacletDirectoryAdd[\"c:/users/tgayley/documents/workspace/rhinolink\"]");
                     //mainLink.WaitAndDiscardAnswer();
 
-                    mainLink.Evaluate("Needs[\"GrasshopperLink`\"]");
+                    mainLink.Evaluate("Needs[\"RhinoLink`\"]");
                     mainLink.WaitForAnswer();
                     Expr res = mainLink.GetExpr();
                     if (res.ToString() != "Null")
@@ -57,7 +57,7 @@ public class KernelLinkProvider {
                         appLoadSucceeded = false;
                         RhinoNamespace.RhinoApp.WriteLine(res.ToString());
                         RhinoNamespace.RhinoApp.WriteLine(
-                            "Error: Failed to load the GrasshopperLink application into the Wolfram Engine. Scripting from the Wolfram Engine will not function.");
+                            "Error: Failed to load the RhinoLink application into the Wolfram Engine. Scripting from the Wolfram Engine will not function.");
                     }
 
  //                   mainLink.Evaluate("Needs[\"RhinoUtilities`\"]");
@@ -91,12 +91,12 @@ public class KernelLinkProvider {
                     IKernelLink link = Link;
 
                     WolframScriptingPlugIn.DebugPrint("about to call setupLinksFromRhino");
-                    link.Evaluate("GrasshopperLink`Private`setupRhinoAttachLink[]");
+                    link.Evaluate("RhinoLink`Private`setupRhinoAttachLink[]");
                     link.WaitAndDiscardAnswer();
                     WolframScriptingPlugIn.DebugPrint("back from setupLinksFromRhino");
                     // Start the Reader link, so named because it mimics the Reader thread in standard .NET/Link. This is the link
                     // that handles calls like NETNew from Wolfram, enabling "scripting" of Unity from M.
-                    link.Evaluate("GrasshopperLink`Private`setupReaderLink[]");
+                    link.Evaluate("RhinoLink`Private`setupReaderLink[]");
                     // Not the "result"; sent manually so we can connect the link from both sides before the startReader[] function returns.
                     string readerLinkName = link.GetString();
                     readerLink = MathLinkFactory.CreateKernelLink("-linkmode connect -linkname " + readerLinkName);

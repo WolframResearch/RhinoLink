@@ -49,7 +49,7 @@ namespace Wolfram.Grasshopper
                     exprOrObjectResult = new ExprType(ex);
                 } catch (MathLinkException) {
                     ml.ClearError();
-                    component.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Error reading result as an Expr. This is a bug in GrasshopperLink, not the user program.");
+                    component.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Error reading result as an Expr. This is a bug in RhinoLink, not the user program.");
                 }
             } finally {
                 ml.DestroyMark(mark);

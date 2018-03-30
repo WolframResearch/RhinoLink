@@ -1,4 +1,4 @@
-BeginPackage["GrasshopperLink`", {"NETLink`"}]
+BeginPackage["RhinoLink`", {"NETLink`"}]
 
 
 GHDeploy::usage = ""
