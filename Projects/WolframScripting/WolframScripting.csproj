@@ -55,7 +55,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\GrasshopperLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
+      <HintPath>..\..\RhinoLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

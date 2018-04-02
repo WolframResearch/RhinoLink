@@ -58,7 +58,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Wolfram.NETLink">
-      <HintPath>..\..\GrasshopperLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
+      <HintPath>..\..\RhinoLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
     </Reference>
     <Reference Include="WolframGrasshopperSupport">
       <HintPath>..\WolframGrasshopperSupport\bin\Debug\WolframGrasshopperSupport.dll</HintPath>
