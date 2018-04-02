@@ -60,7 +60,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Wolfram.NETLink">
-      <HintPath>..\..\GrasshopperLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
+      <HintPath>..\..\RhinoLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
