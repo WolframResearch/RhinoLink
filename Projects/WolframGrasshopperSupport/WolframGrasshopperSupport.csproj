@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -73,8 +73,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "c:\users\tgayley\appdata\roaming\grasshopper\libraries\$(ProjectName).dll"
-Copy "$(TargetPath)" "c:\users\tgayley\documents\workspace\grasshopperlink\grasshopperlink\libraries\grasshopper\$(ProjectName).dll"</PostBuildEvent>
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)..\..\..\..\RhinoLink\libraries\$(ProjectName).dll"
+Copy "$(TargetPath)" "$(TargetDir)..\..\..\..\RhinoLink\libraries\grasshopper\$(ProjectName).dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
