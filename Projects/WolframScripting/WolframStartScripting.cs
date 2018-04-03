@@ -23,7 +23,7 @@ namespace Wolfram.Rhino
 
         public override string EnglishName
         {
-            get { return "WolframStartScripting"; }
+            get { return "WolframConnect"; }
         }
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
