@@ -60,15 +60,6 @@ public class KernelLinkProvider {
                             "Error: Failed to load the RhinoLink application into the Wolfram Engine. Scripting from the Wolfram Engine will not function.");
                     }
 
- //                   mainLink.Evaluate("Needs[\"RhinoUtilities`\"]");
- //                   mainLink.WaitForAnswer();
- //                   res = mainLink.GetExpr();
- //                   if (res.ToString() != "Null")
- //                   {
- //                       RhinoNamespace.RhinoApp.WriteLine(
- //                           "Error: Failed to load RhinoUtilities into the Wolfram Engine.");
- //                   }
-
                     mainLink.Evaluate("2+2");
                     mainLink.WaitForAnswer();
                     int i = mainLink.GetInteger();

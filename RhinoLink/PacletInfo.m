@@ -5,6 +5,6 @@ Paclet[
     Extensions -> 
         {
             {"Documentation", Language -> "English"}, 
-            {"Kernel", Root -> "Kernel", Context -> {"RhinoLink`", "RhinoUtilities`"}}
+            {"Kernel", Root -> "Kernel", Context -> {"RhinoLink`"}}
         }
 ]
