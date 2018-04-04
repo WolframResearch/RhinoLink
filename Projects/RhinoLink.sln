@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframGrasshopperSupport", "WolframGrasshopperSupport\WolframGrasshopperSupport.csproj", "{4E0950C0-62CE-454C-B403-B5115D0153D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframGrasshopperComponents", "WolframGrasshopperComponents\WolframGrasshopperComponents.csproj", "{666A7B86-A665-447A-AEE6-83556CD118F7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E0950C0-62CE-454C-B403-B5115D0153D7} = {4E0950C0-62CE-454C-B403-B5115D0153D7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframScripting", "WolframScripting\WolframScripting.csproj", "{69AF1AB5-B098-4384-A6F0-CFC5FADBA4C2}"
 EndProject
