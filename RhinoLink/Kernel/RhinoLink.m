@@ -1,42 +1,22 @@
 (* ::Package:: *)
 
-BeginPackage["RhinoLink`", {"NETLink`"}]
+BeginPackage["RhinoLink`", {"NETLink`"}];
 
 
-GHDeploy::usage = ""
-
-GHResult::usage = ""
+GHDeploy::usage = "";
 
 
-$RhinoHome::usage = "$RhinoHome is the path to the installation directory of Rhino. The default is \"c:\\Program Files\\Rhino 6\". You will need to set it to another value if you have a different location."
-$GrasshopperPath::usage = "$GrasshopperPath is the path to the directory containing Grasshopper DLLs (GH_IO.dll, Grasshopper.dll). It will have a default value suitable for Rhino 6, but can be changed if necessary."
-
-Begin["`Private`"]
-
-If[!StringQ[$RhinoHome],
-    $RhinoHome = "C:\\Program Files\\Rhino 6"
-]
-(* The path to the directory containing Grasshopper DLLs (GH_IO.dll, Grasshopper.dll) *)
-If[!StringQ[$GrasshopperHome],
-    $GrasshopperHome = FileNameJoin[{$RhinoHome, "Plug-ins", "Grasshopper"}]
-]
-
-(* This is the directory into which GHDeploy-ed components will be placed. Grasshopper automatically loads .gha files from here. *)
-$deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory], "Grasshopper", "Libraries"}]
+GHResult::usage = "";
 
 
-$thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]]
+$RhinoHome::usage = "$RhinoHome is the path to the installation directory of Rhino. The default is \"c:\\Program Files\\Rhino 6\". You will need to set it to another value if you have a different location.";
 
 
-(**************** Rhino Utilities *****************)
-
-
-LoadNETType["Rhino.RhinoDoc"];
-LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
+$GrasshopperPath::usage = "$GrasshopperPath is the path to the directory containing Grasshopper DLLs (GH_IO.dll, Grasshopper.dll). It will have a default value suitable for Rhino 6, but can be changed if necessary.";
 
 
 (* 
- * Conversions
+ * Data Type Conversions
  *)
 
 
@@ -89,12 +69,27 @@ RhinoUnshow::usage = "RhinoUnshow[guid] removed the object referenced by 'guid' 
 RhinoReshow::usage = "RhinoReshow[guid, rhinoObject] replaces the object referenced by 'guid' in the the active document with 'rhinoObject'.";
 
 
-(* 
- *  
- *)
+Begin["`Private`"];
 
 
-(**************** End of Rhino Utilities *****************)
+(*LoadNETType["Rhino.RhinoDoc"];
+LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];*)
+
+
+If[!StringQ[$RhinoHome],
+    $RhinoHome = "C:\\Program Files\\Rhino 6"
+];
+
+(* The path to the directory containing Grasshopper DLLs (GH_IO.dll, Grasshopper.dll) *)
+If[!StringQ[$GrasshopperHome],
+    $GrasshopperHome = FileNameJoin[{$RhinoHome, "Plug-ins", "Grasshopper"}]
+];
+
+(* This is the directory into which GHDeploy-ed components will be placed. Grasshopper automatically loads .gha files from here. *)
+$deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory], "Grasshopper", "Libraries"}];
+
+
+$thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
 
 
 (**********************************  GHDeploy  *********************************)
@@ -455,11 +450,8 @@ setupReaderLink[] :=
 
 
 
-(**************** Rhino Utilities *****************)
-
-
 (* 
- * Conversions
+ * Data Type Conversions
  *)
 
 
@@ -505,22 +497,10 @@ ToRhino[tf_TransformationFunction, "Rhino.Geometry.Transform"] :=
 		m = TransformationMatrix[tf];
 		t = NETNew["Rhino.Geometry.Transform", 1];
 	
-		t@M00 = m[[1,1]];
-		t@M01 = m[[1,2]];
-		t@M02 = m[[1,3]];
-		t@M03 = m[[1,4]];
-		t@M10 = m[[2,1]];
-		t@M11 = m[[2,2]];
-		t@M12 = m[[2,3]];
-		t@M13 = m[[2,4]];
-		t@M20 = m[[3,1]];
-		t@M21 = m[[3,2]];
-		t@M22 = m[[3,3]];
-		t@M23 = m[[3,4]];
-		t@M30 = m[[4,1]];
-		t@M31 = m[[4,2]];
-		t@M32 = m[[4,3]];
-		t@M33 = m[[4,4]];
+		t@M00 = m[[1,1]]; t@M01 = m[[1,2]]; t@M02 = m[[1,3]]; t@M03 = m[[1,4]];
+		t@M10 = m[[2,1]]; t@M11 = m[[2,2]]; t@M12 = m[[2,3]]; t@M13 = m[[2,4]];
+		t@M20 = m[[3,1]]; t@M21 = m[[3,2]]; t@M22 = m[[3,3]]; t@M23 = m[[3,4]];
+		t@M30 = m[[4,1]]; t@M31 = m[[4,2]]; t@M32 = m[[4,3]]; t@M33 = m[[4,4]];
 
 		t
 	]
@@ -643,9 +623,6 @@ FromRhino[obj_, "Rhino.Geometry.PolylineCurve"] :=
 
 FromRhino[obj_, "Rhino.Geometry.PolyCurve"] :=
 	GraphicsGroup[FromRhino/@ Table[obj@SegmentCurve[i], {i, 0, obj@SegmentCount-1}]]
-
-
-(* *)
 
 
 (* 
@@ -781,9 +758,6 @@ RhinoReshow[guid_, obj_] :=
 		RhinoDoc`ActiveDoc@Views@Redraw[];
 		guids
 	]
-
-
-(**************** End of Rhino Utilities *****************)
 
 
 End[]
