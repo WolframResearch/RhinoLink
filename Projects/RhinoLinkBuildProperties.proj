@@ -1,0 +1,7 @@
+<!-- Edit the RhinoPath property below as needed for your system. This should be the root directory of your Rhino installation. -->
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RhinoPath>c:\Program Files\Rhino 6</RhinoPath>
+  </PropertyGroup>
+</Project>
