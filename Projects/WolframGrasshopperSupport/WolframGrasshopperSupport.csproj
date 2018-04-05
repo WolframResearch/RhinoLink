@@ -74,7 +74,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)..\..\..\..\RhinoLink\libraries\$(ProjectName).dll"
+    <PostBuildEvent>
 Copy "$(TargetPath)" "$(TargetDir)..\..\..\..\RhinoLink\libraries\grasshopper\$(ProjectName).dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
