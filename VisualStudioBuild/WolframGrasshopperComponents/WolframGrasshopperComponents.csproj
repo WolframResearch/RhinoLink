@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\RhinoLinkBuildProperties.proj" />
   <PropertyGroup>
@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{69AF1AB5-B098-4384-A6F0-CFC5FADBA4C2}</ProjectGuid>
+    <ProjectGuid>{666A7B86-A665-447A-AEE6-83556CD118F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WolframScripting</RootNamespace>
-    <AssemblyName>WolframScripting</AssemblyName>
+    <RootNamespace>WolframGrasshopperComponents</RootNamespace>
+    <AssemblyName>WolframGrasshopperComponents</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -44,6 +44,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GH_IO">
+      <HintPath>$(RhinoPath)\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Grasshopper">
+      <HintPath>$(RhinoPath)\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
+    </Reference>
     <Reference Include="RhinoCommon">
       <HintPath>$(RhinoPath)\System\RhinoCommon.dll</HintPath>
       <Private>False</Private>
@@ -52,19 +58,39 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="Wolfram.NETLink, Version=1.2.1979.2848, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Wolfram.NETLink">
       <HintPath>..\..\RhinoLink\Libraries\Rhino\Wolfram.NETLink.dll</HintPath>
+    </Reference>
+    <Reference Include="WolframGrasshopperSupport">
+      <HintPath>..\WolframGrasshopperSupport\bin\Debug\WolframGrasshopperSupport.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KernelLinkProvider.cs" />
-    <Compile Include="WolframScriptingPlugIn.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WolframStartScripting.cs" />
-    <Compile Include="WolframStopScripting.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\ToRhinoPoint3dList.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframF.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframFxy.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframCode.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframFx.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframGrasshopperComponentsInfo.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperComponents\Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Source\WolframGrasshopperComponents\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Source\WolframGrasshopperComponents\Resources\spikeyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Source\WolframGrasshopperComponents\Resources\Spikey.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -75,25 +101,22 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).rhp"
-
-Echo "$(TargetDir)..\..\..\RhinoLink\Libraries\Rhino\$(ProjectName).rhp"
-Copy "$(TargetPath)" "$(TargetDir)..\..\..\RhinoLink\Libraries\Rhino\$(ProjectName).rhp"
-
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+Copy "$(TargetPath)" "$(TargetDir)..\..\..\RhinoLink\libraries\grasshopper\$(ProjectName).gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">
     <StartArguments>
     </StartArguments>
     <StartAction>Program</StartAction>
-    <StartProgram>c:\Program Files (x86)\Rhinoceros 5\System\Rhino4.exe</StartProgram>
+    <StartProgram>c:\Program Files\Rhino 6\System\Rhino.exe</StartProgram>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug64|AnyCPU'">
-    <StartProgram>c:\Program Files\Rhinoceros 5 (64-bit)\System\Rhino.exe</StartProgram>
+    <StartProgram>c:\Program Files\Rhino 6\System\Rhino.exe</StartProgram>
     <StartArguments>
     </StartArguments>
     <StartAction>Program</StartAction>

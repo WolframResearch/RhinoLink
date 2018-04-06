@@ -65,12 +65,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExprParam.cs" />
-    <Compile Include="LinkParam.cs" />
-    <Compile Include="LinkType.cs" />
-    <Compile Include="ExprType.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperSupport\ExprParam.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperSupport\LinkParam.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperSupport\LinkType.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperSupport\ExprType.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperSupport\Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\Source\WolframGrasshopperSupport\Utils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
