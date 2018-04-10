@@ -636,7 +636,7 @@ FromRhino[obj_, "Rhino.Geometry.PolyCurve"] :=
 
 RhinoDocObjects[doc_:RhinoDoc`ActiveDoc]:=
 	With[{it = doc@Objects@GetEnumerator[]},
-		Reap[While[it@MoveNext[], Sow[it@Current]]][[2,1]]
+		Flatten[Reap[While[it@MoveNext[], Sow[it@Current]]][[2]]]
 	]
 
 
