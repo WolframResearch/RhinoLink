@@ -33,7 +33,7 @@ namespace Wolfram.Grasshopper
 pManager.AddIntegerParameter("num", "num", "", GH_ParamAccess.item );
 pManager.AddNumberParameter("r", "r", "", GH_ParamAccess.item );
 
-            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "seq", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[pManager.ParamCount - 1].Optional = true;
         }
 
@@ -44,7 +44,7 @@ pManager.AddNumberParameter("r", "r", "", GH_ParamAccess.item );
         {
             pManager.AddGenericParameter("pts", "pts", "", GH_ParamAccess.tree );
             pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "seq", "The link to the Wolfram Engine", GH_ParamAccess.item);
        }
 
         /// <summary>
