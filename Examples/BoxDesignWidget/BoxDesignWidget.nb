@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17448,        403]
-NotebookOptionsPosition[     16080,        372]
-NotebookOutlinePosition[     16446,        388]
-CellTagsIndexPosition[     16403,        385]
+NotebookDataLength[     17417,        401]
+NotebookOptionsPosition[     16047,        370]
+NotebookOutlinePosition[     16415,        386]
+CellTagsIndexPosition[     16372,        383]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,12 +47,10 @@ Cell["Example", "Section",
   3.731777787099834*^9}},ExpressionUUID->"b0ccd80e-5534-4d72-9a41-\
 1412106bc697"],
 
-Cell["\<\
-If you haven\[CloseCurlyQuote]t already done so, execute WolframConnect in \
-Rhino.\
-\>", "Text",
+Cell["Execute WolframConnect in Rhino.", "Text",
  CellChangeTimes->{{3.731777804036372*^9, 3.7317778320842924`*^9}, 
-   3.7318034190325947`*^9},ExpressionUUID->"82e64266-4686-42cf-ad3b-\
+   3.7318034190325947`*^9, 
+   3.732454560813593*^9},ExpressionUUID->"82e64266-4686-42cf-ad3b-\
 7ad0d63d1cb6"],
 
 Cell["\<\
@@ -372,7 +370,7 @@ Cell[BoxData[
 },
 Evaluator->"RhinoAttach",
 WindowSize->{580, 650},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowMargins->{{Automatic, 297}, {Automatic, 0}},
 FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -392,17 +390,17 @@ Cell[580, 22, 374, 6, 96, "Title",ExpressionUUID->"f934e75a-8f02-49ca-83d8-c79ba
 Cell[957, 30, 320, 9, 34, "Text",ExpressionUUID->"09d236c1-1394-4427-a88e-743caae89d70"],
 Cell[CellGroupData[{
 Cell[1302, 43, 202, 4, 67, "Section",ExpressionUUID->"b0ccd80e-5534-4d72-9a41-1412106bc697"],
-Cell[1507, 49, 260, 6, 34, "Text",ExpressionUUID->"82e64266-4686-42cf-ad3b-7ad0d63d1cb6"],
-Cell[1770, 57, 330, 7, 56, "Text",ExpressionUUID->"0f862c8e-d41b-4300-a88e-3b25b2e2d57f"],
-Cell[2103, 66, 205, 3, 28, "Input",ExpressionUUID->"02b37985-8aff-4e0b-aa38-4919feb0b032"],
-Cell[2311, 71, 246, 6, 56, "Text",ExpressionUUID->"86837ee1-19d4-417e-b473-cf198c7ef40a"],
-Cell[2560, 79, 483, 9, 78, "Text",ExpressionUUID->"c3da9f8b-ac13-45ac-87b8-0ecf039bc4d3"],
-Cell[3046, 90, 372, 7, 56, "Text",ExpressionUUID->"824a49db-09a4-4f39-9cf0-f65c144c7032"]
+Cell[1507, 49, 227, 4, 34, "Text",ExpressionUUID->"82e64266-4686-42cf-ad3b-7ad0d63d1cb6"],
+Cell[1737, 55, 330, 7, 56, "Text",ExpressionUUID->"0f862c8e-d41b-4300-a88e-3b25b2e2d57f"],
+Cell[2070, 64, 205, 3, 28, "Input",ExpressionUUID->"02b37985-8aff-4e0b-aa38-4919feb0b032"],
+Cell[2278, 69, 246, 6, 56, "Text",ExpressionUUID->"86837ee1-19d4-417e-b473-cf198c7ef40a"],
+Cell[2527, 77, 483, 9, 78, "Text",ExpressionUUID->"c3da9f8b-ac13-45ac-87b8-0ecf039bc4d3"],
+Cell[3013, 88, 372, 7, 56, "Text",ExpressionUUID->"824a49db-09a4-4f39-9cf0-f65c144c7032"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3455, 102, 286, 4, 67, "Section",ExpressionUUID->"af1b65cd-c32e-4617-95fe-7357994531af",
+Cell[3422, 100, 286, 4, 67, "Section",ExpressionUUID->"af1b65cd-c32e-4617-95fe-7357994531af",
  InitializationGroup->True],
-Cell[3744, 108, 12308, 260, 1321, "Input",ExpressionUUID->"b68cf3d2-6ef4-4f9c-972d-12d8977d1b61"]
+Cell[3711, 106, 12308, 260, 1321, "Input",ExpressionUUID->"b68cf3d2-6ef4-4f9c-972d-12d8977d1b61"]
 }, Closed]]
 }, Open  ]]
 }

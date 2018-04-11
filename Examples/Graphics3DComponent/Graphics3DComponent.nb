@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    261447,       4647]
-NotebookOptionsPosition[    255383,       4552]
-NotebookOutlinePosition[    255751,       4568]
-CellTagsIndexPosition[    255708,       4565]
+NotebookDataLength[    259817,       4613]
+NotebookOptionsPosition[    254033,       4521]
+NotebookOutlinePosition[    254401,       4537]
+CellTagsIndexPosition[    254358,       4534]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -45,20 +45,19 @@ Cell["Example 1: Component With No Parameters", "Section",
   3.7318650652315598`*^9}},ExpressionUUID->"7d38d342-b2ff-4b9c-8b02-\
 8a54d67765f6"],
 
-Cell["\<\
-If you haven\[CloseCurlyQuote]t already done so, execute WolframConnect in \
-Rhino.\
-\>", "Text",
+Cell["Execute WolframConnect in Rhino.", "Text",
  CellChangeTimes->{{3.731777804036372*^9, 3.7317778320842924`*^9}, 
-   3.7318034190325947`*^9},ExpressionUUID->"7bd14e29-51dc-42a9-9c74-\
-2918abe23b6e"],
+   3.7318034190325947`*^9, 
+   3.732454560813593*^9},ExpressionUUID->"20673175-d753-464e-b7fd-\
+e1cf23c6e64c"],
 
 Cell["\<\
-Evaluate this code to install a new component in Grasshopper:\
+Evaluate this code to install a new Graphics3D  component in Grasshopper:\
 \>", "Text",
  CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}, {
-  3.7318696221279345`*^9, 
-  3.7318696225545716`*^9}},ExpressionUUID->"3391ae8d-44f4-485b-9c24-\
+   3.7318696221279345`*^9, 3.7318696225545716`*^9}, {3.7324660521128044`*^9, 
+   3.732466054723172*^9}, 
+   3.732466342695692*^9},ExpressionUUID->"3391ae8d-44f4-485b-9c24-\
 f48bd5b8221c"],
 
 Cell[BoxData[{
@@ -99,33 +98,14 @@ Cell[BoxData[{
   3.622399615260711*^9, 3.62239962271689*^9}, {3.6224130956615906`*^9, 
   3.6224131215721273`*^9}, {3.629212461742575*^9, 3.6292124623509674`*^9}, {
   3.73186963175363*^9, 3.7318696386248865`*^9}, {3.731934617947498*^9, 
-  3.7319346205965633`*^9}},ExpressionUUID->"3c055e8d-afd7-4877-9411-\
-677e2dc55e76"],
-
-Cell["\<\
-If Grasshopper is not yet running, start it by executing Grasshopper in Rhino.\
-\>", "Text",
- CellChangeTimes->{{3.731928904786121*^9, 
-  3.731928928620473*^9}},ExpressionUUID->"10870c3a-ce30-445b-99c6-\
-fc17d38caa51"],
-
-Cell["\<\
-If Grasshopper is already running, you have to make it reload Grasshopper \
-components to pick up the new component. To do so, first close all open \
-Grasshopper documents. You must choose File > Close in every Grasshopper \
-window; closing a window does not close its document. When all Grasshopper \
-windows are closed, execute _GrasshopperReloadAssemblies in Rhino, and you \
-should see the new component appear in the Wolfram tab in Grasshopper. If the \
-new component does not appear, you probably still have Grasshopper components \
-open. You can alternatively restart Rhino to pick up the new component.\
-\>", "Text",
- CellChangeTimes->{{3.731928931422433*^9, 3.731928994985566*^9}, {
-  3.731929052414394*^9, 3.731929196593425*^9}, {3.731929260866517*^9, 
-  3.731929261116946*^9}},ExpressionUUID->"7eb964e1-1473-41c5-b6de-\
-b0aafa13f66c"],
+  3.7319346205965633`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"3c055e8d-afd7-4877-9411-677e2dc55e76"],
 
 Cell[TextData[{
- "The newGraphics3D  component is in the Wolfram tab with a sphere icon (",
+ "If Grasshopper is not yet running, start it by executing Grasshopper in \
+Rhino. If Grasshopper is already running, restart Rhino, evaluate \
+WolframConnect, and restart Grasshopper to load the new component, which is \
+in the Wolfram tab with a sphere icon (",
  Cell[BoxData[
   GraphicsBox[
    TagBox[RasterBox[CompressedData["
@@ -147,21 +127,18 @@ m0urdhTW79u24QRBjRCwafayNLuMNJfaNO/+zUsPEalrFOACABbxYAY=
    ImageSizeRaw->{20, 20},
    PlotRange->{{0, 20}, {0, 20}}]],
   CellChangeTimes->{3.7318614101420507`*^9},ExpressionUUID->
-  "abb07cf9-9d92-4762-b72b-0211c154eb1e"],
+  "4484ff2e-fb44-45de-9a31-b9edb4e8afd3"],
  ")."
 }], "Text",
- CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
-  3.6224129343927927`*^9, 3.622412935515964*^9}, {3.7318613674897375`*^9, 
-  3.7318613764602413`*^9}, {3.731861445885609*^9, 3.731861450829358*^9}, {
-  3.7318618065612535`*^9, 3.7318618080499334`*^9}, {3.7319258418039083`*^9, 
-  3.731925842542742*^9}, {3.7319293059644823`*^9, 
-  3.73192930650278*^9}},ExpressionUUID->"5efeb0d2-022d-46ca-9152-\
-ca2bd5014f2d"],
+ CellChangeTimes->{{3.731928904786121*^9, 3.731928928620473*^9}, {
+  3.732466018464877*^9, 3.7324660440023365`*^9}, {3.7324660791169224`*^9, 
+  3.7324660825239625`*^9}},ExpressionUUID->"10870c3a-ce30-445b-99c6-\
+fc17d38caa51"],
 
 Cell["Drag the Graphics3D component to the canvas:", "Text",
  CellChangeTimes->{{3.7318617923192053`*^9, 3.7318618175415463`*^9}, 
-   3.731861907200734*^9},ExpressionUUID->"7140a7de-be28-4c6c-a008-\
-a8185264ee87"],
+   3.731861907200734*^9},ExpressionUUID->"98eae7e4-ee9d-4b69-be05-\
+e67b2dc8ee4e"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -293,19 +270,20 @@ adxo3DgijRuNG0ekcaNx44g0bjRuHJEcN/8Hqqmeww==
   ImageSizeRaw->{142, 125},
   PlotRange->{{0, 142}, {0, 125}}]], "Output",
  CellChangeTimes->{
-  3.7318619254571247`*^9},ExpressionUUID->"85186c10-3362-4099-8539-\
-4f59e62085da"],
+  3.7318619254571247`*^9},ExpressionUUID->"2728bfed-9df5-4fb0-ba5f-\
+96f96f60220d"],
 
 Cell[TextData[{
- "Connect a panel to the expr input of the component and enter an expression \
-that evaluates to a ",
+ "Connect a panel to the \[OpenCurlyDoubleQuote]expr\[CloseCurlyDoubleQuote] \
+input of the component and enter an expression that evaluates to a ",
  StyleBox["Graphics3D", "Input"],
  " object into the panel, for example:"
 }], "Text",
  CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
   3.6224138325534983`*^9, 3.622413858214512*^9}, {3.7318619697687283`*^9, 
-  3.731861974022107*^9}},ExpressionUUID->"7c0716a9-6285-43c8-923a-\
-8100cded7840"],
+  3.731861974022107*^9}, {3.7324678634026465`*^9, 
+  3.732467864683464*^9}},ExpressionUUID->"c74e8b57-8a63-437c-b421-\
+880cac92b6cc"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -527,14 +505,17 @@ qgx0f34Q9Z/Puo+BmAfjihD1MM+IChhXhKiHeUZUwLiqDP4f0uRH6w==
   ImageSizeRaw->{368, 209},
   PlotRange->{{0, 368}, {0, 209}}]], "Output",
  CellChangeTimes->{3.7318689571987276`*^9},
- CellLabel->"Out[8]=",ExpressionUUID->"847bf3ad-27ac-41b0-a912-5c7e4f39495d"],
+ CellLabel->"Out[8]=",ExpressionUUID->"9ca27eed-c029-49da-8943-33d3af7acbe7"],
 
 Cell["\<\
-You should see the geometry described by the Graphics3D expression in Rhino.\
+You should see the geometry described by the Graphics3D expression in Rhino. \
+Replace the expression in the input panel with one of the following to make a \
+different surface.\
 \>", "Text",
- CellChangeTimes->{{3.732013624098295*^9, 
-  3.7320136852477846`*^9}},ExpressionUUID->"845b5370-014c-487f-82fd-\
-d8d947295f10"],
+ CellChangeTimes->{{3.732013624098295*^9, 3.7320136852477846`*^9}, {
+  3.7324674931797285`*^9, 
+  3.7324674959917135`*^9}},ExpressionUUID->"6e38320d-75ea-49e3-8d07-\
+3d315cc30de9"],
 
 Cell[TextData[StyleBox["Spiral pavilion:",
  FontWeight->"Bold"]], "Text",
@@ -3043,21 +3024,20 @@ Cell["Example 1: Component With One Real Parameter", "Section",
   3.731870447991363*^9}},ExpressionUUID->"21d642a8-0352-486e-b98a-\
 071b96136047"],
 
-Cell["\<\
-If you haven\[CloseCurlyQuote]t already done so, execute WolframConnect in \
-Rhino.\
-\>", "Text",
+Cell["Execute WolframConnect in Rhino.", "Text",
  CellChangeTimes->{{3.731777804036372*^9, 3.7317778320842924`*^9}, 
-   3.7318034190325947`*^9},ExpressionUUID->"2db8dded-6806-4ef1-b7dc-\
-d2e1c16bdb09"],
+   3.7318034190325947`*^9, 
+   3.732454560813593*^9},ExpressionUUID->"d368cbe8-7484-45db-9023-\
+9082373cfa90"],
 
 Cell["\<\
-Evaluate this code to install a new component in Grasshopper:\
+Evaluate this code to install a new Graphics3D1  component in Grasshopper:\
 \>", "Text",
  CellChangeTimes->{{3.6224122419387493`*^9, 3.6224122640114965`*^9}, {
-  3.7318696221279345`*^9, 
-  3.7318696225545716`*^9}},ExpressionUUID->"c630f327-d20f-4d7d-935e-\
-a94bd32f09ca"],
+   3.7318696221279345`*^9, 3.7318696225545716`*^9}, {3.7324660521128044`*^9, 
+   3.732466054723172*^9}, 3.732466342695692*^9, 
+   3.732467553442875*^9},ExpressionUUID->"c3af57c5-b072-438f-abc1-\
+29f66d57bb8d"],
 
 Cell[BoxData[
  RowBox[{
@@ -3127,30 +3107,11 @@ Cell[BoxData[
    3.622416613295102*^9}, {3.6224166530429993`*^9, 3.6224166631361995`*^9}},
  CellLabel->"In[23]:=",ExpressionUUID->"fb5f0d62-ca7a-458b-b43d-ddbd68110dfa"],
 
-Cell["\<\
-If Grasshopper is not yet running, start it by executing Grasshopper in Rhino.\
-\>", "Text",
- CellChangeTimes->{{3.731928904786121*^9, 
-  3.731928928620473*^9}},ExpressionUUID->"ce63fe5d-f90a-4f45-a53c-\
-0325070b47c4"],
-
-Cell["\<\
-If Grasshopper is already running, you have to make it reload Grasshopper \
-components to pick up the new component. To do so, first close all open \
-Grasshopper documents. You must choose File > Close in every Grasshopper \
-window; closing a window does not close its document. When all Grasshopper \
-windows are closed, execute _GrasshopperReloadAssemblies in Rhino, and you \
-should see the new component appear in the Wolfram tab in Grasshopper. If the \
-new component does not appear, you probably still have Grasshopper components \
-open. You can alternatively restart Rhino to pick up the new component.\
-\>", "Text",
- CellChangeTimes->{{3.731928931422433*^9, 3.731928994985566*^9}, {
-  3.731929052414394*^9, 3.731929196593425*^9}, {3.7319292698825026`*^9, 
-  3.731929270152609*^9}},ExpressionUUID->"7d6b3d9f-eb6c-470d-91ed-\
-ef3a6978c6d0"],
-
 Cell[TextData[{
- "The new Graphics3D1  component is in the Wolfram tab with a cube icon (",
+ "If Grasshopper is not yet running, start it by executing Grasshopper in \
+Rhino. If Grasshopper is already running, restart Rhino, evaluate \
+WolframConnect, and restart Grasshopper to load the new component, which is \
+in the Wolfram tab with a cube icon (",
  Cell[BoxData[
   GraphicsBox[
    TagBox[RasterBox[CompressedData["
@@ -3168,17 +3129,14 @@ SSoH4CZA9BKvEc0QrJYCAFRx7gI=
    ImageSizeRaw->{20, 20},
    PlotRange->{{0, 20}, {0, 20}}]],
   CellChangeTimes->{3.7318614101420507`*^9},ExpressionUUID->
-  "493e8912-193c-4339-bcfc-f8d5b1fd9f93"],
+  "4687274e-3013-4a4a-bd3b-710078a125b4"],
  ")."
 }], "Text",
- CellChangeTimes->{{3.6224123829057837`*^9, 3.622412392655409*^9}, {
-   3.6224129343927927`*^9, 3.622412935515964*^9}, {3.7318613674897375`*^9, 
-   3.7318613764602413`*^9}, {3.731861445885609*^9, 3.731861450829358*^9}, {
-   3.7318618065612535`*^9, 3.7318618080499334`*^9}, {3.731925797758428*^9, 
-   3.7319258117697945`*^9}, {3.7319258725992947`*^9, 3.731925897534812*^9}, {
-   3.7319292969010468`*^9, 3.731929297891121*^9}, 
-   3.732013351780436*^9},ExpressionUUID->"4f2bfb6d-ca1a-4f4c-a11c-\
-f4b36a06074b"],
+ CellChangeTimes->{{3.731928904786121*^9, 3.731928928620473*^9}, {
+  3.732466018464877*^9, 3.7324660440023365`*^9}, {3.7324660791169224`*^9, 
+  3.7324660825239625`*^9}, {3.732467577552087*^9, 
+  3.7324675897553806`*^9}},ExpressionUUID->"254095c9-d8a9-4af8-8eec-\
+44900b3a960e"],
 
 Cell["Drag the Graphics3D1 component to the canvas:", "Text",
  CellChangeTimes->{{3.7318617923192053`*^9, 3.7318618175415463`*^9}, 
@@ -3315,8 +3273,8 @@ KZxCuaZwCuWawimUa2L5fxpXfgc=
 e62fb4d3382c"],
 
 Cell[TextData[{
- "Connect a panel to the expr input of the component and enter an expression \
-that evaluates to a ",
+ "Connect a panel to the \[OpenCurlyDoubleQuote]expr\[CloseCurlyDoubleQuote] \
+input of the component and enter an expression that evaluates to a ",
  StyleBox["Graphics3D", "Input"],
  " object and contains hashes (#) in the positions of a parameter. Create a \
 slider by double-clicking the canvas and entering, for example 0<0<22 and \
@@ -3325,8 +3283,9 @@ input:"
 }], "Text",
  CellChangeTimes->{{3.6224129533151073`*^9, 3.6224129887576027`*^9}, {
   3.6224138325534983`*^9, 3.622413858214512*^9}, {3.7318619697687283`*^9, 
-  3.731861974022107*^9}, {3.7319261312471123`*^9, 
-  3.7319262854069223`*^9}},ExpressionUUID->"c944cb62-df70-41ff-a9cd-\
+  3.731861974022107*^9}, {3.7319261312471123`*^9, 3.7319262854069223`*^9}, {
+  3.732467880761119*^9, 
+  3.7324678829015207`*^9}},ExpressionUUID->"c944cb62-df70-41ff-a9cd-\
 0ee66309f272"],
 
 Cell[BoxData[
@@ -3576,6 +3535,16 @@ IOSh/kL4AcUVQchD/YXwA4orwo7/D9elg3Q=
  CellChangeTimes->{3.7318689571987276`*^9, 
   3.731926067054915*^9},ExpressionUUID->"ec238f9d-35cc-4fd0-976b-\
 054f6fc254e8"],
+
+Cell["\<\
+You should see the geometry described by the Graphics3D expression in Rhino. \
+Replace the expression in the input panel with one of the following to make a \
+different surface.\
+\>", "Text",
+ CellChangeTimes->{{3.732013624098295*^9, 3.7320136852477846`*^9}, {
+  3.7324674931797285`*^9, 
+  3.7324674959917135`*^9}},ExpressionUUID->"9270e285-7b01-4308-b756-\
+3aff1d42ec60"],
 
 Cell[TextData[StyleBox["Helix:",
  FontWeight->"Bold"]], "Text",
@@ -4552,7 +4521,7 @@ e142691c59c3"]
 },
 Evaluator->"RhinoAttach",
 WindowSize->{580, 651},
-WindowMargins->{{44, Automatic}, {Automatic, 16}},
+WindowMargins->{{486, Automatic}, {Automatic, 3}},
 FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -4572,80 +4541,77 @@ Cell[580, 22, 272, 4, 156, "Title",ExpressionUUID->"2ead7676-05cf-4370-bf6c-d57a
 Cell[855, 28, 415, 8, 56, "Text",ExpressionUUID->"96a26d75-7421-4c48-b5b3-47081c5cc059"],
 Cell[CellGroupData[{
 Cell[1295, 40, 333, 5, 105, "Section",ExpressionUUID->"7d38d342-b2ff-4b9c-8b02-8a54d67765f6"],
-Cell[1631, 47, 260, 6, 34, "Text",ExpressionUUID->"7bd14e29-51dc-42a9-9c74-2918abe23b6e"],
-Cell[1894, 55, 268, 6, 34, "Text",ExpressionUUID->"3391ae8d-44f4-485b-9c24-f48bd5b8221c"],
-Cell[2165, 63, 1582, 39, 162, "Input",ExpressionUUID->"3c055e8d-afd7-4877-9411-677e2dc55e76"],
-Cell[3750, 104, 228, 5, 56, "Text",ExpressionUUID->"10870c3a-ce30-445b-99c6-fc17d38caa51"],
-Cell[3981, 111, 855, 13, 232, "Text",ExpressionUUID->"7eb964e1-1473-41c5-b6de-b0aafa13f66c"],
-Cell[4839, 126, 1585, 32, 59, "Text",ExpressionUUID->"5efeb0d2-022d-46ca-9152-ca2bd5014f2d"],
-Cell[6427, 160, 213, 3, 34, "Text",ExpressionUUID->"7140a7de-be28-4c6c-a008-a8185264ee87"],
-Cell[6643, 165, 7689, 131, 142, "Output",ExpressionUUID->"85186c10-3362-4099-8539-4f59e62085da"],
-Cell[14335, 298, 432, 9, 78, "Text",ExpressionUUID->"7c0716a9-6285-43c8-923a-8100cded7840"],
-Cell[14770, 309, 13209, 220, 226, "Output",ExpressionUUID->"847bf3ad-27ac-41b0-a912-5c7e4f39495d"],
-Cell[27982, 531, 228, 5, 56, "Text",ExpressionUUID->"845b5370-014c-487f-82fd-d8d947295f10"],
-Cell[28213, 538, 201, 4, 34, "Text",ExpressionUUID->"0bac24e8-5cf1-46ea-87c3-48cfe35dbded"],
+Cell[1631, 47, 227, 4, 34, "Text",ExpressionUUID->"20673175-d753-464e-b7fd-e1cf23c6e64c"],
+Cell[1861, 53, 356, 7, 56, "Text",ExpressionUUID->"3391ae8d-44f4-485b-9c24-f48bd5b8221c"],
+Cell[2220, 62, 1603, 39, 162, "Input",ExpressionUUID->"3c055e8d-afd7-4877-9411-677e2dc55e76"],
+Cell[3826, 103, 1571, 32, 103, "Text",ExpressionUUID->"10870c3a-ce30-445b-99c6-fc17d38caa51"],
+Cell[5400, 137, 213, 3, 34, "Text",ExpressionUUID->"98eae7e4-ee9d-4b69-be05-e67b2dc8ee4e"],
+Cell[5616, 142, 7689, 131, 142, "Output",ExpressionUUID->"2728bfed-9df5-4fb0-ba5f-96f96f60220d"],
+Cell[13308, 275, 530, 10, 78, "Text",ExpressionUUID->"c74e8b57-8a63-437c-b421-880cac92b6cc"],
+Cell[13841, 287, 13209, 220, 226, "Output",ExpressionUUID->"9ca27eed-c029-49da-8943-33d3af7acbe7"],
+Cell[27053, 509, 382, 8, 78, "Text",ExpressionUUID->"6e38320d-75ea-49e3-8d07-3d315cc30de9"],
+Cell[27438, 519, 201, 4, 34, "Text",ExpressionUUID->"0bac24e8-5cf1-46ea-87c3-48cfe35dbded"],
 Cell[CellGroupData[{
-Cell[28439, 546, 500, 14, 48, "Input",ExpressionUUID->"bf5a39c5-36a7-4a0c-8f2b-747381a057ec"],
-Cell[28942, 562, 29727, 493, 218, "Output",ExpressionUUID->"c0455058-a040-4269-852e-a4e3b350506c"]
+Cell[27664, 527, 500, 14, 48, "Input",ExpressionUUID->"bf5a39c5-36a7-4a0c-8f2b-747381a057ec"],
+Cell[28167, 543, 29727, 493, 218, "Output",ExpressionUUID->"c0455058-a040-4269-852e-a4e3b350506c"]
 }, Open  ]],
-Cell[58684, 1058, 199, 4, 34, "Text",ExpressionUUID->"8655cedd-5677-42f5-8db1-9e5e93ad40d8"],
+Cell[57909, 1039, 199, 4, 34, "Text",ExpressionUUID->"8655cedd-5677-42f5-8db1-9e5e93ad40d8"],
 Cell[CellGroupData[{
-Cell[58908, 1066, 678, 20, 48, "Input",ExpressionUUID->"ac856916-94d1-418c-b9ef-94cb66064913"],
-Cell[59589, 1088, 17600, 294, 185, "Output",ExpressionUUID->"a22c6f37-0a38-4534-8f10-f2e1b0baaafb"]
+Cell[58133, 1047, 678, 20, 48, "Input",ExpressionUUID->"ac856916-94d1-418c-b9ef-94cb66064913"],
+Cell[58814, 1069, 17600, 294, 185, "Output",ExpressionUUID->"a22c6f37-0a38-4534-8f10-f2e1b0baaafb"]
 }, Open  ]],
-Cell[77204, 1385, 197, 4, 34, "Text",ExpressionUUID->"d50d27ae-a98f-424f-898f-8a3464d16526"],
+Cell[76429, 1366, 197, 4, 34, "Text",ExpressionUUID->"d50d27ae-a98f-424f-898f-8a3464d16526"],
 Cell[CellGroupData[{
-Cell[77426, 1393, 1258, 37, 86, "Input",ExpressionUUID->"7770fa48-7ff8-4e2a-9244-a48a15225d1f"],
-Cell[78687, 1432, 32506, 538, 177, "Output",ExpressionUUID->"9cf3f91d-d100-4bc4-9671-e57233552ec3"]
+Cell[76651, 1374, 1258, 37, 86, "Input",ExpressionUUID->"7770fa48-7ff8-4e2a-9244-a48a15225d1f"],
+Cell[77912, 1413, 32506, 538, 177, "Output",ExpressionUUID->"9cf3f91d-d100-4bc4-9671-e57233552ec3"]
 }, Open  ]],
-Cell[111208, 1973, 200, 4, 34, "Text",ExpressionUUID->"85739c10-edfd-43c6-8193-0ae708caf4e5"],
+Cell[110433, 1954, 200, 4, 34, "Text",ExpressionUUID->"85739c10-edfd-43c6-8193-0ae708caf4e5"],
 Cell[CellGroupData[{
-Cell[111433, 1981, 667, 18, 48, "Input",ExpressionUUID->"704837c1-d5cd-4e2d-b8fa-ac265d379065"],
-Cell[112103, 2001, 17522, 292, 197, "Output",ExpressionUUID->"663fe621-9cce-4ece-9cec-88a28cafd969"]
+Cell[110658, 1962, 667, 18, 48, "Input",ExpressionUUID->"704837c1-d5cd-4e2d-b8fa-ac265d379065"],
+Cell[111328, 1982, 17522, 292, 197, "Output",ExpressionUUID->"663fe621-9cce-4ece-9cec-88a28cafd969"]
 }, Open  ]],
-Cell[129640, 2296, 196, 4, 34, "Text",ExpressionUUID->"4d60ee6d-8ce8-4285-9f2c-48a58b00158c"],
+Cell[128865, 2277, 196, 4, 34, "Text",ExpressionUUID->"4d60ee6d-8ce8-4285-9f2c-48a58b00158c"],
 Cell[CellGroupData[{
-Cell[129861, 2304, 456, 12, 48, "Input",ExpressionUUID->"31923153-1c1c-4f5c-a390-519243e0134c"],
-Cell[130320, 2318, 20192, 336, 184, "Output",ExpressionUUID->"fa964c7e-0e59-47f1-a927-59ce2c6ab1e2"]
+Cell[129086, 2285, 456, 12, 48, "Input",ExpressionUUID->"31923153-1c1c-4f5c-a390-519243e0134c"],
+Cell[129545, 2299, 20192, 336, 184, "Output",ExpressionUUID->"fa964c7e-0e59-47f1-a927-59ce2c6ab1e2"]
 }, Open  ]],
-Cell[150527, 2657, 255, 5, 34, "Text",ExpressionUUID->"c4c4e10b-d614-47cb-b5fd-3236157cce0b"],
+Cell[149752, 2638, 255, 5, 34, "Text",ExpressionUUID->"c4c4e10b-d614-47cb-b5fd-3236157cce0b"],
 Cell[CellGroupData[{
-Cell[150807, 2666, 475, 12, 28, "Input",ExpressionUUID->"81167154-6954-48cd-a224-5604445bf45b"],
-Cell[151285, 2680, 21207, 353, 192, "Output",ExpressionUUID->"0876b14f-5faa-46e4-8abf-11804a7f36fe"]
+Cell[150032, 2647, 475, 12, 28, "Input",ExpressionUUID->"81167154-6954-48cd-a224-5604445bf45b"],
+Cell[150510, 2661, 21207, 353, 192, "Output",ExpressionUUID->"0876b14f-5faa-46e4-8abf-11804a7f36fe"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[172541, 3039, 242, 4, 105, "Section",ExpressionUUID->"21d642a8-0352-486e-b98a-071b96136047"],
-Cell[172786, 3045, 260, 6, 34, "Text",ExpressionUUID->"2db8dded-6806-4ef1-b7dc-d2e1c16bdb09"],
-Cell[173049, 3053, 268, 6, 34, "Text",ExpressionUUID->"c630f327-d20f-4d7d-935e-a94bd32f09ca"],
-Cell[173320, 3061, 776, 15, 48, "Input",ExpressionUUID->"2d9bc896-6118-415d-a657-8dd7c5ed73c4"],
-Cell[174099, 3078, 2552, 49, 162, "Input",ExpressionUUID->"fb5f0d62-ca7a-458b-b43d-ddbd68110dfa"],
-Cell[176654, 3129, 228, 5, 56, "Text",ExpressionUUID->"ce63fe5d-f90a-4f45-a53c-0325070b47c4"],
-Cell[176885, 3136, 857, 13, 232, "Text",ExpressionUUID->"7d6b3d9f-eb6c-470d-91ed-ef3a6978c6d0"],
-Cell[177745, 3151, 1393, 29, 59, "Text",ExpressionUUID->"4f2bfb6d-ca1a-4f4c-a11c-f4b36a06074b"],
-Cell[179141, 3182, 239, 4, 34, "Text",ExpressionUUID->"373af93f-66f5-4838-8374-8cfa32b617a9"],
-Cell[179383, 3188, 7390, 126, 163, "Output",ExpressionUUID->"2405ea9d-03c7-4704-a005-e62fb4d3382c"],
-Cell[186776, 3316, 684, 13, 122, "Text",ExpressionUUID->"c944cb62-df70-41ff-a9cd-0ee66309f272"],
-Cell[187463, 3331, 14718, 246, 209, "Output",ExpressionUUID->"ec238f9d-35cc-4fd0-976b-054f6fc254e8"],
-Cell[202184, 3579, 193, 4, 34, "Text",ExpressionUUID->"c2dea08b-4f04-4e8a-8429-06a6fe70ec5b"],
+Cell[171766, 3020, 242, 4, 105, "Section",ExpressionUUID->"21d642a8-0352-486e-b98a-071b96136047"],
+Cell[172011, 3026, 227, 4, 34, "Text",ExpressionUUID->"d368cbe8-7484-45db-9023-9082373cfa90"],
+Cell[172241, 3032, 379, 7, 56, "Text",ExpressionUUID->"c3af57c5-b072-438f-abc1-29f66d57bb8d"],
+Cell[172623, 3041, 776, 15, 48, "Input",ExpressionUUID->"2d9bc896-6118-415d-a657-8dd7c5ed73c4"],
+Cell[173402, 3058, 2552, 49, 162, "Input",ExpressionUUID->"fb5f0d62-ca7a-458b-b43d-ddbd68110dfa"],
+Cell[175957, 3109, 1348, 29, 103, "Text",ExpressionUUID->"254095c9-d8a9-4af8-8eec-44900b3a960e"],
+Cell[177308, 3140, 239, 4, 34, "Text",ExpressionUUID->"373af93f-66f5-4838-8374-8cfa32b617a9"],
+Cell[177550, 3146, 7390, 126, 163, "Output",ExpressionUUID->"2405ea9d-03c7-4704-a005-e62fb4d3382c"],
+Cell[184943, 3274, 782, 14, 122, "Text",ExpressionUUID->"c944cb62-df70-41ff-a9cd-0ee66309f272"],
+Cell[185728, 3290, 14718, 246, 209, "Output",ExpressionUUID->"ec238f9d-35cc-4fd0-976b-054f6fc254e8"],
+Cell[200449, 3538, 382, 8, 78, "Text",ExpressionUUID->"9270e285-7b01-4308-b756-3aff1d42ec60"],
+Cell[200834, 3548, 193, 4, 34, "Text",ExpressionUUID->"c2dea08b-4f04-4e8a-8429-06a6fe70ec5b"],
 Cell[CellGroupData[{
-Cell[202402, 3587, 899, 25, 67, "Input",ExpressionUUID->"51fed4c5-21ff-49f5-86ce-e11c40990cb2"],
-Cell[203304, 3614, 8789, 149, 202, "Output",ExpressionUUID->"e2efe23c-ad1e-435b-a847-d1d921725db6"]
+Cell[201052, 3556, 899, 25, 67, "Input",ExpressionUUID->"51fed4c5-21ff-49f5-86ce-e11c40990cb2"],
+Cell[201954, 3583, 8789, 149, 202, "Output",ExpressionUUID->"e2efe23c-ad1e-435b-a847-d1d921725db6"]
 }, Open  ]],
-Cell[212108, 3766, 225, 4, 34, "Text",ExpressionUUID->"bd6b2db1-2a43-4938-9289-7990d3c12ed9"],
+Cell[210758, 3735, 225, 4, 34, "Text",ExpressionUUID->"bd6b2db1-2a43-4938-9289-7990d3c12ed9"],
 Cell[CellGroupData[{
-Cell[212358, 3774, 833, 25, 48, "Input",ExpressionUUID->"82b4977f-01cf-42e0-8aa8-54fc1a9d35d0"],
-Cell[213194, 3801, 10835, 183, 141, "Output",ExpressionUUID->"aca6639c-b8b4-4bb9-a663-563fba1f1a13"]
+Cell[211008, 3743, 833, 25, 48, "Input",ExpressionUUID->"82b4977f-01cf-42e0-8aa8-54fc1a9d35d0"],
+Cell[211844, 3770, 10835, 183, 141, "Output",ExpressionUUID->"aca6639c-b8b4-4bb9-a663-563fba1f1a13"]
 }, Open  ]],
-Cell[224044, 3987, 201, 4, 34, "Text",ExpressionUUID->"2eb04ccb-ccc1-4d75-8571-3530739864fb"],
+Cell[222694, 3956, 201, 4, 34, "Text",ExpressionUUID->"2eb04ccb-ccc1-4d75-8571-3530739864fb"],
 Cell[CellGroupData[{
-Cell[224270, 3995, 891, 24, 67, "Input",ExpressionUUID->"2a5f91b5-9a61-4eea-8086-70b8ab028d22"],
-Cell[225164, 4021, 12516, 210, 135, "Output",ExpressionUUID->"3cfdd091-a091-4156-94f3-96b2324a1014"]
+Cell[222920, 3964, 891, 24, 67, "Input",ExpressionUUID->"2a5f91b5-9a61-4eea-8086-70b8ab028d22"],
+Cell[223814, 3990, 12516, 210, 135, "Output",ExpressionUUID->"3cfdd091-a091-4156-94f3-96b2324a1014"]
 }, Open  ]],
-Cell[237695, 4234, 199, 4, 34, "Text",ExpressionUUID->"242c1e28-6aa6-43b7-8569-a301efd1bd27"],
+Cell[236345, 4203, 199, 4, 34, "Text",ExpressionUUID->"242c1e28-6aa6-43b7-8569-a301efd1bd27"],
 Cell[CellGroupData[{
-Cell[237919, 4242, 1074, 30, 67, "Input",ExpressionUUID->"a65d61e0-9116-4017-b7f5-4dc883c5947b"],
-Cell[238996, 4274, 16347, 273, 171, "Output",ExpressionUUID->"d7516b6d-7acf-47df-8bf7-e142691c59c3"]
+Cell[236569, 4211, 1074, 30, 67, "Input",ExpressionUUID->"a65d61e0-9116-4017-b7f5-4dc883c5947b"],
+Cell[237646, 4243, 16347, 273, 171, "Output",ExpressionUUID->"d7516b6d-7acf-47df-8bf7-e142691c59c3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
