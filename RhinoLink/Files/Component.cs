@@ -24,7 +24,7 @@ namespace Wolfram.Grasshopper
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             `RegisterInputParams`
-            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "seq", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[pManager.ParamCount - 1].Optional = true;
         }
 
@@ -32,7 +32,7 @@ namespace Wolfram.Grasshopper
         {
             `RegisterOutputParams`
             pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "WL", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "link", "seq", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
