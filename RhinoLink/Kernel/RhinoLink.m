@@ -72,8 +72,9 @@ RhinoReshow::usage = "RhinoReshow[guid, rhinoObject] replaces the object referen
 Begin["`Private`"];
 
 
-(*LoadNETType["Rhino.RhinoDoc"];
-LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];*)
+(* load static types used by utility functions *)
+LoadNETType["Rhino.RhinoDoc"];
+LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
 
 
 If[!StringQ[$RhinoHome],
@@ -558,10 +559,14 @@ FromRhino[obj_, "Rhino.Geometry.Point3d[]"] := (* slow version *)
 (* Rhino.Geometry.Mesh *)
 
 
+TriangulateFaces[faces_] :=
+	faces /. Polygon[face_] :> Sequence @@ (Polygon[Prepend[#, First[face]]]& /@ Partition[Rest[face], 2, 1])
+
+
 ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
 	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
 		MeshCoordinates[mesh],
-		(First[#] - 1)& /@ MeshCells[mesh, 2]
+		(First[#] - 1)& /@ TriangulateFaces[MeshCells[mesh, 2]]
 	]
 
 
@@ -670,20 +675,36 @@ RhinoDocInformation[doc_:RhinoDoc`ActiveDoc]:=
  *)
 
 
-RhinoMeshUnion[meshes_]:=
+RhinoMeshUnion[meshes__Symbol]:=
+	RhinoMeshUnion[{meshes}]
+
+
+RhinoMeshUnion[meshes1_List, meshes2_List]:=
+	RhinoMeshUnion[Flatten[Join[{meshes1}, {meshes2}]]]
+
+
+RhinoMeshUnion[meshes_List]:=
 	Rhino`Geometry`Mesh`CreateBooleanUnion[
 		MakeNETObject[meshes,"Rhino.Geometry.Mesh[]"]
 	]
 
 
-RhinoMeshDifference[meshes1_,meshes2_]:=
+RhinoMeshDifference[mesh_Symbol, meshes__Symbol]:=
+	RhinoMeshDifference[{mesh}, {meshes}]
+
+
+RhinoMeshDifference[meshes1_List, meshes2_List]:=
 	Rhino`Geometry`Mesh`CreateBooleanDifference[
 		MakeNETObject[meshes1,"Rhino.Geometry.Mesh[]"],
 		MakeNETObject[meshes2,"Rhino.Geometry.Mesh[]"]
 	]
 
 
-RhinoMeshIntersection[meshes1_,meshes2_]:=
+RhinoMeshIntersection[mesh_Symbol, meshes__Symbol]:=
+	RhinoMeshIntersection[{mesh}, {meshes}]
+
+
+RhinoMeshIntersection[meshes1_List, meshes2_List]:=
 	Rhino`Geometry`Mesh`CreateBooleanIntersection[
 		MakeNETObject[meshes1,"Rhino.Geometry.Mesh[]"],
 		MakeNETObject[meshes2,"Rhino.Geometry.Mesh[]"]
