@@ -93,7 +93,7 @@ namespace Wolfram.Grasshopper
         {
             get
             {
-                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(WolframCodeComponent).Assembly);
+                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(WolframCodeComponent).Assembly);
                 object obj = temp.GetObject("SpikeyIcon");
                 return ((System.Drawing.Bitmap)(obj));
             }
