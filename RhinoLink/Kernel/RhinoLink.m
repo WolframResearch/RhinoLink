@@ -131,7 +131,6 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
                   "UseInit" -> If[initialization =!= None, "true", "false"],
                   "Initialization" -> If[initialization =!= None, ToString[initialization, InputForm], "\"\""],
                   "UseDefs" -> If[TrueQ[saveDefs], "true", "false"],
-                  (* NOTE: ugly call into private CloudObject functionality. Fix. *)
                   "Definitions" -> If[TrueQ[saveDefs], ToString[exprToStringWithSaveDefinitions[func], InputForm], ""],
                   "HeadIsSymbol" -> If[Head[func] === Symbol, "true", "false"],
                   "Func" -> ToString[func, InputForm],
@@ -289,8 +288,25 @@ neutralContextBlock[expr_] := Block[{$ContextPath = {"System`"}, $Context = "Sys
 
 (* Borrowed with some simplifications from internal code in the CloudObject package. *)
 exprToStringWithSaveDefinitions[expr_] :=
-    Module[{defs, defsString, exprLine},
-        defs = Language`ExtendedFullDefinition[expr];
+    Module[{contextsToExclude, rhinoObjectParentContexts, shortContextsToExclude, defs, defsString, exprLine},
+        (* We want to prevent capturing defs from a number of contexts. In particular, we don't want to capture defs for
+           symbols defined when LoadNETType is called on Rhino classes (see RHINO-17). The way we choose to detect
+           those contexts is as follows. The "long" contexts (using .NET/Link terminology) are easy to detect and exclude,
+           as they always start with one of the three top-level Rhino object namespaces "Rhino`", "Grasshopper`", or "GHUIO`".
+           Note that Language`FullDefinition expects contexts to be given without the ending ` mark.
+        *)
+        rhinoObjectParentContexts = {"Rhino", "Grasshopper", "GHUIO"};
+        (* To find the so-called short contexts, we take all contexts that start with one of the rhinoObjectParentContexts,
+           and strip them down to their last context element.
+        *)
+        shortContextsToExclude = Last[StringSplit[#, "`"]]& /@ Catenate[Contexts[# <> "`*"] & /@ rhinoObjectParentContexts];
+        contextsToExclude = Join[
+            {"RhinoLink", "Wolfram`Rhino", "WolframScriptingPlugIn"},
+            rhinoObjectParentContexts,
+            shortContextsToExclude,
+            OptionValue[Language`ExtendedFullDefinition, "ExcludedContexts"]
+        ];
+        defs = Language`ExtendedFullDefinition[expr, "ExcludedContexts" -> contextsToExclude];
         defsString = If[defs =!= Language`DefinitionList[],
             neutralContextBlock[With[{d = defs},
                 (* Language`ExtendedFullDefinition[] can be used as the LHS of an assignment to restore
