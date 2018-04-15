@@ -52,7 +52,7 @@ namespace Wolfram.Grasshopper
 
             if (!DA.GetData(0, ref head)) { return; }
             // Link arg is optional.
-            DA.GetData(2, ref linkType);
+            DA.GetData(1, ref linkType);
 
             // If the retrieved data is Nothing, we need to abort.
             if (head == null) { return; }
