@@ -109,7 +109,7 @@ GHDeploy[name_, func_, inputSpec:{_String, _String, _String, _String, _}, output
 (* Maybe the param spec should be "Text" -> {name, nick, desc, etc...}. Or maybe options for all values? *)
 GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}...},
                        outputSpec:{{_String, _String, _String, _String, _}..}, OptionsPattern[]] :=
-    Module[{codeString, asmPath, saveDefs, initialization, icon, desc},
+    Module[{codeString, asmPath, saveDefs, initialization, icon, desc, componentGuid},
         {saveDefs, initialization, icon, desc} = OptionValue[{SaveDefinitions, Initialization, "Icon", "Description"}];
         If[icon === Automatic, icon = name];
         (* Fail right away if func is not of the correct form. Must be symbol or pure function. *)
@@ -117,13 +117,14 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
             Message[GHDeploy::badfunc];
             Return[$Failed]
         ];
+        componentGuid = CreateUUID[];
         (* TODO: Verify that all user-specified types are supported. *)
         codeString =
             TemplateApply[
                 FileTemplate[FileNameJoin[{$thisPacletDir, "Files", "Component.cs"}]],
                 <|"Name" -> name, "Nickname" -> name,  "Category" -> "Wolfram",
                   "Subcategory" -> "", "Description" -> desc,
-                  "GUID" -> CreateUUID[],
+                  "GUID" -> componentGuid,
                   "RegisterInputParams" -> StringJoin[addParam /@ inputSpec], 
                   "RegisterOutputParams" -> StringJoin[addParam /@ outputSpec],
                   "GetData" -> StringJoin[MapIndexed[getData, inputSpec]],
@@ -131,7 +132,7 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
                   "UseInit" -> If[initialization =!= None, "true", "false"],
                   "Initialization" -> If[initialization =!= None, ToString[initialization, InputForm], "\"\""],
                   "UseDefs" -> If[TrueQ[saveDefs], "true", "false"],
-                  "Definitions" -> If[TrueQ[saveDefs], ToString[exprToStringWithSaveDefinitions[func], InputForm], ""],
+                  "Definitions" -> If[TrueQ[saveDefs], ToString[exprToStringWithSaveDefinitions[func, componentGuid], InputForm], ""],
                   "HeadIsSymbol" -> If[Head[func] === Symbol, "true", "false"],
                   "Func" -> ToString[func, InputForm],
                   "SendInputParams" -> StringJoin[MapIndexed[sendInputParam, inputSpec]],
@@ -287,12 +288,11 @@ Attributes[neutralContextBlock] = {HoldFirst};
 neutralContextBlock[expr_] := Block[{$ContextPath = {"System`"}, $Context = "System`"}, expr]
 
 (* Borrowed with some simplifications from internal code in the CloudObject package. *)
-exprToStringWithSaveDefinitions[expr_] :=
+exprToStringWithSaveDefinitions[expr_, componentGuid_String] :=
     Module[{contextsToExclude, rhinoObjectParentContexts, shortContextsToExclude, defs, defsString, exprLine},
-        (* We want to prevent capturing defs from a number of contexts. In particular, we don't want to capture defs for
-           symbols defined when LoadNETType is called on Rhino classes (see RHINO-17). The way we choose to detect
-           those contexts is as follows. The "long" contexts (using .NET/Link terminology) are easy to detect and exclude,
-           as they always start with one of the three top-level Rhino object namespaces "Rhino`", "Grasshopper`", or "GHUIO`".
+        (* Purely as an optimization, we want to avoid capturing defs from a number of contexts. Thee include contexts that
+           form the implementation of RhinoLink itself, and contexts that come from LoadNETType on Rhino/Grasshopper classes
+           (in both long and short form, in .NET/Link terminology).
            Note that Language`FullDefinition expects contexts to be given without the ending ` mark.
         *)
         rhinoObjectParentContexts = {"Rhino", "Grasshopper", "GHUIO"};
@@ -307,16 +307,29 @@ exprToStringWithSaveDefinitions[expr_] :=
             OptionValue[Language`ExtendedFullDefinition, "ExcludedContexts"]
         ];
         defs = Language`ExtendedFullDefinition[expr, "ExcludedContexts" -> contextsToExclude];
-        defsString = If[defs =!= Language`DefinitionList[],
-            neutralContextBlock[With[{d = defs},
-                (* Language`ExtendedFullDefinition[] can be used as the LHS of an assignment to restore
-                 * all definitions. *)
-                ToString[Unevaluated[Language`ExtendedFullDefinition[] = d], InputForm,
-                    CharacterEncoding -> "PrintableASCII"]
-            ]] <> ";\n\n",
-        (* else *)
-            ""
-        ];
+        (* This final step is important (see RHINO-17). We want to prevent capturing defs for functions that are as yet
+           undefined. There is no use in capturing the state of such functions, and it leads to serious bugs, because the
+           common case is a static method def for a .NET object. The type might not be loaded into the kernel at GHDeploy
+           time, so there are no rules for the symbol, but the code of the user function for the component will load the type on
+           first use. Then upon second use, the no-defs state for the function would be restored by the re-loading of the
+           captured defs, breaking the component.
+        *)
+        defs = DeleteCases[defs, HoldForm[_Symbol] -> {(_ -> {})..}];
+        defsString =
+            If[defs =!= Language`DefinitionList[],
+                StringJoin[
+                    "If[!TrueQ[RhinoLink`Private`alreadyLoadedInThisSession[\"" <> componentGuid <> "\"]],",
+                    "RhinoLink`Private`alreadyLoadedInThisSession[\"" <> componentGuid <> "\"] = True;", 
+                    neutralContextBlock[With[{d = defs},
+                        (* Language`ExtendedFullDefinition[] can be used as the LHS of an assignment to restore all definitions. *)
+                        ToString[Unevaluated[Language`ExtendedFullDefinition[] = d], InputForm,
+                            CharacterEncoding -> "PrintableASCII"]
+                    ]], 
+                    "];\n"
+                ],
+            (* else *)
+                ""
+            ];
         exprLine = neutralContextBlock[ToString[Unevaluated[expr], InputForm, CharacterEncoding -> "PrintableASCII"]];
         StringTrim[defsString <> exprLine] <> "\n"
     ]
