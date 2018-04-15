@@ -9,6 +9,11 @@ GHDeploy::usage = "";
 GHResult::usage = "";
 
 
+InstallRhinoPlugins::usage = "InstallRhinoPlugins[] installs the Rhino and Grasshopper plugin components that are part of RhinoLink. \
+The Rhino plugin (WolframScripting.rhp and associated files) is installed via an installer executable provided with Rhino. \
+The Grasshopper components are placed into the standard Grasshopper location for user components."
+
+
 $RhinoHome::usage = "$RhinoHome is the path to the installation directory of Rhino. The default is \"c:\\Program Files\\Rhino 6\". You will need to set it to another value if you have a different location.";
 
 
@@ -92,6 +97,40 @@ $deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory], "Grasshopper", "
 
 $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
 
+
+(**********************************  InstallRhinoPlugins  *********************************)
+
+(* Users run this once, on first use of RhinoLink, to get the binary components properly installed into their Rhino/Grasshopper layout.
+   Developers can run this after every rebuild of the RhinoLink binary components.
+   Installing the Rhino component, WolframScripting.rhp and associated DLLS, is done via creating a WolframScripting.rhp file and
+   running the plugin installer provided by Rhino on this file. This will install into the latest versino of Rhino that is available
+   on the machine. The Grasshopper parts are installed via a file into the standard location for Rhino 6. 
+*)
+
+InstallRhinoPlugins[] := 
+    Module[{rhinoLibsDir, tempFileName, zipFile, rhiFile},
+        (* Create a WolframScripting.rhi file in a temporary location and run it, which will launch the plugin
+           installer provided with Rhino. An rhi file is just a zip file that contains the .rhp file and other support files.
+        *)
+        rhinoLibsDir = FileNameJoin[{$thisPacletDir, "Libraries", "Rhino"}];
+        tempFileName = CreateFile[];
+        DeleteFile[tempFileName];
+        zipFile = CreateArchive[rhinoLibsDir, tempFileName];
+        rhiFile = RenameFile[zipFile, zipFile <> ".rhi"];
+        SystemOpen[rhiFile];
+        (* Installing the Grasshopper components is a straight file copy. *)
+        CopyFile[
+            FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperComponents.gha"}],
+            FileNameJoin[{$deployDir, "WolframGrasshopperComponents.gha"}],
+            OverwriteTarget -> True
+        ];
+        CopyFile[
+            FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperSupport.dll"}],
+            FileNameJoin[{$deployDir, "WolframGrasshopperSupport.dll"}],
+            OverwriteTarget -> True
+        ];
+    ]
+    
 
 (**********************************  GHDeploy  *********************************)
 
