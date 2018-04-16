@@ -98,7 +98,7 @@ namespace Wolfram.Grasshopper
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(WolframFxComponent).Assembly);
+                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(WolframFxComponent).Assembly);
                 object obj = temp.GetObject("SpikeyIcon");
                 return ((System.Drawing.Bitmap)(obj));
             }
