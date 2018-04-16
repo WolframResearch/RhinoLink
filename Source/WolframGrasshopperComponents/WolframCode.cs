@@ -9,15 +9,15 @@ using Wolfram.NETLink;
 
 namespace Wolfram.Grasshopper
 {
-    public class ToRhinoPoint3dList : GH_Component
+    public class WolframCodeComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the CodeComponent class.
         /// </summary>
-        public ToRhinoPoint3dList()
-            : base("Wolfram Code", "Wolfram Code",
-                "Input arbitrary Wolfram Language code as a string.",
-                "Wolfram", "")
+        public WolframCodeComponent()
+            : base("WL Code", "WL Code",
+                "Evaluate Wolfram Language code",
+                "Wolfram", "Code")
         {
         }
 
@@ -26,8 +26,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("code", "code", "The Wolfram Language code to execute", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddTextParameter("E", "E", "The Wolfram Language expression to execute", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[1].Optional = true;
         }
 
@@ -36,9 +36,9 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("result", "res", "The result", GH_ParamAccess.item);
-            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("R", "R", "The result", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "E", "E", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Wolfram.Grasshopper
             get
             {
                 System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(WolframCodeComponent).Assembly);
-                object obj = temp.GetObject("SpikeyIcon");
+                object obj = temp.GetObject("codeIcon");
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

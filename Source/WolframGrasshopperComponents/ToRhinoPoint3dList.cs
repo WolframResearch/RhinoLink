@@ -9,15 +9,15 @@ using Wolfram.NETLink;
 
 namespace Wolfram.Grasshopper
 {
-    public class WolframCodeComponent : GH_Component
+    public class ToRhinoPoint3DList : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the CodeComponent class.
         /// </summary>
-        public WolframCodeComponent()
-            : base("To Rhino Point3d List", "To Rhino Point3d List",
-                "Convert a list of points to a list of Point3d",
-                "Wolfram", "")
+        public ToRhinoPoint3DList()
+            : base("Point3d List", "Point3d List",
+                "Convert a Wolfram Language list of 3D points to a Rhino list of Point3d",
+                "Wolfram", "Data")
         {
         }
 
@@ -26,8 +26,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("pts", "pts", "WL list of 3D points", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddTextParameter("E", "E", "WL Expr that evaluates to a list of 3D points", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "l", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[1].Optional = true;
         }
 
@@ -36,8 +36,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddPointParameter("P3D", "P3D", "Point3D list", GH_ParamAccess.list);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddPointParameter("P", "P", "List of Rhino Points", GH_ParamAccess.list);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -88,8 +88,8 @@ namespace Wolfram.Grasshopper
         {
             get
             {
-                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(WolframCodeComponent).Assembly);
-                object obj = temp.GetObject("SpikeyIcon");
+                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(ToRhinoPoint3DList).Assembly);
+                object obj = temp.GetObject("p3dIcon");
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
