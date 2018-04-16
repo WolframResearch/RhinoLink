@@ -15,9 +15,9 @@ namespace Wolfram.Grasshopper
         /// Initializes a new instance of the ObjectComponent class.
         /// </summary>
         public WolframFComponent()
-            : base("Wolfram F[]", "Wolfram F[]",
-                "Computes arbitrary zero-arg functions",
-                "Wolfram", "")
+            : base("WL F[]", "WL F[]",
+                "Evaluate a zero-argument function",
+                "Wolfram", "Code")
         {
         }
 
@@ -26,8 +26,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("head", "head", "The head of the function being computed", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("H", "H", "The head of the function being computed", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[1].Optional = true;
         }
 
@@ -36,9 +36,9 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("result", "res", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
-            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("R", "R", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "E", "E", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Wolfram.Grasshopper
         /// </summary>
         public override GH_Exposure Exposure
         {
-            get { return GH_Exposure.primary; }
+            get { return GH_Exposure.hidden; }
         }
 
         /// <summary>
