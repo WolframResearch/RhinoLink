@@ -123,7 +123,7 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
             TemplateApply[
                 FileTemplate[FileNameJoin[{$thisPacletDir, "Files", "Component.cs"}]],
                 <|"Name" -> name, "Nickname" -> name,  "Category" -> "Wolfram",
-                  "Subcategory" -> "", "Description" -> desc,
+                  "Subcategory" -> "Extensions", "Description" -> desc,
                   "GUID" -> componentGuid,
                   "RegisterInputParams" -> StringJoin[addParam /@ inputSpec], 
                   "RegisterOutputParams" -> StringJoin[addParam /@ outputSpec],

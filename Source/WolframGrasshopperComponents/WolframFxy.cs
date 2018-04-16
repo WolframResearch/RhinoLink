@@ -15,9 +15,9 @@ namespace Wolfram.Grasshopper
         /// Initializes a new instance of the ObjectComponent class.
         /// </summary>
         public WolframFxyComponent()
-            : base("Wolfram F[x,y]", "Wolfram F[x,y]",
-                "Computes arbitrary two-arg functions",
-                "Wolfram", "")
+            : base("WL F[x,y]", "WL F[x,y]",
+                "Evaluate a two-argument function",
+                "Wolfram", "Code")
         {
         }
 
@@ -26,10 +26,10 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("head", "head", "The head of the function being computed", GH_ParamAccess.item);
-            pManager.AddGenericParameter("arg1", "arg1", "The first argument of the function being computed", GH_ParamAccess.item);
-            pManager.AddGenericParameter("arg2", "arg2", "The second argument of the function being computed", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("H", "H", "The head of the function being computed", GH_ParamAccess.item);
+            pManager.AddGenericParameter("A1", "A1", "The first argument of the function being computed", GH_ParamAccess.item);
+            pManager.AddGenericParameter("A2", "A2", "The second argument of the function being computed", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[3].Optional = true;
         }
 
@@ -38,9 +38,9 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("result", "res", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
-            pManager.AddParameter(new ExprParam(), "Expr result", "expr", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "link", "link", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("R", "R", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "E", "E", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -102,8 +102,8 @@ namespace Wolfram.Grasshopper
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(WolframFxyComponent).Assembly);
-                object obj = temp.GetObject("SpikeyIcon");
+                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(WolframFxyComponent).Assembly);
+                object obj = temp.GetObject("f2Icon");
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
