@@ -564,14 +564,14 @@ FromRhino[obj_, "Rhino.Geometry.Point3d"] :=
 
 ToRhino[expr_, {"Rhino.Geometry.Point3d"}] :=
 	Block[{},
-		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
 		WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
 	]
 
 
 ToRhino[expr_, "Rhino.Geometry.Point3d[]"] :=
 	Block[{},
-		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
 		ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
 	]
 
@@ -594,7 +594,7 @@ TriangulateFaces[faces_] :=
 
 ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
 	Block[{},
-		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
 		Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
 			MeshCoordinates[mesh],
 			(First[#] - 1)& /@ TriangulateFaces[MeshCells[mesh, 2]]
@@ -604,7 +604,7 @@ ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
 
 ToRhino[GraphicsComplex[pts:{{_?NumericQ,_?NumericQ,_?NumericQ}...}, polygons:{_Polygon...}], "Rhino.Geometry.Mesh"] :=
 	Block[{},
-		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
 		Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
 			pts,
 			(First[#] - 1)& /@ polygons
@@ -614,7 +614,7 @@ ToRhino[GraphicsComplex[pts:{{_?NumericQ,_?NumericQ,_?NumericQ}...}, polygons:{_
 
 FromRhino[obj_, "Rhino.Geometry.Mesh"] :=
 	Block[{},
-		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
 		MeshRegion[
 			Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshVertices[obj],
 			Polygon[Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshFaces[obj]]
