@@ -72,11 +72,6 @@ RhinoReshow::usage = "RhinoReshow[guid, rhinoObject] replaces the object referen
 Begin["`Private`"];
 
 
-(* load static types used by utility functions *)
-LoadNETType["Rhino.RhinoDoc"];
-LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
-
-
 If[!StringQ[$RhinoHome],
     $RhinoHome = "C:\\Program Files\\Rhino 6"
 ];
@@ -109,7 +104,7 @@ GHDeploy[name_, func_, inputSpec:{_String, _String, _String, _String, _}, output
 (* Maybe the param spec should be "Text" -> {name, nick, desc, etc...}. Or maybe options for all values? *)
 GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}...},
                        outputSpec:{{_String, _String, _String, _String, _}..}, OptionsPattern[]] :=
-    Module[{codeString, asmPath, saveDefs, initialization, icon, desc, componentGuid},
+    Module[{codeString, asmPath, saveDefs, initialization, icon, desc},
         {saveDefs, initialization, icon, desc} = OptionValue[{SaveDefinitions, Initialization, "Icon", "Description"}];
         If[icon === Automatic, icon = name];
         (* Fail right away if func is not of the correct form. Must be symbol or pure function. *)
@@ -117,14 +112,13 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
             Message[GHDeploy::badfunc];
             Return[$Failed]
         ];
-        componentGuid = CreateUUID[];
         (* TODO: Verify that all user-specified types are supported. *)
         codeString =
             TemplateApply[
                 FileTemplate[FileNameJoin[{$thisPacletDir, "Files", "Component.cs"}]],
                 <|"Name" -> name, "Nickname" -> name,  "Category" -> "Wolfram",
-                  "Subcategory" -> "Extensions", "Description" -> desc,
-                  "GUID" -> componentGuid,
+                  "Subcategory" -> "", "Description" -> desc,
+                  "GUID" -> CreateUUID[],
                   "RegisterInputParams" -> StringJoin[addParam /@ inputSpec], 
                   "RegisterOutputParams" -> StringJoin[addParam /@ outputSpec],
                   "GetData" -> StringJoin[MapIndexed[getData, inputSpec]],
@@ -132,7 +126,8 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
                   "UseInit" -> If[initialization =!= None, "true", "false"],
                   "Initialization" -> If[initialization =!= None, ToString[initialization, InputForm], "\"\""],
                   "UseDefs" -> If[TrueQ[saveDefs], "true", "false"],
-                  "Definitions" -> If[TrueQ[saveDefs], ToString[exprToStringWithSaveDefinitions[func, componentGuid], InputForm], ""],
+                  (* NOTE: ugly call into private CloudObject functionality. Fix. *)
+                  "Definitions" -> If[TrueQ[saveDefs], ToString[exprToStringWithSaveDefinitions[func], InputForm], ""],
                   "HeadIsSymbol" -> If[Head[func] === Symbol, "true", "false"],
                   "Func" -> ToString[func, InputForm],
                   "SendInputParams" -> StringJoin[MapIndexed[sendInputParam, inputSpec]],
@@ -288,48 +283,19 @@ Attributes[neutralContextBlock] = {HoldFirst};
 neutralContextBlock[expr_] := Block[{$ContextPath = {"System`"}, $Context = "System`"}, expr]
 
 (* Borrowed with some simplifications from internal code in the CloudObject package. *)
-exprToStringWithSaveDefinitions[expr_, componentGuid_String] :=
-    Module[{contextsToExclude, rhinoObjectParentContexts, shortContextsToExclude, defs, defsString, exprLine},
-        (* Purely as an optimization, we want to avoid capturing defs from a number of contexts. Thee include contexts that
-           form the implementation of RhinoLink itself, and contexts that come from LoadNETType on Rhino/Grasshopper classes
-           (in both long and short form, in .NET/Link terminology).
-           Note that Language`FullDefinition expects contexts to be given without the ending ` mark.
-        *)
-        rhinoObjectParentContexts = {"Rhino", "Grasshopper", "GHUIO"};
-        (* To find the so-called short contexts, we take all contexts that start with one of the rhinoObjectParentContexts,
-           and strip them down to their last context element.
-        *)
-        shortContextsToExclude = Last[StringSplit[#, "`"]]& /@ Catenate[Contexts[# <> "`*"] & /@ rhinoObjectParentContexts];
-        contextsToExclude = Join[
-            {"RhinoLink", "Wolfram`Rhino", "WolframScriptingPlugIn"},
-            rhinoObjectParentContexts,
-            shortContextsToExclude,
-            OptionValue[Language`ExtendedFullDefinition, "ExcludedContexts"]
+exprToStringWithSaveDefinitions[expr_] :=
+    Module[{defs, defsString, exprLine},
+        defs = Language`ExtendedFullDefinition[expr];
+        defsString = If[defs =!= Language`DefinitionList[],
+            neutralContextBlock[With[{d = defs},
+                (* Language`ExtendedFullDefinition[] can be used as the LHS of an assignment to restore
+                 * all definitions. *)
+                ToString[Unevaluated[Language`ExtendedFullDefinition[] = d], InputForm,
+                    CharacterEncoding -> "PrintableASCII"]
+            ]] <> ";\n\n",
+        (* else *)
+            ""
         ];
-        defs = Language`ExtendedFullDefinition[expr, "ExcludedContexts" -> contextsToExclude];
-        (* This final step is important (see RHINO-17). We want to prevent capturing defs for functions that are as yet
-           undefined. There is no use in capturing the state of such functions, and it leads to serious bugs, because the
-           common case is a static method def for a .NET object. The type might not be loaded into the kernel at GHDeploy
-           time, so there are no rules for the symbol, but the code of the user function for the component will load the type on
-           first use. Then upon second use, the no-defs state for the function would be restored by the re-loading of the
-           captured defs, breaking the component.
-        *)
-        defs = DeleteCases[defs, HoldForm[_Symbol] -> {(_ -> {})..}];
-        defsString =
-            If[defs =!= Language`DefinitionList[],
-                StringJoin[
-                    "If[!TrueQ[RhinoLink`Private`alreadyLoadedInThisSession[\"" <> componentGuid <> "\"]],",
-                    "RhinoLink`Private`alreadyLoadedInThisSession[\"" <> componentGuid <> "\"] = True;", 
-                    neutralContextBlock[With[{d = defs},
-                        (* Language`ExtendedFullDefinition[] can be used as the LHS of an assignment to restore all definitions. *)
-                        ToString[Unevaluated[Language`ExtendedFullDefinition[] = d], InputForm,
-                            CharacterEncoding -> "PrintableASCII"]
-                    ]], 
-                    "];\n"
-                ],
-            (* else *)
-                ""
-            ];
         exprLine = neutralContextBlock[ToString[Unevaluated[expr], InputForm, CharacterEncoding -> "PrintableASCII"]];
         StringTrim[defsString <> exprLine] <> "\n"
     ]
@@ -568,11 +534,17 @@ FromRhino[obj_, "Rhino.Geometry.Point3d"] :=
 
 
 ToRhino[expr_, {"Rhino.Geometry.Point3d"}] :=
-	WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
+		WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	]	
 
 
 ToRhino[expr_, "Rhino.Geometry.Point3d[]"] :=
-	ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
+		ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	]
 
 
 (* ::Text:: *)
@@ -593,23 +565,34 @@ TriangulateFaces[faces_] :=
 
 
 ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
-	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
-		MeshCoordinates[mesh],
-		(First[#] - 1)& /@ TriangulateFaces[MeshCells[mesh, 2]]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
+		Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
+			MeshCoordinates[mesh],
+			(First[#] - 1)& /@ TriangulateFaces[MeshCells[mesh, 2]]
+		]
 	]
 
 
 ToRhino[GraphicsComplex[pts:{{_?NumericQ,_?NumericQ,_?NumericQ}...}, polygons:{_Polygon...}], "Rhino.Geometry.Mesh"] :=
-	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
-		pts,
-		(First[#] - 1)& /@ polygons
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
+
+		Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
+			pts,
+			(First[#] - 1)& /@ polygons
+		]
 	]
 
 
 FromRhino[obj_, "Rhino.Geometry.Mesh"] :=
-	MeshRegion[
-		Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshVertices[obj],
-		Polygon[Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshFaces[obj]]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
+	
+		MeshRegion[
+			Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshVertices[obj],
+			Polygon[Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshFaces[obj]]
+		]
 	]
 
 
@@ -668,13 +651,19 @@ FromRhino[obj_, "Rhino.Geometry.PolyCurve"] :=
 (*This cannot be wrapped with NETBlock to reclaim the Enumerator, or it will destroy the objects returned by the enumerator.*)
 
 
-RhinoDocObjects[doc_:RhinoDoc`ActiveDoc]:=
+RhinoActiveDoc[] :=
+	Block[{},
+		LoadNETTYpe["Rhino.RhinoDoc"];
+		Rhino`ActiveDoc
+	]
+
+RhinoDocObjects[doc_:RhinoActiveDoc[]]:=
 	With[{it = doc@Objects@GetEnumerator[]},
 		Flatten[Reap[While[it@MoveNext[], Sow[it@Current]]][[2]]]
 	]
 
 
-RhinoDocInformation[doc_:RhinoDoc`ActiveDoc]:=
+RhinoDocInformation[doc_:RhinoActiveDoc[]]:=
 	Block[{objs,i},
 		objs=RhinoDocObjects[doc];
 		Column[{
@@ -757,7 +746,7 @@ RhinoMeshSplit[meshes1_,meshes2_]:=
 
 
 RhinoAdd[obj_Symbol] :=
-	{RhinoDoc`ActiveDoc@Objects@Add[obj]}
+	{RhinoActiveDoc[]@Objects@Add[obj]}
 
 
 (* ::Text:: *)
@@ -765,7 +754,7 @@ RhinoAdd[obj_Symbol] :=
 
 
 RhinoAdd[objs_List] :=
-	Flatten[RhinoDoc`ActiveDoc@Objects@Add[#]& /@ objs]
+	Flatten[RhinoActiveDoc[]@Objects@Add[#]& /@ objs]
 
 
 NETRelease[obj_Symbol] :=
@@ -780,23 +769,23 @@ RhinoShow[obj_] :=
 	Block[{guids},
 		guids = RhinoAdd[obj];
 		NETRelease[obj];
-		RhinoDoc`ActiveDoc@Views@Redraw[];
+		RhinoActiveDoc[]@Views@Redraw[];
 		guids
 	]
 
 
 RhinoDelete[guid_Symbol] :=
-	RhinoDoc`ActiveDoc@Objects@Delete[guid, True]
+	RhinoActiveDoc[]@Objects@Delete[guid, True]
 
 
 RhinoDelete[guids_List] :=
-	RhinoDoc`ActiveDoc@Objects@Delete[#, True]& /@ guids
+	RhinoActiveDoc[]@Objects@Delete[#, True]& /@ guids
 
 
 RhinoUnshow[guid_] :=
 	Block[{},
 		RhinoDelete[guid];
-		RhinoDoc`ActiveDoc@Views@Redraw[];
+		RhinoActiveDoc[]@Views@Redraw[];
 	]
 
 
@@ -805,7 +794,7 @@ RhinoReshow[guid_, obj_] :=
 		RhinoDelete[guid];
 		guids = RhinoAdd[obj];
 		NETRelease[obj];
-		RhinoDoc`ActiveDoc@Views@Redraw[];
+		RhinoActiveDoc[]@Views@Redraw[];
 		guids
 	]
 
