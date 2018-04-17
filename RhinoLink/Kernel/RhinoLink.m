@@ -72,11 +72,6 @@ RhinoReshow::usage = "RhinoReshow[guid, rhinoObject] replaces the object referen
 Begin["`Private`"];
 
 
-(* load static types used by utility functions *)
-LoadNETType["Rhino.RhinoDoc"];
-LoadNETType["Wolfram.Rhino.WolframScriptingPlugIn"];
-
-
 If[!StringQ[$RhinoHome],
     $RhinoHome = "C:\\Program Files\\Rhino 6"
 ];
@@ -568,12 +563,17 @@ FromRhino[obj_, "Rhino.Geometry.Point3d"] :=
 
 
 ToRhino[expr_, {"Rhino.Geometry.Point3d"}] :=
-	WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	]
 
 
 ToRhino[expr_, "Rhino.Geometry.Point3d[]"] :=
-	ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
-
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
+	]
 
 (* ::Text:: *)
 (*This cannot be wrapped with NETBlock to reclaim the Enumerator, or it will destroy the objects returned by the enumerator.*)
@@ -593,23 +593,32 @@ TriangulateFaces[faces_] :=
 
 
 ToRhino[mesh_, "Rhino.Geometry.Mesh"] :=
-	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
-		MeshCoordinates[mesh],
-		(First[#] - 1)& /@ TriangulateFaces[MeshCells[mesh, 2]]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
+			MeshCoordinates[mesh],
+			(First[#] - 1)& /@ TriangulateFaces[MeshCells[mesh, 2]]
+		]
 	]
 
 
 ToRhino[GraphicsComplex[pts:{{_?NumericQ,_?NumericQ,_?NumericQ}...}, polygons:{_Polygon...}], "Rhino.Geometry.Mesh"] :=
-	Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
-		pts,
-		(First[#] - 1)& /@ polygons
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		Wolfram`Rhino`WolframScriptingPlugIn`ToRhinoMesh[
+			pts,
+			(First[#] - 1)& /@ polygons
+		]
 	]
 
 
 FromRhino[obj_, "Rhino.Geometry.Mesh"] :=
-	MeshRegion[
-		Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshVertices[obj],
-		Polygon[Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshFaces[obj]]
+	Block[{},
+		LoadNETType["Wolfram.Rhino.WolframScriptingPlugin"];
+		MeshRegion[
+			Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshVertices[obj],
+			Polygon[Wolfram`Rhino`WolframScriptingPlugIn`RhinoMeshFaces[obj]]
+		]
 	]
 
 
@@ -668,13 +677,19 @@ FromRhino[obj_, "Rhino.Geometry.PolyCurve"] :=
 (*This cannot be wrapped with NETBlock to reclaim the Enumerator, or it will destroy the objects returned by the enumerator.*)
 
 
-RhinoDocObjects[doc_:RhinoDoc`ActiveDoc]:=
+RhinoActiveDoc[] :=
+	 Block[{},
+		LoadNETType["Rhino.RhinoDoc"];
+		RhinoDoc`ActiveDoc
+	 ]
+
+RhinoDocObjects[doc_:RhinoActiveDoc[]]:=
 	With[{it = doc@Objects@GetEnumerator[]},
 		Flatten[Reap[While[it@MoveNext[], Sow[it@Current]]][[2]]]
 	]
 
 
-RhinoDocInformation[doc_:RhinoDoc`ActiveDoc]:=
+RhinoDocInformation[doc_:RhinoActiveDoc[]]:=
 	Block[{objs,i},
 		objs=RhinoDocObjects[doc];
 		Column[{
@@ -757,7 +772,7 @@ RhinoMeshSplit[meshes1_,meshes2_]:=
 
 
 RhinoAdd[obj_Symbol] :=
-	{RhinoDoc`ActiveDoc@Objects@Add[obj]}
+	{RhinoActiveDoc[]@Objects@Add[obj]}
 
 
 (* ::Text:: *)
@@ -765,7 +780,7 @@ RhinoAdd[obj_Symbol] :=
 
 
 RhinoAdd[objs_List] :=
-	Flatten[RhinoDoc`ActiveDoc@Objects@Add[#]& /@ objs]
+	Flatten[RhinoActiveDoc[]@Objects@Add[#]& /@ objs]
 
 
 NETRelease[obj_Symbol] :=
@@ -780,23 +795,23 @@ RhinoShow[obj_] :=
 	Block[{guids},
 		guids = RhinoAdd[obj];
 		NETRelease[obj];
-		RhinoDoc`ActiveDoc@Views@Redraw[];
+		RhinoActiveDoc[]@Views@Redraw[];
 		guids
 	]
 
 
 RhinoDelete[guid_Symbol] :=
-	RhinoDoc`ActiveDoc@Objects@Delete[guid, True]
+	RhinoActiveDoc[]@Objects@Delete[guid, True]
 
 
 RhinoDelete[guids_List] :=
-	RhinoDoc`ActiveDoc@Objects@Delete[#, True]& /@ guids
+	RhinoActiveDoc[]@Objects@Delete[#, True]& /@ guids
 
 
 RhinoUnshow[guid_] :=
 	Block[{},
 		RhinoDelete[guid];
-		RhinoDoc`ActiveDoc@Views@Redraw[];
+		RhinoActiveDoc[]@Views@Redraw[];
 	]
 
 
@@ -805,7 +820,7 @@ RhinoReshow[guid_, obj_] :=
 		RhinoDelete[guid];
 		guids = RhinoAdd[obj];
 		NETRelease[obj];
-		RhinoDoc`ActiveDoc@Views@Redraw[];
+		RhinoActiveDoc[]@Views@Redraw[];
 		guids
 	]
 
