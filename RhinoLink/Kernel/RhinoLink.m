@@ -97,7 +97,7 @@ $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
 
 (* Users run this once, on first use of RhinoLink, to get the binary components properly installed into their Rhino/Grasshopper layout.
    Developers can run this after every rebuild of the RhinoLink binary components.
-   Installing the Rhino component, WolframScripting.rhp and associated DLLS, is done via creating a WolframScripting.rhp file and
+   Installing the Rhino component, WolframScripting.rhp and associated DLLS, is done via creating a WolframScripting.rhi file and
    running the plugin installer provided by Rhino on this file. This will install into the latest versino of Rhino that is available
    on the machine. The Grasshopper parts are installed via a file into the standard location for Rhino 6. 
 *)
