@@ -67,11 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Source\WolframGrasshopperComponents\Properties\Resources.Designer.cs">
+      <Link>Resources.Designer.cs</Link>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="..\..\Source\WolframGrasshopperComponents\ToRhinoPoint3dList.cs" />
     <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframF.cs" />
     <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframFxy.cs" />
     <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframCode.cs" />

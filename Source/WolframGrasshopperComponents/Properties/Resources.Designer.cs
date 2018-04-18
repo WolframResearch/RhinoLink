@@ -103,16 +103,6 @@ namespace WolframGrasshopperComponents {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap p3dIcon {
-            get {
-                object obj = ResourceManager.GetObject("p3dIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Spikey {
             get {
                 object obj = ResourceManager.GetObject("Spikey", resourceCulture);
