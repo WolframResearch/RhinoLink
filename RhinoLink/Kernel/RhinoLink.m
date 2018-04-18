@@ -9,7 +9,7 @@ GHDeploy::usage = "";
 GHResult::usage = "";
 
 
-InstallRhinoPlugins::usage = "InstallRhinoPlugins[] installs the Rhino and Grasshopper plugin components that are part of RhinoLink. \
+InstallRhinoPlugin::usage = "InstallRhinoPlugin[] installs the Rhino plugin and Grasshopper components that are part of RhinoLink. \
 The Rhino plugin (WolframScripting.rhp and associated files) is installed via an installer executable provided with Rhino. \
 The Grasshopper components are placed into the standard Grasshopper location for user components."
 
@@ -93,7 +93,7 @@ $deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory], "Grasshopper", "
 $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
 
 
-(**********************************  InstallRhinoPlugins  *********************************)
+(**********************************  InstallRhinoPlugin  *********************************)
 
 (* Users run this once, on first use of RhinoLink, to get the binary components properly installed into their Rhino/Grasshopper layout.
    Developers can run this after every rebuild of the RhinoLink binary components.
@@ -102,7 +102,7 @@ $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
    on the machine. The Grasshopper parts are installed via a file into the standard location for Rhino 6. 
 *)
 
-InstallRhinoPlugins[] := 
+InstallRhinoPlugin[] := 
     Module[{rhinoLibsDir, strm, tempFileName, zipFile, rhiFile},
         (* Create the RhinoAttach evaluator definition *)
         If[Head[$FrontEnd] === FrontEndObject,
