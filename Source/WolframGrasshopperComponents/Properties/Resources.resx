@@ -136,9 +136,6 @@
     <data name="fnIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fnIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     </data>
-    <data name="p3dIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\p3dIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-    </data>
     <data name="wolfieIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wolfieIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     </data>
