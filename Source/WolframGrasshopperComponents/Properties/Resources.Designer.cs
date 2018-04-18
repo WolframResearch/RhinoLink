@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WolframGrasshopperComponents.Properties {
+namespace WolframGrasshopperComponents {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WolframGrasshopperComponents.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WolframGrasshopperComponents.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,6 +63,46 @@ namespace WolframGrasshopperComponents.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap codeIcon {
+            get {
+                object obj = ResourceManager.GetObject("codeIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap f1Icon {
+            get {
+                object obj = ResourceManager.GetObject("f1Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap f2Icon {
+            get {
+                object obj = ResourceManager.GetObject("f2Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fnIcon {
+            get {
+                object obj = ResourceManager.GetObject("fnIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Spikey {
             get {
                 object obj = ResourceManager.GetObject("Spikey", resourceCulture);
@@ -76,6 +116,16 @@ namespace WolframGrasshopperComponents.Properties {
         internal static System.Drawing.Bitmap SpikeyIcon {
             get {
                 object obj = ResourceManager.GetObject("SpikeyIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wolfieIcon {
+            get {
+                object obj = ResourceManager.GetObject("wolfieIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

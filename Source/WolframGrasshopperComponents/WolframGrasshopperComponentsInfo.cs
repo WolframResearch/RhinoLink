@@ -18,7 +18,9 @@ namespace WolframGrasshopperComponents
             get
             {
                 //Return a 24x24 pixel bitmap to represent this GHA library.
-                return null;
+                System.Resources.ResourceManager temp = new System.Resources.ResourceManager("WolframGrasshopperComponents.Resources", typeof(WolframGrasshopperComponentsInfo).Assembly);
+                object obj = temp.GetObject("wolfieIcon");
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         public override string Description

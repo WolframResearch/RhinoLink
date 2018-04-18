@@ -67,11 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Source\WolframGrasshopperComponents\Properties\Resources.Designer.cs">
+      <Link>Resources.Designer.cs</Link>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="..\..\Source\WolframGrasshopperComponents\ToRhinoPoint3dList.cs" />
     <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframF.cs" />
     <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframFxy.cs" />
     <Compile Include="..\..\Source\WolframGrasshopperComponents\WolframCode.cs" />
@@ -85,12 +85,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\Source\WolframGrasshopperComponents\Resources\spikeyIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Source\WolframGrasshopperComponents\Resources\Spikey.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
