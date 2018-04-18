@@ -25,12 +25,11 @@ namespace Wolfram.Rhino
 
         private volatile bool isReaderThreadRunning = false;
         private volatile bool keepRunning = false;
-        private string kernelPath;
         Dispatcher dispatcher;
 
         public WolframScriptingPlugIn()
         {
-            Instance = this;           
+            Instance = this;
         }
 
         ///<summary>Gets the only instance of the WolframScriptingPlugIn plug-in.</summary>
