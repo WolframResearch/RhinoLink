@@ -9,6 +9,11 @@ GHDeploy::usage = "";
 GHResult::usage = "";
 
 
+InstallRhinoPlugin::usage = "InstallRhinoPlugin[] installs the Rhino plugin and Grasshopper components that are part of RhinoLink. \
+The Rhino plugin (WolframScripting.rhp and associated files) is installed via an installer executable provided with Rhino. \
+The Grasshopper components are placed into the standard Grasshopper location for user components."
+
+
 $RhinoHome::usage = "$RhinoHome is the path to the installation directory of Rhino. The default is \"c:\\Program Files\\Rhino 6\". You will need to set it to another value if you have a different location.";
 
 
@@ -87,6 +92,53 @@ $deployDir = FileNameJoin[{ParentDirectory[$UserBaseDirectory], "Grasshopper", "
 
 $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
 
+
+(**********************************  InstallRhinoPlugin  *********************************)
+
+(* Users run this once, on first use of RhinoLink, to get the binary components properly installed into their Rhino/Grasshopper layout.
+   Developers can run this after every rebuild of the RhinoLink binary components.
+   Installing the Rhino component, WolframScripting.rhp and associated DLLS, is done via creating a WolframScripting.rhi file and
+   running the plugin installer provided by Rhino on this file. This will install into the latest versino of Rhino that is available
+   on the machine. The Grasshopper parts are installed via a file into the standard location for Rhino 6. 
+*)
+
+InstallRhinoPlugin[] := 
+    Module[{rhinoLibsDir, strm, tempFileName, zipFile, rhiFile},
+        (* Create the RhinoAttach evaluator definition *)
+        If[Head[$FrontEnd] === FrontEndObject,
+            If[!MemberQ[CurrentValue[$FrontEnd, EvaluatorNames], "RhinoAttach" -> _],
+                AppendTo[CurrentValue[$FrontEnd, EvaluatorNames],
+                     "RhinoAttach" -> {"AutoStartOnLaunch" -> False, "MLOpenArguments" -> "-LinkMode Connect -LinkName RhinoAttach"}]
+            ]
+        ];
+        (* Create a WolframScripting.rhi file in a temporary location and run it, which will launch the plugin
+           installer provided with Rhino. An rhi file is just a zip file that contains the .rhp file and other support files.
+        *)
+        rhinoLibsDir = FileNameJoin[{$thisPacletDir, "Libraries", "Rhino"}];
+        (* Here we capture the path to the kernel in a file to be included in the WolframScripting.rhi archive, 
+           so that Rhino can find the kernel with no help from the user.
+        *)
+        strm = OpenWrite[FileNameJoin[{rhinoLibsDir, "kernelPath.txt"}]];
+        WriteString[strm, FileNameJoin[{$InstallationDirectory, "WolframKernel.exe"}]];
+        Close[strm];
+        tempFileName = CreateFile[];
+        DeleteFile[tempFileName];
+        zipFile = CreateArchive[rhinoLibsDir, tempFileName];
+        rhiFile = RenameFile[zipFile, zipFile <> ".rhi"];
+        SystemOpen[rhiFile];
+        (* Installing the Grasshopper components is a straight file copy. *)
+        CopyFile[
+            FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperComponents.gha"}],
+            FileNameJoin[{$deployDir, "WolframGrasshopperComponents.gha"}],
+            OverwriteTarget -> True
+        ];
+        CopyFile[
+            FileNameJoin[{$thisPacletDir, "Libraries", "Grasshopper", "WolframGrasshopperSupport.dll"}],
+            FileNameJoin[{$deployDir, "WolframGrasshopperSupport.dll"}],
+            OverwriteTarget -> True
+        ];
+    ]
+    
 
 (**********************************  GHDeploy  *********************************)
 
@@ -683,13 +735,15 @@ RhinoActiveDoc[] :=
 		RhinoDoc`ActiveDoc
 	 ]
 
-RhinoDocObjects[doc_:RhinoActiveDoc[]]:=
+RhinoDocObjects[] := RhinoDocObjects[RhinoActiveDoc[]]
+RhinoDocObjects[doc_]:=
 	With[{it = doc@Objects@GetEnumerator[]},
 		Flatten[Reap[While[it@MoveNext[], Sow[it@Current]]][[2]]]
 	]
 
 
-RhinoDocInformation[doc_:RhinoActiveDoc[]]:=
+RhinoDocInformation[] := RhinoDocInformation[RhinoActiveDoc[]]
+RhinoDocInformation[doc_]:=
 	Block[{objs,i},
 		objs=RhinoDocObjects[doc];
 		Column[{
