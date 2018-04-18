@@ -735,13 +735,15 @@ RhinoActiveDoc[] :=
 		RhinoDoc`ActiveDoc
 	 ]
 
-RhinoDocObjects[doc_:RhinoActiveDoc[]]:=
+RhinoDocObjects[] := RhinoDocObjects[RhinoActiveDoc[]]
+RhinoDocObjects[doc_]:=
 	With[{it = doc@Objects@GetEnumerator[]},
 		Flatten[Reap[While[it@MoveNext[], Sow[it@Current]]][[2]]]
 	]
 
 
-RhinoDocInformation[doc_:RhinoActiveDoc[]]:=
+RhinoDocInformation[] := RhinoDocInformation[RhinoActiveDoc[]]
+RhinoDocInformation[doc_]:=
 	Block[{objs,i},
 		objs=RhinoDocObjects[doc];
 		Column[{
