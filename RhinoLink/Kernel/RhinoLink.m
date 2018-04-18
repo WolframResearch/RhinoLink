@@ -108,11 +108,24 @@ $thisPacletDir = ParentDirectory[DirectoryName[$InputFileName]];
 *)
 
 InstallRhinoPlugins[] := 
-    Module[{rhinoLibsDir, tempFileName, zipFile, rhiFile},
+    Module[{rhinoLibsDir, strm, tempFileName, zipFile, rhiFile},
+        (* Create the RhinoAttach evaluator definition *)
+        If[Head[$FrontEnd] === FrontEndObject,
+            If[!MemberQ[CurrentValue[$FrontEnd, EvaluatorNames], "RhinoAttach" -> _],
+                AppendTo[CurrentValue[$FrontEnd, EvaluatorNames],
+                     "RhinoAttach" -> {"AutoStartOnLaunch" -> False, "MLOpenArguments" -> "-LinkMode Connect -LinkName RhinoAttach"}]
+            ]
+        ];
         (* Create a WolframScripting.rhi file in a temporary location and run it, which will launch the plugin
            installer provided with Rhino. An rhi file is just a zip file that contains the .rhp file and other support files.
         *)
         rhinoLibsDir = FileNameJoin[{$thisPacletDir, "Libraries", "Rhino"}];
+        (* Here we capture the path to the kernel in a file to be included in the WolframScripting.rhi archive, 
+           so that Rhino can find the kernel with no help from the user.
+        *)
+        strm = OpenWrite[FileNameJoin[{rhinoLibsDir, "kernelPath.txt"}]];
+        WriteString[strm, FileNameJoin[{$InstallationDirectory, "WolframKernel.exe"}]];
+        Close[strm];
         tempFileName = CreateFile[];
         DeleteFile[tempFileName];
         zipFile = CreateArchive[rhinoLibsDir, tempFileName];
