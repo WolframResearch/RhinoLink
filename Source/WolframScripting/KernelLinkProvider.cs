@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Wolfram.NETLink;
 
 using RhinoNamespace = Rhino;
@@ -29,17 +30,15 @@ public class KernelLinkProvider {
             {
                 if (mainLink == null)
                 {
-                    WolframScriptingPlugIn.DebugPrint("creating link");
                     if (LinkArguments == null)
                     {
-                       WolframScriptingPlugIn.DebugPrint("CreateKernelLink()");
-                        mainLink = MathLinkFactory.CreateKernelLink();
+                        string thisAssemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                        string kernelPath = File.ReadAllText(Path.Combine(thisAssemblyPath, "kernelPath.txt"));
+                        LinkArguments = new string[]{"-linkmode", "launch", "-linkname", "\"" + kernelPath + "\" -wstp"};
                     }
-                    else
-                    {
-                        WolframScriptingPlugIn.DebugPrint("CreateKernelLink(LinkArguments)");
-                        mainLink = MathLinkFactory.CreateKernelLink(LinkArguments);
-                    }
+                    WolframScriptingPlugIn.DebugPrint("CreateKernelLink(LinkArguments)");
+                    mainLink = MathLinkFactory.CreateKernelLink(LinkArguments);
+
                     WolframScriptingPlugIn.DebugPrint("waiting for response");
                     mainLink.WaitAndDiscardAnswer();
                     mainLink.EnableObjectReferences();
