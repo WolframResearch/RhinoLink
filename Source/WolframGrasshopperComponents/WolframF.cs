@@ -26,8 +26,8 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("H", "H", "The head of the function being computed", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Head", "H", "The head of the function being computed", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "Link", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
             pManager[1].Optional = true;
         }
 
@@ -36,9 +36,9 @@ namespace Wolfram.Grasshopper
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("R", "R", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
-            pManager.AddParameter(new ExprParam(), "E", "E", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
-            pManager.AddParameter(new LinkParam(), "L", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
+            pManager.AddGenericParameter("R", "Result", "The result of the Wolfram Engine computation", GH_ParamAccess.item);
+            pManager.AddParameter(new ExprParam(), "Expr", "E", "The entire result, as an Expr, for debugging", GH_ParamAccess.item);
+            pManager.AddParameter(new LinkParam(), "Link", "L", "The link to the Wolfram Engine", GH_ParamAccess.item);
         }
 
         /// <summary>
