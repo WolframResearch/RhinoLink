@@ -3,10 +3,10 @@
 BeginPackage["RhinoLink`", {"NETLink`"}];
 
 
-GHDeploy::usage = "";
+GHDeploy::usage = "GHDeploy[name, f, inputSpec, outputSpec] deploys a Grasshopper component that encapsulates Wolfram Language code.";
 
 
-GHResult::usage = "";
+GHResult::usage = "GHResult[out1, out2, ...] returns multiple outputs from a Grasshopper component";
 
 
 InstallRhinoPlugin::usage = "InstallRhinoPlugin[] installs the Rhino plugin and Grasshopper components that are part of RhinoLink. \
@@ -40,9 +40,6 @@ ToRhino::usage = "ToRhino[expr] attempts to convert a Wolfram Language expressio
 RhinoDocObjects::usage = "RhinoDocObjects[doc] returns a list of the RhinoObjects in the document.";
 
 
-RhinoDocInformation::usage = "RhinoDocInformation[doc] returns a summary of information about 'doc'.";
-
-
 (* 
  * Rhino Geometric Operations 
  *)
@@ -55,9 +52,6 @@ RhinoMeshIntersection::usage = "RhinoMeshIntersection[mesh1, mesh2] gives the me
 
 
 RhinoMeshDifference::usage = "RhinoMeshDifference[mesh1, mesh2] gives the mesh that is the difference of mesh1 and mesh2.";
-
-
-RhinoMeshSplit::usage = "(doesn't appear to be working yet)";
 
 
 (* 
@@ -186,7 +180,7 @@ GHDeploy[name_String, func_, inputSpec:{{_String, _String, _String, _String, __}
                   "ReadAndStoreResults" -> StringJoin[MapIndexed[readAndStoreResult, outputSpec]]
                 |>
             ];
-Global`code = codeString;
+
         asmPath = generateComponentAssembly[name, codeString, icon];
         If[StringQ[asmPath],
             deployComponentAssembly[asmPath];
@@ -627,6 +621,8 @@ ToRhino[expr_, "Rhino.Geometry.Point3d[]"] :=
 		ReturnAsNETObject@WolframScriptingPlugIn`ToRhinoPoint3dArray[expr]
 	]
 
+
+
 (* ::Text:: *)
 (*This cannot be wrapped with NETBlock to reclaim the Enumerator, or it will destroy the objects returned by the enumerator.*)
 
@@ -742,32 +738,6 @@ RhinoDocObjects[doc_]:=
 	]
 
 
-RhinoDocInformation[] := RhinoDocInformation[RhinoActiveDoc[]]
-RhinoDocInformation[doc_]:=
-	Block[{objs,i},
-		objs=RhinoDocObjects[doc];
-		Column[{
-			"Document: "<>doc@Name,
-			Row[{"Object count: ", Length[objs]}],
-			"",
-			i=0;
-			Grid[Join[
-				{{"","Sel","Type","Full Type"}},
-				{
-					i++,
-					(* This is not working because Views, Redraw, and IsSelected are in the wrong context *)
-					DynamicModule[{isSelected=#@IsSelected[False]=!=0},
-						Checkbox[Dynamic[isSelected, 
-							(#@Select[!isSelected];doc@Views@Redraw[]; isSelected=#)&]]
-					],
-					#@ObjectType@ToString[],
-					#@ToString[]
-				}& /@ objs
-			], Alignment->Left]
-		}]
-	]
-
-
 (* 
  * Rhino Geometric Operations 
  *)
@@ -804,17 +774,6 @@ RhinoMeshIntersection[mesh_Symbol, meshes__Symbol]:=
 
 RhinoMeshIntersection[meshes1_List, meshes2_List]:=
 	Rhino`Geometry`Mesh`CreateBooleanIntersection[
-		MakeNETObject[meshes1,"Rhino.Geometry.Mesh[]"],
-		MakeNETObject[meshes2,"Rhino.Geometry.Mesh[]"]
-	]
-
-
-(* ::Text:: *)
-(*CNC: This doesn't appear to work.*)
-
-
-RhinoMeshSplit[meshes1_,meshes2_]:=
-	Rhino`Geometry`Mesh`CreateBooleanSplit[
 		MakeNETObject[meshes1,"Rhino.Geometry.Mesh[]"],
 		MakeNETObject[meshes2,"Rhino.Geometry.Mesh[]"]
 	]
