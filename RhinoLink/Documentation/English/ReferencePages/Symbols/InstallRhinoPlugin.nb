@@ -1,0 +1,558 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19221,        549]
+NotebookOptionsPosition[     13634,        435]
+NotebookOutlinePosition[     15556,        486]
+CellTagsIndexPosition[     15513,        483]
+WindowTitle->InstallRhinoPlugin
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["RHINO LINK SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"Use NETLink to Examine and Create Objects in \
+Rhino\"\>":>Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/ManualInteractionWithRhinoObjects"], \
+"\<\"Operate on Wolfram Language Meshes Using Rhino\"\>":>
+       Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"], "\<\"Control a \
+Parametric Surface in Rhino with a Manipulate Interface in Mathematica\"\>":>
+       Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/InteractiveSurface"], "\<\"Create Box \
+Structures in Rhino with an Interface in Mathematica\"\>":>
+       Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/BoxDesignWidget"], "\<\"Make a Mathematica \
+Manipulate Interface that Enumerates Distinct Tilings of a Given Set of Tiles \
+in Rhino\"\>":>Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/TilingEnumerationInterface"], "\<\"Make a \
+Grasshopper Component that Translates Graphics3D Output to Rhino Meshes\"\>":>
+       Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/Graphics3DComponent"], "\<\"Make a \
+Grasshopper Component that Makes NURBS Surfaces from U-V Point Grids\"\>":>
+       Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/UVSurfaceComponent"], "\<\"Make a \
+Grasshopper Component that Covers a Surface of Revolution with \
+Phyllotaxically-Arranged Points\"\>":>Documentation`HelpLookup[
+       "paclet:RhinoLink/tutorial/SpiralPhyllotaxicSurfaceComponent"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"Tutorials"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"RhinoDocObjects\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/RhinoDocObjects"], "\<\"RhinoShow\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/RhinoShow"], "\<\"RhinoMeshUnion\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/RhinoMeshUnion"], "\<\"GH_Deploy\"\>":>
+       Documentation`HelpLookup["paclet:ref/GH_Deploy"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"RhinoLink\"\>":>Documentation`HelpLookup[
+       "paclet:RhinoLink/guide/RhinoLink"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"RhinoLink/ref/InstallRhinoPlugin\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["RhinoLink/ref/InstallRhinoPlugin"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/RhinoLink/ref/\
+InstallRhinoPlugin.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$10341], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "RhinoLink/ref/InstallRhinoPlugin", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[BoxData[GridBox[{
+   {Cell[TextData[{
+     Cell["InstallRhinoPlugin", "ObjectName"],
+     Cell[BoxData[
+      TemplateBox[{8},
+       "Spacer1"]]],
+     Cell[BoxData[""], "ObjectNameTranslation"]
+    }]], Cell[BoxData[
+     TooltipBox[
+      StyleBox[
+       TagBox[
+        GraphicsBox[InsetBox[
+          StyleBox["\<\"NEW IN 11.3\"\>",
+           StripOnInput->False,
+           FontFamily->"Source Sans Pro",
+           FontSize->18,
+           FontWeight->"Bold",
+           FontSlant->"Italic",
+           FontColor->RGBColor[0.968627, 0.466667, 0]], {0, 0}],
+         ImageSize->{120, 24}],
+        Deploy,
+        DefaultBaseStyle->"Deploy"], "NewIn10Graphic",
+       StripOnInput->False],
+      "New in 11",
+      TooltipDelay->0.3]],
+     Magnification->1]}
+  }]], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"InstallRhinoPlugin", "[", "]"}]], "InlineFormula"],
+     " \[LineSeparator]install components for the RhinoLink plugin in Rhino \
+and Mathematica (or Wolfram Desktop)"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "Evaluate ",
+ Cell[BoxData[
+  RowBox[{"InstallRhinoPlugin", "[", "]"}]], "InlineFormula"],
+ " once after installing or updating the RhinoLink paclet."
+}], "Notes",
+ CellID->1067943069],
+
+Cell["\<\
+The typical sequence for installing the RhinoLink package and preparing it \
+for use is:\
+\>", "Notes",
+ CellID->2127886850],
+
+Cell[BoxData[
+ RowBox[{"PacletInstall", "[", "\"\</full/path/to/RhinoLink\>\"", 
+  "]"}]], "Input",
+ CellID->1225637569],
+
+Cell[BoxData[
+ RowBox[{"<<", "RhinoLink`"}]], "Input",
+ CellID->520011894],
+
+Cell[BoxData[
+ RowBox[{"InstallRhinoPlugin", "[", "]"}]], "Input",
+ CellID->1527117424],
+
+Cell["\<\
+The typical sequence for updating the RhinoLink package and preparing it for \
+use is:\
+\>", "Notes",
+ CellID->48625444],
+
+Cell[BoxData[
+ RowBox[{"PacletUpdate", "[", "\"\</full/path/to/RhinoLink\>\"", 
+  "]"}]], "Input",
+ CellID->3105516],
+
+Cell[BoxData[
+ RowBox[{"<<", "RhinoLink`"}]], "Input",
+ CellID->22556601],
+
+Cell[BoxData[
+ RowBox[{"InstallRhinoPlugin", "[", "]"}]], "Input",
+ CellID->50539950],
+
+Cell["", "SectionFooterSpacer"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["RhinoDocObjects"]],"paclet:ref/RhinoDocObjects"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["RhinoShow"]],"paclet:ref/RhinoShow"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["RhinoMeshUnion"]],"paclet:ref/RhinoMeshUnion"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GH_Deploy"]],"paclet:ref/GH_Deploy"},
+   "RefLink",
+   BaseStyle->{"InlineFormula", FontFamily -> "Verdana"}]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Tutorials"
+}], "TutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->250839057],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Use NETLink to Examine and Create Objects in Rhino"]],
+   "paclet:RhinoLink/tutorial/ManualInteractionWithRhinoObjects"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->292544750],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Operate on Wolfram Language Meshes Using Rhino"]],
+   "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->422280156],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+    "Control a Parametric Surface in Rhino with a Manipulate Interface in \
+Mathematica"]],"paclet:RhinoLink/tutorial/InteractiveSurface"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->740172588],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+    "Create Box Structures in Rhino with an Interface in Mathematica"]],
+   "paclet:RhinoLink/tutorial/BoxDesignWidget"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->28768034],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+    "Make a Mathematica Manipulate Interface that Enumerates Distinct Tilings \
+of a Given Set of Tiles in Rhino"]],
+   "paclet:RhinoLink/tutorial/TilingEnumerationInterface"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->294220147],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+    "Make a Grasshopper Component that Translates Graphics3D Output to Rhino \
+Meshes"]],"paclet:RhinoLink/tutorial/Graphics3DComponent"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->251143726],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+    "Make a Grasshopper Component that Makes NURBS Surfaces from U-V Point \
+Grids"]],"paclet:RhinoLink/tutorial/UVSurfaceComponent"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->1098419325],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+    "Make a Grasshopper Component that Covers a Surface of Revolution with \
+Phyllotaxically-Arranged Points"]],
+   "paclet:RhinoLink/tutorial/SpiralPhyllotaxicSurfaceComponent"},
+  "RefLink",
+  BaseStyle->"Tutorials"]], "Tutorials",
+ CellID->71800016],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["RhinoLink"]],"paclet:RhinoLink/guide/RhinoLink"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"InstallRhinoPlugin",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "RhinoLink", ButtonData -> "paclet:RhinoLink/guide/RhinoLink", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 6, 6, 16, 10, 26.789469}", 
+    "history" -> {"11.3", "", "", ""}, "context" -> "RhinoLink`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Rhino Link Symbol", "language" -> "en", "paclet" -> "RhinoLink", 
+    "status" -> "None", "summary" -> 
+    "InstallRhinoPlugin[] install components for the RhinoLink plugin in \
+Rhino and Mathematica (or Wolfram Desktop)", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "InstallRhinoPlugin", "titlemodifier" -> "",
+     "windowtitle" -> "InstallRhinoPlugin", "type" -> "Symbol", "uri" -> 
+    "RhinoLink/ref/InstallRhinoPlugin"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> 
+  "11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[590, 21, 5901, 137, 70, "AnchorBarGrid",ExpressionUUID->"2290280a-50a0-402a-bddd-bbcc4e6fe980",
+ CellID->1],
+Cell[6494, 160, 797, 26, 70, "ObjectNameGrid",ExpressionUUID->"a8a8cb57-f2a2-4201-99b6-e97b7e3b9f44"],
+Cell[7294, 188, 430, 12, 70, "Usage",ExpressionUUID->"897ab845-442c-4fb3-bfdb-7af849a70ed8",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[7749, 204, 621, 19, 70, "NotesSection",ExpressionUUID->"53aeecac-8399-4851-b5c8-76220eb18c29",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[8373, 225, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"1036f570-3af3-40e8-ade4-a62d1a9d2d95"],
+Cell[8407, 227, 201, 6, 70, "Notes",ExpressionUUID->"aa3fdaec-dfb7-4648-aef1-ed9bef662480",
+ CellID->1067943069],
+Cell[8611, 235, 134, 4, 70, "Notes",ExpressionUUID->"847150bd-3156-4caf-a95d-cfdeb566a8dc",
+ CellID->2127886850],
+Cell[8748, 241, 120, 3, 70, "Input",ExpressionUUID->"1edd0d15-400c-4243-bd71-1326f17d4a73",
+ CellID->1225637569],
+Cell[8871, 246, 74, 2, 70, "Input",ExpressionUUID->"113639a8-c578-4ff8-ad12-027a3834265c",
+ CellID->520011894],
+Cell[8948, 250, 87, 2, 70, "Input",ExpressionUUID->"2ac21966-091b-455f-a5c6-f964e82c6b46",
+ CellID->1527117424],
+Cell[9038, 254, 130, 4, 70, "Notes",ExpressionUUID->"41e94bcd-ba37-42ad-a4e2-8ed0c6786a31",
+ CellID->48625444],
+Cell[9171, 260, 116, 3, 70, "Input",ExpressionUUID->"f07cb439-7ea6-4337-a457-9e0abb127846",
+ CellID->3105516],
+Cell[9290, 265, 73, 2, 70, "Input",ExpressionUUID->"d458d5e1-783c-49dd-ba09-39bc42ff373f",
+ CellID->22556601],
+Cell[9366, 269, 85, 2, 70, "Input",ExpressionUUID->"b497b679-05b0-4995-864e-eb37d5abb878",
+ CellID->50539950],
+Cell[9454, 273, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"5b2d972c-d2a3-45fc-883c-037fc7fe1103"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9522, 278, 150, 7, 70, "SeeAlsoSection",ExpressionUUID->"c9c0f0ad-cf87-457a-af40-b9e7205be9df",
+ CellID->1255426704],
+Cell[9675, 287, 1152, 34, 70, "SeeAlso",ExpressionUUID->"ffbab574-3fe4-4d48-9f3b-12520c10cc7b",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10864, 326, 152, 7, 70, "TutorialsSection",ExpressionUUID->"b08fb158-c43e-482c-869c-3535615a5915",
+ CellID->250839057],
+Cell[11019, 335, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"99edcad7-d34a-45fb-850a-04643adfa3e2"],
+Cell[11053, 337, 243, 6, 70, "Tutorials",ExpressionUUID->"26a77af2-2e3c-4470-a0b7-d1ea5f6485ef",
+ CellID->292544750],
+Cell[11299, 345, 230, 6, 70, "Tutorials",ExpressionUUID->"8086b9c9-918d-46fd-8617-689ae01ec058",
+ CellID->422280156],
+Cell[11532, 353, 261, 7, 70, "Tutorials",ExpressionUUID->"b30110b3-d78f-4fe5-a6ac-f647707a87f3",
+ CellID->740172588],
+Cell[11796, 362, 242, 7, 70, "Tutorials",ExpressionUUID->"d317dd14-8d58-4405-8835-70fc277c8c2b",
+ CellID->28768034],
+Cell[12041, 371, 298, 8, 70, "Tutorials",ExpressionUUID->"372cc22f-169f-4e05-a95e-d1bc6a67f76b",
+ CellID->294220147],
+Cell[12342, 381, 260, 7, 70, "Tutorials",ExpressionUUID->"533993f4-c4df-4200-9257-4ce1e4417ee2",
+ CellID->251143726],
+Cell[12605, 390, 257, 7, 70, "Tutorials",ExpressionUUID->"ac5625d4-a160-472c-939f-a43eaab54866",
+ CellID->1098419325],
+Cell[12865, 399, 300, 8, 70, "Tutorials",ExpressionUUID->"24be50b5-3fc9-42da-a27d-3b5c3c6a6b5b",
+ CellID->71800016],
+Cell[13168, 409, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"f75467d3-e9cc-4b5b-9958-3011e313e59e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13236, 414, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"6e5dedad-376f-4087-97f3-8e70b7a11dee",
+ CellID->38303248],
+Cell[13395, 423, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"76282567-597a-4b7f-aea6-6d0f078718e7"],
+Cell[13429, 425, 163, 5, 70, "MoreAbout",ExpressionUUID->"431fac60-92e2-47a7-a3be-2d550b443d6a",
+ CellID->1]
+}, Open  ]],
+Cell[13607, 433, 23, 0, 70, "FooterCell",ExpressionUUID->"fab4ba7b-dcdb-4134-aa4e-8d3b910dfaa2"]
+}
+]
+*)
+
+(* End of internal cache information *)
