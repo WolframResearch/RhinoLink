@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    476539,       8338]
-NotebookOptionsPosition[    464988,       8083]
-NotebookOutlinePosition[    465430,       8100]
-CellTagsIndexPosition[    465387,       8097]
+NotebookDataLength[    476988,       8347]
+NotebookOptionsPosition[    465312,       8090]
+NotebookOutlinePosition[    465754,       8107]
+CellTagsIndexPosition[    465711,       8104]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -8022,6 +8022,13 @@ Cell[CellGroupData[{
 Cell["Related Tutorials", "RelatedTutorialsSection",
  CellID->415694126,ExpressionUUID->"7e8ab6a9-4ee7-4c78-a3d6-aab3ff6e6b79"],
 
+Cell[TextData[ButtonBox["How to Use the Wolfram Grasshopper Components",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:RhinoLink/tutorial/UsingWolframComponents"]], "RelatedTutorials",
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->1609542,ExpressionUUID->"190f4986-aaeb-4b7d-a928-5cafa0273280"],
+
 Cell[TextData[ButtonBox["Use NETLink to Examine and Create Objects in Rhino",
  BaseStyle->"Link",
  ButtonData->
@@ -8281,30 +8288,30 @@ Cell[409764, 7069, 8810, 149, 195, "Output",ExpressionUUID->"ef40a9fc-d848-4d6a-
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[418623, 7224, 244, 4, 23, "Text",ExpressionUUID->"a56dead0-29fe-43c2-bb1c-a0d5ee985cea",
+Cell[418623, 7224, 244, 4, 21, "Text",ExpressionUUID->"a56dead0-29fe-43c2-bb1c-a0d5ee985cea",
  CellID->1931527779],
 Cell[CellGroupData[{
-Cell[418892, 7232, 848, 24, 47, "Input",ExpressionUUID->"deee7c21-b274-41ef-b456-603c669715c8",
+Cell[418892, 7232, 848, 24, 44, "Input",ExpressionUUID->"deee7c21-b274-41ef-b456-603c669715c8",
  CellID->1824573601],
 Cell[419743, 7258, 10851, 182, 134, "Output",ExpressionUUID->"f4a56ab1-06bf-4e8c-b932-b712a9313eb8",
  CellID->1689516494]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[430643, 7446, 217, 3, 23, "Text",ExpressionUUID->"54ee98d2-a3d3-4319-b10e-0835200f9455",
+Cell[430643, 7446, 217, 3, 21, "Text",ExpressionUUID->"54ee98d2-a3d3-4319-b10e-0835200f9455",
  CellID->1674934024],
 Cell[CellGroupData[{
-Cell[430885, 7453, 906, 23, 47, "Input",ExpressionUUID->"dfa40ea8-4a1d-4451-b09a-84b277f6f3f5",
+Cell[430885, 7453, 906, 23, 44, "Input",ExpressionUUID->"dfa40ea8-4a1d-4451-b09a-84b277f6f3f5",
  CellID->1400496492],
 Cell[431794, 7478, 12537, 210, 128, "Output",ExpressionUUID->"357b4f54-b823-4c3e-80de-8c5bfde88a9a",
  CellID->1723769924]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[444380, 7694, 215, 3, 23, "Text",ExpressionUUID->"ba357438-1437-43e5-8b0b-741a5ee637a8",
+Cell[444380, 7694, 215, 3, 21, "Text",ExpressionUUID->"ba357438-1437-43e5-8b0b-741a5ee637a8",
  CellID->1846714638],
 Cell[CellGroupData[{
-Cell[444620, 7701, 1088, 29, 66, "Input",ExpressionUUID->"5ac1a44a-5168-484e-b409-dfb9de4463fb",
+Cell[444620, 7701, 1088, 29, 62, "Input",ExpressionUUID->"5ac1a44a-5168-484e-b409-dfb9de4463fb",
  CellID->151770775],
 Cell[445711, 7732, 16368, 273, 164, "Output",ExpressionUUID->"0da72332-e342-42b2-a421-a94b0aa86745",
  CellID->1748326436]
@@ -8312,31 +8319,33 @@ Cell[445711, 7732, 16368, 273, 164, "Output",ExpressionUUID->"0da72332-e342-42b2
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[462140, 8012, 120, 1, 72, "TutorialMoreAboutSection",ExpressionUUID->"b47af6f7-f08d-4998-bc4f-ceb31ec2ce6e",
+Cell[462140, 8012, 120, 1, 70, "TutorialMoreAboutSection",ExpressionUUID->"b47af6f7-f08d-4998-bc4f-ceb31ec2ce6e",
  CellID->23220180],
-Cell[462263, 8015, 109, 1, 22, "TutorialMoreAbout",ExpressionUUID->"94dff44b-cba3-4954-87b9-5b5227dad59c",
+Cell[462263, 8015, 109, 1, 20, "TutorialMoreAbout",ExpressionUUID->"94dff44b-cba3-4954-87b9-5b5227dad59c",
  CellID->1567025153]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[462409, 8021, 127, 1, 72, "RelatedTutorialsSection",ExpressionUUID->"7e8ab6a9-4ee7-4c78-a3d6-aab3ff6e6b79",
+Cell[462409, 8021, 127, 1, 70, "RelatedTutorialsSection",ExpressionUUID->"7e8ab6a9-4ee7-4c78-a3d6-aab3ff6e6b79",
  CellID->415694126],
-Cell[462539, 8024, 341, 6, 22, "RelatedTutorials",ExpressionUUID->"126c1414-947b-4485-83f0-a46bc725d0b2",
+Cell[462539, 8024, 321, 5, 20, "RelatedTutorials",ExpressionUUID->"190f4986-aaeb-4b7d-a928-5cafa0273280",
+ CellID->1609542],
+Cell[462863, 8031, 341, 6, 20, "RelatedTutorials",ExpressionUUID->"126c1414-947b-4485-83f0-a46bc725d0b2",
  CellID->292544750],
-Cell[462883, 8032, 326, 5, 22, "RelatedTutorials",ExpressionUUID->"889cb5f2-a192-4321-a83f-78947c52a5bc",
+Cell[463207, 8039, 326, 5, 20, "RelatedTutorials",ExpressionUUID->"889cb5f2-a192-4321-a83f-78947c52a5bc",
  CellID->422280156],
-Cell[463212, 8039, 356, 6, 22, "RelatedTutorials",ExpressionUUID->"3590f99a-04f3-4257-b487-5c59453643c9",
+Cell[463536, 8046, 356, 6, 34, "RelatedTutorials",ExpressionUUID->"3590f99a-04f3-4257-b487-5c59453643c9",
  CellID->740172588],
-Cell[463571, 8047, 334, 6, 22, "RelatedTutorials",ExpressionUUID->"7c37d64c-233f-4858-9a21-7c2c5de6b1cb",
+Cell[463895, 8054, 334, 6, 20, "RelatedTutorials",ExpressionUUID->"7c37d64c-233f-4858-9a21-7c2c5de6b1cb",
  CellID->28768034],
-Cell[463908, 8055, 352, 6, 22, "RelatedTutorials",ExpressionUUID->"90879df5-d4a2-48a1-959b-6d154171e08c",
+Cell[464232, 8062, 352, 6, 34, "RelatedTutorials",ExpressionUUID->"90879df5-d4a2-48a1-959b-6d154171e08c",
  CellID->1098419325],
-Cell[464263, 8063, 393, 7, 38, "RelatedTutorials",ExpressionUUID->"36694138-1595-46b9-9877-5f742ed45917",
+Cell[464587, 8070, 393, 7, 34, "RelatedTutorials",ExpressionUUID->"36694138-1595-46b9-9877-5f742ed45917",
  CellID->71800016]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[464693, 8075, 153, 1, 72, "TutorialRelatedLinksSection",ExpressionUUID->"92a64ed0-d12e-4d6f-b937-bc21aa50750b",
+Cell[465017, 8082, 153, 1, 70, "TutorialRelatedLinksSection",ExpressionUUID->"92a64ed0-d12e-4d6f-b937-bc21aa50750b",
  CellID->415694148],
-Cell[464849, 8078, 111, 1, 22, "TutorialRelatedLinks",ExpressionUUID->"bb5eb61f-cd91-4ad2-9a94-ef22252e16f2",
+Cell[465173, 8085, 111, 1, 20, "TutorialRelatedLinks",ExpressionUUID->"bb5eb61f-cd91-4ad2-9a94-ef22252e16f2",
  CellID->415694149]
 }, Open  ]]
 }, Open  ]]
