@@ -10,246 +10,282 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20408,        577]
-NotebookOptionsPosition[     14890,        459]
-NotebookOutlinePosition[     17121,        518]
-CellTagsIndexPosition[     17036,        513]
-WindowTitle->RhinoMeshIntersection
+NotebookDataLength[     24739,        627]
+NotebookOptionsPosition[     17352,        471]
+NotebookOutlinePosition[     18035,        496]
+CellTagsIndexPosition[     17956,        491]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[GridBox[{
-   {Cell["RHINO LINK SYMBOL", "PacletNameCell"], Cell[TextData[{
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox[
-        InterpretationBox[Cell[TextData[{
-          "Tutorials",
-          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-           StripOnInput->False]
-         }]],
-         TextCell[
-          Row[{"Tutorials", 
-            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->
-         False], {"\<\"Operate on Wolfram Language Meshes Using Rhino\"\>":>
-       Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"]},
-       Appearance->None,
-       MenuAppearance->Automatic,
-       MenuStyle->"Tutorials"]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox[
-        InterpretationBox[Cell[TextData[{
-          "Related Guides",
-          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-           StripOnInput->False]
-         }]],
-         TextCell[
-          Row[{"Related Guides", 
-            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->False], {"\<\"RhinoLink\"\>":>Documentation`HelpLookup[
-       "paclet:RhinoLink/guide/RhinoLink"]},
-       Appearance->None,
-       MenuAppearance->Automatic,
-       MenuStyle->"MoreAbout"]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox[
-        InterpretationBox[Cell[TextData[{
-          "URL",
-          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-           StripOnInput->False]
-         }]],
-         TextCell[
-          Row[{"URL", 
-            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->False], {"\<\"RhinoLink/ref/RhinoMeshIntersection\"\>":>
-       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell["RhinoLink/ref/RhinoMeshIntersection"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-       Delimiter, "\<\"Copy web URL\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell[
-              BoxData[
-               MakeBoxes[
-                Hyperlink[
-                "http://reference.wolfram.com/language/RhinoLink/ref/\
-RhinoMeshIntersection.html"], StandardForm]], "Input", TextClipboardType -> 
-              "PlainText"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; 
-        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-         NotebookLocate[{
-           URL[
-            StringJoin[
-             If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$11949], 
-              "http://reference.wolfram.com/system-modeler/", 
-              "http://reference.wolfram.com/language/"], 
-             "RhinoLink/ref/RhinoMeshIntersection", ".html"]], None}]}]},
-       Appearance->None,
-       MenuAppearance->Automatic,
-       MenuStyle->"URLMenu"]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
-  }]], "AnchorBarGrid",
- CellID->1],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[GridBox[{
-   {Cell[TextData[{
-     Cell["RhinoMeshIntersection", "ObjectName"],
-     Cell[BoxData[
-      TemplateBox[{8},
-       "Spacer1"]]],
-     Cell[BoxData[""], "ObjectNameTranslation"]
-    }]], Cell[BoxData[
-     TooltipBox[
-      StyleBox[
-       TagBox[
-        GraphicsBox[InsetBox[
-          StyleBox["\<\"NEW IN 11.3\"\>",
-           StripOnInput->False,
-           FontFamily->"Source Sans Pro",
-           FontSize->18,
-           FontWeight->"Bold",
-           FontSlant->"Italic",
-           FontColor->RGBColor[0.968627, 0.466667, 0]], {0, 0}],
-         ImageSize->{120, 24}],
-        Deploy,
-        DefaultBaseStyle->"Deploy"], "NewIn10Graphic",
-       StripOnInput->False],
-      "New in 11",
-      TooltipDelay->0.3]],
-     Magnification->1]}
-  }]], "ObjectNameGrid"],
-
-Cell[BoxData[GridBox[{
-   {"", Cell[TextData[{
-     Cell[BoxData[
-      RowBox[{"RhinoMeshIntersection", "[", 
-       RowBox[{
-        SubscriptBox[
-         StyleBox["mesh", "TI"], "1"], ",", " ", 
-        SubscriptBox[
-         StyleBox["mesh", "TI"], "2"]}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]gives the intersection of ",
-     Cell[BoxData[
-      SubscriptBox[
-       StyleBox["mesh", "TI"], 
-       StyleBox["1", "TR"]]], "InlineFormula"],
-     " and ",
-     Cell[BoxData[
-      SubscriptBox[
-       StyleBox["mesh", "TI"], "2"]], "InlineFormula"]
-    }]]}
-  }]], "Usage",
- GridBoxOptions->{
- GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}},
- CellID->982511436]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[TextData[Cell[BoxData[
- ButtonBox[Cell[TextData[{
-   Cell[BoxData[
-    TemplateBox[{6},
-     "Spacer1"]]],
-   "Details"
-  }], "NotesFrameText"],
-  Appearance->{Automatic, None, "Normal", Automatic},
-  BaseStyle->None,
-  ButtonFunction:>(FrontEndExecute[{
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], All, ButtonCell], 
-     FrontEndToken["OpenCloseGroup"], 
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
-  Evaluator->None,
-  Method->"Preemptive"]]]], "NotesSection",
- WholeCellGroupOpener->True,
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->1294899523],
-
-Cell["", "SectionHeaderSpacer"],
-
-Cell["Arguments and returned meshes are Rhino objects.", "Notes",
- CellID->521568208],
-
 Cell[TextData[{
- "Use ",
- Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["ToRhino"]],"paclet:ref/ToRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
- " and ",
- Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["FromRhino"]],"paclet:ref/FromRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
- " to convert to and from Wolfram Language meshes."
-}], "Notes",
- CellID->565696080],
+ "New in: ",
+ Cell["11.3", "HistoryData",
+  CellTags->"New",ExpressionUUID->"e9bea2ca-cd0b-47f5-9a03-555f81b5561e"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"7157e922-6c73-4cf2-8046-499ac497cce2"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->"603d5ce6-c134-4705-a9f3-2d4099612aa4"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised",ExpressionUUID->"52581ae6-55ae-4f7a-842c-995f42e019e8"]
+}], "History",
+ CellChangeTimes->{{3.7368690623604894`*^9, 3.736869063422327*^9}},
+ CellID->1247902091,ExpressionUUID->"08002527-7049-4d0c-8371-d02914a447c3"],
 
-Cell["", "SectionFooterSpacer"]
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449,ExpressionUUID->"131142db-cd25-482f-8472-0fdf620a854f"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507,ExpressionUUID->"70d1eadf-fb9a-4045-bb16-cce4a118304e"],
+
+Cell["RhinoLink", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465,ExpressionUUID->"15f5cbc8-0ef6-46cc-bbe1-53ff82e2afdb"],
+
+Cell["RhinoLink`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828,ExpressionUUID->"ef3d567a-a97f-4b1d-a11b-15a0fa389936"],
+
+Cell["RhinoLink/ref/RhinoMeshIntersection", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"27485aec-203d-4615-b6d2-1526d002249f"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
- WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->777004363],
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294,ExpressionUUID->"0844e5db-212d-4589-93be-212042b24a03"],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360,ExpressionUUID->"9426c335-834a-40f3-9fa2-c0175eea2114"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408,ExpressionUUID->"0a537894-6a28-49b1-95a4-6915a81dde3a"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412,ExpressionUUID->"393ffd48-9429-484a-98d7-2a15bb5eae61"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909,ExpressionUUID->"884eecf0-6ade-4212-badd-2014d18c07f7"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930,ExpressionUUID->"218d4b13-1060-440a-b06e-c12a66abb5f1"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254,ExpressionUUID->"b0808cd6-c6e4-4fed-9d85-ac89adafd781"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771,ExpressionUUID->"1755b3ca-aa29-4f35-8f29-0e2dec684b9e"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175,ExpressionUUID->"f000ec84-a66e-4f84-8e64-d9b41f377be3"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985,ExpressionUUID->"ae0d23d6-cf3b-461b-a918-03370d0c8556"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405,ExpressionUUID->"8770d918-29d0-47e4-b8f7-d53b13ce4ae5"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269,ExpressionUUID->"88311bfd-dbac-4111-a73c-48de2973f7a9"],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205,ExpressionUUID->"925f6e9e-74df-4831-bca1-e47046fe56c7"],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745,ExpressionUUID->"ed1b8454-53fc-447f-9c42-f993fdc43e05"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810,ExpressionUUID->"949400c0-0833-471a-8a65-a279680d8338"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350,ExpressionUUID->"ac041b88-7d35-496b-9476-69f397ddbff4"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365,ExpressionUUID->"80eb56eb-e290-4f43-aa1d-567c651d3f00"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["RhinoMeshIntersection", "ObjectName",
+ CellID->1224892054,ExpressionUUID->"2a93ef99-6c6a-4f66-b409-445f9d259951"],
+
 Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->264271534],
+ Cell["   ", "ModInfo",ExpressionUUID->"f3235063-4af1-4dc3-84bf-b9417b5c8f76"],
+ Cell[BoxData[
+  RowBox[{"RhinoMeshIntersection", "[", 
+   RowBox[{
+    SubscriptBox[
+     StyleBox["mesh", "TI"], "1"], ",", " ", 
+    SubscriptBox[
+     StyleBox["mesh", "TI"], "2"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "db993094-7cdf-44a3-b1c8-13858045bb0d"],
+ " \[LineSeparator]gives the intersection of ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["mesh", "TI"], 
+   StyleBox["1", "TR"]]], "InlineFormula",
+  FormatType->"StandardForm",ExpressionUUID->
+  "da75e65e-62b2-47d6-9e6e-a2ed23b279f3"],
+ " and ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["mesh", "TI"], "2"]], "InlineFormula",ExpressionUUID->
+  "5205087d-1a17-4ac7-8e1f-77cc18bb7253"]
+}], "Usage",
+ CellChangeTimes->{{3.7368484637707233`*^9, 3.736848466158679*^9}, {
+   3.736848542055028*^9, 3.736848554793194*^9}, {3.736848588603424*^9, 
+   3.7368486571814528`*^9}, {3.736849659142276*^9, 3.736849666840324*^9}, {
+   3.736879207181755*^9, 3.7368794178002443`*^9}, {3.7368794731891947`*^9, 
+   3.736879482391985*^9}, {3.7368795924817276`*^9, 3.736879592591098*^9}, 
+   3.736879807541768*^9},
+ CellID->982511436,ExpressionUUID->"a8107e84-2a13-47b3-90c3-bbb7e56fac42"],
+
+Cell["Arguments and returned meshes are Rhino objects.", "Notes",
+ CellChangeTimes->{{3.736879628577527*^9, 3.7368796368117127`*^9}},
+ CellID->521568208,ExpressionUUID->"796085d2-a2c3-428c-905f-d2258437610f"],
+
+Cell[TextData[{
+ "Use ",
+ Cell[BoxData[
+  ButtonBox["ToRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "07cb23a3-86ec-47b1-ad59-861f1afe14c6"],
+ " and ",
+ Cell[BoxData[
+  ButtonBox["FromRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "4088e05e-abab-4af0-bd8a-b4fa3692a643"],
+ " to convert to and from Wolfram Language meshes."
+}], "Notes",
+ CellChangeTimes->{{3.736879628577527*^9, 3.7368796409543695`*^9}},
+ CellID->565696080,ExpressionUUID->"3077dbf3-8a7d-4040-aa7c-273be4af418a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057,ExpressionUUID->"a8468df9-1f68-4104-8e25-c939fdc9d71f"],
+
+Cell[TextData[ButtonBox["Operate on Wolfram Language Meshes Using Rhino",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"]], "Tutorials",
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->422280156,ExpressionUUID->"984cd3f4-b868-4894-b6d4-d6448ae6667f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905,ExpressionUUID->"f7ecff2f-72ea-4ac5-8f45-90dc5396ae0f"],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860,ExpressionUUID->"622fea46-55d9-45de-8d5f-d7a0c7354cb6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535,ExpressionUUID->"efaae72d-bad2-45fa-986b-23a73591e276"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["RhinoMeshUnion",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "c47afb80-2068-4657-ad1c-d2ef371b8d8e"],
+ " \[EmptyVerySmallSquare] ",
+ Cell[BoxData[
+  ButtonBox["RhinoMeshDifference",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "9961276f-6cdc-4bf5-b152-1ca58a1a9842"],
+ " \[EmptyVerySmallSquare] ",
+ Cell[BoxData[
+  ButtonBox["ToRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "f550c640-af81-4785-92f5-ccdc034cc3bf"],
+ " \[EmptyVerySmallSquare] ",
+ Cell[BoxData[
+  ButtonBox["FromRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "abb416ad-ba40-4c28-a90d-c2bae8377b74"]
+}], "SeeAlso",
+ CellChangeTimes->{{3.736848817138702*^9, 3.7368488338890743`*^9}, {
+  3.736849684477686*^9, 3.7368496877729673`*^9}},
+ CellID->226629644,ExpressionUUID->"4161f523-bf9a-4fca-83b9-e3fad3460166"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704,ExpressionUUID->"5a8d7d1b-f09b-47bf-ac5b-ba1cad265efd"],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353,ExpressionUUID->"c2837045-65e8-4cf6-bedd-bd2719af44ab"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248,ExpressionUUID->"491a2544-b5bd-4fa0-862b-5f2586aea7f0"],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683,ExpressionUUID->"0aeca3e5-c08d-416f-9ac5-b59d365887f9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151,ExpressionUUID->"133e575f-104e-42f5-9649-d7f3e3c49010"],
 
 Cell["\<\
 (The following examples will only work in a notebook whose kernel has been \
 set to RhinoAttach, and when WolframConnect has been executed in Rhino to \
 establish communication between Rhino and Mathematica.)\
 \>", "ExampleText",
- CellID->125237741],
+ CellChangeTimes->{{3.7368686201435127`*^9, 3.736868692964159*^9}, {
+  3.736868747368617*^9, 3.736868758930406*^9}},
+ CellID->125237741,ExpressionUUID->"6923750a-aff2-4704-8d4c-e3ce8ebccb54"],
 
 Cell["Get the intersection of cuboid and sphere meshes:", "ExampleText",
- CellID->149300956],
+ CellChangeTimes->{{3.736878751314747*^9, 3.736878763624705*^9}, {
+  3.73687989870807*^9, 3.7368799009275723`*^9}, {3.737114089328586*^9, 
+  3.737114094483185*^9}},
+ CellID->149300956,ExpressionUUID->"df0533b8-be0f-40e0-932f-779434ec5cb0"],
 
 Cell[CellGroupData[{
 
@@ -260,13 +296,13 @@ Cell[BoxData[
     RowBox[{"ToRhino", "[", 
      RowBox[{"BoundaryDiscretizeGraphics", "[", 
       RowBox[{"Cuboid", "[", "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
-    
     RowBox[{"ToRhino", "[", 
      RowBox[{"BoundaryDiscretizeGraphics", "[", 
       RowBox[{"Sphere", "[", "]"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
    "]"}], "\[IndentingNewLine]", "]"}]], "Input",
- CellLabel->"In[1]:=",
- CellID->1469260214],
+ CellChangeTimes->{{3.736848675203197*^9, 3.736848728865539*^9}, {
+  3.736849827920662*^9, 3.736849848102662*^9}},
+ CellID->1469260214,ExpressionUUID->"f89b4c33-aa9f-4d85-9e95-c9e72eefe0c7"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -347,240 +383,253 @@ FxawnuGSzxeAED4Fn3AGYhCKRGJAyuEX5L8y+IYf2c//8QXfUqnkH8kfWa3L
       GrayLevel[0.3], 
       ImageScaled[{0, 2, 2}]}},
    Method->{"ShrinkWrap" -> True}], "}"}]], "Output",
- ImageSize->{198, 217},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
- CellID->60620057]
+ CellChangeTimes->{3.736878903646123*^9},
+ CellLabel->"Out[18]=",
+ CellID->60620057,ExpressionUUID->"01cf209a-860b-4117-92a2-2accd6f3a902"]
 }, Open  ]]
 }, Open  ]],
 
-Cell["", "SectionFooterSpacer"]
-}, Open  ]],
-
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Tutorials"
-}], "TutorialsSection",
- WholeCellGroupOpener->True,
- CellID->250839057],
-
-Cell["", "SectionHeaderSpacer"],
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968,ExpressionUUID->"a17f4c18-ba98-422e-9107-f1a273a7358c"],
 
 Cell[BoxData[
- TemplateBox[{Cell[
-    TextData["Operate on Wolfram Language Meshes Using Rhino"]],
-   "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"},
-  "RefLink",
-  BaseStyle->"Tutorials"]], "Tutorials",
- CellID->422280156],
-
-Cell["", "SectionFooterSpacer"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Related Guides"
-}], "MoreAboutSection",
- WholeCellGroupOpener->True,
- CellID->38303248],
-
-Cell["", "SectionHeaderSpacer"],
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "30381224-8ada-4ee1-bed0-bc973150b7c9"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265,ExpressionUUID->"4c9b4031-0ae8-4d36-9d70-c3ced6e72ae9"],
 
 Cell[BoxData[
- TemplateBox[{Cell[
-    TextData["RhinoLink"]],"paclet:RhinoLink/guide/RhinoLink"},
-  "RefLink",
-  BaseStyle->"MoreAbout"]], "MoreAbout",
- CellID->615489942],
-
-Cell["", "SectionFooterSpacer"]
-}, Open  ]],
+ InterpretationBox[Cell[
+  "Generalizations & Extensions", "ExampleSection",ExpressionUUID->
+   "641a80d7-6654-4b08-a38a-03c38fb2412c"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627,ExpressionUUID->"f1ba714a-e934-460f-b7a3-b1fa1ed17963"],
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Related Links"
-}], "RelatedLinksSection",
- WholeCellGroupOpener->True,
- CellID->1584193535],
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Options", "ExampleSection",ExpressionUUID->
+   "57b3013f-daee-40ac-a7ee-1400bba6ccfa"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341,ExpressionUUID->"339a0f2c-1506-4fbd-b1c4-61a39aeb62ec"],
 
-Cell["", "SectionHeaderSpacer"],
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "XXXX", "ExampleSubsection",ExpressionUUID->
+   "316aaa6f-6c3b-48a4-b2ea-d539ecb22210"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783,ExpressionUUID->"783fd499-6d53-40b8-8bd2-69245c05c5f9"],
 
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoMeshUnion"]],"paclet:ref/RhinoMeshUnion"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
- "\[NonBreakingSpace]",
- StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
-  "InlineSeparator"],
- " ",
- Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoMeshDifference"]],"paclet:ref/RhinoMeshDifference"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
- "\[NonBreakingSpace]",
- StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
-  "InlineSeparator"],
- " ",
- Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["ToRhino"]],"paclet:ref/ToRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
- "\[NonBreakingSpace]",
- StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
-  "InlineSeparator"],
- " ",
- Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["FromRhino"]],"paclet:ref/FromRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"]
-}], "SeeAlso",
- CellID->226629644]
-}, Open  ]],
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "XXXX", "ExampleSubsection",ExpressionUUID->
+   "2476efbf-e529-4011-9bf4-b3d3332f9336"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749,ExpressionUUID->"33c0b336-af25-4336-be51-e712c21004a7"]
+}, Closed]],
 
-Cell[" ", "FooterCell"]
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Applications", "ExampleSection",ExpressionUUID->
+   "45e58dc8-67ed-4bf9-a2de-aa58d7a50829"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157,ExpressionUUID->"3aebab4a-c057-4957-a4de-eeffa34f420a"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "eec45717-b85e-4646-8b79-a98e9832c288"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759,ExpressionUUID->"fb16b164-b157-42b8-9119-6b2b59be55f2"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Possible Issues", "ExampleSection",ExpressionUUID->
+   "0e96cdb7-23ec-4da8-bbe7-06011d90fbc3"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373,ExpressionUUID->"535b9567-872d-4e26-a22e-01713e94dd72"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Interactive Examples", "ExampleSection",ExpressionUUID->
+   "a49410b7-b8a9-44a4-8bb6-fec98a7f00c3"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318,ExpressionUUID->"c07497a5-4ead-465d-b14c-67bd23847171"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Neat Examples", "ExampleSection",ExpressionUUID->
+   "b1a5a4db-5ab3-481a-8e43-148e4e93a613"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740,ExpressionUUID->"70970cfc-6fd2-4cb3-84e7-00ee6c038ca5"]
+}, Open  ]]
 },
-Saveable->False,
-ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-WindowTitle->"RhinoMeshIntersection",
-TaggingRules->{
- "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
-  GridBox[{{
-      RowBox[{
-        ButtonBox[
-        "RhinoLink", ButtonData -> "paclet:RhinoLink/guide/RhinoLink", 
-         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
-  None, "RootCaptions" -> "", 
-  "Metadata" -> {
-   "built" -> "{2018, 6, 6, 16, 10, 31.660276}", 
-    "history" -> {"11.3", "", "", ""}, "context" -> "RhinoLink`", 
-    "keywords" -> {}, "specialkeywords" -> {}, 
-    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
-    "Rhino Link Symbol", "language" -> "en", "paclet" -> "RhinoLink", 
-    "status" -> "None", "summary" -> 
-    "RhinoMeshIntersection[mesh1, mesh2] gives the intersection of mesh1 and \
-mesh2", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
-    "RhinoMeshIntersection", "titlemodifier" -> "", "windowtitle" -> 
-    "RhinoMeshIntersection", "type" -> "Symbol", "uri" -> 
-    "RhinoLink/ref/RhinoMeshIntersection", "WorkflowDockedCell" -> ""}, 
-  "SearchTextTranslated" -> "", "NewStyles" -> False},
+WindowSize->{700, 770},
+WindowMargins->{{7, Automatic}, {Automatic, 1}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
 2018)",
-StyleDefinitions->Notebook[{
-   Cell[
-    StyleData[
-    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
-   Cell[
-    StyleData["Input"], CellContext -> "Global`"], 
-   Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> 
-  "11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[7127, 221, 267, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"6bdde6bb-8c08-45b3-978f-704c6c8c57eb",
-   CellTags->"PrimaryExamplesSection",
-   CellID->777004363]}
+ "ExtendedExamples"->{
+  Cell[14607, 393, 155, 2, 56, "ExtendedExamplesSection",ExpressionUUID->"a17f4c18-ba98-422e-9107-f1a273a7358c",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16838, 506}
+ {"ExtendedExamples", 17762, 484}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 3668, 91, 70, "AnchorBarGrid",ExpressionUUID->"f47e3a7d-12cc-4848-84d6-77aa6dd018a7",
- CellID->1],
+Cell[558, 20, 669, 15, 24, "History",ExpressionUUID->"08002527-7049-4d0c-8371-d02914a447c3",
+ CellID->1247902091],
 Cell[CellGroupData[{
-Cell[4286, 116, 800, 26, 70, "ObjectNameGrid",ExpressionUUID->"9f31bad8-611e-45ce-9a8c-ac8bbdcf81f4"],
-Cell[5089, 144, 748, 24, 70, "Usage",ExpressionUUID->"76b9bfa2-cb8d-419c-877e-d17134e99f67",
- CellID->982511436]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5874, 173, 630, 19, 70, "NotesSection",ExpressionUUID->"af150c30-2931-46b2-ab72-d43cf347e9bc",
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->1294899523],
-Cell[6507, 194, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"7cdae091-0d88-4237-b873-8758c55ea597"],
-Cell[6541, 196, 85, 1, 70, "Notes",ExpressionUUID->"7ed04e5d-3076-44e9-b7a1-b65f33ac83cd",
- CellID->521568208],
-Cell[6629, 199, 427, 15, 70, "Notes",ExpressionUUID->"bf9b3f68-3b02-461c-aa47-ee2005bf453a",
- CellID->565696080],
-Cell[7059, 216, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"0aa57e11-26b8-47df-923b-1d14679a0f7b"]
+Cell[1252, 39, 123, 1, 29, "CategorizationSection",ExpressionUUID->"131142db-cd25-482f-8472-0fdf620a854f",
+ CellID->1122911449],
+Cell[1378, 42, 134, 2, 70, "Categorization",ExpressionUUID->"70d1eadf-fb9a-4045-bb16-cce4a118304e",
+ CellID->686433507],
+Cell[1515, 46, 137, 2, 70, "Categorization",ExpressionUUID->"15f5cbc8-0ef6-46cc-bbe1-53ff82e2afdb",
+ CellID->605800465],
+Cell[1655, 50, 134, 2, 70, "Categorization",ExpressionUUID->"ef3d567a-a97f-4b1d-a11b-15a0fa389936",
+ CellID->468444828],
+Cell[1792, 54, 135, 1, 70, "Categorization",ExpressionUUID->"27485aec-203d-4615-b6d2-1526d002249f"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[7127, 221, 267, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"6bdde6bb-8c08-45b3-978f-704c6c8c57eb",
- CellTags->"PrimaryExamplesSection",
- CellID->777004363],
+Cell[1964, 60, 110, 1, 19, "KeywordsSection",ExpressionUUID->"0844e5db-212d-4589-93be-212042b24a03",
+ CellID->477174294],
+Cell[2077, 63, 100, 1, 70, "Keywords",ExpressionUUID->"9426c335-834a-40f3-9fa2-c0175eea2114",
+ CellID->1164421360]
+}, Closed]],
 Cell[CellGroupData[{
-Cell[7419, 235, 195, 6, 70, "ExampleSection",ExpressionUUID->"dcb1cbcd-563b-490f-b010-a9badcdca09f",
- CellID->264271534],
-Cell[7617, 243, 259, 5, 70, "ExampleText",ExpressionUUID->"60db5fdb-111d-4cc2-b2e4-3048a219abd8",
+Cell[2214, 69, 120, 1, 19, "TemplatesSection",ExpressionUUID->"0a537894-6a28-49b1-95a4-6915a81dde3a",
+ CellID->1872225408],
+Cell[2337, 72, 149, 2, 70, "Template",ExpressionUUID->"393ffd48-9429-484a-98d7-2a15bb5eae61",
+ CellID->1562036412],
+Cell[2489, 76, 137, 2, 70, "Template",ExpressionUUID->"884eecf0-6ade-4212-badd-2014d18c07f7",
+ CellID->158391909],
+Cell[2629, 80, 136, 2, 70, "Template",ExpressionUUID->"218d4b13-1060-440a-b06e-c12a66abb5f1",
+ CellID->1360575930],
+Cell[2768, 84, 137, 2, 70, "Template",ExpressionUUID->"b0808cd6-c6e4-4fed-9d85-ac89adafd781",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2942, 91, 108, 1, 19, "DetailsSection",ExpressionUUID->"1755b3ca-aa29-4f35-8f29-0e2dec684b9e",
+ CellID->307771771],
+Cell[3053, 94, 118, 2, 70, "Details",ExpressionUUID->"f000ec84-a66e-4f84-8e64-d9b41f377be3",
+ CellID->670882175],
+Cell[3174, 98, 124, 2, 70, "Details",ExpressionUUID->"ae0d23d6-cf3b-461b-a918-03370d0c8556",
+ CellID->350963985],
+Cell[3301, 102, 119, 2, 70, "Details",ExpressionUUID->"8770d918-29d0-47e4-b8f7-d53b13ce4ae5",
+ CellID->8391405],
+Cell[3423, 106, 124, 2, 70, "Details",ExpressionUUID->"88311bfd-dbac-4111-a73c-48de2973f7a9",
+ CellID->3610269],
+Cell[3550, 110, 116, 2, 70, "Details",ExpressionUUID->"925f6e9e-74df-4831-bca1-e47046fe56c7",
+ CellID->401364205],
+Cell[3669, 114, 116, 2, 70, "Details",ExpressionUUID->"ed1b8454-53fc-447f-9c42-f993fdc43e05",
+ CellID->350204745],
+Cell[3788, 118, 118, 2, 70, "Details",ExpressionUUID->"949400c0-0833-471a-8a65-a279680d8338",
+ CellID->732958810],
+Cell[3909, 122, 133, 2, 70, "Details",ExpressionUUID->"ac041b88-7d35-496b-9476-69f397ddbff4",
+ CellID->222905350],
+Cell[4045, 126, 122, 2, 70, "Details",ExpressionUUID->"80eb56eb-e290-4f43-aa1d-567c651d3f00",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4204, 133, 119, 1, 63, "ObjectName",ExpressionUUID->"2a93ef99-6c6a-4f66-b409-445f9d259951",
+ CellID->1224892054],
+Cell[4326, 136, 1237, 29, 77, "Usage",ExpressionUUID->"a8107e84-2a13-47b3-90c3-bbb7e56fac42",
+ CellID->982511436],
+Cell[5566, 167, 208, 2, 25, "Notes",ExpressionUUID->"796085d2-a2c3-428c-905f-d2258437610f",
+ CellID->521568208],
+Cell[5777, 171, 520, 14, 28, "Notes",ExpressionUUID->"3077dbf3-8a7d-4040-aa7c-273be4af418a",
+ CellID->565696080]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6334, 190, 112, 1, 44, "TutorialsSection",ExpressionUUID->"a8468df9-1f68-4104-8e25-c939fdc9d71f",
+ CellID->250839057],
+Cell[6449, 193, 319, 5, 16, "Tutorials",ExpressionUUID->"984cd3f4-b868-4894-b6d4-d6448ae6667f",
+ CellID->422280156]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6805, 203, 138, 1, 31, "RelatedDemonstrationsSection",ExpressionUUID->"f7ecff2f-72ea-4ac5-8f45-90dc5396ae0f",
+ CellID->1268215905],
+Cell[6946, 206, 113, 1, 16, "RelatedDemonstrations",ExpressionUUID->"622fea46-55d9-45de-8d5f-d7a0c7354cb6",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7096, 212, 120, 1, 31, "RelatedLinksSection",ExpressionUUID->"efaae72d-bad2-45fa-986b-23a73591e276",
+ CellID->1584193535],
+Cell[7219, 215, 886, 23, 22, "SeeAlso",ExpressionUUID->"4161f523-bf9a-4fca-83b9-e3fad3460166",
+ CellID->226629644]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8142, 243, 110, 1, 31, "SeeAlsoSection",ExpressionUUID->"5a8d7d1b-f09b-47bf-ac5b-ba1cad265efd",
+ CellID->1255426704],
+Cell[8255, 246, 98, 1, 16, "SeeAlso",ExpressionUUID->"c2837045-65e8-4cf6-bedd-bd2719af44ab",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8390, 252, 112, 1, 31, "MoreAboutSection",ExpressionUUID->"491a2544-b5bd-4fa0-862b-5f2586aea7f0",
+ CellID->38303248],
+Cell[8505, 255, 101, 1, 16, "MoreAbout",ExpressionUUID->"0aeca3e5-c08d-416f-9ac5-b59d365887f9",
+ CellID->1665078683]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8643, 261, 411, 11, 70, "PrimaryExamplesSection",ExpressionUUID->"133e575f-104e-42f5-9649-d7f3e3c49010",
+ CellID->880084151],
+Cell[9057, 274, 431, 7, 52, "ExampleText",ExpressionUUID->"6923750a-aff2-4704-8d4c-e3ce8ebccb54",
  CellID->125237741],
-Cell[7879, 250, 92, 1, 70, "ExampleText",ExpressionUUID->"67be4656-bd6c-4808-bc1c-765459ea923d",
+Cell[9491, 283, 312, 4, 22, "ExampleText",ExpressionUUID->"df0533b8-be0f-40e0-932f-779434ec5cb0",
  CellID->149300956],
 Cell[CellGroupData[{
-Cell[7996, 255, 550, 13, 70, "Input",ExpressionUUID->"e86ba7c9-70bb-4fce-9d04-a108cb8fe91f",
+Cell[9828, 291, 692, 13, 123, "Input",ExpressionUUID->"f89b4c33-aa9f-4d85-9e95-c9e72eefe0c7",
  CellID->1469260214],
-Cell[8549, 270, 4026, 83, 70, "Output",ExpressionUUID->"6a6b8eff-d26b-4ca3-99a7-f87f56156d7a",
+Cell[10523, 306, 4035, 81, 227, "Output",ExpressionUUID->"01cf209a-860b-4117-92a2-2accd6f3a902",
  CellID->60620057]
 }, Open  ]]
 }, Open  ]],
-Cell[12602, 357, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"46b4a327-8db8-4845-a05b-e97e3203e5fd"]
-}, Open  ]],
 Cell[CellGroupData[{
-Cell[12670, 362, 152, 7, 70, "TutorialsSection",ExpressionUUID->"9086f9bf-8072-4006-9dd6-8c5d147a773b",
- CellID->250839057],
-Cell[12825, 371, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"e678933d-0dfa-4677-b300-863a434499d7"],
-Cell[12859, 373, 230, 6, 70, "Tutorials",ExpressionUUID->"260eb132-dd3c-4cec-9389-1e0cbe281484",
- CellID->422280156],
-Cell[13092, 381, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"63ad4918-c8d1-4406-a9ae-d7cde91210d5"]
-}, Open  ]],
+Cell[14607, 393, 155, 2, 56, "ExtendedExamplesSection",ExpressionUUID->"a17f4c18-ba98-422e-9107-f1a273a7358c",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[14765, 397, 242, 5, 33, "ExampleSection",ExpressionUUID->"4c9b4031-0ae8-4d36-9d70-c3ced6e72ae9",
+ CellID->1293636265],
+Cell[15010, 404, 265, 5, 21, "ExampleSection",ExpressionUUID->"f1ba714a-e934-460f-b7a3-b1fa1ed17963",
+ CellID->1020263627],
 Cell[CellGroupData[{
-Cell[13160, 386, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"dd013822-54c4-4819-80f7-add4c89bb61a",
- CellID->38303248],
-Cell[13319, 395, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"a7d5216c-dc72-4c7f-af19-7043a719df1f"],
-Cell[13353, 397, 171, 5, 70, "MoreAbout",ExpressionUUID->"e329a26a-19c1-472f-8566-a472de94bf89",
- CellID->615489942],
-Cell[13527, 404, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"a3ffad18-8290-496a-8b85-c727e5c9aa61"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13595, 409, 160, 7, 70, "RelatedLinksSection",ExpressionUUID->"ceba1973-6f8b-4640-808d-f8cc977c7615",
- CellID->1584193535],
-Cell[13758, 418, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"6e979224-7b2e-4985-96e6-1c5fed4fb0a0"],
-Cell[13792, 420, 1056, 34, 70, "SeeAlso",ExpressionUUID->"fc0261f0-25c6-4012-905a-d9514b278b0e",
- CellID->226629644]
-}, Open  ]],
-Cell[14863, 457, 23, 0, 70, "FooterCell",ExpressionUUID->"65a84679-de32-477d-a21a-7607b5be9883"]
+Cell[15300, 413, 244, 5, 21, "ExampleSection",ExpressionUUID->"339a0f2c-1506-4fbd-b1c4-61a39aeb62ec",
+ CellID->2061341341],
+Cell[15547, 420, 247, 5, 70, "ExampleSubsection",ExpressionUUID->"783fd499-6d53-40b8-8bd2-69245c05c5f9",
+ CellID->1757724783],
+Cell[15797, 427, 247, 5, 70, "ExampleSubsection",ExpressionUUID->"33c0b336-af25-4336-be51-e712c21004a7",
+ CellID->1295379749]
+}, Closed]],
+Cell[16059, 435, 248, 5, 21, "ExampleSection",ExpressionUUID->"3aebab4a-c057-4957-a4de-eeffa34f420a",
+ CellID->258228157],
+Cell[16310, 442, 259, 5, 21, "ExampleSection",ExpressionUUID->"fb16b164-b157-42b8-9119-6b2b59be55f2",
+ CellID->2123667759],
+Cell[16572, 449, 252, 5, 21, "ExampleSection",ExpressionUUID->"535b9567-872d-4e26-a22e-01713e94dd72",
+ CellID->1305812373],
+Cell[16827, 456, 257, 5, 21, "ExampleSection",ExpressionUUID->"c07497a5-4ead-465d-b14c-67bd23847171",
+ CellID->1653164318],
+Cell[17087, 463, 249, 5, 21, "ExampleSection",ExpressionUUID->"70970cfc-6fd2-4cb3-84e7-00ee6c038ca5",
+ CellID->589267740]
+}, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)

@@ -10,129 +10,125 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    208957,       3977]
-NotebookOptionsPosition[    197399,       3731]
-NotebookOutlinePosition[    199823,       3792]
-CellTagsIndexPosition[    199780,       3789]
-WindowTitle->Use NETLink to Examine and Create Objects in Rhino
+NotebookDataLength[    220026,       4141]
+NotebookOptionsPosition[    207367,       3854]
+NotebookOutlinePosition[    207812,       3871]
+CellTagsIndexPosition[    207769,       3868]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[GridBox[{
-   {Cell["RHINO LINK TUTORIAL", "PacletNameCell"], Cell[TextData[{
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox[
-        InterpretationBox[Cell[TextData[{
-          "Related Tutorials",
-          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-           StripOnInput->False]
-         }]],
-         TextCell[
-          Row[{"Related Tutorials", 
-            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->
-         False], {"\<\"How to Use the Wolfram Grasshopper Components\"\>":>
-       Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/UsingWolframComponents"], "\<\"Operate on \
-Wolfram Language Meshes Using Rhino\"\>":>Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"], "\<\"Control a \
-Parametric Surface in Rhino with a Manipulate Interface in Mathematica\"\>":>
-       Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/InteractiveSurface"], "\<\"Create Box \
-Structures in Rhino with an Interface in Mathematica\"\>":>
-       Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/BoxDesignWidget"], "\<\"Make a Grasshopper \
-Component that Translates Graphics3D Output to Rhino Meshes\"\>":>
-       Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/Graphics3DComponent"], "\<\"Make a \
-Grasshopper Component that Makes NURBS Surfaces from U-V Point Grids\"\>":>
-       Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/UVSurfaceComponent"], "\<\"Make a \
-Grasshopper Component that Covers a Surface of Revolution with \
-Phyllotaxically-Arranged Points\"\>":>Documentation`HelpLookup[
-       "paclet:RhinoLink/tutorial/SpiralPhyllotaxicSurfaceComponent"]},
-       Appearance->None,
-       MenuAppearance->Automatic,
-       MenuStyle->"RelatedTutorialsSection"]],
-      LineSpacing->{1.4, 0}],
-     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
-\[ThickSpace]",
-     Cell[BoxData[
-      ActionMenuBox[
-       FrameBox[
-        InterpretationBox[Cell[TextData[{
-          "URL",
-          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-           StripOnInput->False]
-         }]],
-         TextCell[
-          Row[{"URL", 
-            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->
-         False], {"\<\"RhinoLink/tutorial/Use NETLink to Examine and Create \
-Objects in Rhino\"\>":>None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell[
-             "RhinoLink/tutorial/Use NETLink to Examine and Create Objects in \
-Rhino"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-       Delimiter, "\<\"Copy web URL\"\>":>
-       Module[{DocumentationSearch`Private`nb$}, 
-        DocumentationSearch`Private`nb$ = NotebookPut[
-           Notebook[{
-             Cell[
-              BoxData[
-               MakeBoxes[
-                Hyperlink[
-                "http://reference.wolfram.com/language/RhinoLink/tutorial/Use \
-NETLink to Examine and Create Objects in Rhino.html"], StandardForm]], 
-              "Input", TextClipboardType -> "PlainText"]}, Visible -> False]]; 
-        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-        NotebookClose[DocumentationSearch`Private`nb$]; 
-        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-         NotebookLocate[{
-           URL[
-            StringJoin[
-             If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16166], 
-              "http://reference.wolfram.com/system-modeler/", 
-              "http://reference.wolfram.com/language/"], 
-             "RhinoLink/tutorial/Use NETLink to Examine and Create Objects in \
-Rhino", ".html"]], None}]}]},
-       Appearance->None,
-       MenuAppearance->Automatic,
-       MenuStyle->"URLMenu"]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
-  }]], "AnchorBarGrid",
- GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
-     Scaled[0.65], {
-      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
-   "RowsIndexed" -> {}}},
- CellID->1],
+Cell[TextData[{
+ "New in: ",
+ Cell["11.3", "HistoryData",
+  CellTags->"New",ExpressionUUID->"fc0ed36d-d177-4d26-9033-fb70c0fd9a10"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"4a9fd3fc-1b08-4553-8585-74b79d019a7a"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->"ac2e78ca-6069-42f8-a106-4f28e975da2d"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised",ExpressionUUID->"3b056a77-fe67-44fb-be81-244d993ee4ae"]
+}], "History",
+ CellChangeTimes->{{3.737117045101551*^9, 3.737117045101605*^9}},
+ CellID->1247902091,ExpressionUUID->"422265e3-e843-48ea-83c3-b3d3906dc871"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449,ExpressionUUID->"6b92d631-7397-4281-b363-b1c93d798776"],
+
+Cell["Tutorial", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507,ExpressionUUID->"a970665a-9346-4274-a53e-603dd44c9bce"],
+
+Cell["RhinoLink", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465,ExpressionUUID->"307d45db-a1f0-4bcb-9c07-a237b761ae2e"],
+
+Cell["RhinoLink`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828,ExpressionUUID->"786ab1cf-d5a7-4b38-9caf-0c06b052ba0d"],
+
+Cell["\<\
+RhinoLink/tutorial/Use NETLink to Examine and Create Objects in Rhino\
+\>", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"0992aa8e-1a41-4aa4-abe2-a9db123d9ed4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552,ExpressionUUID->"27df2b2e-f0e6-41d9-ae24-2f3497590614"],
+
+Cell["XXXX", "Keywords",
+ CellID->1251852827,ExpressionUUID->"6e6a80a6-42c5-4591-a47f-db0f1fb77196"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771,ExpressionUUID->"2f136632-e0b9-48c6-ae81-41be146b69db"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->218895918,ExpressionUUID->"618d6c92-4633-438d-84e3-69a11dad790c"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985,ExpressionUUID->"fb58c56b-7967-4c53-b686-34b5f5eacad7"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->795871300,ExpressionUUID->"4ff824d2-6a30-4de1-bcc8-13f2205b2e44"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->199739161,ExpressionUUID->"6c3ffa3f-ea5b-46bc-85e0-be805f40b85c"],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->40625308,ExpressionUUID->"99f35eab-d102-4b30-b126-13bd8aa75fcb"],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->357121918,ExpressionUUID->"3d52f361-a759-46cf-9600-aa8b23aa646f"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->35949532,ExpressionUUID->"4911e920-ff70-4dc4-afea-56a2ef752c5e"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->929432370,ExpressionUUID->"08d397c4-04b8-461b-a70f-394d0e67eb67"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365,ExpressionUUID->"662d917d-e0e4-4415-bafe-d176399ddc0a"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Use NETLink to Examine and Create Objects in Rhino", "Title",
- CellID->509267359],
+ CellID->509267359,ExpressionUUID->"c1f1b464-231b-4cbf-8f3b-7ad1e84b2f47"],
 
 Cell[CellGroupData[{
 
 Cell["Setup", "Section",
- CellID->1037075497],
+ CellChangeTimes->{{3.736775237598078*^9, 3.736775252403893*^9}, {
+  3.737130085844666*^9, 3.7371300862906027`*^9}},
+ CellID->1037075497,ExpressionUUID->"b2b4f2a6-5599-4ee3-a4f6-c6f3f9d5c704"],
 
 Cell["\<\
 To run the code in this tutorial, you must have evaluated WolframConnect in \
 Rhino:\
 \>", "Text",
- CellID->1361204418],
+ CellChangeTimes->{{3.736776333010248*^9, 3.7367764247248583`*^9}, {
+  3.7371273879360523`*^9, 3.7371273891903563`*^9}, {3.737130101143146*^9, 
+  3.737130104747658*^9}},
+ CellID->1361204418,ExpressionUUID->"3e38260d-157b-4196-a8d8-0d1666d08c9c"],
 
 Cell[BoxData[
  RowBox[{"\t", 
@@ -2126,12 +2122,17 @@ Y3gjypkHl+/OHHXOm8aj/w+0LsLV
    ImageSize->Magnification[0.5],
    ImageSizeRaw->{932, 219},
    PlotRange->{{0, 932}, {0, 219}}]}]], "Text",
- CellID->110807350],
+ CellChangeTimes->{3.7371273812100058`*^9, 3.737130109525482*^9},
+ CellID->110807350,ExpressionUUID->"cb17de8f-fe0e-40f3-af38-2751ebcc1281"],
+
+Cell[CellGroupData[{
 
 Cell["\<\
 The notebook in which you are working must use the RhinoAttach kernel:\
 \>", "Text",
- CellID->400292277],
+ CellChangeTimes->{{3.736776430172333*^9, 3.736776449196538*^9}, {
+  3.737130148770586*^9, 3.737130149002206*^9}},
+ CellID->400292277,ExpressionUUID->"f867a3d6-76e9-4f9f-8497-5ae2193d5bb3"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -2708,20 +2709,24 @@ Qt/dN/lv+t+WvzN+t+s9+/2ZD2kfHvdP/Uj6uPaT46emzzGfbw/kDwxIuTKu
 6iiAwYpmZwPwcicA9HR4dmgHgDpBfTdTFUR9n1QR+E+svr+pijcAO4PhNXcu
 ALHwjLIJVlvINPhUHsGTgwHq6TlUNUWe7emhtkWDNxbCu4GBV2YAkJoA+CQb
 GOjfODDwaTsM9iYAxwvVd0JlUd5BtxgrqfW6Lvi2/BuneX0k
-      "], "RGB", "XYZ"], 
-    Interleaving -> True, Magnification -> Automatic],
+      "], "RGB", "XYZ"], Interleaving -> True, Magnification -> Automatic],
    Selectable->False],
   DefaultBaseStyle->"ImageGraphics",
   ImageSize->Magnification[0.4],
   ImageSizeRaw->{1101, 559},
   PlotRange->{{0, 1101}, {0, 559}}]], "Input",
- CellID->1912826041]
+ CellChangeTimes->{{3.737130050114478*^9, 3.737130054622306*^9}},
+ CellID->1912826041,ExpressionUUID->"78ca34e1-65b2-4c9a-8754-3a648cbe68f4"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["The Rhino Document", "Section",
- CellID->141886224],
+ CellChangeTimes->{{3.737281289469944*^9, 3.7372812923338337`*^9}},
+ CellID->141886224,ExpressionUUID->"0d870bde-5881-48d4-8370-57caef0cd02a"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "The static property ",
@@ -2731,40 +2736,48 @@ methods and properties, you must first load the type (see the ",
  ButtonBox["NETLink documentation",
   BaseStyle->"Link",
   ButtonData->"paclet:NETLink/tutorial/CallingNETFromTheWolframLanguage#9847"],
- " for information on the distinction between static and non-static \
-methods):"
+ " for information on the distinction between static and non-static methods):"
 }], "Text",
- CellID->333413602],
+ CellChangeTimes->{{3.737281310099149*^9, 3.7372814026380854`*^9}, {
+  3.7372836833620296`*^9, 3.737283695024254*^9}, {3.7372837365350733`*^9, 
+  3.737283760829853*^9}, {3.7372838180075154`*^9, 3.737283818288534*^9}},
+ CellID->333413602,ExpressionUUID->"1c877a39-6860-481d-b98b-79a17b5b4763"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoDoc\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.737281160260992*^9, 3.737281190080544*^9}, {
+  3.7372812330898037`*^9, 3.7372812338486834`*^9}},
  CellLabel->"In[4]:=",
- CellID->86641344],
+ CellID->86641344,ExpressionUUID->"1c5ecc00-63a4-4d04-9930-f5e56772b33f"],
 
 Cell[BoxData[
  RowBox[{"NETType", "[", 
   RowBox[{"\<\"Rhino.RhinoDoc\"\>", ",", "12"}], "]"}]], "Output",
- ImageSize->{194, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.737281235277454*^9},
  CellLabel->"Out[4]=",
- CellID->12474803]
+ CellID->12474803,ExpressionUUID->"7b657543-f359-4100-b930-12a11bb0aa28"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell["\<\
 This sets \[OpenCurlyQuote]doc\[CloseCurlyQuote] to the active Rhino document \
 object (.NET objects are indicated by \[LeftGuillemet] \[RightGuillemet] ):\
 \>", "Text",
- CellID->1610703193],
+ CellChangeTimes->{{3.6683573175296545`*^9, 3.6683574060958676`*^9}, {
+   3.668364172946048*^9, 3.6683641732736416`*^9}, 3.7372814174060307`*^9},
+ CellID->1610703193,ExpressionUUID->"62fde4c4-5c1c-466b-8b5b-8adc279b7d6d"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"doc", "=", "RhinoDoc`ActiveDoc"}]], "Input",
+ CellChangeTimes->{{3.668357265662008*^9, 3.6683572686102567`*^9}},
  CellLabel->"In[5]:=",
- CellID->2057194316],
+ CellID->2057194316,ExpressionUUID->"aa74801d-6f11-4762-b351-35b21780b0da"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -2772,35 +2785,41 @@ Cell[BoxData[
    RowBox[{"NETObject", "[", 
     RowBox[{"Rhino", ".", "RhinoDoc"}], "]"}], "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$4503599644147713]], "Output",
- ImageSize->{204, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.7371946148532495`*^9, 3.737281137984066*^9, 
+  3.7372812383179684`*^9},
  CellLabel->"Out[5]=",
- CellID->437917673]
+ CellID->437917673,ExpressionUUID->"5a6bc454-49c7-45f0-a508-72e9865f39de"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "You can query any .NET object with ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["NETTypeInfo"]],"paclet:ref/NETTypeInfo"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["NETTypeInfo",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "577d8f94-0bbd-4cf6-8971-6e14b393cd8c"],
  " to find out what you can do with it. ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["NETTypeInfo"]],"paclet:ref/NETTypeInfo"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["NETTypeInfo",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "6de6285f-591a-442a-961d-51bd4396fdc9"],
  " is one of the most useful commands for finding your way around a strange \
 set of objects:"
 }], "Text",
- CellID->778152312],
+ CellChangeTimes->{{3.668357350248709*^9, 3.6683573553967094`*^9}, {
+  3.6683574121639566`*^9, 3.6683574319125433`*^9}, {3.6683593940922318`*^9, 
+  3.668359439798829*^9}, {3.7371947058091407`*^9, 3.7371947254652214`*^9}},
+ CellID->778152312,ExpressionUUID->"98e64cc6-ecb1-48fd-9f87-e4365790e59d"],
 
 Cell[BoxData[
  RowBox[{"NETTypeInfo", "[", "doc", "]"}]], "Input",
+ CellChangeTimes->{{3.6683593618948636`*^9, 3.6683593660443306`*^9}, {
+  3.731851528559374*^9, 3.731851576732607*^9}, {3.7371946252128496`*^9, 
+  3.7371946263400307`*^9}},
  CellLabel->"In[13]:=",
- CellID->230497554],
+ CellID->230497554,ExpressionUUID->"4c0bc398-c0c6-409b-ba3f-f95dcad7d501"],
 
 Cell[BoxData[GridBox[{
    {Cell[BoxData[
@@ -2808,7 +2827,8 @@ Cell[BoxData[GridBox[{
       StyleBox["Type",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "76e33885-1a7b-4566-a705-ba57941ffdbf"]},
    {
     RowBox[{"class", " ", 
      StyleBox["\<\"Rhino.RhinoDoc\"\>",
@@ -2840,7 +2860,8 @@ PublicKeyToken=552281e97c755530\"\>"},
       StyleBox["Properties",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "670eb56d-2a9c-4295-93f9-d98d5f7ec61b"]},
    {
     RowBox[{"static", " ", "\<\"Rhino.RhinoDoc\"\>", " ", 
      StyleBox["ActiveDoc",
@@ -2873,7 +2894,8 @@ PublicKeyToken=552281e97c755530\"\>"},
       StyleBox["Methods",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "1241789d-d4a7-46eb-8f66-111e9c6c13b4"]},
    {
     RowBox[{"\<\"bool\"\>", " ", 
      StyleBox["AddCustomUndoEvent",
@@ -2899,7 +2921,8 @@ tag)\"\>"}]},
       StyleBox["Events",
        FontSize->18,
        FontWeight->"Bold",
-       FontSlant->"Italic"]}]]]},
+       FontSlant->"Italic"]}]],ExpressionUUID->
+     "5dc83def-a7ea-4959-9289-66004fe2732d"]},
    {
     RowBox[{
     "static", " ", "event", 
@@ -2934,10 +2957,11 @@ Rhino.DocObjects.RhinoTransformObjectsEventArgs e)\"\>", "\<\"]\"\>"}]},
   GridBoxItemSize->{
    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
     "RowsIndexed" -> {}}]], "Output", "Input",
- ImageSize->{1556, 566},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellID->96122653],
+ CellChangeTimes->{{3.73719479467031*^9, 3.7371948184066496`*^9}},
+ CellID->96122653,ExpressionUUID->"c94e8a23-f219-4b95-9b34-22a029ac616a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "A Rhino document has an ",
@@ -2945,14 +2969,16 @@ Cell[TextData[{
  " property, whose name hints that it is a collection of the objects \
 contained in the document:"
 }], "Text",
- CellID->59481028],
+ CellChangeTimes->{{3.7372815511804905`*^9, 3.737281644401537*^9}},
+ CellID->59481028,ExpressionUUID->"ccb94d9d-b27a-48f5-ace9-0b444d397ec7"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"doc", "@", "Objects"}]], "Input",
+ CellChangeTimes->{{3.737281627825991*^9, 3.737281634348627*^9}},
  CellLabel->"In[11]:=",
- CellID->2478374],
+ CellID->2478374,ExpressionUUID->"6ea8aa1e-626e-40b9-ab17-f85c5f99ad99"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -2961,97 +2987,99 @@ Cell[BoxData[
     RowBox[{"Rhino", ".", "DocObjects", ".", "Tables", ".", "ObjectTable"}], 
     "]"}], "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$340565203877889]], "Output",
- ImageSize->{354, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.737281634769582*^9},
  CellLabel->"Out[11]=",
- CellID->752621892]
+ CellID->752621892,ExpressionUUID->"9f3f9a0a-de96-4a03-a35c-79e410818b64"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "You can get at the objects with ",
  StyleBox["ObjectIterator", "InlineCode"],
  " methods, but RhinoLink provides a utility function, ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoDocObjects"]],"paclet:ref/RhinoDocObjects"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["RhinoDocObjects",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "cbf8dc86-01c0-4b4d-9532-70648bae728d"],
  ", to get the complete list of objects directly. The Rhino document is \
 currently empty:"
 }], "Text",
- CellID->598001584],
+ CellChangeTimes->{{3.7372816485600815`*^9, 3.7372817356545396`*^9}},
+ CellID->598001584,ExpressionUUID->"beafb7ff-c02b-4b94-9e99-975b358d6c11"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"RhinoDocObjects", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7372815033758736`*^9, 3.737281505322012*^9}},
  CellLabel->"In[10]:=",
- CellID->396484599],
+ CellID->396484599,ExpressionUUID->"858a016a-bb2a-44b8-acf9-101f0ba7b54a"],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
- ImageSize->{18, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.737281505793043*^9},
  CellLabel->"Out[10]=",
- CellID->487014811]
+ CellID->487014811,ExpressionUUID->"d627e94d-d07a-41ea-941d-2520e03ea092"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Adding Objects to the Rhino Document", "Section",
- CellID->541532613],
+ CellChangeTimes->{{3.7372817562449803`*^9, 3.737281762013056*^9}, {
+  3.7372821290180016`*^9, 3.7372821303860807`*^9}},
+ CellID->541532613,ExpressionUUID->"cb8fa08b-4def-4e8a-b91a-11f234d12458"],
 
 Cell[TextData[{
  "To add an object to the Rhino document, create a Wolfram Language geometric \
 object, convert the object to a Rhino object, and add the object to the Rhino \
 document. The RhinoLink utilities ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["ToRhino"]],"paclet:ref/ToRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["ToRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "bec41b6e-e18d-4bb7-a397-c51ca810f89c"],
  " and ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoShow"]],"paclet:ref/RhinoShow"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["RhinoShow",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "d708287c-c198-4885-afbe-44764ccf01c0"],
  " perform the last two steps."
 }], "Text",
- CellID->573691913],
+ CellChangeTimes->{{3.7372819032299957`*^9, 3.737282027073756*^9}},
+ CellID->573691913,ExpressionUUID->"be13a938-1881-4b02-9c58-865ecec0589b"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "This adds a sphere mesh to the Rhino document. ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["DiscretizeGraphics"]],"paclet:ref/DiscretizeGraphics"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["DiscretizeGraphics",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "fb7b15cd-293e-475e-95f8-8a66b96b0d00"],
  " turns a ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["Sphere"]],"paclet:ref/Sphere"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["Sphere",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "8657f7dc-dd52-4e2a-a7a3-8540229c5d6d"],
  " primitive into a mesh, ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["ToRhino"]],"paclet:ref/ToRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["ToRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "08b297ac-d1b6-4f88-aa59-3476a5aae9a7"],
  " converts that to a Rhino Mesh object, and ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoShow"]],"paclet:ref/RhinoShow"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["RhinoShow",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "757c4b6a-1e32-49c0-a5cf-b8ba1b2bfb6c"],
  " adds the Rhino mesh to the Rhino document and redraws so that the object \
 is visible in Rhino:"
 }], "Text",
- CellID->88397140],
+ CellChangeTimes->{{3.737282041889705*^9, 3.737282108453978*^9}, {
+  3.737282153483409*^9, 3.7372821595937805`*^9}},
+ CellID->88397140,ExpressionUUID->"16a69c8b-e093-4c5b-a6f2-3bc9e49c35cd"],
 
 Cell[CellGroupData[{
 
@@ -3060,8 +3088,9 @@ Cell[BoxData[
   RowBox[{"ToRhino", "[", 
    RowBox[{"DiscretizeGraphics", "[", 
     RowBox[{"Sphere", "[", "]"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.737281806520636*^9, 3.7372818498944054`*^9}},
  CellLabel->"In[15]:=",
- CellID->518311122],
+ CellID->518311122,ExpressionUUID->"a6fb051d-5f86-47e4-bc26-3745ccc628e9"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3070,24 +3099,27 @@ Cell[BoxData[
     RowBox[{"NETObject", "[", 
      RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
    NETLink`Objects`NETObject$37433806734491649], "}"}]], "Output",
- ImageSize->{196, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{{3.7372818192330413`*^9, 3.7372818522745123`*^9}},
  CellLabel->"Out[15]=",
- CellID->271710476]
+ CellID->271710476,ExpressionUUID->"ba85158c-b910-4111-aa3a-1136a9998f58"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell["\<\
 Now RhinoDocObjects returns a list containing the Rhino mesh:\
 \>", "Text",
- CellID->671939187],
+ CellChangeTimes->{{3.7372821746456413`*^9, 3.737282202274416*^9}},
+ CellID->671939187,ExpressionUUID->"3cfc51ec-d318-4b1b-96e4-8948cff49af9"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"RhinoDocObjects", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7372822047805753`*^9, 3.737282207323739*^9}},
  CellLabel->"In[16]:=",
- CellID->13087847],
+ CellID->13087847,ExpressionUUID->"419a5e03-c473-463c-a974-81e26389d440"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3097,21 +3129,25 @@ Cell[BoxData[
      RowBox[{"Rhino", ".", "DocObjects", ".", "MeshObject"}], "]"}], 
     "\[RightGuillemet]"}],
    NETLink`Objects`NETObject$430248197881857], "}"}]], "Output",
- ImageSize->{311, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.737282207900776*^9},
  CellLabel->"Out[16]=",
- CellID->298507148]
+ CellID->298507148,ExpressionUUID->"091f82ef-4728-40e5-a390-329a63ea5e4a"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Getting Information About a Rhino Mesh", "Section",
- CellID->2118128469],
+ CellChangeTimes->{{3.66836185334874*^9, 3.668361864299519*^9}},
+ CellID->2118128469,ExpressionUUID->"c164de02-f796-4a35-9ed8-cf406434afac"],
+
+Cell[CellGroupData[{
 
 Cell["Let's have a closer look at the mesh object in the document:", "Text",
- CellID->246718616],
+ CellChangeTimes->{{3.737194873793272*^9, 3.737194887245882*^9}, {
+  3.7372822396658144`*^9, 3.737282240161848*^9}},
+ CellID->246718616,ExpressionUUID->"245e7542-d620-4fa7-94e4-bcecd9e54e4e"],
 
 Cell[CellGroupData[{
 
@@ -3120,8 +3156,11 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"RhinoDocObjects", "[", "]"}], "[", 
    RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.66836186843336*^9, 3.668361874485927*^9}, {
+  3.6684237380855846`*^9, 3.668423763138542*^9}, {3.7372822436540704`*^9, 
+  3.737282265599477*^9}},
  CellLabel->"In[18]:=",
- CellID->548762164],
+ CellID->548762164,ExpressionUUID->"af5bbe6e-4e7c-4c92-ab75-7d2ce68e3a69"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3130,57 +3169,64 @@ Cell[BoxData[
     RowBox[{"Rhino", ".", "DocObjects", ".", "MeshObject"}], "]"}], 
    "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$1073107393576961]], "Output",
- ImageSize->{297, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{
+  3.737194889931184*^9, {3.737282245911214*^9, 3.73728226703657*^9}},
  CellLabel->"Out[18]=",
- CellID->131906899]
+ CellID->131906899,ExpressionUUID->"f1d8a315-01de-4184-a3bc-8c2ce8d257b5"]
+}, Open  ]]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell["The mesh object contains one mesh:", "Text",
- CellID->1750910130],
+ CellChangeTimes->{{3.6683619760441904`*^9, 3.668361984717512*^9}, {
+  3.7318598914545383`*^9, 3.7318598926702414`*^9}},
+ CellID->1750910130,ExpressionUUID->"3ec31e6f-7a25-4a3d-ab7c-3d9a4cad98e3"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"meshObj", "@", 
   RowBox[{"MeshGeometry", "@", "DisjointMeshCount"}]}]], "Input",
+ CellChangeTimes->{{3.6683619180238523`*^9, 3.668361961374655*^9}},
  CellLabel->"In[19]:=",
- CellID->578140069],
+ CellID->578140069,ExpressionUUID->"1a8b2b99-26ba-456d-81ab-a310d72d83d0"],
 
 Cell[BoxData["1"], "Output",
- ImageSize->{11, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.7371948926338987`*^9, 3.737282271538859*^9},
  CellLabel->"Out[19]=",
- CellID->603611584]
+ CellID->603611584,ExpressionUUID->"5b43c7ef-3c25-4205-aeb8-c8bec4184b7e"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "The utility function ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["FromRhino"]],"paclet:ref/FromRhino"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["FromRhino",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "ca37e3d6-84bb-4172-be5c-56f92f81491c"],
  " attempts to convert whatever object you give as its argument to a Wolfram \
 Language object. In this case, it returns a ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["MeshRegion"]],"paclet:ref/MeshRegion"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["MeshRegion",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "f6335276-7d17-460e-9c5c-1f21cbe52b33"],
  " object:"
 }], "Text",
- CellID->1584120655],
+ CellChangeTimes->{{3.6683622414122934`*^9, 3.6683623115940657`*^9}, {
+  3.7371948983691187`*^9, 3.7371949136775975`*^9}},
+ CellID->1584120655,ExpressionUUID->"36d14e3f-bc70-47ec-848d-93b7890971e0"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FromRhino", "[", 
   RowBox[{"meshObj", "@", "MeshGeometry"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6683622076237764`*^9, 3.668362223956453*^9}},
  CellLabel->"In[20]:=",
- CellID->1961076726],
+ CellID->1961076726,ExpressionUUID->"c6171fa5-5cd1-424e-8eca-0d714d4c159a"],
 
 Cell[BoxData[
  Graphics3DBox[
@@ -3444,37 +3490,40 @@ Bnxx+mHc/wNHyc9/
   Method->{"ShrinkWrap" -> True},
   ViewPoint->{1.3, -2.4, 2.},
   ViewVertical->{0., 0., 1.}]], "Output",
- ImageSize->{264, 260},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.7371949179894476`*^9, 3.7372822808144555`*^9},
  CellLabel->"Out[20]=",
- CellID->185070432]
+ CellID->185070432,ExpressionUUID->"05fefd14-acab-458d-854b-fe8c5ea3b7cf"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Updating Rhino Objects", "Section",
- CellID->73199742],
+ CellChangeTimes->{{3.737282485034417*^9, 3.7372824928499203`*^9}, {
+  3.73728289136508*^9, 3.737282891884102*^9}},
+ CellID->73199742,ExpressionUUID->"5ab194d3-c7f2-4571-97d1-cc56e5491a5f"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Utilities ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoReshow"]],"paclet:ref/RhinoReshow"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["RhinoReshow",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "75f08ba4-7770-4f01-86e3-e97cf2de303a"],
  " and ",
  Cell[BoxData[
-  TemplateBox[{Cell[
-     TextData["RhinoUnshow"]],"paclet:ref/RhinoUnshow"},
-   "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+  ButtonBox["RhinoUnshow",
+   BaseStyle->"Link"]], "InlineFormula",ExpressionUUID->
+  "b8c47741-3b9d-4883-9b8b-950c2eac6532"],
  " replace and remove objects from the Rhino document. To change a Rhino \
 object interactively, you repeatedly replace the object. An object is \
 referred to by its guid:"
 }], "Text",
- CellID->261769371],
+ CellChangeTimes->{{3.7372829148739915`*^9, 3.737282988904307*^9}, {
+  3.7372830988417544`*^9, 3.7372831279520555`*^9}},
+ CellID->261769371,ExpressionUUID->"9311395a-f25b-46cd-9f87-c94e4a875ef2"],
 
 Cell[CellGroupData[{
 
@@ -3484,8 +3533,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"RhinoDocObjects", "[", "]"}], "[", 
     RowBox[{"[", "1", "]"}], "]"}], "@", "Id"}]}]], "Input",
+ CellChangeTimes->{{3.737283001745965*^9, 3.737283069136406*^9}},
  CellLabel->"In[27]:=",
- CellID->5298475],
+ CellID->5298475,ExpressionUUID->"7beb1a80-10fd-4d4b-a663-47e93899bcea"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3493,26 +3543,35 @@ Cell[BoxData[
    RowBox[{"NETObject", "[", 
     RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
   NETLink`Objects`NETObject$37433806734491651]], "Output",
+ CellChangeTimes->{{3.7372830296463842`*^9, 3.737283070967497*^9}},
  AutoSpacing->False,
- ImageSize->{182, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[27]=",
- CellID->187265314]
+ CellID->187265314,ExpressionUUID->"28a9b792-27e4-4ec9-a760-144153b73287"]
+}, Open  ]]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell["This removes the sphere from the Rhino document:", "Text",
- CellID->436101531],
+ CellChangeTimes->{{3.737283139159108*^9, 3.7372831489495482`*^9}},
+ CellID->436101531,ExpressionUUID->"cd3dc2f3-d1ae-4048-b328-7e5aaf1c8f8b"],
 
 Cell[BoxData[
  RowBox[{"RhinoUnshow", "[", "guid", "]"}]], "Input",
+ CellChangeTimes->{{3.7372830721785545`*^9, 3.737283078600844*^9}},
  CellLabel->"In[42]:=",
- CellID->76794141],
+ CellID->76794141,ExpressionUUID->"a59b7ee2-08fd-492b-8866-a39f9f191ca4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell["\<\
 Add a small sphere to the Rhino document and remember its guid:\
 \>", "Text",
- CellID->857568037],
+ CellChangeTimes->{{3.737283154507228*^9, 3.7372831685714226`*^9}, {
+  3.7372833315392375`*^9, 3.7372833408757744`*^9}, {3.7372835487722797`*^9, 
+  3.737283550821991*^9}},
+ CellID->857568037,ExpressionUUID->"a3f3539a-c5ba-4d47-b92c-9c0e1f652f82"],
 
 Cell[CellGroupData[{
 
@@ -3526,8 +3585,10 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", ".1"}], "]"}], "]"}], 
     "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.737283223715183*^9, 3.737283255412134*^9}, 
+   3.7372833175014296`*^9, {3.7372835220140424`*^9, 3.7372835221940203`*^9}},
  CellLabel->"In[43]:=",
- CellID->270349773],
+ CellID->270349773,ExpressionUUID->"88d4d4e0-c11d-4d05-be1d-b0dc0be2f727"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3536,15 +3597,21 @@ Cell[BoxData[
     RowBox[{"NETObject", "[", 
      RowBox[{"System", ".", "Guid"}], "]"}], "\[RightGuillemet]"}],
    NETLink`Objects`NETObject$29275266895314945], "}"}]], "Output",
- ImageSize->{196, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{{3.737283249122625*^9, 3.7372832565642138`*^9}, 
+   3.7372833238477974`*^9, {3.7372834610893364`*^9, 3.737283480421959*^9}, 
+   3.7372835311887507`*^9},
  CellLabel->"Out[43]=",
- CellID->78350784]
+ CellID->78350784,ExpressionUUID->"52c6070b-ff54-42d6-9691-42c1afad4d4b"]
+}, Open  ]]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell["Now make the sphere grow:", "Text",
- CellID->176919134],
+ CellChangeTimes->{{3.737283344549985*^9, 3.737283354124538*^9}, {
+  3.737283468655582*^9, 3.737283469111596*^9}, {3.737283555762696*^9, 
+  3.7372835562896705`*^9}},
+ CellID->176919134,ExpressionUUID->"cf653897-30f8-4a6c-af51-8e8a803c141c"],
 
 Cell[BoxData[
  RowBox[{
@@ -3566,14 +3633,22 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"r", ",", ".1", ",", "1", ",", ".1"}], "}"}]}], "]"}]}], 
   ";"}]], "Input",
+ CellChangeTimes->{{3.7372832739024353`*^9, 3.7372832801858797`*^9}, {
+   3.7372833617839994`*^9, 3.7372834204898615`*^9}, {3.737283451764036*^9, 
+   3.7372834557551665`*^9}, 3.7372834861851463`*^9, {3.737283534489289*^9, 
+   3.7372835384777265`*^9}},
  CellLabel->"In[44]:=",
- CellID->636797814]
+ CellID->636797814,ExpressionUUID->"d85295e0-1280-444d-867a-8c81a1cbc825"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["RhinoApp`RunScript", "Section",
- CellID->471854466],
+ CellChangeTimes->{{3.6683632578117766`*^9, 3.66836326581432*^9}},
+ CellID->471854466,ExpressionUUID->"00715362-7d45-4b46-a709-f3ca20bb236f"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "A very useful (but slow) command for executing arbitrary Rhino commands is ",
@@ -3584,32 +3659,43 @@ Cell[TextData[{
  StyleBox["Rhino.RhinoApp", "InlineCode"],
  ":"
 }], "Text",
- CellID->1948385338],
+ CellChangeTimes->{{3.668363273395677*^9, 3.6683633310826263`*^9}, {
+  3.737195932661253*^9, 3.737195951865878*^9}, {3.737196432137971*^9, 
+  3.737196432325473*^9}, {3.7372823302836294`*^9, 3.737282351882017*^9}},
+ CellID->1948385338,ExpressionUUID->"e4309dab-8bb4-4221-aea7-b8ab987d5396"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"LoadNETType", "[", "\"\<Rhino.RhinoApp\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6684263686038113`*^9, 3.6684263686038113`*^9}, {
+   3.6684265087696037`*^9, 3.6684265098772106`*^9}, 3.73719504587904*^9},
  CellLabel->"In[45]:=",
- CellID->1741814003],
+ CellID->1741814003,ExpressionUUID->"afdb109f-5104-40d1-a292-3180f157fc3d"],
 
 Cell[BoxData[
  RowBox[{"NETType", "[", 
   RowBox[{"\<\"Rhino.RhinoApp\"\>", ",", "20"}], "]"}]], "Output",
- ImageSize->{194, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.7371950466423807`*^9, 3.737282369514145*^9, 
+  3.7372835629593706`*^9},
  CellLabel->"Out[45]=",
- CellID->379011912]
+ CellID->379011912,ExpressionUUID->"3c8e0faf-b0b4-49a2-85b5-1f9f4ba5953d"]
+}, Open  ]]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell[TextData[{
- "By default, the Rhino document renders wireframe objects. But you can use \
-",
+ "By default, the Rhino document renders wireframe objects. But you can use ",
  StyleBox["RunScript", "InlineCode"],
  " to tell Rhino to render shaded objects:"
 }], "Text",
- CellID->170872517],
+ CellChangeTimes->{{3.6683630277663345`*^9, 3.6683630947034044`*^9}, {
+  3.668363335247666*^9, 3.6683633428757725`*^9}, {3.7371953722032948`*^9, 
+  3.737195378107926*^9}, {3.737197122757003*^9, 3.737197126273834*^9}, {
+  3.7372823890754023`*^9, 3.7372824565074034`*^9}, {3.737283603312566*^9, 
+  3.7372836058194523`*^9}},
+ CellID->170872517,ExpressionUUID->"93d71e6e-a7e6-4757-a3ee-6736141c2fec"],
 
 Cell[CellGroupData[{
 
@@ -3617,15 +3703,25 @@ Cell[BoxData[
  RowBox[{"RhinoApp`RunScript", "[", 
   RowBox[{"\"\<_SetDisplayMode \\\"Shaded\\\"\>\"", ",", "True"}], 
   "]"}]], "Input",
+ CellChangeTimes->{{3.668363181655018*^9, 3.668363191841491*^9}, {
+   3.6683632229468937`*^9, 3.6683632267843714`*^9}, {3.6683637822347975`*^9, 
+   3.668363801266065*^9}, 3.6683644329285464`*^9, {3.668424103151911*^9, 
+   3.668424129218217*^9}, 3.6684265928222513`*^9, {3.737195657594801*^9, 
+   3.7371956791432095`*^9}, {3.737195746533482*^9, 3.7371957479558744`*^9}, 
+   3.7371965208564243`*^9, {3.7371971897412014`*^9, 3.7371971903026*^9}},
  CellLabel->"In[48]:=",
- CellID->668757180],
+ CellID->668757180,ExpressionUUID->"a9ea0d8f-3d25-40fd-91c2-05edf4aeadc0"],
 
 Cell[BoxData["True"], "Output",
- ImageSize->{33, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{
+  3.7371950587506847`*^9, 3.7371953479060793`*^9, {3.7371956659543056`*^9, 
+   3.7371956803138995`*^9}, 3.7371958341441946`*^9, {3.7371965162314124`*^9, 
+   3.7371965222001762`*^9}, 3.7371967968010235`*^9, 3.7371971302877636`*^9, {
+   3.7371971912565756`*^9, 3.7371972054118123`*^9}, 3.7372823766506095`*^9, {
+   3.737283566642206*^9, 3.737283573274909*^9}},
  CellLabel->"Out[48]=",
- CellID->358362096]
+ CellID->358362096,ExpressionUUID->"d636e23d-3756-4ac6-9227-b83cde4d4c95"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3638,84 +3734,103 @@ second argument determines whether the command is echoed in Rhino\
 underscore (_) ensures that the English-name command will run regardless of \
 what localized language Rhino is running in."
 }], "Text",
- CellID->1786177944],
+ CellChangeTimes->{{3.6683635258901453`*^9, 3.668363580924605*^9}, {
+  3.668363815992489*^9, 3.6683638419840884`*^9}, {3.668363921604419*^9, 
+  3.66836393509863*^9}, {3.6683639909306717`*^9, 3.6683640289312973`*^9}, {
+  3.6683644640023518`*^9, 3.6683644667478285`*^9}, {3.7371965593721266`*^9, 
+  3.7371965741546974`*^9}},
+ CellID->1786177944,ExpressionUUID->"612e3cfb-cb79-4581-b836-f44b414db8fc"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "You can do lots of useful things programmatically using ",
  StyleBox["RunScript", "Input"],
  ". For example, set the standard 4-view arrangement of the document:"
 }], "Text",
- CellID->618803395],
+ CellChangeTimes->{{3.6683635929050207`*^9, 3.6683636101580677`*^9}, {
+  3.668363675893783*^9, 3.668363717512886*^9}, {3.6683644891174574`*^9, 
+  3.668364495528852*^9}},
+ CellID->618803395,ExpressionUUID->"cb6db70e-c062-4aac-bfaf-6a4bc32fffdc"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"RhinoApp`RunScript", "[", 
   RowBox[{"\"\<_4View\>\"", ",", "True"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.6683636621507998`*^9, {3.6683638049163246`*^9, 3.6683638055559*^9}, {
+   3.6684265691575065`*^9, 3.668426569641097*^9}, 3.7372836284710836`*^9},
  CellLabel->"In[50]:=",
- CellID->2112840991],
+ CellID->2112840991,ExpressionUUID->"56691b35-7ed7-4844-b276-1161267c5ce0"],
 
 Cell[BoxData["True"], "Output",
- ImageSize->{33, 16},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
+ CellChangeTimes->{3.737283630166072*^9},
  CellLabel->"Out[50]=",
- CellID->220707212]
+ CellID->220707212,ExpressionUUID->"eaef7b3a-a77f-46b4-8911-b74156db5970"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Related Tutorials"
-}], "RelatedTutorialsSection",
- WholeCellGroupOpener->True,
- CellID->415694126],
+Cell["More About", "TutorialMoreAboutSection",
+ CellID->23220180,ExpressionUUID->"197460d6-e827-4bb3-a52a-428c292efcf3"],
 
-Cell["", "SectionHeaderSpacer"],
+Cell["XXXX", "TutorialMoreAbout",
+ CellID->1567025153,ExpressionUUID->"db9bef06-43b0-4f45-9ae6-b18d6a219da4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Tutorials", "RelatedTutorialsSection",
+ CellID->415694126,ExpressionUUID->"10203d72-f349-4b23-8d23-76d154fd79bc"],
 
 Cell[TextData[ButtonBox["How to Use the Wolfram Grasshopper Components",
  BaseStyle->"Link",
  ButtonData->
   "paclet:RhinoLink/tutorial/UsingWolframComponents"]], "RelatedTutorials",
- CellID->1609542],
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->1609542,ExpressionUUID->"f76af965-abbd-499a-b6ec-ab2e6d49ca44"],
 
 Cell[TextData[ButtonBox["Operate on Wolfram Language Meshes Using Rhino",
  BaseStyle->"Link",
  ButtonData->
   "paclet:RhinoLink/tutorial/UsingRhinoMeshOperations"]], "RelatedTutorials",
- CellID->422280156],
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->422280156,ExpressionUUID->"7e6fcc4f-d517-48c0-bcb9-9aa218e38f5e"],
 
 Cell[TextData[ButtonBox["Control a Parametric Surface in Rhino with a \
 Manipulate Interface in Mathematica",
  BaseStyle->"Link",
  ButtonData->
   "paclet:RhinoLink/tutorial/InteractiveSurface"]], "RelatedTutorials",
- CellID->740172588],
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->740172588,ExpressionUUID->"042d41a9-f740-48ec-aa2c-470b575eb980"],
 
 Cell[TextData[ButtonBox["Create Box Structures in Rhino with an Interface in \
 Mathematica",
  BaseStyle->"Link",
  ButtonData->"paclet:RhinoLink/tutorial/BoxDesignWidget"]], "RelatedTutorials",\
 
- CellID->28768034],
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->28768034,ExpressionUUID->"f59290d2-17ee-41a9-abfc-a22c6464a179"],
 
 Cell[TextData[ButtonBox["Make a Grasshopper Component that Translates \
 Graphics3D Output to Rhino Meshes",
  BaseStyle->"Link",
  ButtonData->
   "paclet:RhinoLink/tutorial/Graphics3DComponent"]], "RelatedTutorials",
- CellID->251143726],
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->251143726,ExpressionUUID->"349ba81e-29bf-4054-8a83-b142dd5f9b2e"],
 
 Cell[TextData[ButtonBox["Make a Grasshopper Component that Makes NURBS \
 Surfaces from U-V Point Grids",
  BaseStyle->"Link",
  ButtonData->
   "paclet:RhinoLink/tutorial/UVSurfaceComponent"]], "RelatedTutorials",
- CellID->1098419325],
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->1098419325,ExpressionUUID->"7e4d2a99-f6b0-4f79-b091-f1ba62d9b024"],
 
 Cell[TextData[ButtonBox["Make a Grasshopper Component that Covers a Surface \
 of Revolution with Phyllotaxically-Arranged Points",
@@ -3723,62 +3838,26 @@ of Revolution with Phyllotaxically-Arranged Points",
  ButtonData->
   "paclet:RhinoLink/tutorial/SpiralPhyllotaxicSurfaceComponent"]], \
 "RelatedTutorials",
- CellID->71800016]
-}, Open  ]]
+ CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
+ CellID->71800016,ExpressionUUID->"832b692f-fa67-4557-a906-be3710f39e0b"]
 }, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell["Related Wolfram Education Group Courses", "TutorialRelatedLinksSection",
+ CellID->415694148,ExpressionUUID->"e6db78ce-6fd1-4b3e-a0f9-6c069dfa1d8f"],
+
+Cell["XXXX", "TutorialRelatedLinks",
+ CellID->415694149,ExpressionUUID->"63e1fc08-a280-4e24-b547-88c9778df1d2"]
+}, Open  ]]
+}, Open  ]]
 },
-Saveable->False,
-ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-WindowTitle->"Use NETLink to Examine and Create Objects in Rhino",
-TaggingRules->{
- "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
-  "LinkTrails" -> GridBox[{{
-      RowBox[{
-        ButtonBox[
-        "Wolfram Language", ButtonData -> "paclet:guide/WolframRoot", 
-         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
-  "", "Metadata" -> {
-   "built" -> "{2018, 6, 6, 16, 10, 58.579201}", 
-    "history" -> {"11.3", "", "", ""}, "context" -> "RhinoLink`", 
-    "keywords" -> {}, "specialkeywords" -> {}, 
-    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
-    "Rhino Link Tutorial", "language" -> "en", "paclet" -> "RhinoLink", 
-    "status" -> "None", "summary" -> 
-    "To run the code in this tutorial, you must have evaluated WolframConnect \
-in Rhino: ", "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$16061, "title" -> 
-    "Use NETLink to Examine and Create Objects in Rhino", "titlemodifier" -> 
-    "", "windowtitle" -> "Use NETLink to Examine and Create Objects in Rhino",
-     "type" -> "Tutorial", "uri" -> 
-    "RhinoLink/tutorial/Use NETLink to Examine and Create Objects in Rhino", 
-    "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> ""},
-FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
-2018)",
-StyleDefinitions->Notebook[{
-   Cell[
-    StyleData[
-    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
-   Cell[
-    StyleData["Input"], CellContext -> Notebook], 
-   Cell[
-    StyleData["Output"], CellContext -> Notebook], 
-   Cell[
-    StyleData["TutorialMoreAboutSection"], 
-    CellGroupingRules -> {"SectionGrouping", 30}], 
-   Cell[
-    StyleData["RelatedTutorialsSection"], 
-    CellGroupingRules -> {"SectionGrouping", 30}], 
-   Cell[
-    StyleData["TutorialRelatedLinksSection"], 
-    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
-  FrontEndVersion -> 
-  "11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+Evaluator->"RhinoAttach",
+WindowSize->{700, 770},
+WindowMargins->{{Automatic, 326}, {Automatic, 15}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
 ]
 (* End of Notebook Content *)
 
@@ -3791,196 +3870,280 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[622, 21, 4400, 97, 70, "AnchorBarGrid",ExpressionUUID->"ad4b2984-8ddd-4f57-8481-b8ef960426fb",
- CellID->1],
+Cell[558, 20, 667, 15, 22, "History",ExpressionUUID->"422265e3-e843-48ea-83c3-b3d3906dc871",
+ CellID->1247902091],
 Cell[CellGroupData[{
-Cell[5047, 122, 87, 1, 70, "Title",ExpressionUUID->"417b91f9-36db-4a36-9e78-226fa8522bc4",
+Cell[1250, 39, 123, 1, 27, "CategorizationSection",ExpressionUUID->"6b92d631-7397-4281-b363-b1c93d798776",
+ CellID->1122911449],
+Cell[1376, 42, 136, 2, 70, "Categorization",ExpressionUUID->"a970665a-9346-4274-a53e-603dd44c9bce",
+ CellID->686433507],
+Cell[1515, 46, 137, 2, 70, "Categorization",ExpressionUUID->"307d45db-a1f0-4bcb-9c07-a237b761ae2e",
+ CellID->605800465],
+Cell[1655, 50, 134, 2, 70, "Categorization",ExpressionUUID->"786ab1cf-d5a7-4b38-9caf-0c06b052ba0d",
+ CellID->468444828],
+Cell[1792, 54, 177, 3, 70, "Categorization",ExpressionUUID->"0992aa8e-1a41-4aa4-abe2-a9db123d9ed4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2006, 62, 111, 1, 17, "KeywordsSection",ExpressionUUID->"27df2b2e-f0e6-41d9-ae24-2f3497590614",
+ CellID->1427428552],
+Cell[2120, 65, 100, 1, 70, "Keywords",ExpressionUUID->"6e6a80a6-42c5-4591-a47f-db0f1fb77196",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2257, 71, 108, 1, 17, "DetailsSection",ExpressionUUID->"2f136632-e0b9-48c6-ae81-41be146b69db",
+ CellID->307771771],
+Cell[2368, 74, 118, 2, 70, "Details",ExpressionUUID->"618d6c92-4633-438d-84e3-69a11dad790c",
+ CellID->218895918],
+Cell[2489, 78, 124, 2, 70, "Details",ExpressionUUID->"fb58c56b-7967-4c53-b686-34b5f5eacad7",
+ CellID->350963985],
+Cell[2616, 82, 121, 2, 70, "Details",ExpressionUUID->"4ff824d2-6a30-4de1-bcc8-13f2205b2e44",
+ CellID->795871300],
+Cell[2740, 86, 126, 2, 70, "Details",ExpressionUUID->"6c3ffa3f-ea5b-46bc-85e0-be805f40b85c",
+ CellID->199739161],
+Cell[2869, 90, 115, 2, 70, "Details",ExpressionUUID->"99f35eab-d102-4b30-b126-13bd8aa75fcb",
+ CellID->40625308],
+Cell[2987, 94, 116, 2, 70, "Details",ExpressionUUID->"3d52f361-a759-46cf-9600-aa8b23aa646f",
+ CellID->357121918],
+Cell[3106, 98, 117, 2, 70, "Details",ExpressionUUID->"4911e920-ff70-4dc4-afea-56a2ef752c5e",
+ CellID->35949532],
+Cell[3226, 102, 133, 2, 70, "Details",ExpressionUUID->"08d397c4-04b8-461b-a70f-394d0e67eb67",
+ CellID->929432370],
+Cell[3362, 106, 122, 2, 70, "Details",ExpressionUUID->"662d917d-e0e4-4415-bafe-d176399ddc0a",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3521, 113, 142, 1, 105, "Title",ExpressionUUID->"c1f1b464-231b-4cbf-8f3b-7ad1e84b2f47",
  CellID->509267359],
 Cell[CellGroupData[{
-Cell[5159, 127, 45, 1, 70, "Section",ExpressionUUID->"40efc7aa-ea6d-459d-81ae-1f4f30261bc2",
+Cell[3688, 118, 217, 3, 40, "Section",ExpressionUUID->"b2b4f2a6-5599-4ee3-a4f6-c6f3f9d5c704",
  CellID->1037075497],
-Cell[5207, 130, 129, 4, 70, "Text",ExpressionUUID->"0bb31bb4-0bfc-4a4f-bfab-c2a288c42f91",
+Cell[3908, 123, 354, 7, 21, "Text",ExpressionUUID->"3e38260d-157b-4196-a8d8-0d1666d08c9c",
  CellID->1361204418],
-Cell[5339, 136, 121086, 1992, 70, "Text",ExpressionUUID->"21cd9e68-422d-4bce-bd7c-118613c7b05c",
+Cell[4265, 132, 121207, 1993, 120, "Text",ExpressionUUID->"cb17de8f-fe0e-40f3-af38-2751ebcc1281",
  CellID->110807350],
-Cell[126428, 2130, 114, 3, 70, "Text",ExpressionUUID->"e5cc049b-49ac-427a-a1d2-8191c299d378",
+Cell[CellGroupData[{
+Cell[125497, 2129, 284, 5, 21, "Text",ExpressionUUID->"f867a3d6-76e9-4f9f-8497-5ae2193d5bb3",
  CellID->400292277],
-Cell[126545, 2135, 35150, 582, 70, "Input",ExpressionUUID->"02332b8f-bdb5-49ce-8c6f-3de4e1015fd0",
+Cell[125784, 2136, 35266, 582, 235, "Input",ExpressionUUID->"78ca34e1-65b2-4c9a-8754-3a648cbe68f4",
  CellID->1912826041]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[161732, 2722, 57, 1, 70, "Section",ExpressionUUID->"2cda205b-8d2b-4970-9766-de1a58f6a6df",
+Cell[161099, 2724, 180, 2, 40, "Section",ExpressionUUID->"0d870bde-5881-48d4-8370-57caef0cd02a",
  CellID->141886224],
-Cell[161792, 2725, 475, 11, 70, "Text",ExpressionUUID->"e5e236e5-a7c2-4f20-a674-1b6c80feab90",
+Cell[CellGroupData[{
+Cell[161304, 2730, 746, 13, 53, "Text",ExpressionUUID->"1c877a39-6860-481d-b98b-79a17b5b4763",
  CellID->333413602],
 Cell[CellGroupData[{
-Cell[162292, 2740, 127, 3, 70, "Input",ExpressionUUID->"e4ea7ab2-d417-40b9-92f8-af1b508f2b66",
+Cell[162075, 2747, 301, 5, 25, "Input",ExpressionUUID->"1c5ecc00-63a4-4d04-9930-f5e56772b33f",
  CellID->86641344],
-Cell[162422, 2745, 236, 7, 70, "Output",ExpressionUUID->"17a63500-fda3-442e-b1ab-d86b976a01fa",
+Cell[162379, 2754, 245, 5, 24, "Output",ExpressionUUID->"7b657543-f359-4100-b930-12a11bb0aa28",
  CellID->12474803]
+}, Open  ]]
 }, Open  ]],
-Cell[162673, 2755, 200, 4, 70, "Text",ExpressionUUID->"91c7768e-98f4-478d-af0c-6da3af55d570",
+Cell[CellGroupData[{
+Cell[162673, 2765, 401, 6, 21, "Text",ExpressionUUID->"62fde4c4-5c1c-466b-8b5b-8adc279b7d6d",
  CellID->1610703193],
 Cell[CellGroupData[{
-Cell[162898, 2763, 112, 3, 70, "Input",ExpressionUUID->"8e3b21f2-04e1-443f-a071-a392b5ddab5e",
+Cell[163099, 2775, 235, 4, 25, "Input",ExpressionUUID->"aa74801d-6f11-4762-b351-35b21780b0da",
  CellID->2057194316],
-Cell[163013, 2768, 353, 10, 70, "Output",ExpressionUUID->"3ab165da-348e-435f-a3fd-373efa53807c",
+Cell[163337, 2781, 413, 9, 24, "Output",ExpressionUUID->"5a6bc454-49c7-45f0-a508-72e9865f39de",
  CellID->437917673]
+}, Open  ]]
 }, Open  ]],
-Cell[163381, 2781, 545, 16, 70, "Text",ExpressionUUID->"829e2ffa-4822-4d49-9265-0f057868339f",
+Cell[CellGroupData[{
+Cell[163799, 2796, 786, 17, 37, "Text",ExpressionUUID->"98e64cc6-ecb1-48fd-9f87-e4365790e59d",
  CellID->778152312],
-Cell[163929, 2799, 110, 3, 70, "Input",ExpressionUUID->"a3918e9e-e938-4a74-8026-d2024caeba70",
+Cell[164588, 2815, 337, 6, 25, "Input",ExpressionUUID->"4c0bc398-c0c6-409b-ba3f-f95dcad7d501",
  CellID->230497554],
-Cell[164042, 2804, 4334, 135, 70, "Output",ExpressionUUID->"63351dca-3b27-44fb-be3c-fe5fb1e28130",
- CellID->96122653],
-Cell[168379, 2941, 210, 6, 70, "Text",ExpressionUUID->"538608f4-ef09-49fa-9273-a71a0347050e",
+Cell[164928, 2823, 4610, 137, 511, "Output",ExpressionUUID->"c94e8a23-f219-4b95-9b34-22a029ac616a",
+ CellID->96122653]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[169575, 2965, 333, 7, 38, "Text",ExpressionUUID->"ccb94d9d-b27a-48f5-ace9-0b444d397ec7",
  CellID->59481028],
 Cell[CellGroupData[{
-Cell[168614, 2951, 99, 3, 70, "Input",ExpressionUUID->"6463dce4-9704-452a-b2c7-a15eea33b49f",
+Cell[169933, 2976, 220, 4, 25, "Input",ExpressionUUID->"6ea8aa1e-626e-40b9-ab17-f85c5f99ad99",
  CellID->2478374],
-Cell[168716, 2956, 395, 11, 70, "Output",ExpressionUUID->"79299622-1fbf-46b1-8a0a-643cfede2eaf",
+Cell[170156, 2982, 404, 9, 24, "Output",ExpressionUUID->"9f3f9a0a-de96-4a03-a35c-79e410818b64",
  CellID->752621892]
+}, Open  ]]
 }, Open  ]],
-Cell[169126, 2970, 445, 12, 70, "Text",ExpressionUUID->"5bd6ecf8-e1d5-445b-b106-0004852c107b",
+Cell[CellGroupData[{
+Cell[170609, 2997, 548, 12, 39, "Text",ExpressionUUID->"beafb7ff-c02b-4b94-9e99-975b358d6c11",
  CellID->598001584],
 Cell[CellGroupData[{
-Cell[169596, 2986, 107, 3, 70, "Input",ExpressionUUID->"2fe7dc6a-1c8c-46a2-8556-8b1632d87adc",
+Cell[171182, 3013, 230, 4, 25, "Input",ExpressionUUID->"858a016a-bb2a-44b8-acf9-101f0ba7b54a",
  CellID->396484599],
-Cell[169706, 2991, 176, 6, 70, "Output",ExpressionUUID->"60760caf-71a4-46e5-87c0-b99607dcab79",
+Cell[171415, 3019, 186, 4, 24, "Output",ExpressionUUID->"d627e94d-d07a-41ea-941d-2520e03ea092",
  CellID->487014811]
 }, Open  ]]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[169931, 3003, 75, 1, 70, "Section",ExpressionUUID->"5e7076e6-b496-4ae1-96a6-21242e794b1e",
+Cell[171662, 3030, 251, 3, 40, "Section",ExpressionUUID->"cb8fa08b-4def-4e8a-b91a-11f234d12458",
  CellID->541532613],
-Cell[170009, 3006, 594, 17, 70, "Text",ExpressionUUID->"7039f656-e1cf-418c-b75a-2fbbf5f574cd",
+Cell[171916, 3035, 687, 16, 53, "Text",ExpressionUUID->"be13a938-1881-4b02-9c58-865ecec0589b",
  CellID->573691913],
-Cell[170606, 3025, 921, 28, 70, "Text",ExpressionUUID->"42774b36-dd92-4672-807b-a69c9ac1da9a",
+Cell[CellGroupData[{
+Cell[172628, 3055, 1025, 26, 53, "Text",ExpressionUUID->"16a69c8b-e093-4c5b-a6f2-3bc9e49c35cd",
  CellID->88397140],
 Cell[CellGroupData[{
-Cell[171552, 3057, 216, 6, 70, "Input",ExpressionUUID->"a30f6f4f-eb64-46a9-a51a-5d53c8521099",
+Cell[173678, 3085, 339, 7, 25, "Input",ExpressionUUID->"a6fb051d-5f86-47e4-bc26-3745ccc628e9",
  CellID->518311122],
-Cell[171771, 3065, 379, 11, 70, "Output",ExpressionUUID->"1d3bba80-d6ee-4c3a-b578-5eac3f8c5e63",
+Cell[174020, 3094, 416, 9, 24, "Output",ExpressionUUID->"ba85158c-b910-4111-aa3a-1136a9998f58",
  CellID->271710476]
+}, Open  ]]
 }, Open  ]],
-Cell[172165, 3079, 105, 3, 70, "Text",ExpressionUUID->"ce44a4df-e8ac-43fd-8e12-4fd5e4bd0939",
+Cell[CellGroupData[{
+Cell[174485, 3109, 228, 4, 21, "Text",ExpressionUUID->"3cfc51ec-d318-4b1b-96e4-8948cff49af9",
  CellID->671939187],
 Cell[CellGroupData[{
-Cell[172295, 3086, 106, 3, 70, "Input",ExpressionUUID->"1fdb757a-4cfe-4512-96e3-e6e4739b9bef",
+Cell[174738, 3117, 229, 4, 25, "Input",ExpressionUUID->"419a5e03-c473-463c-a974-81e26389d440",
  CellID->13087847],
-Cell[172404, 3091, 406, 12, 70, "Output",ExpressionUUID->"c858f45d-10c7-4bd2-9108-2446022fca9c",
+Cell[174970, 3123, 415, 10, 24, "Output",ExpressionUUID->"091f82ef-4728-40e5-a390-329a63ea5e4a",
  CellID->298507148]
 }, Open  ]]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[172859, 3109, 78, 1, 70, "Section",ExpressionUUID->"08d7d82d-24e8-4c40-a4f5-c17bd3319a22",
+Cell[175446, 3140, 198, 2, 40, "Section",ExpressionUUID->"c164de02-f796-4a35-9ed8-cf406434afac",
  CellID->2118128469],
-Cell[172940, 3112, 96, 1, 70, "Text",ExpressionUUID->"c97c1cdf-b15d-4753-97d2-6d3d5d154986",
+Cell[CellGroupData[{
+Cell[175669, 3146, 268, 3, 21, "Text",ExpressionUUID->"245e7542-d620-4fa7-94e4-bcecd9e54e4e",
  CellID->246718616],
 Cell[CellGroupData[{
-Cell[173061, 3117, 189, 6, 70, "Input",ExpressionUUID->"e54fd9ad-39e9-47de-bded-2376d90d1d4c",
+Cell[175962, 3153, 411, 9, 25, "Input",ExpressionUUID->"af5bbe6e-4e7c-4c92-ab75-7d2ce68e3a69",
  CellID->548762164],
-Cell[173253, 3125, 379, 11, 70, "Output",ExpressionUUID->"c1bedff1-7a6d-47f5-a055-d57ff902f3f9",
+Cell[176376, 3164, 436, 10, 24, "Output",ExpressionUUID->"f1d8a315-01de-4184-a3bc-8c2ce8d257b5",
  CellID->131906899]
+}, Open  ]]
 }, Open  ]],
-Cell[173647, 3139, 71, 1, 70, "Text",ExpressionUUID->"f7aa6248-dd7e-4464-bb9c-f2a6c1bc8360",
+Cell[CellGroupData[{
+Cell[176861, 3180, 247, 3, 21, "Text",ExpressionUUID->"3ec31e6f-7a25-4a3d-ab7c-3d9a4cad98e3",
  CellID->1750910130],
 Cell[CellGroupData[{
-Cell[173743, 3144, 149, 4, 70, "Input",ExpressionUUID->"e05b5ce3-301a-4d02-88a9-929a4cfbce02",
+Cell[177133, 3187, 272, 5, 25, "Input",ExpressionUUID->"1a8b2b99-26ba-456d-81ab-a310d72d83d0",
  CellID->578140069],
-Cell[173895, 3150, 159, 5, 70, "Output",ExpressionUUID->"5f2e0091-205f-4295-b0e9-ec3ddd2e5998",
+Cell[177408, 3194, 193, 3, 24, "Output",ExpressionUUID->"5b43c7ef-3c25-4205-aeb8-c8bec4184b7e",
  CellID->603611584]
+}, Open  ]]
 }, Open  ]],
-Cell[174069, 3158, 526, 16, 70, "Text",ExpressionUUID->"b1014a1b-43b9-439f-97ab-d902090723b0",
+Cell[CellGroupData[{
+Cell[177650, 3203, 671, 16, 38, "Text",ExpressionUUID->"36d14e3f-bc70-47ec-848d-93b7890971e0",
  CellID->1584120655],
 Cell[CellGroupData[{
-Cell[174620, 3178, 147, 4, 70, "Input",ExpressionUUID->"68948833-a89c-4c17-bcf6-22cb07d9b8b8",
+Cell[178346, 3223, 270, 5, 25, "Input",ExpressionUUID->"c6171fa5-5cd1-424e-8eca-0d714d4c159a",
  CellID->1961076726],
-Cell[174770, 3184, 15052, 266, 70, "Output",ExpressionUUID->"17dc9fed-55ac-44ed-ac70-646c1b3d2f7d",
+Cell[178619, 3230, 15086, 264, 270, "Output",ExpressionUUID->"05fefd14-acab-458d-854b-fe8c5ea3b7cf",
  CellID->185070432]
 }, Open  ]]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[189871, 3456, 60, 1, 70, "Section",ExpressionUUID->"9b7832ea-b838-4f21-be10-a04c0104b919",
+Cell[193766, 3501, 231, 3, 40, "Section",ExpressionUUID->"5ab194d3-c7f2-4571-97d1-cc56e5491a5f",
  CellID->73199742],
-Cell[189934, 3459, 565, 17, 70, "Text",ExpressionUUID->"3ee9c016-87a9-47cc-be0d-28ab0a091993",
+Cell[CellGroupData[{
+Cell[194022, 3508, 705, 17, 52, "Text",ExpressionUUID->"9311395a-f25b-46cd-9f87-c94e4a875ef2",
  CellID->261769371],
 Cell[CellGroupData[{
-Cell[190524, 3480, 211, 7, 70, "Input",ExpressionUUID->"18a23286-da2f-432f-8dee-b24663d30e69",
+Cell[194752, 3529, 332, 8, 25, "Input",ExpressionUUID->"7beb1a80-10fd-4d4b-a663-47e93899bcea",
  CellID->5298475],
-Cell[190738, 3489, 373, 11, 70, "Output",ExpressionUUID->"a7b3fb45-b5e9-40e4-a37d-198025f23979",
+Cell[195087, 3539, 408, 9, 24, "Output",ExpressionUUID->"28a9b792-27e4-4ec9-a760-144153b73287",
  CellID->187265314]
+}, Open  ]]
 }, Open  ]],
-Cell[191126, 3503, 84, 1, 70, "Text",ExpressionUUID->"4e7f473b-81e3-428e-a63e-a752ddd148b3",
+Cell[CellGroupData[{
+Cell[195544, 3554, 207, 2, 21, "Text",ExpressionUUID->"cd3dc2f3-d1ae-4048-b328-7e5aaf1c8f8b",
  CellID->436101531],
-Cell[191213, 3506, 110, 3, 70, "Input",ExpressionUUID->"990ff6f8-ea96-4f41-8e0e-41cf25c397a7",
- CellID->76794141],
-Cell[191326, 3511, 107, 3, 70, "Text",ExpressionUUID->"2ed2f7b5-167b-470d-850d-d69310bfc1e1",
+Cell[195754, 3558, 233, 4, 25, "Input",ExpressionUUID->"a59b7ee2-08fd-492b-8866-a39f9f191ca4",
+ CellID->76794141]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[196024, 3567, 334, 6, 21, "Text",ExpressionUUID->"a3f3539a-c5ba-4d47-b92c-9c0e1f652f82",
  CellID->857568037],
 Cell[CellGroupData[{
-Cell[191458, 3518, 350, 11, 70, "Input",ExpressionUUID->"794056e5-cf0c-4a8c-9c4f-4e84a132b987",
+Cell[196383, 3577, 549, 13, 25, "Input",ExpressionUUID->"88d4d4e0-c11d-4d05-be1d-b0dc0be2f727",
  CellID->270349773],
-Cell[191811, 3531, 378, 11, 70, "Output",ExpressionUUID->"e2ba8e91-3ccb-4ff4-9962-09cf66041eae",
+Cell[196935, 3592, 517, 11, 24, "Output",ExpressionUUID->"52c6070b-ff54-42d6-9691-42c1afad4d4b",
  CellID->78350784]
-}, Open  ]],
-Cell[192204, 3545, 61, 1, 70, "Text",ExpressionUUID->"4bcbae73-9f1a-4b7e-a39e-c12d8f6fe63c",
- CellID->176919134],
-Cell[192268, 3548, 657, 21, 70, "Input",ExpressionUUID->"9f0eab3d-cb1b-4414-a335-8b219d7a2c02",
- CellID->636797814]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[192962, 3574, 57, 1, 70, "Section",ExpressionUUID->"ec8bb7ac-a870-4477-af22-1e2d361c64c4",
+Cell[197501, 3609, 282, 4, 21, "Text",ExpressionUUID->"cf653897-30f8-4a6c-af51-8e8a803c141c",
+ CellID->176919134],
+Cell[197786, 3615, 964, 25, 44, "Input",ExpressionUUID->"d85295e0-1280-444d-867a-8c81a1cbc825",
+ CellID->636797814]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[198799, 3646, 179, 2, 40, "Section",ExpressionUUID->"00715362-7d45-4b46-a709-f3ca20bb236f",
  CellID->471854466],
-Cell[193022, 3577, 311, 9, 70, "Text",ExpressionUUID->"1f96637e-07d7-4f16-9ecd-a33114a012f3",
+Cell[CellGroupData[{
+Cell[199003, 3652, 580, 12, 40, "Text",ExpressionUUID->"e4309dab-8bb4-4221-aea7-b8ab987d5396",
  CellID->1948385338],
 Cell[CellGroupData[{
-Cell[193358, 3590, 130, 3, 70, "Input",ExpressionUUID->"222db28f-5211-4525-824a-1f50380a52e7",
+Cell[199608, 3668, 330, 5, 25, "Input",ExpressionUUID->"afdb109f-5104-40d1-a292-3180f157fc3d",
  CellID->1741814003],
-Cell[193491, 3595, 238, 7, 70, "Output",ExpressionUUID->"93f3d130-1bfe-4e81-8976-d20a7ea23f07",
+Cell[199941, 3675, 298, 6, 24, "Output",ExpressionUUID->"3c8e0faf-b0b4-49a2-85b5-1f9f4ba5953d",
  CellID->379011912]
+}, Open  ]]
 }, Open  ]],
-Cell[193744, 3605, 210, 6, 70, "Text",ExpressionUUID->"eb2cfba1-27d8-40f8-a3ca-49949d4337c8",
+Cell[CellGroupData[{
+Cell[200288, 3687, 585, 10, 38, "Text",ExpressionUUID->"93d71e6e-a7e6-4757-a3ee-6736141c2fec",
  CellID->170872517],
 Cell[CellGroupData[{
-Cell[193979, 3615, 181, 5, 70, "Input",ExpressionUUID->"3804957e-22fe-46c6-87e4-537fd5290938",
+Cell[200898, 3701, 680, 11, 25, "Input",ExpressionUUID->"a9ea0d8f-3d25-40fd-91c2-05edf4aeadc0",
  CellID->668757180],
-Cell[194163, 3622, 162, 5, 70, "Output",ExpressionUUID->"41f721a7-c290-420a-bc5c-51a65cff78c1",
+Cell[201581, 3714, 509, 8, 24, "Output",ExpressionUUID->"d636e23d-3756-4ac6-9227-b83cde4d4c95",
  CellID->358362096]
+}, Open  ]]
 }, Open  ]],
-Cell[194340, 3630, 584, 10, 70, "Text",ExpressionUUID->"847baafe-e329-4fad-9cc9-7d3680f6d6b2",
+Cell[202117, 3726, 962, 15, 68, "Text",ExpressionUUID->"612e3cfb-cb79-4581-b836-f44b414db8fc",
  CellID->1786177944],
-Cell[194927, 3642, 212, 5, 70, "Text",ExpressionUUID->"b7a1ba9f-df9a-4599-96c8-0899a29963d8",
+Cell[CellGroupData[{
+Cell[203104, 3745, 437, 8, 37, "Text",ExpressionUUID->"cb6db70e-c062-4aac-bfaf-6a4bc32fffdc",
  CellID->618803395],
 Cell[CellGroupData[{
-Cell[195164, 3651, 155, 4, 70, "Input",ExpressionUUID->"a7b034fc-7bda-4d98-883c-70294bf27d86",
+Cell[203566, 3757, 379, 7, 25, "Input",ExpressionUUID->"56691b35-7ed7-4844-b276-1161267c5ce0",
  CellID->2112840991],
-Cell[195322, 3657, 162, 5, 70, "Output",ExpressionUUID->"10394ec1-67d4-47d5-8aea-e2eee029b8fc",
+Cell[203948, 3766, 172, 3, 24, "Output",ExpressionUUID->"eaef7b3a-a77f-46b4-8911-b74156db5970",
  CellID->220707212]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[195533, 3668, 167, 7, 70, "RelatedTutorialsSection",ExpressionUUID->"628df032-5d54-46c0-a854-da8d792f405a",
- CellID->415694126],
-Cell[195703, 3677, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"6db1d3c4-1eea-4cf8-98a9-52d238e4acfd"],
-Cell[195737, 3679, 200, 4, 70, "RelatedTutorials",ExpressionUUID->"b02eb6c7-bccc-4903-941b-6b9f5b1dee1e",
- CellID->1609542],
-Cell[195940, 3685, 205, 4, 70, "RelatedTutorials",ExpressionUUID->"5f86e606-ad42-4fb3-a755-012c7329f7aa",
- CellID->422280156],
-Cell[196148, 3691, 235, 5, 70, "RelatedTutorials",ExpressionUUID->"7985da09-56d6-47ea-b4d0-d5ce61a8f713",
- CellID->740172588],
-Cell[196386, 3698, 213, 5, 70, "RelatedTutorials",ExpressionUUID->"d889fc6f-7ccd-4504-8861-1ccdb10c9b91",
- CellID->28768034],
-Cell[196602, 3705, 234, 5, 70, "RelatedTutorials",ExpressionUUID->"a2d663c1-3105-4e22-956b-426bd8e88edb",
- CellID->251143726],
-Cell[196839, 3712, 231, 5, 70, "RelatedTutorials",ExpressionUUID->"d3bf21c3-48f1-4de8-9b53-3ceec2745c99",
- CellID->1098419325],
-Cell[197073, 3719, 272, 6, 70, "RelatedTutorials",ExpressionUUID->"aaec1c7e-493f-4de2-b7b3-59440fe291c8",
- CellID->71800016]
-}, Open  ]]
+Cell[204181, 3776, 120, 1, 70, "TutorialMoreAboutSection",ExpressionUUID->"197460d6-e827-4bb3-a52a-428c292efcf3",
+ CellID->23220180],
+Cell[204304, 3779, 109, 1, 20, "TutorialMoreAbout",ExpressionUUID->"db9bef06-43b0-4f45-9ae6-b18d6a219da4",
+ CellID->1567025153]
 }, Open  ]],
-Cell[197372, 3729, 23, 0, 70, "FooterCell",ExpressionUUID->"fa3a386e-c3fc-4cc6-a871-2f30916807ab"]
+Cell[CellGroupData[{
+Cell[204450, 3785, 127, 1, 70, "RelatedTutorialsSection",ExpressionUUID->"10203d72-f349-4b23-8d23-76d154fd79bc",
+ CellID->415694126],
+Cell[204580, 3788, 321, 5, 20, "RelatedTutorials",ExpressionUUID->"f76af965-abbd-499a-b6ec-ab2e6d49ca44",
+ CellID->1609542],
+Cell[204904, 3795, 326, 5, 20, "RelatedTutorials",ExpressionUUID->"7e6fcc4f-d517-48c0-bcb9-9aa218e38f5e",
+ CellID->422280156],
+Cell[205233, 3802, 356, 6, 34, "RelatedTutorials",ExpressionUUID->"042d41a9-f740-48ec-aa2c-470b575eb980",
+ CellID->740172588],
+Cell[205592, 3810, 334, 6, 20, "RelatedTutorials",ExpressionUUID->"f59290d2-17ee-41a9-abfc-a22c6464a179",
+ CellID->28768034],
+Cell[205929, 3818, 355, 6, 34, "RelatedTutorials",ExpressionUUID->"349ba81e-29bf-4054-8a83-b142dd5f9b2e",
+ CellID->251143726],
+Cell[206287, 3826, 352, 6, 34, "RelatedTutorials",ExpressionUUID->"7e4d2a99-f6b0-4f79-b091-f1ba62d9b024",
+ CellID->1098419325],
+Cell[206642, 3834, 393, 7, 34, "RelatedTutorials",ExpressionUUID->"832b692f-fa67-4557-a906-be3710f39e0b",
+ CellID->71800016]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[207072, 3846, 153, 1, 70, "TutorialRelatedLinksSection",ExpressionUUID->"e6db78ce-6fd1-4b3e-a0f9-6c069dfa1d8f",
+ CellID->415694148],
+Cell[207228, 3849, 111, 1, 20, "TutorialRelatedLinks",ExpressionUUID->"63e1fc08-a280-4e24-b547-88c9778df1d2",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)
