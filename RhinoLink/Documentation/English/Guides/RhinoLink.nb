@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23535,        567]
-NotebookOptionsPosition[     16391,        424]
-NotebookOutlinePosition[     16816,        441]
-CellTagsIndexPosition[     16773,        438]
+NotebookDataLength[     23024,        557]
+NotebookOptionsPosition[     16002,        416]
+NotebookOutlinePosition[     16427,        433]
+CellTagsIndexPosition[     16384,        430]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -374,14 +374,6 @@ Mathematica",
  CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
  CellID->28768034,ExpressionUUID->"9008c1d0-64ec-4bf2-abe7-5374d3f961c1"],
 
-Cell[TextData[ButtonBox["Make a Mathematica Manipulate Interface that \
-Enumerates Distinct Tilings of a Given Set of Tiles in Rhino",
- BaseStyle->"Link",
- ButtonData->
-  "paclet:RhinoLink/tutorial/TilingEnumerationInterface"]], "GuideTutorial",
- CellChangeTimes->{{3.736791430265728*^9, 3.736791433255972*^9}},
- CellID->294220147,ExpressionUUID->"a1fd6e92-3eeb-4559-8ec1-58703741f980"],
-
 Cell[TextData[ButtonBox["Make a Grasshopper Component that Translates \
 Graphics3D Output to Rhino Meshes",
  BaseStyle->"Link",
@@ -550,24 +542,22 @@ Cell[13709, 362, 350, 5, 22, "GuideTutorial",ExpressionUUID->"6594af3c-baef-48df
  CellID->740172588],
 Cell[14062, 369, 329, 5, 22, "GuideTutorial",ExpressionUUID->"9008c1d0-64ec-4bf2-abe7-5374d3f961c1",
  CellID->28768034],
-Cell[14394, 376, 386, 6, 38, "GuideTutorial",ExpressionUUID->"a1fd6e92-3eeb-4559-8ec1-58703741f980",
- CellID->294220147],
-Cell[14783, 384, 352, 6, 38, "GuideTutorial",ExpressionUUID->"deeb6339-128c-40c6-8d27-bab3f8db97a9",
+Cell[14394, 376, 352, 6, 38, "GuideTutorial",ExpressionUUID->"deeb6339-128c-40c6-8d27-bab3f8db97a9",
  CellID->251143726],
-Cell[15138, 392, 346, 5, 22, "GuideTutorial",ExpressionUUID->"74dfac6b-7033-4aa6-bf54-9df81a671201",
+Cell[14749, 384, 346, 5, 22, "GuideTutorial",ExpressionUUID->"74dfac6b-7033-4aa6-bf54-9df81a671201",
  CellID->1098419325],
-Cell[15487, 399, 390, 7, 38, "GuideTutorial",ExpressionUUID->"158a713d-5e66-40ab-9795-599cb1b40c4c",
+Cell[15098, 391, 390, 7, 38, "GuideTutorial",ExpressionUUID->"158a713d-5e66-40ab-9795-599cb1b40c4c",
  CellID->71800016]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15914, 411, 117, 1, 72, "GuideMoreAboutSection",ExpressionUUID->"74b0d898-0705-413a-ae21-fe2ee075a701",
+Cell[15525, 403, 117, 1, 72, "GuideMoreAboutSection",ExpressionUUID->"74b0d898-0705-413a-ae21-fe2ee075a701",
  CellID->23220180],
-Cell[16034, 414, 106, 1, 22, "GuideMoreAbout",ExpressionUUID->"d66255c6-1785-419e-a660-c931e32dccc3",
+Cell[15645, 406, 106, 1, 22, "GuideMoreAbout",ExpressionUUID->"d66255c6-1785-419e-a660-c931e32dccc3",
  CellID->1567025153],
-Cell[16143, 417, 105, 1, 22, "GuideMoreAbout",ExpressionUUID->"f15f437c-145b-4cd2-913b-803bdd3f83a2",
+Cell[15754, 409, 105, 1, 22, "GuideMoreAbout",ExpressionUUID->"f15f437c-145b-4cd2-913b-803bdd3f83a2",
  CellID->252299663]
 }, Open  ]],
-Cell[16263, 421, 124, 1, 72, "GuideRelatedLinksSection",ExpressionUUID->"af0502f5-b6a4-4a12-9d01-9a59efb4664a",
+Cell[15874, 413, 124, 1, 72, "GuideRelatedLinksSection",ExpressionUUID->"af0502f5-b6a4-4a12-9d01-9a59efb4664a",
  CellID->415694148]
 }
 ]
