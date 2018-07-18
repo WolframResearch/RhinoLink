@@ -27,7 +27,7 @@ The RhinoLink release comes in the form of a `.paclet` file, which contains the 
 
 To use RhinoLink, start Rhino and evaluate "WolframConnect". That will start a special kernel named "RhinoAttach" that provides communication services between Rhino and Mathematica. To use RhinoLink functions in a Wolfram Language notebook, you must set the notebook's kernel to RhinoAttach using Evaluation > Notebook's Kernel.
 
-To get an overview of RhinoLink functionality, search for RhinoLink in the help browser, which should bring up the RhinoLink guide page. The guide page contains links to documentation of all RhinoLink function as well as links to tutorials to help get you started.
+To get an overview of RhinoLink functionality, search for RhinoLink in the help browser, which should bring up the RhinoLink guide page. The guide page contains links to documentation of all RhinoLink functions as well as links to tutorials to help get you started.
 
 Start with the "Control a Parametric Surface in Rhino with a Manipulate Interface in Mathematica" or "Create Box Structures in Rhino with an Interface in Mathematica" tutorials to see how to use RhinoLink with Rhino. For a basic example of creating a Grasshopper component, start with "Make a Grasshopper Component that Translates Graphics3D Output to Rhino Meshes". The basics of .NET programming with Wolfram Language are explained in the "Use NETLink to Examine and Create Objects in Rhino" tutorial.
 
